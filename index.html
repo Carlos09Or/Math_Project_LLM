@@ -11,7 +11,7 @@
 <body>
 <header class="site"><div class="wrap">
   <a class="brand" href="index.html">Tutoría matemática offline</a>
-  <nav aria-label="Principal"><a href="index.html">Inicio</a><a href="metodologia.html">Metodología</a><a href="fuentes.html">Fuentes</a><a href="dataset.html">Dataset</a><a href="resultados.html">Resultados</a><a href="hoja-de-ruta.html">Hoja de ruta</a></nav>
+  <nav aria-label="Principal"><a href="index.html">Inicio</a><a href="pruebas.html">Pruebas</a><a href="dataset.html">Dataset</a><a href="fuentes.html">Fuentes</a><a href="metodologia.html">Metodología</a><a href="hoja-de-ruta.html">Hoja de ruta</a></nav>
 </div></header>
 
 <main class="wrap">
@@ -19,7 +19,7 @@
   <p class="lead">Estudiamos cómo cambian la exactitud, el diagnóstico de errores y la calidad de las pistas cuando se comprime un modelo pequeño, y qué recursos exige ejecutarlo localmente, para matemáticas de 3.er grado en Panamá.</p>
 
   <div class="banner"><strong>Estado: borrador de trabajo, sin resultados científicos.</strong>
-    Se comprobó que el <em>pipeline</em> funciona con un piloto técnico (9 ítems sintéticos, un modelo, una sola pasada). Nada está validado por docentes ni aprobado por el mentor, y no se afirma alineación con el currículo vigente.</div>
+    Se comprobó que el <em>pipeline</em> funciona (prueba de humo) y se hizo una <strong>primera evaluación exploratoria</strong> de Qwen3-0.6B en tres precisiones sobre el dataset sintético. Nada está validado por docentes ni aprobado por el mentor, y no se afirma alineación con el currículo vigente. <a href="pruebas.html">Ver todas las pruebas</a>.</div>
 
   <h2>La pregunta</h2>
   <p><strong>Pregunta de largo plazo (propuesta AAAI-27 UC #52):</strong> ¿cuál es la configuración mínima de modelo, hardware y sistema capaz de ofrecer tutoría matemática offline pedagógicamente útil para primaria en dispositivos móviles con recursos limitados?</p>
@@ -32,10 +32,10 @@
 
   <ol class="timeline">
     <li class="done"><strong>F0 · Auditoría y fuentes</strong> <span class="badge b-warn">borrador, pendiente de revisión</span><br>Matriz de trazabilidad, auditoría del starter, verificación de fuentes oficiales, protocolo v0.2.</li>
-    <li class="done"><strong>F1 · Prueba de humo</strong> <span class="badge b-ok">completada, 6 de 6 criterios</span><br>9 ítems sintéticos con Qwen3-0.6B Q4_K_M, en GPU pura y sin internet. <a href="resultados.html">Ver resultados y límites</a>.</li>
-    <li class="doing"><strong>F1.5 · Runner v0.2</strong> <span class="badge b-warn">parcial</span><br>Corregidos los cinco defectos acordados. Faltan repeticiones con calentamiento, hoja de revisión ciega y corrección automática.</li>
+    <li class="done"><strong>F1 · Prueba de humo</strong> <span class="badge b-ok">completada, 6 de 6 criterios</span><br>9 ítems sintéticos con Qwen3-0.6B Q4_K_M, en GPU pura y sin internet. <a href="resultados.html">Ver la prueba de humo</a>.</li>
+    <li class="doing"><strong>F1.5 · Runner v0.2</strong> <span class="badge b-warn">parcial</span><br>Corregidos los defectos acordados y añadidos: adaptador al dataset real, calentamiento con repeticiones, corrector automático determinista y ejecución en secuencia. Falta la hoja de revisión ciega.</li>
     <li class="doing"><strong>F2 · Dataset piloto</strong> <span class="badge b-warn">en curso</span><br>Borrador de 90 ítems generado y validado. Faltan la rúbrica y la revisión docente. <a href="dataset.html">Explorar el dataset</a>.</li>
-    <li><strong>F3 · Cuantización controlada</strong> <span class="badge b-pend">no iniciada</span> FP16, Q8_0 y Q4_K_M del mismo modelo, con repeticiones.</li>
+    <li class="doing"><strong>F3 · Cuantización controlada</strong> <span class="badge b-warn">primera pasada exploratoria</span><br>FP16, Q8_0 y Q4_K_M del mismo modelo sobre el dataset real, con prompt congelado y 3 repeticiones. Sin rúbrica ni revisión humana todavía. <a href="piloto.html">Ver el piloto y revisar las respuestas</a>.</li>
     <li><strong>F4–F8</strong> <span class="badge b-pend">no iniciadas</span> Instrumentación de costo (TTFT, RAM/VRAM, energía, térmico), más modelos, multi-turno y paso correctivo, Android, y adaptación (condicional).</li>
   </ol>
   <p><a href="hoja-de-ruta.html">Hoja de ruta completa, con criterios para avanzar entre fases →</a></p>
@@ -53,7 +53,7 @@
     <div class="card"><h3>Metodología</h3><p>Alcance, hipótesis, control experimental y qué se conserva de la propuesta original. <a href="metodologia.html">Leer</a></p></div>
     <div class="card"><h3>Fuentes</h3><p>Ediciones del currículo de MEDUCA, MathTutorBench, modelos y licencias, con su estado de verificación. <a href="fuentes.html">Leer</a></p></div>
     <div class="card"><h3>Dataset</h3><p>Estructura, trazabilidad curricular y explorador de los 90 ítems. <a href="dataset.html">Explorar</a></p></div>
-    <div class="card"><h3>Resultados</h3><p>Piloto técnico: criterios, corridas, observaciones y sus límites. <a href="resultados.html">Ver</a></p></div>
+    <div class="card"><h3>Pruebas</h3><p>Cada prueba hecha: qué pregunta responde, qué resultó y qué no prueba. Incluye el piloto con revisión humana. <a href="pruebas.html">Ver</a></p></div>
   </div>
   <p>Los documentos fuente completos (auditoría, matriz de trazabilidad, protocolo v0.2, informe de la prueba de humo) están en la carpeta <a href="https://github.com/Carlos09Or/Math_Project_LLM/tree/main/docs"><code>docs/</code></a> del repositorio.</p>
 </main>

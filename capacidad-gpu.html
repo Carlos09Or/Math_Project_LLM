@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Capacidad de la GPU · Tutoría matemática offline</title>
+<meta name="description" content="Cuánta memoria ocupa cada modelo en la GPU de 6 GB, cuántos mantiene cargados el servidor y qué pasa con la velocidad al correr en paralelo.">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/tests.css">
+</head>
+<body>
+<header class="site"><div class="wrap">
+  <a class="brand" href="index.html">Tutoría matemática offline</a>
+  <nav aria-label="Principal"><a href="index.html">Inicio</a><a href="pruebas.html">Pruebas</a><a href="dataset.html">Dataset</a><a href="fuentes.html">Fuentes</a><a href="metodologia.html">Metodología</a><a href="hoja-de-ruta.html">Hoja de ruta</a></nav>
+</div></header>
+
+<main class="wrap">
+  <p class="crumb"><a href="pruebas.html">← Todas las pruebas</a></p>
+  <div class="subnav" aria-label="Pruebas">
+    <a href="resultados.html">T1 Humo</a><a href="capacidad-gpu.html" aria-current="page">T2 GPU</a><a href="ajuste-formato.html#ronda-1">T3 Formato 1</a><a href="ajuste-formato.html#ronda-2">T4 Formato 2</a><a href="piloto.html">T5 Piloto</a>
+  </div>
+  <h1>T2 · Capacidad de la GPU</h1>
+  <p class="lead">¿Cuántos modelos caben en los 6 GB del equipo de laboratorio, cuántos puede mantener cargados el servidor, y qué pasa si se corren en paralelo?</p>
+  <p class="count" id="gpu-meta"></p>
+  <div class="banner"><strong>Exploratoria.</strong> Pocas repeticiones, un solo portátil, y no vale para teléfonos. Esta medición se <strong>repitió</strong> con los datos crudos guardados; los números varían un poco respecto a la primera vez (con 3 repeticiones es normal).</div>
+
+  <h2>1 · Cuánta memoria ocupa cada modelo</h2>
+  <p>Cada barra es la memoria que sube en la GPU al cargar el modelo con el contexto del runner (2048), medida con <code>nvidia-smi</code>, frente a la memoria libre del equipo. <strong>Todos caben completos en GPU</strong>: ninguno se parte entre GPU y procesador.</p>
+  <div class="bars" id="gpu-foot"></div>
+
+  <h2>2 · ¿Cuántos modelos mantiene cargados a la vez el servidor?</h2>
+  <p>Se cargan modelos pequeños uno tras otro y se mira cuántos siguen cargados. Cuando el servidor llega a su límite, <strong>expulsa uno aunque sobre memoria</strong>: no es un problema de VRAM, es el valor por defecto de Ollama.</p>
+  <div class="table-wrap"><table id="gpu-coload"><thead><tr><th>#</th><th>Modelo que se carga</th><th>Cargados ahora</th><th>Memoria GPU en uso</th><th>Qué pasó</th></tr></thead></table></div>
+
+  <h2>3 · Correr en paralelo distorsiona la velocidad</h2>
+  <p>Mismo prompt y 200 tokens, primero cada precisión <strong>sola</strong> y luego <strong>las tres a la vez</strong> (mediana de 3 repeticiones). En paralelo las tres comparten la GPU, y las diferencias entre precisiones —justo lo que queremos medir— se aplanan.</p>
+  <div class="bars" id="gpu-conc"></div>
+
+  <h2>Qué se concluye (y qué no)</h2>
+  <ul>
+    <li><strong>Sí:</strong> la memoria no es el límite en este equipo; <strong>correr modelos a la vez no es buena idea para medir costo ni velocidad</strong>, y por eso todas las evaluaciones del proyecto se hacen en secuencia.</li>
+    <li><strong>No:</strong> no dice nada sobre un teléfono, sobre contextos más largos ni sobre el paralelismo interno de Ollama.</li>
+  </ul>
+  <p>Script y datos crudos: <a href="https://github.com/Carlos09Or/Math_Project_LLM/blob/main/tools/gpu_capacity.py"><code>tools/gpu_capacity.py</code></a> y <a href="https://github.com/Carlos09Or/Math_Project_LLM/tree/main/results/gpu_capacity"><code>results/gpu_capacity/</code></a>.</p>
+</main>
+
+<footer class="site"><div class="wrap">Borrador de trabajo · sin resultados científicos · <a href="https://github.com/Carlos09Or/Math_Project_LLM">repositorio en GitHub</a></div></footer>
+<script src="assets/data/project_tests.js"></script>
+<script src="assets/app.js"></script>
+<script src="assets/tests.js"></script>
+</body>
+</html>

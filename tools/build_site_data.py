@@ -4,6 +4,7 @@ Ninguna cifra del sitio se escribe a mano: salen de dataset/data/items.jsonl y d
 Uso (desde la raíz del repo):  python tools/build_site_data.py
 Regenera siempre assets/data/ (son artefactos derivados, se pueden sobrescribir).
 """
+import datetime as dt
 import hashlib
 import json
 import pathlib
@@ -64,8 +65,14 @@ def build_runs():
                              'probe_after': [e['after']['probe_1_1_1_1_443'], e['after']['probe_8_8_8_8_53']]})
     runs = []
     for jp in sorted(RUNS.glob('*.jsonl')):
+        if jp.name.endswith('.scores.jsonl'):
+            continue
         mp = jp.with_suffix('.manifest.json')
+        if not mp.exists():
+            continue
         m = json.loads(mp.read_text(encoding='utf-8-sig'))
+        if m.get('manifest_version') != 'manifest-v0.2':  # solo la prueba de humo (runner v0.2); las matrices son v0.3
+            continue
         recs = read_jsonl(jp)
         # Corrida "sin red" = su inicio cae entre las dos lecturas de red del script y ambas dieron sin internet.
         # Se comparan las marcas ISO hasta el segundo (los formatos de 'Z' y '+00:00' difieren al final).
@@ -110,10 +117,75 @@ def build_runs():
     return runs
 
 
+RESULTS = ROOT / 'results'
+
+
+def load_json(path):
+    return json.loads(pathlib.Path(path).read_text(encoding='utf-8-sig'))
+
+
+def short_model(m):
+    return m.split(':', 1)[1].replace('0.6b-', '')
+
+
+def build_tests():
+    """Datos de las páginas de pruebas, leídos de results/ (evidencia publicable) y del código congelado."""
+    sys.path.insert(0, str(ROOT / 'runner' / 'src'))
+    import run_experiment as rx
+
+    sample = '«enunciado del problema»'
+
+    def solve_texts(v):
+        return {'sub': rx.prompt_for({'task': 'solve', 'problem': sample, 'operation': 'sub'}, v),
+                'div': rx.prompt_for({'task': 'solve', 'problem': sample, 'operation': 'div'}, v)}
+
+    gpu = load_json(sorted((RESULTS / 'gpu_capacity').glob('*.json'))[-1])
+    rounds = []
+    for rnd, folder, probes in ((1, 'format_tuning_r1', 'format_probes.jsonl'), (2, 'format_tuning_r2', 'format_probes_r2.jsonl')):
+        dec = load_json(next((RESULTS / folder).glob('format_tuning_decision*.json')))
+        pp = ROOT / 'dataset' / 'data' / probes
+        prs = read_jsonl(pp)
+        rounds.append({'round': rnd, 'decision': dec, 'matrices': len(list((RESULTS / folder).glob('*.matrix.json'))),
+                       'probes_sha': hashlib.sha256(pp.read_bytes()).hexdigest(), 'probes_items': len(prs),
+                       'probes_bases': len({p['problem_base_id'] for p in prs}),
+                       'prompts': {v: solve_texts(v) for v in dec['variants']}})
+    frozen = {'version': rx.FROZEN_PROMPT_VERSION, 'sha256': rx.FROZEN_PROMPT_SHA256, 'texts': {
+        'solve_sub': solve_texts(rx.FROZEN_PROMPT_VERSION)['sub'], 'solve_div': solve_texts(rx.FROZEN_PROMPT_VERSION)['div'],
+        'diagnose': rx.prompt_for({'task': 'diagnose', 'problem': sample, 'student_answer': '«respuesta del estudiante»'}, rx.FROZEN_PROMPT_VERSION),
+        'hint': rx.prompt_for({'task': 'hint', 'problem': sample, 'student_answer': '«respuesta del estudiante»'}, rx.FROZEN_PROMPT_VERSION),
+        'system': rx.SYSTEM}}
+
+    pdir = RESULTS / 'pilot_qwen3_0.6b'
+    matrix = load_json(next(pdir.glob('*.matrix.json')))
+    report = load_json(next(pdir.glob('*.report.json')))
+    scores = read_jsonl(next(pdir.glob('*.scores.jsonl')))
+    mans = [load_json(p) for p in sorted(pdir.glob('*_rep*.manifest.json'))]
+    total = sum(m['counts']['items'] for m in mans)
+    measured = sum(m['measured']['items'] for m in mans)
+    t0, t1 = (dt.datetime.fromisoformat(matrix[k]) for k in ('started_utc', 'finished_utc'))
+    models = sorted({(m['ollama']['model_tag'], m['ollama']['model_digest'][:12], m['offload_first']['mode'],
+                      (m['ollama']['show'].get('details') or {}).get('quantization_level')) for m in mans})
+    pilot = {
+        'matrix': {'id': matrix['matrix_id'], 'started_utc': matrix['started_utc'], 'finished_utc': matrix['finished_utc'],
+                   'status': matrix['status'], 'prompt_version': matrix['prompt_version'], 'split': matrix['split'],
+                   'interleave': matrix['interleave'], 'sequential': matrix['sequential'], 'warmup': matrix['warmup'], 'repeats': matrix['repeats']},
+        'totals': {'records': total, 'measured': measured, 'warmup': total - measured,
+                   'errors': sum(m['counts']['errors'] for m in mans), 'truncated': sum(m['counts']['truncated'] for m in mans)},
+        'duration_s': (t1 - t0).total_seconds(),
+        'models': [{'tag': a, 'digest': b, 'offload': c, 'quantization': d} for a, b, c, d in models],
+        'report': report,
+        'records': [{'i': r['item_id'], 'm': short_model(r['model']), 'r': r['rep'], 't': r['task'], 's': r['subgroup'], 'sc': r['score'],
+                     'me': r['method'], 'd': r['detail'], 're': r['response'], 'w': r['wall_seconds'], 'ec': r['eval_count'],
+                     'fl': {'latex': r['latex'], 'truncated': r['truncated'], 'think_leak': r['think_leak']}}
+                    for r in scores if not r['is_warmup']]}
+    return {'gpu': gpu, 'format': {'rounds': rounds, 'frozen': frozen}, 'pilot': pilot}
+
+
 def main():
     items = build_items()
     runs = build_runs()
-    print(f'items: {len(items)} | corridas: {len(runs)} -> {OUT}')
+    js('PROJECT_TESTS', build_tests())
+    print(f'items: {len(items)} | corridas de humo: {len(runs)} | pruebas: gpu, formato (2 rondas), piloto -> {OUT}')
     return 0
 
 

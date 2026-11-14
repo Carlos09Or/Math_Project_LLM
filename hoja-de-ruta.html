@@ -11,7 +11,7 @@
 <body>
 <header class="site"><div class="wrap">
   <a class="brand" href="index.html">Tutoría matemática offline</a>
-  <nav aria-label="Principal"><a href="index.html">Inicio</a><a href="metodologia.html">Metodología</a><a href="fuentes.html">Fuentes</a><a href="dataset.html">Dataset</a><a href="resultados.html">Resultados</a><a href="hoja-de-ruta.html">Hoja de ruta</a></nav>
+  <nav aria-label="Principal"><a href="index.html">Inicio</a><a href="pruebas.html">Pruebas</a><a href="dataset.html">Dataset</a><a href="fuentes.html">Fuentes</a><a href="metodologia.html">Metodología</a><a href="hoja-de-ruta.html">Hoja de ruta</a></nav>
 </div></header>
 
 <main class="wrap">
@@ -25,9 +25,9 @@
     <tbody>
       <tr><td><strong>F0</strong> Auditoría y fuentes</td><td>Matriz de trazabilidad, auditoría, fuentes, protocolo v0.2</td><td><span class="badge b-warn">borrador</span></td><td>El investigador revisó los hallazgos; edición curricular decidida o declarada provisional; el mentor respondió las decisiones D-01 a D-07</td></tr>
       <tr><td><strong>F1</strong> Prueba de humo</td><td>9 ítems × Qwen3-0.6B Q4, local y sin red</td><td><span class="badge b-ok">completada</span></td><td>Seis criterios, todos cumplidos</td></tr>
-      <tr><td><strong>F1.5</strong> Runner v0.2</td><td>Corrección del starter: repeticiones, hoja ciega, corrección automática, esquema completo</td><td><span class="badge b-warn">parcial</span></td><td>Pruebas que pasan; dataset migrado al esquema con validador; corrida de humo repetida con el código final</td></tr>
+      <tr><td><strong>F1.5</strong> Runner v0.3</td><td>Adaptador al dataset real, calentamiento y repeticiones, corrector automático, ejecución en secuencia; falta la hoja de revisión ciega</td><td><span class="badge b-warn">avanzada</span></td><td>Pruebas que pasan; dataset migrado al esquema con validador; corrida de humo repetida con el código final</td></tr>
       <tr><td><strong>F2</strong> Dataset y rúbricas</td><td>30 problemas base × 3 tareas, con trazabilidad curricular</td><td><span class="badge b-warn">en curso</span></td><td>Rúbrica fijada <em>antes</em> de mirar resultados; 100 % de ítems válidos; muestra definida para revisión docente; plan de contaminación</td></tr>
-      <tr><td><strong>F3</strong> Cuantización</td><td>FP16, Q8_0 y Q4_K_M del mismo Qwen3-0.6B</td><td><span class="badge b-pend">no iniciada</span></td><td>≥3 repeticiones tras calentamiento, intercaladas; análisis emparejado con intervalos por problema base; GPU-only separado de CPU/híbrido</td></tr>
+      <tr><td><strong>F3</strong> Cuantización</td><td>FP16, Q8_0 y Q4_K_M del mismo Qwen3-0.6B</td><td><span class="badge b-warn">primera pasada exploratoria</span></td><td>≥3 repeticiones tras calentamiento, intercaladas; análisis emparejado con intervalos por problema base; GPU-only separado de CPU/híbrido</td></tr>
       <tr><td><strong>F4</strong> Instrumentación de costo</td><td>TTFT, RAM/VRAM, energía y térmico, llama.cpp</td><td><span class="badge b-pend">no iniciada</span></td><td>Cada métrica rotulada como reportada, medida o derivada; método documentado</td></tr>
       <tr><td><strong>F5</strong> Más modelos</td><td>Qwen3-1.7B, Gemma 3, SmolLM3, Phi-4-mini y secundarios</td><td><span class="badge b-pend">no iniciada</span></td><td>Licencia leída, etiqueta con cuantización explícita y digest, comprobación de que cabe en 6 GB; comparación declarada no causal</td></tr>
       <tr><td><strong>F6</strong> Multi-turno y paso correctivo</td><td>Diálogos de 2–5 turnos; tarea <code>correct_step</code></td><td><span class="badge b-pend">no iniciada</span></td><td>Esquema y rúbrica revisados por docentes; resultados por turno</td></tr>

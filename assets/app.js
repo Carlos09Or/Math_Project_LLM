@@ -21,8 +21,10 @@
 
   // Navegación: marca la página actual
   var here = (location.pathname.split('/').pop() || 'index.html');
+  var SECTION = { 'piloto.html': 'pruebas.html', 'ajuste-formato.html': 'pruebas.html', 'capacidad-gpu.html': 'pruebas.html', 'resultados.html': 'pruebas.html' };
+  var target = SECTION[here] || here;
   document.querySelectorAll('nav a').forEach(function (a) {
-    if (a.getAttribute('href') === here) a.setAttribute('aria-current', 'page');
+    if (a.getAttribute('href') === target) a.setAttribute('aria-current', 'page');
   });
 
   // ---------- Portada: cifras calculadas desde los datos
@@ -38,7 +40,7 @@
       [Object.keys(bases).length, 'problemas base originales'],
       [controls, 'controles con respuesta correcta'],
       [reviewed, 'ítems revisados por docentes'],
-      [runs.length, 'corridas del piloto técnico registradas']
+      [runs.length, 'corridas de la prueba de humo']
     ];
     stats.forEach(function (s) {
       $('home-stats').appendChild(el('div', { class: 'card' }, [el('div', { class: 'stat', text: String(s[0]) }), el('div', { class: 'stat-label', text: s[1] })]));

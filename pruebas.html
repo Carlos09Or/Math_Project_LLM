@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Pruebas · Tutoría matemática offline</title>
+<meta name="description" content="Catálogo de todas las pruebas realizadas: qué pregunta responde cada una, cómo se hizo, qué resultó, qué no prueba y qué falta revisar.">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/tests.css">
+</head>
+<body>
+<header class="site"><div class="wrap">
+  <a class="brand" href="index.html">Tutoría matemática offline</a>
+  <nav aria-label="Principal"><a href="index.html">Inicio</a><a href="pruebas.html">Pruebas</a><a href="dataset.html">Dataset</a><a href="fuentes.html">Fuentes</a><a href="metodologia.html">Metodología</a><a href="hoja-de-ruta.html">Hoja de ruta</a></nav>
+</div></header>
+
+<main class="wrap">
+  <h1>Todas las pruebas, una por una</h1>
+  <p class="lead">Cada tarjeta dice <strong>qué pregunta responde</strong>, cómo se hizo, qué resultó, <strong>qué no prueba</strong> y qué te toca revisar. Están en el orden en que se hicieron.</p>
+
+  <div class="banner"><strong>Nada de esto es todavía evidencia científica.</strong> Son pruebas técnicas y exploratorias sobre un dataset sintético sin revisión docente y sin rúbrica. Falta la revisión humana: <strong>ese es tu papel</strong>, y en la prueba T5 hay una herramienta para hacerla.</div>
+
+  <div class="legend" aria-label="Colores de estado">
+    <span><span class="sw" style="background:var(--ok)"></span>Cumplida</span>
+    <span><span class="sw" style="background:var(--accent)"></span>Exploratoria (mide, pero no concluye)</span>
+    <span><span class="sw" style="background:var(--bad)"></span>No cumplió su criterio</span>
+  </div>
+
+  <div class="tests">
+
+    <article class="test" id="t1">
+      <div class="t-head"><span class="t-id">T1</span><span class="badge b-ok">cumplida · 6 de 6 criterios</span><span>14 nov 2026</span></div>
+      <h3>Prueba de humo</h3>
+      <dl>
+        <dt>Pregunta</dt><dd>¿Corre el sistema completo en local, en GPU y sin internet, y deja un registro crudo auditable?</dd>
+        <dt>Cómo se hizo</dt><dd>9 ítems sintéticos del starter original con Qwen3-0.6B Q4_K_M, en 3 corridas (3 ítems, 9 ítems y 9 ítems con el Wi-Fi apagado).</dd>
+      </dl>
+      <div class="result"><strong>Resultado:</strong> <span id="cat-smoke">…</span></div>
+      <dl>
+        <dt>Qué NO prueba</dt><dd>Calidad pedagógica, latencia ni efecto de la cuantización. Usa el dataset antiguo de 9 ítems, no el dataset real.</dd>
+        <dt>Para revisar tú</dt><dd><ul class="check"><li>¿Te convence la prueba «sin red»? Son sondas TCP a dos direcciones, no una captura de tráfico.</li><li>Hallazgos a tener presentes: arranque en frío de 45 s, respuestas que a veces cambian entre corridas, y pistas que revelan el resultado.</li></ul></dd>
+      </dl>
+      <div class="links"><a class="btn primary" href="resultados.html">Ver el detalle</a><a class="btn" href="https://github.com/Carlos09Or/Math_Project_LLM/blob/main/docs/smoke_test_report.md">Informe</a></div>
+    </article>
+
+    <article class="test info" id="t2">
+      <div class="t-head"><span class="t-id">T2</span><span class="badge b-info">exploratoria</span><span>14 nov 2026</span></div>
+      <h3>Capacidad de la GPU</h3>
+      <dl>
+        <dt>Pregunta</dt><dd>¿Cuántos modelos caben en los 6 GB de la GPU, cuántos puede mantener cargados el servidor a la vez, y qué pasa con la velocidad si se corren en paralelo?</dd>
+        <dt>Cómo se hizo</dt><dd>13 modelos cargados uno a uno con el contexto del runner; carga acumulada de modelos hasta que el servidor expulsa uno; y 3 precisiones de Qwen3-0.6B en solitario frente a las tres a la vez (3 repeticiones).</dd>
+      </dl>
+      <div class="result"><strong>Resultado:</strong> <span id="cat-gpu">…</span></div>
+      <dl>
+        <dt>Qué NO prueba</dt><dd>Capacidad en un teléfono, ni el comportamiento con otros contextos o con el paralelismo interno de Ollama.</dd>
+        <dt>Para revisar tú</dt><dd><ul class="check"><li>Es lo que justifica correr siempre en secuencia: ¿te basta con esta evidencia o quieres más repeticiones?</li><li>El límite de 3 modelos cargados es el valor por defecto de Ollama, comprobado empíricamente.</li></ul></dd>
+      </dl>
+      <div class="links"><a class="btn primary" href="capacidad-gpu.html">Ver el detalle</a><a class="btn" href="https://github.com/Carlos09Or/Math_Project_LLM/tree/main/results/gpu_capacity">Datos crudos</a></div>
+    </article>
+
+    <article class="test fail" id="t3">
+      <div class="t-head"><span class="t-id">T3</span><span class="badge b-bad">no cumplió su criterio</span><span>14 nov 2026</span></div>
+      <h3>Ajuste del formato del prompt · ronda 1</h3>
+      <dl>
+        <dt>Pregunta</dt><dd>¿Qué redacción de la instrucción hace que el modelo escriba su respuesta final en un formato que el corrector pueda leer?</dd>
+        <dt>Cómo se hizo</dt><dd>4 redacciones probadas con 12 problemas de práctica (no son del dataset), 3 precisiones, solo «resolver». Los umbrales (≥ 90 % global y ≥ 80 % en divisiones) se escribieron <strong>antes</strong> de correr.</dd>
+      </dl>
+      <div class="result"><strong>Resultado:</strong> <span id="cat-format1">…</span></div>
+      <dl>
+        <dt>Qué NO prueba</dt><dd>Calidad pedagógica: solo mide si la respuesta se puede leer. No se ajustaron los prompts de diagnosticar ni de pista.</dd>
+        <dt>Para revisar tú</dt><dd><ul class="check"><li>No se relajó el umbral aunque la mejor quedó a un solo registro.</li><li>Hubo un defecto mío en el orquestador (la GPU se comprobaba antes de liberarse): se corrigió y se reejecutó sin haber visto resultados.</li></ul></dd>
+      </dl>
+      <div class="links"><a class="btn primary" href="ajuste-formato.html#ronda-1">Ver el detalle</a><a class="btn" href="https://github.com/Carlos09Or/Math_Project_LLM/blob/main/docs/prompt_tuning_dev.md">Registro previo y resultado</a></div>
+    </article>
+
+    <article class="test" id="t4">
+      <div class="t-head"><span class="t-id">T4</span><span class="badge b-ok">cumplida</span><span>14 nov 2026</span></div>
+      <h3>Ajuste del formato del prompt · ronda 2</h3>
+      <dl>
+        <dt>Pregunta</dt><dd>Lo mismo, con variantes nuevas pensadas para que el modelo no copie la instrucción, y con problemas de práctica <strong>nuevos</strong> (los de la ronda 1 ya se habían visto).</dd>
+        <dt>Cómo se hizo</dt><dd>4 redacciones (la mejor de la ronda 1 como línea base y 3 nuevas), mismos umbrales fijados antes, siempre en secuencia. Era la última ronda: sin ganador no habría habido otra sin decisión tuya y del mentor.</dd>
+      </dl>
+      <div class="result"><strong>Resultado:</strong> <span id="cat-format2">…</span> Quedó <strong>congelado</strong> para el piloto.</div>
+      <dl>
+        <dt>Qué NO prueba</dt><dd>Que ese prompt sea el mejor posible ni que sirva con otras familias de modelos. Se eligió por legibilidad; el elegido tuvo la exactitud aparente más baja, y se dice abiertamente.</dd>
+        <dt>Para revisar tú</dt><dd><ul class="check"><li>Pendiente del mentor: el formato de división delata la operación (decisión D-08).</li><li>Revisa el texto exacto del prompt congelado.</li></ul></dd>
+      </dl>
+      <div class="links"><a class="btn primary" href="ajuste-formato.html#ronda-2">Ver el detalle</a><a class="btn" href="https://github.com/Carlos09Or/Math_Project_LLM/blob/main/docs/prompt_tuning_dev_r2.md">Registro previo y resultado</a></div>
+    </article>
+
+    <article class="test info" id="t5">
+      <div class="t-head"><span class="t-id">T5</span><span class="badge b-info">exploratoria</span><span>14 nov 2026</span></div>
+      <h3>Piloto: Qwen3-0.6B en tres precisiones</h3>
+      <dl>
+        <dt>Pregunta</dt><dd>¿Cómo se comportan q4_K_M, q8_0 y fp16 sobre el dataset real, en las tres tareas, con métricas deterministas?</dd>
+        <dt>Cómo se hizo</dt><dd>Partición <code>pilot</code>: 27 problemas, 81 ítems. Cada precisión con 1 calentamiento y 3 repeticiones, en secuencia e intercaladas, con el prompt congelado. Plan y huellas fijados antes de correr; intervalos por <em>bootstrap</em> por problema base.</dd>
+      </dl>
+      <div class="result"><strong>Resultado:</strong> <span id="cat-pilot">…</span> <span class="count">(<span id="cat-pilot-n">…</span>)</span></div>
+      <dl>
+        <dt>Qué NO prueba</dt><dd>Calidad pedagógica (no hay rúbrica ni revisión humana), ni que lo observado generalice a otros modelos o a móviles. Con 27 problemas los intervalos son anchos.</dd>
+        <dt>Para revisar tú</dt><dd><ul class="check"><li><strong>Revisa las respuestas una por una</strong> y marca si estás de acuerdo con el corrector: hay una herramienta en el detalle.</li><li>Un «sin fuga» no significa «pista buena»: una pista puede dar por buena una respuesta errónea y el corrector no lo detecta.</li><li>Define la rúbrica de diagnóstico y de pista.</li></ul></dd>
+      </dl>
+      <div class="links"><a class="btn primary" href="piloto.html">Ver el detalle y revisar</a><a class="btn" href="https://github.com/Carlos09Or/Math_Project_LLM/blob/main/docs/pilot_results_qwen3_0.6b.md">Informe</a><a class="btn" href="https://github.com/Carlos09Or/Math_Project_LLM/tree/main/results/pilot_qwen3_0.6b">Datos crudos</a></div>
+    </article>
+
+  </div>
+
+  <h2>Cómo se cuida el rigor en cada prueba</h2>
+  <ul>
+    <li><strong>Criterios antes de correr:</strong> lo que cuenta como éxito se escribe antes de ver resultados y no se relaja después.</li>
+    <li><strong>Huellas (SHA-256):</strong> dataset, prompt, corrector y configuración quedan identificados; una prueba automática falla si alguien cambia el prompt congelado.</li>
+    <li><strong>Siempre en secuencia:</strong> medimos que correr modelos en paralelo distorsiona la velocidad, así que nunca se hace.</li>
+    <li><strong>Datos crudos publicados:</strong> carpeta <a href="https://github.com/Carlos09Or/Math_Project_LLM/tree/main/results"><code>results/</code></a> (las rutas locales de los manifiestos están redactadas).</li>
+    <li><strong>Auditoría manual:</strong> el corrector se comprobó leyendo respuestas reales; lo que no puede leer queda como «sin extracción», no se adivina.</li>
+  </ul>
+</main>
+
+<footer class="site"><div class="wrap">Borrador de trabajo · sin resultados científicos · <a href="https://github.com/Carlos09Or/Math_Project_LLM">repositorio en GitHub</a></div></footer>
+<script src="assets/data/project_items.js"></script>
+<script src="assets/data/project_runs.js"></script>
+<script src="assets/data/project_tests.js"></script>
+<script src="assets/app.js"></script>
+<script src="assets/tests.js"></script>
+</body>
+</html>

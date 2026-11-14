@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Ajuste del formato · Tutoría matemática offline</title>
+<meta name="description" content="Dos rondas de ajuste de la indicación de formato del prompt, con criterios fijados antes de correr, y el prompt final congelado.">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/tests.css">
+</head>
+<body>
+<header class="site"><div class="wrap">
+  <a class="brand" href="index.html">Tutoría matemática offline</a>
+  <nav aria-label="Principal"><a href="index.html">Inicio</a><a href="pruebas.html">Pruebas</a><a href="dataset.html">Dataset</a><a href="fuentes.html">Fuentes</a><a href="metodologia.html">Metodología</a><a href="hoja-de-ruta.html">Hoja de ruta</a></nav>
+</div></header>
+
+<main class="wrap">
+  <p class="crumb"><a href="pruebas.html">← Todas las pruebas</a></p>
+  <div class="subnav" aria-label="Pruebas">
+    <a href="resultados.html">T1 Humo</a><a href="capacidad-gpu.html">T2 GPU</a><a href="#ronda-1" aria-current="page">T3 Formato 1</a><a href="#ronda-2">T4 Formato 2</a><a href="piloto.html">T5 Piloto</a>
+  </div>
+  <h1>T3 y T4 · Ajuste del formato del prompt</h1>
+  <p class="lead">Para calificar automáticamente si el modelo resolvió bien un problema, el corrector busca al final una línea <code>Respuesta final: …</code>. Si el modelo la escribe de otra manera, no se puede leer. Aquí se probó <strong>cómo pedir ese formato</strong>.</p>
+
+  <div class="banner"><strong>Esto ajusta la indicación al modelo, no el dataset.</strong> Los problemas que se usaron son <strong>de práctica, aparte del dataset</strong>, para no ajustar el prompt a los ítems reales. Solo se cambió la instrucción de «resolver»; los prompts de diagnosticar y de pista nunca se ajustaron.</div>
+
+  <h2>Las reglas, fijadas antes de correr</h2>
+  <ol>
+    <li>Se elige <strong>solo por legibilidad del formato</strong>, nunca por exactitud.</li>
+    <li>Una variante se da por buena solo si el corrector lee <strong>≥ 90 %</strong> de las respuestas en total y <strong>≥ 80 %</strong> en las divisiones.</li>
+    <li>Si dos empatan (3 puntos o menos), gana la instrucción más corta.</li>
+    <li>Si ninguna cumple, <strong>no se congela ninguna</strong> y no se relaja el umbral.</li>
+  </ol>
+
+  <div id="format-rounds"></div>
+
+  <h2 id="congelado">El prompt congelado para la evaluación</h2>
+  <p>Una prueba automática falla si cambia una sola letra de estos textos. Cambiarlos después de ver resultados del piloto exige una versión nueva y reportar ambas.</p>
+  <div id="frozen-box"></div>
+
+  <h2>Lo que conviene tener claro</h2>
+  <ul>
+    <li><strong>El formato afecta lo que se mide.</strong> Las variantes dan «exactitud aparente» distinta sobre todo porque lo ilegible cuenta como fallo; por eso el formato se fija antes de evaluar.</li>
+    <li>La variante elegida tuvo la exactitud aparente más baja de las cuatro. No cambia la decisión (la regla era por legibilidad), pero se dice abiertamente.</li>
+    <li>Se probó con un solo modelo y 12 problemas por ronda: al añadir otras familias hay que repetir esta comprobación.</li>
+    <li>Pedir «cociente y residuo» le dice al modelo que es una división. Afecta a todas las variantes por igual y está anotado como decisión pendiente del mentor (D-08).</li>
+  </ul>
+  <p>Documentos: <a href="https://github.com/Carlos09Or/Math_Project_LLM/blob/main/docs/prompt_tuning_dev.md"><code>prompt_tuning_dev.md</code></a> (ronda 1), <a href="https://github.com/Carlos09Or/Math_Project_LLM/blob/main/docs/prompt_tuning_dev_r2.md"><code>prompt_tuning_dev_r2.md</code></a> (ronda 2) y los registros crudos en <a href="https://github.com/Carlos09Or/Math_Project_LLM/tree/main/results"><code>results/</code></a>.</p>
+</main>
+
+<footer class="site"><div class="wrap">Borrador de trabajo · sin resultados científicos · <a href="https://github.com/Carlos09Or/Math_Project_LLM">repositorio en GitHub</a></div></footer>
+<script src="assets/data/project_tests.js"></script>
+<script src="assets/app.js"></script>
+<script src="assets/tests.js"></script>
+</body>
+</html>

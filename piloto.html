@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Piloto · Tutoría matemática offline</title>
+<meta name="description" content="Primera evaluación de Qwen3-0.6B en tres precisiones sobre el dataset: resultados con intervalos, comparaciones y herramienta de revisión humana.">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/tests.css">
+</head>
+<body>
+<header class="site"><div class="wrap">
+  <a class="brand" href="index.html">Tutoría matemática offline</a>
+  <nav aria-label="Principal"><a href="index.html">Inicio</a><a href="pruebas.html">Pruebas</a><a href="dataset.html">Dataset</a><a href="fuentes.html">Fuentes</a><a href="metodologia.html">Metodología</a><a href="hoja-de-ruta.html">Hoja de ruta</a></nav>
+</div></header>
+
+<main class="wrap">
+  <p class="crumb"><a href="pruebas.html">← Todas las pruebas</a></p>
+  <div class="subnav" aria-label="Pruebas">
+    <a href="resultados.html">T1 Humo</a><a href="capacidad-gpu.html">T2 GPU</a><a href="ajuste-formato.html#ronda-1">T3 Formato 1</a><a href="ajuste-formato.html#ronda-2">T4 Formato 2</a><a href="piloto.html" aria-current="page">T5 Piloto</a>
+  </div>
+  <h1>T5 · Piloto: Qwen3-0.6B en tres precisiones</h1>
+  <p class="lead">Las mismas preguntas del dataset real, contestadas por la versión q4_K_M, q8_0 y fp16 del mismo modelo, con el prompt ya congelado.</p>
+  <div class="banner"><strong>Exploratorio.</strong> 27 problemas sintéticos sin revisión docente, métricas solo deterministas (exactitud, veredicto y fuga del resultado). No mide calidad pedagógica, y los intervalos son anchos: varias diferencias que se ven en el gráfico podrían no existir fuera de este conjunto.</div>
+
+  <div class="grid" id="pilot-kpis"></div>
+
+  <h2>Resultados por precisión</h2>
+  <p>Cada fila es una precisión. El <strong>punto</strong> es la tasa y la <strong>línea</strong> es el intervalo de confianza al 95 % (por problema, no por ítem). Si dos líneas se solapan mucho, <em>no se puede afirmar</em> que haya diferencia.</p>
+  <p><span class="key"><i class="q4"></i>q4_K_M</span><span class="key"><i class="q8"></i>q8_0</span><span class="key"><i class="fp"></i>fp16</span></p>
+  <div id="pilot-forest"></div>
+
+  <h2>Qué dicen, en cristiano</h2>
+  <ul>
+    <li><strong>Resolver:</strong> q8_0 y fp16 aciertan los mismos ítems; q4_K_M falla algunos más, y los fallos que revisé a mano son errores de cálculo reales. Los intervalos se tocan: no es una prueba.</li>
+    <li><strong>Diagnosticar:</strong> los tres están cerca del azar. Una especificidad más alta puede significar solo que el modelo dice «correcta» más a menudo, no que distinga mejor.</li>
+    <li><strong>Pista:</strong> aquí se separan más. q4_K_M tiende a resolver paso a paso y así revela el resultado.</li>
+    <li><strong>«Sin fuga» no es «pista buena».</strong> Una pista puede no revelar el resultado y aun así dar por buena una respuesta errónea; el corrector no detecta eso. Para eso hace falta tu revisión.</li>
+  </ul>
+
+  <h2>Diferencias emparejadas entre precisiones</h2>
+  <p>Mismo ítem en las dos precisiones. «A / B / empates» cuenta los ítems que puntúan mejor en A, mejor en B, o igual. Es descriptivo, no es una prueba de significancia.</p>
+  <div class="table-wrap"><table id="pilot-paired"><thead><tr><th>Tarea</th><th>A − B</th><th>Diferencia</th><th>IC 95 %</th><th>A / B / empates</th><th>Intervalo</th></tr></thead></table></div>
+
+  <h2>Repetibilidad y costo</h2>
+  <p>El costo lo <strong>reporta Ollama</strong>; no es una medición independiente de RAM, VRAM ni energía. El tiempo por respuesta depende de cuánto escribe cada modelo.</p>
+  <div class="table-wrap"><table id="pilot-repeat"><thead><tr><th>Precisión</th><th>Ítems con respuesta idéntica en las 3 repeticiones</th><th>Ítems que cambian de puntuación</th><th>Mediana tokens/s</th><th>Mediana por respuesta</th></tr></thead></table></div>
+
+  <h2>Revisión humana: tú eres el corrector final</h2>
+  <p>Aquí están las respuestas reales del modelo, una por una. Para cada una verás lo que leyó el corrector; márcala como <strong>de acuerdo</strong>, <strong>en desacuerdo</strong> o <strong>dudo</strong>, y deja una nota si quieres. Tus marcas se guardan <strong>solo en este navegador</strong> (no se envían a ningún sitio): exporta un archivo para conservarlas o compartirlas.</p>
+  <div class="rv-tools">
+    <strong id="rv-count">Aún no has revisado nada.</strong>
+    <p id="rv-warn" hidden class="count">No se pudo guardar en este navegador (modo privado o almacenamiento bloqueado): exporta tus marcas antes de salir.</p>
+    <div class="filters">
+      <label>Precisión<select id="rv-model"></select></label>
+      <label>Tarea<select id="rv-task"></select></label>
+      <label>Respuesta del estudiante<select id="rv-sub"></select></label>
+      <label>Mostrar<select id="rv-only"></select></label>
+      <label>Mis marcas<select id="rv-mark"></select></label>
+      <label>Buscar<input type="search" id="rv-q" placeholder="texto o ID"></label>
+    </div>
+    <div class="row">
+      <button type="button" class="rv-act" id="rv-csv">Exportar mis marcas (CSV)</button>
+      <button type="button" class="rv-act" id="rv-json">Exportar (JSON)</button>
+      <button type="button" class="rv-act" id="rv-clear">Borrar mis marcas</button>
+    </div>
+  </div>
+  <p class="count" id="rv-shown"></p>
+  <div id="rv-list"></div>
+
+  <h2>Datos y reproducibilidad</h2>
+  <ul>
+    <li>Plan fijado antes de correr, con las huellas de dataset, prompt, corrector y configuración: <a href="https://github.com/Carlos09Or/Math_Project_LLM/blob/main/docs/pilot_run_plan.md"><code>docs/pilot_run_plan.md</code></a>.</li>
+    <li>Informe completo con la auditoría manual y lo que <strong>no</strong> se concluye: <a href="https://github.com/Carlos09Or/Math_Project_LLM/blob/main/docs/pilot_results_qwen3_0.6b.md"><code>docs/pilot_results_qwen3_0.6b.md</code></a>.</li>
+    <li>Registros crudos, respuestas puntuadas y manifiestos (rutas locales redactadas): <a href="https://github.com/Carlos09Or/Math_Project_LLM/tree/main/results/pilot_qwen3_0.6b"><code>results/pilot_qwen3_0.6b/</code></a>.</li>
+  </ul>
+  <h3>Límites</h3>
+  <p>Dataset sintético sin validación docente; un solo modelo en tres precisiones; solo 6 controles; el prompt se ajustó por legibilidad con otros problemas; el formato de división delata la operación (decisión D-08 pendiente del mentor); tiempos de un portátil reportados por Ollama.</p>
+</main>
+
+<footer class="site"><div class="wrap">Borrador de trabajo · sin resultados científicos · <a href="https://github.com/Carlos09Or/Math_Project_LLM">repositorio en GitHub</a></div></footer>
+<script src="assets/data/project_items.js"></script>
+<script src="assets/data/project_tests.js"></script>
+<script src="assets/app.js"></script>
+<script src="assets/tests.js"></script>
+</body>
+</html>
