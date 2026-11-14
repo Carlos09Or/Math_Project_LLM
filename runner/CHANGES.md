@@ -1,4 +1,37 @@
-# CHANGES.md — starter v0.2 frente a v0.1
+# CHANGES.md
+
+## v0.3 frente a v0.2 (14 de noviembre de 2026)
+Estado: **30 pruebas con Ollama simulado (OK) y una corrida real exploratoria sobre `dev` (3 precisiones de Qwen3-0.6B, 9 pasadas, 0 errores, GPU pura).**
+
+| Cambio | Detalle |
+|---|---|
+| Adaptador al dataset nuevo | `load_dataset` acepta `item_id/problem_text` (dataset de 90 ítems) y el formato antiguo; `--split dev\|pilot\|all` |
+| Calentamiento y repeticiones | `--warmup N` (pases completos descartados), `--repeats N`, `--rep-start`; cada registro lleva `rep`, `is_warmup`, `problem_base_id`, `split`, `matrix_id` (cierra E-01) |
+| `run_matrix.py` | Modelos siempre en secuencia; por bloques o intercalados con rotación tipo cuadrado latino; comprueba servidor vacío y GPU libre; manifiesto de la matriz |
+| `score.py` | Corrector determinista y resumen por ítem con Wilson; rechaza un dataset distinto del de la corrida; no sobrescribe |
+| `prompt-v0.3` | Ver decisiones abajo. El valor por defecto de `run_experiment.py` sigue siendo `prompt-v0.2` para reproducir la prueba de humo; `run_matrix.py` usa `prompt-v0.3` |
+| Manifiesto v0.3 | Añade `matrix_id`, `passes` y `measured` (los conteos de `counts` incluyen el calentamiento) |
+
+### Prompt congelado: `prompt-v0.5b` (ajuste en dos rondas; ver `../docs/prompt_tuning_dev.md` y `_r2.md`)
+- Ronda 1: ninguna de 4 variantes cumplió los umbrales fijados antes (la mejor, 88,9 %, quedó a un registro). Ronda 2, con variantes nuevas y sondas nuevas: `prompt-v0.5b` cumplió (97,2 % de formato global, 91,7 % en divisiones) y es la única.
+- Se eligió solo por legibilidad del formato; `diagnose` y `hint` nunca se ajustaron. Huella de las plantillas en `FROZEN_PROMPT_SHA256`; una prueba falla si cambian. `run_matrix.py` lo usa por defecto.
+- Nuevo: `--tasks`, variantes `prompt-v0.4a/b/c` y `0.5a/b/c`, `dataset/data/format_probes*.jsonl` (sondas, no son datos de evaluación) y `tools/decide_prompt_format.py`.
+- Corregido: `run_matrix.py` esperaba la GPU antes de que se liberara tras descargar modelos (con prueba de regresión).
+
+### Decisiones de diseño que conviene validar con el mentor (D-08)
+1. **Formatos de salida estructurados** (`Respuesta final: …`, `Veredicto: correcta|incorrecta`) para poder corregir de forma determinista. Cambian lo que se le pide al modelo respecto a v0.2; son parte del protocolo y deben fijarse **antes** de evaluar en `pilot`.
+2. **El prompt de pista ya no dice que el estudiante se equivocó.** En v0.2 decía «descubra su error», lo que revelaba al modelo que la respuesta era incorrecta y no permitía usarlo con los controles. En v0.3 pide «que revise su respuesta».
+3. **Definición de fuga:** la pista «filtra» si contiene el resultado correcto (el valor, o el cociente en divisiones). Repetir los números del enunciado no cuenta; repetir una respuesta errónea del estudiante tampoco, aunque pueda ser un fallo pedagógico distinto que solo la rúbrica puede puntuar.
+
+### Hallazgos de la corrida real sobre `dev` (exploratorios; n efectivo = 3 ítems por celda)
+- El corrector leyó bien las respuestas al auditarlas a mano; lo que no pudo leer lo dejó como «sin extracción» (3 ítems de división en fp16 y q8, donde el modelo escribió `Respuesta final: 21 <87>, 0`).
+- Los modelos añaden restos de control como `/no_think` al final de las respuestas.
+- Hubo respuestas distintas entre repeticiones en q8 (7 de 9 ítems idénticos); en q4 y fp16, 9 de 9. Causa no determinada.
+- Esta corrida sirve para validar el corrector y ajustar prompts, **no** para comparar precisiones.
+
+---
+
+# Starter v0.2 frente a v0.1
 
 Base: `starter_original/` (zip SHA-256 `656053f1…cfc627`), que **no se modificó**. Códigos E/M: ver `../docs/audit.md`.
 Estado: **probado solo con pruebas unitarias y un Ollama simulado (14 pruebas, OK). No se ha ejecutado contra Ollama real ni contra ningún modelo.**

@@ -55,6 +55,8 @@ class FakeOllama(http.server.BaseHTTPRequestHandler):
             self._send({'details': {'quantization_level': 'Q4_K_M'}, 'parameters': 'temperature 0.6',
                         'capabilities': ['completion', 'thinking'], 'template': 'T',
                         'model_info': {'qwen3.context_length': 40960}})
+        elif self.path == '/api/generate':  # descarga de modelos (keep_alive 0)
+            self._send({'done': True})
         elif self.path == '/api/chat':
             type(self).chat_bodies.append(body)
             if self.chat_status != 200:
