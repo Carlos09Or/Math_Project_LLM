@@ -1,0 +1,52 @@
+# Plantillas de prompt del benchmark. Versión congelada junto con el dataset (ver configs/freeze_v1.json).
+# Cambiar cualquier texto exige cambiar `version` y volver a congelar.
+version: prompts-v1.0
+language: es
+system: >-
+  Eres un tutor de matemáticas para niños de tercer grado en Panamá.
+  Responde siempre en español, con frases cortas y palabras sencillas.
+
+# Formato que se le pide al modelo para la línea "Respuesta final", según el tipo de respuesta.
+answer_formats:
+  integer: "un número, por ejemplo: Respuesta final: 48"
+  quotient_remainder: "el cociente y lo que sobra, por ejemplo: Respuesta final: 7 y sobran 2"
+  ordinal: "el número ordinal, por ejemplo: Respuesta final: 12.º"
+  decomposition: "una suma, por ejemplo: Respuesta final: 3 000 + 400 + 20 + 5"
+  symbol: "uno de estos símbolos: <, > o =. Por ejemplo: Respuesta final: <"
+  fraction: "una fracción, por ejemplo: Respuesta final: 3/8"
+  yes_no: "sí o no. Por ejemplo: Respuesta final: sí"
+  label: "propia o impropia. Por ejemplo: Respuesta final: propia"
+
+# Categorías de error ofrecidas en la tarea B (propuesta del benchmark, no de MEDUCA).
+categories: >-
+  calculation_error (error de cálculo), operation_confusion (confusión de operación),
+  place_value_error (error de valor posicional), procedural_error (error de procedimiento),
+  problem_misinterpretation (interpretación incorrecta del problema), concept_error (error de concepto),
+  no_error (sin error)
+
+templates:
+  problem_solving: |
+    {question}
+
+    {task_instruction}
+    Escribe tu procedimiento. En la última línea escribe exactamente así:
+    Respuesta final: <{answer_format}>
+  error_diagnosis: |
+    Problema: {question}
+
+    Trabajo del estudiante:
+    {student_work}
+
+    {task_instruction}
+    Responde con estas tres líneas:
+    VEREDICTO: correcto o incorrecto
+    CATEGORIA: una de estas opciones: {categories}
+    EXPLICACION: una o dos frases cortas
+  hint_generation: |
+    Problema: {question}
+
+    Trabajo del estudiante:
+    {student_work}
+
+    {task_instruction}
+    Escribe solo la pista, en un máximo de tres frases cortas.

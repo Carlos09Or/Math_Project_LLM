@@ -1,0 +1,2477 @@
+{
+  "n_records": 1260,
+  "models": [
+    "gemma3-1b-q4_K_M",
+    "phi4-mini-3.8b-q4_K_M",
+    "qwen3-0.6b-fp16",
+    "qwen3-0.6b-q4_K_M",
+    "qwen3-0.6b-q8_0",
+    "qwen3-1.7b-q4_K_M",
+    "smollm3-3b-q4_K_M"
+  ],
+  "errors_in_run": 0,
+  "by_model": {
+    "gemma3-1b-q4_K_M": {
+      "n": 180,
+      "n_ok": 180,
+      "n_error": 0,
+      "problem_solving": {
+        "status_counts": {
+          "incorrect": 33,
+          "correct": 25,
+          "format_error": 2
+        },
+        "accuracy_all_items": {
+          "k": 25,
+          "n": 60,
+          "rate": 0.4167,
+          "wilson95": [
+            0.3006,
+            0.5427
+          ]
+        },
+        "accuracy_when_answer_extracted": {
+          "k": 25,
+          "n": 58,
+          "rate": 0.431,
+          "wilson95": [
+            0.3118,
+            0.5588
+          ]
+        },
+        "format_error_rate": {
+          "k": 2,
+          "n": 60,
+          "rate": 0.0333,
+          "wilson95": [
+            0.0092,
+            0.1136
+          ]
+        },
+        "manual_review_needed": 0,
+        "labeled_final_line_rate": {
+          "k": 60,
+          "n": 60,
+          "rate": 1.0,
+          "wilson95": [
+            0.9398,
+            1.0
+          ]
+        },
+        "by_skill_id": {
+          "ADD-4DIG": {
+            "k": 3,
+            "n": 5,
+            "rate": 0.6,
+            "wilson95": [
+              0.2307,
+              0.8824
+            ],
+            "note": "n<10: orientativo"
+          },
+          "ADD-PROPERTIES": {
+            "k": 1,
+            "n": 2,
+            "rate": 0.5,
+            "wilson95": [
+              0.0945,
+              0.9055
+            ],
+            "note": "n<10: orientativo"
+          },
+          "COMBINED-OPS": {
+            "k": 2,
+            "n": 4,
+            "rate": 0.5,
+            "wilson95": [
+              0.15,
+              0.85
+            ],
+            "note": "n<10: orientativo"
+          },
+          "DIV-CHECK-REINTEGRATIVE": {
+            "k": 0,
+            "n": 1,
+            "rate": 0.0,
+            "wilson95": [
+              0,
+              0.7935
+            ],
+            "note": "n<10: orientativo"
+          },
+          "DIV-EXACT": {
+            "k": 2,
+            "n": 3,
+            "rate": 0.6667,
+            "wilson95": [
+              0.2077,
+              0.9385
+            ],
+            "note": "n<10: orientativo"
+          },
+          "DIV-INEXACT": {
+            "k": 0,
+            "n": 4,
+            "rate": 0.0,
+            "wilson95": [
+              0,
+              0.4899
+            ],
+            "note": "n<10: orientativo"
+          },
+          "DIV-POW10": {
+            "k": 2,
+            "n": 4,
+            "rate": 0.5,
+            "wilson95": [
+              0.15,
+              0.85
+            ],
+            "note": "n<10: orientativo"
+          },
+          "FRAC-ADDSUB-HOMOG": {
+            "k": 0,
+            "n": 3,
+            "rate": 0.0,
+            "wilson95": [
+              0,
+              0.5615
+            ],
+            "note": "n<10: orientativo"
+          },
+          "FRAC-COMPARE-HOMOG": {
+            "k": 3,
+            "n": 3,
+            "rate": 1.0,
+            "wilson95": [
+              0.4385,
+              1
+            ],
+            "note": "n<10: orientativo"
+          },
+          "FRAC-REPR-CLASSIFY": {
+            "k": 1,
+            "n": 2,
+            "rate": 0.5,
+            "wilson95": [
+              0.0945,
+              0.9055
+            ],
+            "note": "n<10: orientativo"
+          },
+          "MUL-POW10": {
+            "k": 3,
+            "n": 3,
+            "rate": 1.0,
+            "wilson95": [
+              0.4385,
+              1
+            ],
+            "note": "n<10: orientativo"
+          },
+          "MUL-TABLES-1-12": {
+            "k": 3,
+            "n": 5,
+            "rate": 0.6,
+            "wilson95": [
+              0.2307,
+              0.8824
+            ],
+            "note": "n<10: orientativo"
+          },
+          "NAT-ORDER-COMPARE": {
+            "k": 1,
+            "n": 3,
+            "rate": 0.3333,
+            "wilson95": [
+              0.0615,
+              0.7923
+            ],
+            "note": "n<10: orientativo"
+          },
+          "NAT-PLACE-VALUE": {
+            "k": 0,
+            "n": 4,
+            "rate": 0.0,
+            "wilson95": [
+              0,
+              0.4899
+            ],
+            "note": "n<10: orientativo"
+          },
+          "NAT-READ-WRITE": {
+            "k": 0,
+            "n": 2,
+            "rate": 0.0,
+            "wilson95": [
+              0,
+              0.6576
+            ],
+            "note": "n<10: orientativo"
+          },
+          "NAT-SKIP-COUNT": {
+            "k": 0,
+            "n": 2,
+            "rate": 0.0,
+            "wilson95": [
+              0,
+              0.6576
+            ],
+            "note": "n<10: orientativo"
+          },
+          "ORD-1-50": {
+            "k": 1,
+            "n": 3,
+            "rate": 0.3333,
+            "wilson95": [
+              0.0615,
+              0.7923
+            ],
+            "note": "n<10: orientativo"
+          },
+          "SUB-10K": {
+            "k": 2,
+            "n": 5,
+            "rate": 0.4,
+            "wilson95": [
+              0.1176,
+              0.7693
+            ],
+            "note": "n<10: orientativo"
+          },
+          "SUB-CHECK-REINTEGRATIVE": {
+            "k": 1,
+            "n": 2,
+            "rate": 0.5,
+            "wilson95": [
+              0.0945,
+              0.9055
+            ],
+            "note": "n<10: orientativo"
+          }
+        },
+        "by_difficulty": {
+          "advanced_in_grade": {
+            "k": 4,
+            "n": 17,
+            "rate": 0.2353,
+            "wilson95": [
+              0.0955,
+              0.4726
+            ],
+            "note": ""
+          },
+          "basic": {
+            "k": 12,
+            "n": 20,
+            "rate": 0.6,
+            "wilson95": [
+              0.3866,
+              0.7812
+            ],
+            "note": ""
+          },
+          "intermediate": {
+            "k": 9,
+            "n": 23,
+            "rate": 0.3913,
+            "wilson95": [
+              0.2216,
+              0.5921
+            ],
+            "note": ""
+          }
+        }
+      },
+      "error_diagnosis": {
+        "status_counts": {
+          "incorrect": 47,
+          "correct": 10,
+          "format_error": 1,
+          "verdict_only": 2
+        },
+        "verdict_accuracy": {
+          "k": 12,
+          "n": 60,
+          "rate": 0.2,
+          "wilson95": [
+            0.1183,
+            0.3178
+          ]
+        },
+        "category_accuracy_on_error_items": {
+          "k": 1,
+          "n": 51,
+          "rate": 0.0196,
+          "wilson95": [
+            0.0035,
+            0.103
+          ]
+        },
+        "invented_error_rate_on_correct_work": {
+          "k": 0,
+          "n": 9,
+          "rate": 0.0,
+          "wilson95": [
+            0,
+            0.2992
+          ]
+        },
+        "format_error_rate": {
+          "k": 1,
+          "n": 60,
+          "rate": 0.0167,
+          "wilson95": [
+            0.0029,
+            0.0886
+          ]
+        },
+        "description_review": "pending"
+      },
+      "hint_generation": {
+        "leak_counts": {
+          "no_leak": 57,
+          "leak": 2,
+          "possible_leak": 1
+        },
+        "certain_leak_rate": {
+          "k": 2,
+          "n": 60,
+          "rate": 0.0333,
+          "wilson95": [
+            0.0092,
+            0.1136
+          ]
+        },
+        "no_leak_rate": {
+          "k": 57,
+          "n": 60,
+          "rate": 0.95,
+          "wilson95": [
+            0.863,
+            0.9829
+          ]
+        },
+        "possible_leak_needs_review": 1,
+        "pedagogical_quality": "pending: exige revisión humana con RUBRIC-PED-v0.1"
+      },
+      "pedagogical_review_pending": 120,
+      "inference_from_ollama": {
+        "note": "solo cifras informadas por Ollama o medidas por el reloj del cliente; no hay medición de memoria, GPU ni energía",
+        "tokens_per_second_median": 186.024,
+        "wall_ms_median": 344.551,
+        "ttft_client_ms_median": 75.743,
+        "eval_tokens_total": 11775
+      }
+    },
+    "phi4-mini-3.8b-q4_K_M": {
+      "n": 180,
+      "n_ok": 180,
+      "n_error": 0,
+      "problem_solving": {
+        "status_counts": {
+          "correct": 49,
+          "incorrect": 11
+        },
+        "accuracy_all_items": {
+          "k": 49,
+          "n": 60,
+          "rate": 0.8167,
+          "wilson95": [
+            0.7008,
+            0.8944
+          ]
+        },
+        "accuracy_when_answer_extracted": {
+          "k": 49,
+          "n": 60,
+          "rate": 0.8167,
+          "wilson95": [
+            0.7008,
+            0.8944
+          ]
+        },
+        "format_error_rate": {
+          "k": 0,
+          "n": 60,
+          "rate": 0.0,
+          "wilson95": [
+            0,
+            0.0602
+          ]
+        },
+        "manual_review_needed": 0,
+        "labeled_final_line_rate": {
+          "k": 60,
+          "n": 60,
+          "rate": 1.0,
+          "wilson95": [
+            0.9398,
+            1.0
+          ]
+        },
+        "by_skill_id": {
+          "ADD-4DIG": {
+            "k": 3,
+            "n": 5,
+            "rate": 0.6,
+            "wilson95": [
+              0.2307,
+              0.8824
+            ],
+            "note": "n<10: orientativo"
+          },
+          "ADD-PROPERTIES": {
+            "k": 2,
+            "n": 2,
+            "rate": 1.0,
+            "wilson95": [
+              0.3424,
+              1
+            ],
+            "note": "n<10: orientativo"
+          },
+          "COMBINED-OPS": {
+            "k": 4,
+            "n": 4,
+            "rate": 1.0,
+            "wilson95": [
+              0.5101,
+              1
+            ],
+            "note": "n<10: orientativo"
+          },
+          "DIV-CHECK-REINTEGRATIVE": {
+            "k": 0,
+            "n": 1,
+            "rate": 0.0,
+            "wilson95": [
+              0,
+              0.7935
+            ],
+            "note": "n<10: orientativo"
+          },
+          "DIV-EXACT": {
+            "k": 3,
+            "n": 3,
+            "rate": 1.0,
+            "wilson95": [
+              0.4385,
+              1
+            ],
+            "note": "n<10: orientativo"
+          },
+          "DIV-INEXACT": {
+            "k": 4,
+            "n": 4,
+            "rate": 1.0,
+            "wilson95": [
+              0.5101,
+              1
+            ],
+            "note": "n<10: orientativo"
+          },
+          "DIV-POW10": {
+            "k": 4,
+            "n": 4,
+            "rate": 1.0,
+            "wilson95": [
+              0.5101,
+              1
+            ],
+            "note": "n<10: orientativo"
+          },
+          "FRAC-ADDSUB-HOMOG": {
+            "k": 3,
+            "n": 3,
+            "rate": 1.0,
+            "wilson95": [
+              0.4385,
+              1
+            ],
+            "note": "n<10: orientativo"
+          },
+          "FRAC-COMPARE-HOMOG": {
+            "k": 2,
+            "n": 3,
+            "rate": 0.6667,
+            "wilson95": [
+              0.2077,
+              0.9385
+            ],
+            "note": "n<10: orientativo"
+          },
+          "FRAC-REPR-CLASSIFY": {
+            "k": 1,
+            "n": 2,
+            "rate": 0.5,
+            "wilson95": [
+              0.0945,
+              0.9055
+            ],
+            "note": "n<10: orientativo"
+          },
+          "MUL-POW10": {
+            "k": 3,
+            "n": 3,
+            "rate": 1.0,
+            "wilson95": [
+              0.4385,
+              1
+            ],
+            "note": "n<10: orientativo"
+          },
+          "MUL-TABLES-1-12": {
+            "k": 5,
+            "n": 5,
+            "rate": 1.0,
+            "wilson95": [
+              0.5655,
+              1
+            ],
+            "note": "n<10: orientativo"
+          },
+          "NAT-ORDER-COMPARE": {
+            "k": 3,
+            "n": 3,
+            "rate": 1.0,
+            "wilson95": [
+              0.4385,
+              1
+            ],
+            "note": "n<10: orientativo"
+          },
+          "NAT-PLACE-VALUE": {
+            "k": 2,
+            "n": 4,
+            "rate": 0.5,
+            "wilson95": [
+              0.15,
+              0.85
+            ],
+            "note": "n<10: orientativo"
+          },
+          "NAT-READ-WRITE": {
+            "k": 2,
+            "n": 2,
+            "rate": 1.0,
+            "wilson95": [
+              0.3424,
+              1
+            ],
+            "note": "n<10: orientativo"
+          },
+          "NAT-SKIP-COUNT": {
+            "k": 2,
+            "n": 2,
+            "rate": 1.0,
+            "wilson95": [
+              0.3424,
+              1
+            ],
+            "note": "n<10: orientativo"
+          },
+          "ORD-1-50": {
+            "k": 3,
+            "n": 3,
+            "rate": 1.0,
+            "wilson95": [
+              0.4385,
+              1
+            ],
+            "note": "n<10: orientativo"
+          },
+          "SUB-10K": {
+            "k": 3,
+            "n": 5,
+            "rate": 0.6,
+            "wilson95": [
+              0.2307,
+              0.8824
+            ],
+            "note": "n<10: orientativo"
+          },
+          "SUB-CHECK-REINTEGRATIVE": {
+            "k": 0,
+            "n": 2,
+            "rate": 0.0,
+            "wilson95": [
+              0,
+              0.6576
+            ],
+            "note": "n<10: orientativo"
+          }
+        },
+        "by_difficulty": {
+          "advanced_in_grade": {
+            "k": 13,
+            "n": 17,
+            "rate": 0.7647,
+            "wilson95": [
+              0.5274,
+              0.9045
+            ],
+            "note": ""
+          },
+          "basic": {
+            "k": 19,
+            "n": 20,
+            "rate": 0.95,
+            "wilson95": [
+              0.7639,
+              0.9911
+            ],
+            "note": ""
+          },
+          "intermediate": {
+            "k": 17,
+            "n": 23,
+            "rate": 0.7391,
+            "wilson95": [
+              0.5353,
+              0.8745
+            ],
+            "note": ""
+          }
+        }
+      },
+      "error_diagnosis": {
+        "status_counts": {
+          "incorrect": 17,
+          "verdict_only": 26,
+          "correct": 17
+        },
+        "verdict_accuracy": {
+          "k": 43,
+          "n": 60,
+          "rate": 0.7167,
+          "wilson95": [
+            0.5923,
+            0.8149
+          ]
+        },
+        "category_accuracy_on_error_items": {
+          "k": 8,
+          "n": 51,
+          "rate": 0.1569,
+          "wilson95": [
+            0.0817,
+            0.2801
+          ]
+        },
+        "invented_error_rate_on_correct_work": {
+          "k": 0,
+          "n": 9,
+          "rate": 0.0,
+          "wilson95": [
+            0,
+            0.2992
+          ]
+        },
+        "format_error_rate": {
+          "k": 0,
+          "n": 60,
+          "rate": 0.0,
+          "wilson95": [
+            0,
+            0.0602
+          ]
+        },
+        "description_review": "pending"
+      },
+      "hint_generation": {
+        "leak_counts": {
+          "no_leak": 46,
+          "leak": 12,
+          "possible_leak": 2
+        },
+        "certain_leak_rate": {
+          "k": 12,
+          "n": 60,
+          "rate": 0.2,
+          "wilson95": [
+            0.1183,
+            0.3178
+          ]
+        },
+        "no_leak_rate": {
+          "k": 46,
+          "n": 60,
+          "rate": 0.7667,
+          "wilson95": [
+            0.6456,
+            0.8556
+          ]
+        },
+        "possible_leak_needs_review": 2,
+        "pedagogical_quality": "pending: exige revisión humana con RUBRIC-PED-v0.1"
+      },
+      "pedagogical_review_pending": 120,
+      "inference_from_ollama": {
+        "note": "solo cifras informadas por Ollama o medidas por el reloj del cliente; no hay medición de memoria, GPU ni energía",
+        "tokens_per_second_median": 95.581,
+        "wall_ms_median": 554.349,
+        "ttft_client_ms_median": 84.413,
+        "eval_tokens_total": 8779
+      }
+    },
+    "qwen3-0.6b-fp16": {
+      "n": 180,
+      "n_ok": 180,
+      "n_error": 0,
+      "problem_solving": {
+        "status_counts": {
+          "correct": 37,
+          "incorrect": 21,
+          "needs_manual_review": 1,
+          "format_error": 1
+        },
+        "accuracy_all_items": {
+          "k": 37,
+          "n": 60,
+          "rate": 0.6167,
+          "wilson95": [
+            0.4902,
+            0.7291
+          ]
+        },
+        "accuracy_when_answer_extracted": {
+          "k": 37,
+          "n": 58,
+          "rate": 0.6379,
+          "wilson95": [
+            0.5093,
+            0.7495
+          ]
+        },
+        "format_error_rate": {
+          "k": 1,
+          "n": 60,
+          "rate": 0.0167,
+          "wilson95": [
+            0.0029,
+            0.0886
+          ]
+        },
+        "manual_review_needed": 1,
+        "labeled_final_line_rate": {
+          "k": 59,
+          "n": 60,
+          "rate": 0.9833,
+          "wilson95": [
+            0.9114,
+            0.9971
+          ]
+        },
+        "by_skill_id": {
+          "ADD-4DIG": {
+            "k": 4,
+            "n": 5,
+            "rate": 0.8,
+            "wilson95": [
+              0.3755,
+              0.9638
+            ],
+            "note": "n<10: orientativo"
+          },
+          "ADD-PROPERTIES": {
+            "k": 0,
+            "n": 2,
+            "rate": 0.0,
+            "wilson95": [
+              0,
+              0.6576
+            ],
+            "note": "n<10: orientativo"
+          },
+          "COMBINED-OPS": {
+            "k": 4,
+            "n": 4,
+            "rate": 1.0,
+            "wilson95": [
+              0.5101,
+              1
+            ],
+            "note": "n<10: orientativo"
+          },
+          "DIV-CHECK-REINTEGRATIVE": {
+            "k": 0,
+            "n": 1,
+            "rate": 0.0,
+            "wilson95": [
+              0,
+              0.7935
+            ],
+            "note": "n<10: orientativo"
+          },
+          "DIV-EXACT": {
+            "k": 2,
+            "n": 3,
+            "rate": 0.6667,
+            "wilson95": [
+              0.2077,
+              0.9385
+            ],
+            "note": "n<10: orientativo"
+          },
+          "DIV-INEXACT": {
+            "k": 1,
+            "n": 4,
+            "rate": 0.25,
+            "wilson95": [
+              0.0456,
+              0.6994
+            ],
+            "note": "n<10: orientativo"
+          },
+          "DIV-POW10": {
+            "k": 1,
+            "n": 4,
+            "rate": 0.25,
+            "wilson95": [
+              0.0456,
+              0.6994
+            ],
+            "note": "n<10: orientativo"
+          },
+          "FRAC-ADDSUB-HOMOG": {
+            "k": 1,
+            "n": 3,
+            "rate": 0.3333,
+            "wilson95": [
+              0.0615,
+              0.7923
+            ],
+            "note": "n<10: orientativo"
+          },
+          "FRAC-COMPARE-HOMOG": {
+            "k": 2,
+            "n": 3,
+            "rate": 0.6667,
+            "wilson95": [
+              0.2077,
+              0.9385
+            ],
+            "note": "n<10: orientativo"
+          },
+          "FRAC-REPR-CLASSIFY": {
+            "k": 1,
+            "n": 2,
+            "rate": 0.5,
+            "wilson95": [
+              0.0945,
+              0.9055
+            ],
+            "note": "n<10: orientativo"
+          },
+          "MUL-POW10": {
+            "k": 2,
+            "n": 3,
+            "rate": 0.6667,
+            "wilson95": [
+              0.2077,
+              0.9385
+            ],
+            "note": "n<10: orientativo"
+          },
+          "MUL-TABLES-1-12": {
+            "k": 5,
+            "n": 5,
+            "rate": 1.0,
+            "wilson95": [
+              0.5655,
+              1
+            ],
+            "note": "n<10: orientativo"
+          },
+          "NAT-ORDER-COMPARE": {
+            "k": 3,
+            "n": 3,
+            "rate": 1.0,
+            "wilson95": [
+              0.4385,
+              1
+            ],
+            "note": "n<10: orientativo"
+          },
+          "NAT-PLACE-VALUE": {
+            "k": 3,
+            "n": 4,
+            "rate": 0.75,
+            "wilson95": [
+              0.3006,
+              0.9544
+            ],
+            "note": "n<10: orientativo"
+          },
+          "NAT-READ-WRITE": {
+            "k": 2,
+            "n": 2,
+            "rate": 1.0,
+            "wilson95": [
+              0.3424,
+              1
+            ],
+            "note": "n<10: orientativo"
+          },
+          "NAT-SKIP-COUNT": {
+            "k": 1,
+            "n": 2,
+            "rate": 0.5,
+            "wilson95": [
+              0.0945,
+              0.9055
+            ],
+            "note": "n<10: orientativo"
+          },
+          "ORD-1-50": {
+            "k": 3,
+            "n": 3,
+            "rate": 1.0,
+            "wilson95": [
+              0.4385,
+              1
+            ],
+            "note": "n<10: orientativo"
+          },
+          "SUB-10K": {
+            "k": 1,
+            "n": 5,
+            "rate": 0.2,
+            "wilson95": [
+              0.0362,
+              0.6245
+            ],
+            "note": "n<10: orientativo"
+          },
+          "SUB-CHECK-REINTEGRATIVE": {
+            "k": 1,
+            "n": 2,
+            "rate": 0.5,
+            "wilson95": [
+              0.0945,
+              0.9055
+            ],
+            "note": "n<10: orientativo"
+          }
+        },
+        "by_difficulty": {
+          "advanced_in_grade": {
+            "k": 10,
+            "n": 17,
+            "rate": 0.5882,
+            "wilson95": [
+              0.3601,
+              0.7839
+            ],
+            "note": ""
+          },
+          "basic": {
+            "k": 13,
+            "n": 20,
+            "rate": 0.65,
+            "wilson95": [
+              0.4329,
+              0.8188
+            ],
+            "note": ""
+          },
+          "intermediate": {
+            "k": 14,
+            "n": 23,
+            "rate": 0.6087,
+            "wilson95": [
+              0.4079,
+              0.7784
+            ],
+            "note": ""
+          }
+        }
+      },
+      "error_diagnosis": {
+        "status_counts": {
+          "incorrect": 42,
+          "verdict_only": 9,
+          "correct": 9
+        },
+        "verdict_accuracy": {
+          "k": 18,
+          "n": 60,
+          "rate": 0.3,
+          "wilson95": [
+            0.199,
+            0.4251
+          ]
+        },
+        "category_accuracy_on_error_items": {
+          "k": 0,
+          "n": 51,
+          "rate": 0.0,
+          "wilson95": [
+            0,
+            0.07
+          ]
+        },
+        "invented_error_rate_on_correct_work": {
+          "k": 0,
+          "n": 9,
+          "rate": 0.0,
+          "wilson95": [
+            0,
+            0.2992
+          ]
+        },
+        "format_error_rate": {
+          "k": 0,
+          "n": 60,
+          "rate": 0.0,
+          "wilson95": [
+            0,
+            0.0602
+          ]
+        },
+        "description_review": "pending"
+      },
+      "hint_generation": {
+        "leak_counts": {
+          "no_leak": 41,
+          "leak": 19
+        },
+        "certain_leak_rate": {
+          "k": 19,
+          "n": 60,
+          "rate": 0.3167,
+          "wilson95": [
+            0.2131,
+            0.4423
+          ]
+        },
+        "no_leak_rate": {
+          "k": 41,
+          "n": 60,
+          "rate": 0.6833,
+          "wilson95": [
+            0.5577,
+            0.7869
+          ]
+        },
+        "possible_leak_needs_review": 0,
+        "pedagogical_quality": "pending: exige revisión humana con RUBRIC-PED-v0.1"
+      },
+      "pedagogical_review_pending": 120,
+      "inference_from_ollama": {
+        "note": "solo cifras informadas por Ollama o medidas por el reloj del cliente; no hay medición de memoria, GPU ni energía",
+        "tokens_per_second_median": 166.747,
+        "wall_ms_median": 304.274,
+        "ttft_client_ms_median": 67.234,
+        "eval_tokens_total": 7169
+      }
+    },
+    "qwen3-0.6b-q4_K_M": {
+      "n": 180,
+      "n_ok": 180,
+      "n_error": 0,
+      "problem_solving": {
+        "status_counts": {
+          "correct": 39,
+          "incorrect": 17,
+          "format_error": 4
+        },
+        "accuracy_all_items": {
+          "k": 39,
+          "n": 60,
+          "rate": 0.65,
+          "wilson95": [
+            0.5236,
+            0.7583
+          ]
+        },
+        "accuracy_when_answer_extracted": {
+          "k": 39,
+          "n": 56,
+          "rate": 0.6964,
+          "wilson95": [
+            0.5666,
+            0.801
+          ]
+        },
+        "format_error_rate": {
+          "k": 4,
+          "n": 60,
+          "rate": 0.0667,
+          "wilson95": [
+            0.0262,
+            0.1593
+          ]
+        },
+        "manual_review_needed": 0,
+        "labeled_final_line_rate": {
+          "k": 58,
+          "n": 60,
+          "rate": 0.9667,
+          "wilson95": [
+            0.8864,
+            0.9908
+          ]
+        },
+        "by_skill_id": {
+          "ADD-4DIG": {
+            "k": 5,
+            "n": 5,
+            "rate": 1.0,
+            "wilson95": [
+              0.5655,
+              1
+            ],
+            "note": "n<10: orientativo"
+          },
+          "ADD-PROPERTIES": {
+            "k": 0,
+            "n": 2,
+            "rate": 0.0,
+            "wilson95": [
+              0,
+              0.6576
+            ],
+            "note": "n<10: orientativo"
+          },
+          "COMBINED-OPS": {
+            "k": 3,
+            "n": 4,
+            "rate": 0.75,
+            "wilson95": [
+              0.3006,
+              0.9544
+            ],
+            "note": "n<10: orientativo"
+          },
+          "DIV-CHECK-REINTEGRATIVE": {
+            "k": 0,
+            "n": 1,
+            "rate": 0.0,
+            "wilson95": [
+              0,
+              0.7935
+            ],
+            "note": "n<10: orientativo"
+          },
+          "DIV-EXACT": {
+            "k": 2,
+            "n": 3,
+            "rate": 0.6667,
+            "wilson95": [
+              0.2077,
+              0.9385
+            ],
+            "note": "n<10: orientativo"
+          },
+          "DIV-INEXACT": {
+            "k": 2,
+            "n": 4,
+            "rate": 0.5,
+            "wilson95": [
+              0.15,
+              0.85
+            ],
+            "note": "n<10: orientativo"
+          },
+          "DIV-POW10": {
+            "k": 4,
+            "n": 4,
+            "rate": 1.0,
+            "wilson95": [
+              0.5101,
+              1
+            ],
+            "note": "n<10: orientativo"
+          },
+          "FRAC-ADDSUB-HOMOG": {
+            "k": 0,
+            "n": 3,
+            "rate": 0.0,
+            "wilson95": [
+              0,
+              0.5615
+            ],
+            "note": "n<10: orientativo"
+          },
+          "FRAC-COMPARE-HOMOG": {
+            "k": 1,
+            "n": 3,
+            "rate": 0.3333,
+            "wilson95": [
+              0.0615,
+              0.7923
+            ],
+            "note": "n<10: orientativo"
+          },
+          "FRAC-REPR-CLASSIFY": {
+            "k": 2,
+            "n": 2,
+            "rate": 1.0,
+            "wilson95": [
+              0.3424,
+              1
+            ],
+            "note": "n<10: orientativo"
+          },
+          "MUL-POW10": {
+            "k": 1,
+            "n": 3,
+            "rate": 0.3333,
+            "wilson95": [
+              0.0615,
+              0.7923
+            ],
+            "note": "n<10: orientativo"
+          },
+          "MUL-TABLES-1-12": {
+            "k": 5,
+            "n": 5,
+            "rate": 1.0,
+            "wilson95": [
+              0.5655,
+              1
+            ],
+            "note": "n<10: orientativo"
+          },
+          "NAT-ORDER-COMPARE": {
+            "k": 2,
+            "n": 3,
+            "rate": 0.6667,
+            "wilson95": [
+              0.2077,
+              0.9385
+            ],
+            "note": "n<10: orientativo"
+          },
+          "NAT-PLACE-VALUE": {
+            "k": 2,
+            "n": 4,
+            "rate": 0.5,
+            "wilson95": [
+              0.15,
+              0.85
+            ],
+            "note": "n<10: orientativo"
+          },
+          "NAT-READ-WRITE": {
+            "k": 2,
+            "n": 2,
+            "rate": 1.0,
+            "wilson95": [
+              0.3424,
+              1
+            ],
+            "note": "n<10: orientativo"
+          },
+          "NAT-SKIP-COUNT": {
+            "k": 0,
+            "n": 2,
+            "rate": 0.0,
+            "wilson95": [
+              0,
+              0.6576
+            ],
+            "note": "n<10: orientativo"
+          },
+          "ORD-1-50": {
+            "k": 3,
+            "n": 3,
+            "rate": 1.0,
+            "wilson95": [
+              0.4385,
+              1
+            ],
+            "note": "n<10: orientativo"
+          },
+          "SUB-10K": {
+            "k": 4,
+            "n": 5,
+            "rate": 0.8,
+            "wilson95": [
+              0.3755,
+              0.9638
+            ],
+            "note": "n<10: orientativo"
+          },
+          "SUB-CHECK-REINTEGRATIVE": {
+            "k": 1,
+            "n": 2,
+            "rate": 0.5,
+            "wilson95": [
+              0.0945,
+              0.9055
+            ],
+            "note": "n<10: orientativo"
+          }
+        },
+        "by_difficulty": {
+          "advanced_in_grade": {
+            "k": 12,
+            "n": 17,
+            "rate": 0.7059,
+            "wilson95": [
+              0.4687,
+              0.8672
+            ],
+            "note": ""
+          },
+          "basic": {
+            "k": 13,
+            "n": 20,
+            "rate": 0.65,
+            "wilson95": [
+              0.4329,
+              0.8188
+            ],
+            "note": ""
+          },
+          "intermediate": {
+            "k": 14,
+            "n": 23,
+            "rate": 0.6087,
+            "wilson95": [
+              0.4079,
+              0.7784
+            ],
+            "note": ""
+          }
+        }
+      },
+      "error_diagnosis": {
+        "status_counts": {
+          "incorrect": 48,
+          "verdict_only": 3,
+          "correct": 9
+        },
+        "verdict_accuracy": {
+          "k": 12,
+          "n": 60,
+          "rate": 0.2,
+          "wilson95": [
+            0.1183,
+            0.3178
+          ]
+        },
+        "category_accuracy_on_error_items": {
+          "k": 0,
+          "n": 51,
+          "rate": 0.0,
+          "wilson95": [
+            0,
+            0.07
+          ]
+        },
+        "invented_error_rate_on_correct_work": {
+          "k": 0,
+          "n": 9,
+          "rate": 0.0,
+          "wilson95": [
+            0,
+            0.2992
+          ]
+        },
+        "format_error_rate": {
+          "k": 0,
+          "n": 60,
+          "rate": 0.0,
+          "wilson95": [
+            0,
+            0.0602
+          ]
+        },
+        "description_review": "pending"
+      },
+      "hint_generation": {
+        "leak_counts": {
+          "no_leak": 42,
+          "leak": 18
+        },
+        "certain_leak_rate": {
+          "k": 18,
+          "n": 60,
+          "rate": 0.3,
+          "wilson95": [
+            0.199,
+            0.4251
+          ]
+        },
+        "no_leak_rate": {
+          "k": 42,
+          "n": 60,
+          "rate": 0.7,
+          "wilson95": [
+            0.5749,
+            0.801
+          ]
+        },
+        "possible_leak_needs_review": 0,
+        "pedagogical_quality": "pending: exige revisión humana con RUBRIC-PED-v0.1"
+      },
+      "pedagogical_review_pending": 120,
+      "inference_from_ollama": {
+        "note": "solo cifras informadas por Ollama o medidas por el reloj del cliente; no hay medición de memoria, GPU ni energía",
+        "tokens_per_second_median": 279.62,
+        "wall_ms_median": 229.379,
+        "ttft_client_ms_median": 62.24,
+        "eval_tokens_total": 8669
+      }
+    },
+    "qwen3-0.6b-q8_0": {
+      "n": 180,
+      "n_ok": 180,
+      "n_error": 0,
+      "problem_solving": {
+        "status_counts": {
+          "correct": 36,
+          "incorrect": 22,
+          "needs_manual_review": 1,
+          "format_error": 1
+        },
+        "accuracy_all_items": {
+          "k": 36,
+          "n": 60,
+          "rate": 0.6,
+          "wilson95": [
+            0.4737,
+            0.7143
+          ]
+        },
+        "accuracy_when_answer_extracted": {
+          "k": 36,
+          "n": 58,
+          "rate": 0.6207,
+          "wilson95": [
+            0.492,
+            0.7344
+          ]
+        },
+        "format_error_rate": {
+          "k": 1,
+          "n": 60,
+          "rate": 0.0167,
+          "wilson95": [
+            0.0029,
+            0.0886
+          ]
+        },
+        "manual_review_needed": 1,
+        "labeled_final_line_rate": {
+          "k": 59,
+          "n": 60,
+          "rate": 0.9833,
+          "wilson95": [
+            0.9114,
+            0.9971
+          ]
+        },
+        "by_skill_id": {
+          "ADD-4DIG": {
+            "k": 4,
+            "n": 5,
+            "rate": 0.8,
+            "wilson95": [
+              0.3755,
+              0.9638
+            ],
+            "note": "n<10: orientativo"
+          },
+          "ADD-PROPERTIES": {
+            "k": 0,
+            "n": 2,
+            "rate": 0.0,
+            "wilson95": [
+              0,
+              0.6576
+            ],
+            "note": "n<10: orientativo"
+          },
+          "COMBINED-OPS": {
+            "k": 4,
+            "n": 4,
+            "rate": 1.0,
+            "wilson95": [
+              0.5101,
+              1
+            ],
+            "note": "n<10: orientativo"
+          },
+          "DIV-CHECK-REINTEGRATIVE": {
+            "k": 0,
+            "n": 1,
+            "rate": 0.0,
+            "wilson95": [
+              0,
+              0.7935
+            ],
+            "note": "n<10: orientativo"
+          },
+          "DIV-EXACT": {
+            "k": 2,
+            "n": 3,
+            "rate": 0.6667,
+            "wilson95": [
+              0.2077,
+              0.9385
+            ],
+            "note": "n<10: orientativo"
+          },
+          "DIV-INEXACT": {
+            "k": 1,
+            "n": 4,
+            "rate": 0.25,
+            "wilson95": [
+              0.0456,
+              0.6994
+            ],
+            "note": "n<10: orientativo"
+          },
+          "DIV-POW10": {
+            "k": 2,
+            "n": 4,
+            "rate": 0.5,
+            "wilson95": [
+              0.15,
+              0.85
+            ],
+            "note": "n<10: orientativo"
+          },
+          "FRAC-ADDSUB-HOMOG": {
+            "k": 1,
+            "n": 3,
+            "rate": 0.3333,
+            "wilson95": [
+              0.0615,
+              0.7923
+            ],
+            "note": "n<10: orientativo"
+          },
+          "FRAC-COMPARE-HOMOG": {
+            "k": 1,
+            "n": 3,
+            "rate": 0.3333,
+            "wilson95": [
+              0.0615,
+              0.7923
+            ],
+            "note": "n<10: orientativo"
+          },
+          "FRAC-REPR-CLASSIFY": {
+            "k": 1,
+            "n": 2,
+            "rate": 0.5,
+            "wilson95": [
+              0.0945,
+              0.9055
+            ],
+            "note": "n<10: orientativo"
+          },
+          "MUL-POW10": {
+            "k": 2,
+            "n": 3,
+            "rate": 0.6667,
+            "wilson95": [
+              0.2077,
+              0.9385
+            ],
+            "note": "n<10: orientativo"
+          },
+          "MUL-TABLES-1-12": {
+            "k": 5,
+            "n": 5,
+            "rate": 1.0,
+            "wilson95": [
+              0.5655,
+              1
+            ],
+            "note": "n<10: orientativo"
+          },
+          "NAT-ORDER-COMPARE": {
+            "k": 2,
+            "n": 3,
+            "rate": 0.6667,
+            "wilson95": [
+              0.2077,
+              0.9385
+            ],
+            "note": "n<10: orientativo"
+          },
+          "NAT-PLACE-VALUE": {
+            "k": 3,
+            "n": 4,
+            "rate": 0.75,
+            "wilson95": [
+              0.3006,
+              0.9544
+            ],
+            "note": "n<10: orientativo"
+          },
+          "NAT-READ-WRITE": {
+            "k": 2,
+            "n": 2,
+            "rate": 1.0,
+            "wilson95": [
+              0.3424,
+              1
+            ],
+            "note": "n<10: orientativo"
+          },
+          "NAT-SKIP-COUNT": {
+            "k": 1,
+            "n": 2,
+            "rate": 0.5,
+            "wilson95": [
+              0.0945,
+              0.9055
+            ],
+            "note": "n<10: orientativo"
+          },
+          "ORD-1-50": {
+            "k": 3,
+            "n": 3,
+            "rate": 1.0,
+            "wilson95": [
+              0.4385,
+              1
+            ],
+            "note": "n<10: orientativo"
+          },
+          "SUB-10K": {
+            "k": 1,
+            "n": 5,
+            "rate": 0.2,
+            "wilson95": [
+              0.0362,
+              0.6245
+            ],
+            "note": "n<10: orientativo"
+          },
+          "SUB-CHECK-REINTEGRATIVE": {
+            "k": 1,
+            "n": 2,
+            "rate": 0.5,
+            "wilson95": [
+              0.0945,
+              0.9055
+            ],
+            "note": "n<10: orientativo"
+          }
+        },
+        "by_difficulty": {
+          "advanced_in_grade": {
+            "k": 9,
+            "n": 17,
+            "rate": 0.5294,
+            "wilson95": [
+              0.3096,
+              0.7384
+            ],
+            "note": ""
+          },
+          "basic": {
+            "k": 13,
+            "n": 20,
+            "rate": 0.65,
+            "wilson95": [
+              0.4329,
+              0.8188
+            ],
+            "note": ""
+          },
+          "intermediate": {
+            "k": 14,
+            "n": 23,
+            "rate": 0.6087,
+            "wilson95": [
+              0.4079,
+              0.7784
+            ],
+            "note": ""
+          }
+        }
+      },
+      "error_diagnosis": {
+        "status_counts": {
+          "incorrect": 42,
+          "verdict_only": 9,
+          "correct": 9
+        },
+        "verdict_accuracy": {
+          "k": 18,
+          "n": 60,
+          "rate": 0.3,
+          "wilson95": [
+            0.199,
+            0.4251
+          ]
+        },
+        "category_accuracy_on_error_items": {
+          "k": 0,
+          "n": 51,
+          "rate": 0.0,
+          "wilson95": [
+            0,
+            0.07
+          ]
+        },
+        "invented_error_rate_on_correct_work": {
+          "k": 0,
+          "n": 9,
+          "rate": 0.0,
+          "wilson95": [
+            0,
+            0.2992
+          ]
+        },
+        "format_error_rate": {
+          "k": 0,
+          "n": 60,
+          "rate": 0.0,
+          "wilson95": [
+            0,
+            0.0602
+          ]
+        },
+        "description_review": "pending"
+      },
+      "hint_generation": {
+        "leak_counts": {
+          "no_leak": 42,
+          "leak": 18
+        },
+        "certain_leak_rate": {
+          "k": 18,
+          "n": 60,
+          "rate": 0.3,
+          "wilson95": [
+            0.199,
+            0.4251
+          ]
+        },
+        "no_leak_rate": {
+          "k": 42,
+          "n": 60,
+          "rate": 0.7,
+          "wilson95": [
+            0.5749,
+            0.801
+          ]
+        },
+        "possible_leak_needs_review": 0,
+        "pedagogical_quality": "pending: exige revisión humana con RUBRIC-PED-v0.1"
+      },
+      "pedagogical_review_pending": 120,
+      "inference_from_ollama": {
+        "note": "solo cifras informadas por Ollama o medidas por el reloj del cliente; no hay medición de memoria, GPU ni energía",
+        "tokens_per_second_median": 243.38,
+        "wall_ms_median": 236.661,
+        "ttft_client_ms_median": 67.319,
+        "eval_tokens_total": 7332
+      }
+    },
+    "qwen3-1.7b-q4_K_M": {
+      "n": 180,
+      "n_ok": 180,
+      "n_error": 0,
+      "problem_solving": {
+        "status_counts": {
+          "correct": 55,
+          "incorrect": 5
+        },
+        "accuracy_all_items": {
+          "k": 55,
+          "n": 60,
+          "rate": 0.9167,
+          "wilson95": [
+            0.8193,
+            0.9639
+          ]
+        },
+        "accuracy_when_answer_extracted": {
+          "k": 55,
+          "n": 60,
+          "rate": 0.9167,
+          "wilson95": [
+            0.8193,
+            0.9639
+          ]
+        },
+        "format_error_rate": {
+          "k": 0,
+          "n": 60,
+          "rate": 0.0,
+          "wilson95": [
+            0,
+            0.0602
+          ]
+        },
+        "manual_review_needed": 0,
+        "labeled_final_line_rate": {
+          "k": 60,
+          "n": 60,
+          "rate": 1.0,
+          "wilson95": [
+            0.9398,
+            1.0
+          ]
+        },
+        "by_skill_id": {
+          "ADD-4DIG": {
+            "k": 4,
+            "n": 5,
+            "rate": 0.8,
+            "wilson95": [
+              0.3755,
+              0.9638
+            ],
+            "note": "n<10: orientativo"
+          },
+          "ADD-PROPERTIES": {
+            "k": 1,
+            "n": 2,
+            "rate": 0.5,
+            "wilson95": [
+              0.0945,
+              0.9055
+            ],
+            "note": "n<10: orientativo"
+          },
+          "COMBINED-OPS": {
+            "k": 4,
+            "n": 4,
+            "rate": 1.0,
+            "wilson95": [
+              0.5101,
+              1
+            ],
+            "note": "n<10: orientativo"
+          },
+          "DIV-CHECK-REINTEGRATIVE": {
+            "k": 1,
+            "n": 1,
+            "rate": 1.0,
+            "wilson95": [
+              0.2065,
+              1
+            ],
+            "note": "n<10: orientativo"
+          },
+          "DIV-EXACT": {
+            "k": 3,
+            "n": 3,
+            "rate": 1.0,
+            "wilson95": [
+              0.4385,
+              1
+            ],
+            "note": "n<10: orientativo"
+          },
+          "DIV-INEXACT": {
+            "k": 4,
+            "n": 4,
+            "rate": 1.0,
+            "wilson95": [
+              0.5101,
+              1
+            ],
+            "note": "n<10: orientativo"
+          },
+          "DIV-POW10": {
+            "k": 4,
+            "n": 4,
+            "rate": 1.0,
+            "wilson95": [
+              0.5101,
+              1
+            ],
+            "note": "n<10: orientativo"
+          },
+          "FRAC-ADDSUB-HOMOG": {
+            "k": 3,
+            "n": 3,
+            "rate": 1.0,
+            "wilson95": [
+              0.4385,
+              1
+            ],
+            "note": "n<10: orientativo"
+          },
+          "FRAC-COMPARE-HOMOG": {
+            "k": 3,
+            "n": 3,
+            "rate": 1.0,
+            "wilson95": [
+              0.4385,
+              1
+            ],
+            "note": "n<10: orientativo"
+          },
+          "FRAC-REPR-CLASSIFY": {
+            "k": 2,
+            "n": 2,
+            "rate": 1.0,
+            "wilson95": [
+              0.3424,
+              1
+            ],
+            "note": "n<10: orientativo"
+          },
+          "MUL-POW10": {
+            "k": 3,
+            "n": 3,
+            "rate": 1.0,
+            "wilson95": [
+              0.4385,
+              1
+            ],
+            "note": "n<10: orientativo"
+          },
+          "MUL-TABLES-1-12": {
+            "k": 5,
+            "n": 5,
+            "rate": 1.0,
+            "wilson95": [
+              0.5655,
+              1
+            ],
+            "note": "n<10: orientativo"
+          },
+          "NAT-ORDER-COMPARE": {
+            "k": 3,
+            "n": 3,
+            "rate": 1.0,
+            "wilson95": [
+              0.4385,
+              1
+            ],
+            "note": "n<10: orientativo"
+          },
+          "NAT-PLACE-VALUE": {
+            "k": 4,
+            "n": 4,
+            "rate": 1.0,
+            "wilson95": [
+              0.5101,
+              1
+            ],
+            "note": "n<10: orientativo"
+          },
+          "NAT-READ-WRITE": {
+            "k": 2,
+            "n": 2,
+            "rate": 1.0,
+            "wilson95": [
+              0.3424,
+              1
+            ],
+            "note": "n<10: orientativo"
+          },
+          "NAT-SKIP-COUNT": {
+            "k": 2,
+            "n": 2,
+            "rate": 1.0,
+            "wilson95": [
+              0.3424,
+              1
+            ],
+            "note": "n<10: orientativo"
+          },
+          "ORD-1-50": {
+            "k": 3,
+            "n": 3,
+            "rate": 1.0,
+            "wilson95": [
+              0.4385,
+              1
+            ],
+            "note": "n<10: orientativo"
+          },
+          "SUB-10K": {
+            "k": 3,
+            "n": 5,
+            "rate": 0.6,
+            "wilson95": [
+              0.2307,
+              0.8824
+            ],
+            "note": "n<10: orientativo"
+          },
+          "SUB-CHECK-REINTEGRATIVE": {
+            "k": 1,
+            "n": 2,
+            "rate": 0.5,
+            "wilson95": [
+              0.0945,
+              0.9055
+            ],
+            "note": "n<10: orientativo"
+          }
+        },
+        "by_difficulty": {
+          "advanced_in_grade": {
+            "k": 15,
+            "n": 17,
+            "rate": 0.8824,
+            "wilson95": [
+              0.6566,
+              0.9671
+            ],
+            "note": ""
+          },
+          "basic": {
+            "k": 19,
+            "n": 20,
+            "rate": 0.95,
+            "wilson95": [
+              0.7639,
+              0.9911
+            ],
+            "note": ""
+          },
+          "intermediate": {
+            "k": 21,
+            "n": 23,
+            "rate": 0.913,
+            "wilson95": [
+              0.732,
+              0.9758
+            ],
+            "note": ""
+          }
+        }
+      },
+      "error_diagnosis": {
+        "status_counts": {
+          "incorrect": 32,
+          "verdict_only": 17,
+          "correct": 11
+        },
+        "verdict_accuracy": {
+          "k": 28,
+          "n": 60,
+          "rate": 0.4667,
+          "wilson95": [
+            0.3463,
+            0.5911
+          ]
+        },
+        "category_accuracy_on_error_items": {
+          "k": 2,
+          "n": 51,
+          "rate": 0.0392,
+          "wilson95": [
+            0.0108,
+            0.1322
+          ]
+        },
+        "invented_error_rate_on_correct_work": {
+          "k": 0,
+          "n": 9,
+          "rate": 0.0,
+          "wilson95": [
+            0,
+            0.2992
+          ]
+        },
+        "format_error_rate": {
+          "k": 0,
+          "n": 60,
+          "rate": 0.0,
+          "wilson95": [
+            0,
+            0.0602
+          ]
+        },
+        "description_review": "pending"
+      },
+      "hint_generation": {
+        "leak_counts": {
+          "no_leak": 36,
+          "leak": 19,
+          "possible_leak": 5
+        },
+        "certain_leak_rate": {
+          "k": 19,
+          "n": 60,
+          "rate": 0.3167,
+          "wilson95": [
+            0.2131,
+            0.4423
+          ]
+        },
+        "no_leak_rate": {
+          "k": 36,
+          "n": 60,
+          "rate": 0.6,
+          "wilson95": [
+            0.4737,
+            0.7143
+          ]
+        },
+        "possible_leak_needs_review": 5,
+        "pedagogical_quality": "pending: exige revisión humana con RUBRIC-PED-v0.1"
+      },
+      "pedagogical_review_pending": 120,
+      "inference_from_ollama": {
+        "note": "solo cifras informadas por Ollama o medidas por el reloj del cliente; no hay medición de memoria, GPU ni energía",
+        "tokens_per_second_median": 173.012,
+        "wall_ms_median": 371.372,
+        "ttft_client_ms_median": 74.629,
+        "eval_tokens_total": 10326
+      }
+    },
+    "smollm3-3b-q4_K_M": {
+      "n": 180,
+      "n_ok": 180,
+      "n_error": 0,
+      "problem_solving": {
+        "status_counts": {
+          "incorrect": 8,
+          "correct": 51,
+          "format_error": 1
+        },
+        "accuracy_all_items": {
+          "k": 51,
+          "n": 60,
+          "rate": 0.85,
+          "wilson95": [
+            0.7389,
+            0.919
+          ]
+        },
+        "accuracy_when_answer_extracted": {
+          "k": 51,
+          "n": 59,
+          "rate": 0.8644,
+          "wilson95": [
+            0.7546,
+            0.9297
+          ]
+        },
+        "format_error_rate": {
+          "k": 1,
+          "n": 60,
+          "rate": 0.0167,
+          "wilson95": [
+            0.0029,
+            0.0886
+          ]
+        },
+        "manual_review_needed": 0,
+        "labeled_final_line_rate": {
+          "k": 47,
+          "n": 60,
+          "rate": 0.7833,
+          "wilson95": [
+            0.6638,
+            0.8688
+          ]
+        },
+        "by_skill_id": {
+          "ADD-4DIG": {
+            "k": 4,
+            "n": 5,
+            "rate": 0.8,
+            "wilson95": [
+              0.3755,
+              0.9638
+            ],
+            "note": "n<10: orientativo"
+          },
+          "ADD-PROPERTIES": {
+            "k": 2,
+            "n": 2,
+            "rate": 1.0,
+            "wilson95": [
+              0.3424,
+              1
+            ],
+            "note": "n<10: orientativo"
+          },
+          "COMBINED-OPS": {
+            "k": 4,
+            "n": 4,
+            "rate": 1.0,
+            "wilson95": [
+              0.5101,
+              1
+            ],
+            "note": "n<10: orientativo"
+          },
+          "DIV-CHECK-REINTEGRATIVE": {
+            "k": 1,
+            "n": 1,
+            "rate": 1.0,
+            "wilson95": [
+              0.2065,
+              1
+            ],
+            "note": "n<10: orientativo"
+          },
+          "DIV-EXACT": {
+            "k": 2,
+            "n": 3,
+            "rate": 0.6667,
+            "wilson95": [
+              0.2077,
+              0.9385
+            ],
+            "note": "n<10: orientativo"
+          },
+          "DIV-INEXACT": {
+            "k": 3,
+            "n": 4,
+            "rate": 0.75,
+            "wilson95": [
+              0.3006,
+              0.9544
+            ],
+            "note": "n<10: orientativo"
+          },
+          "DIV-POW10": {
+            "k": 3,
+            "n": 4,
+            "rate": 0.75,
+            "wilson95": [
+              0.3006,
+              0.9544
+            ],
+            "note": "n<10: orientativo"
+          },
+          "FRAC-ADDSUB-HOMOG": {
+            "k": 3,
+            "n": 3,
+            "rate": 1.0,
+            "wilson95": [
+              0.4385,
+              1
+            ],
+            "note": "n<10: orientativo"
+          },
+          "FRAC-COMPARE-HOMOG": {
+            "k": 2,
+            "n": 3,
+            "rate": 0.6667,
+            "wilson95": [
+              0.2077,
+              0.9385
+            ],
+            "note": "n<10: orientativo"
+          },
+          "FRAC-REPR-CLASSIFY": {
+            "k": 2,
+            "n": 2,
+            "rate": 1.0,
+            "wilson95": [
+              0.3424,
+              1
+            ],
+            "note": "n<10: orientativo"
+          },
+          "MUL-POW10": {
+            "k": 3,
+            "n": 3,
+            "rate": 1.0,
+            "wilson95": [
+              0.4385,
+              1
+            ],
+            "note": "n<10: orientativo"
+          },
+          "MUL-TABLES-1-12": {
+            "k": 5,
+            "n": 5,
+            "rate": 1.0,
+            "wilson95": [
+              0.5655,
+              1
+            ],
+            "note": "n<10: orientativo"
+          },
+          "NAT-ORDER-COMPARE": {
+            "k": 3,
+            "n": 3,
+            "rate": 1.0,
+            "wilson95": [
+              0.4385,
+              1
+            ],
+            "note": "n<10: orientativo"
+          },
+          "NAT-PLACE-VALUE": {
+            "k": 2,
+            "n": 4,
+            "rate": 0.5,
+            "wilson95": [
+              0.15,
+              0.85
+            ],
+            "note": "n<10: orientativo"
+          },
+          "NAT-READ-WRITE": {
+            "k": 0,
+            "n": 2,
+            "rate": 0.0,
+            "wilson95": [
+              0,
+              0.6576
+            ],
+            "note": "n<10: orientativo"
+          },
+          "NAT-SKIP-COUNT": {
+            "k": 2,
+            "n": 2,
+            "rate": 1.0,
+            "wilson95": [
+              0.3424,
+              1
+            ],
+            "note": "n<10: orientativo"
+          },
+          "ORD-1-50": {
+            "k": 3,
+            "n": 3,
+            "rate": 1.0,
+            "wilson95": [
+              0.4385,
+              1
+            ],
+            "note": "n<10: orientativo"
+          },
+          "SUB-10K": {
+            "k": 5,
+            "n": 5,
+            "rate": 1.0,
+            "wilson95": [
+              0.5655,
+              1
+            ],
+            "note": "n<10: orientativo"
+          },
+          "SUB-CHECK-REINTEGRATIVE": {
+            "k": 2,
+            "n": 2,
+            "rate": 1.0,
+            "wilson95": [
+              0.3424,
+              1
+            ],
+            "note": "n<10: orientativo"
+          }
+        },
+        "by_difficulty": {
+          "advanced_in_grade": {
+            "k": 13,
+            "n": 17,
+            "rate": 0.7647,
+            "wilson95": [
+              0.5274,
+              0.9045
+            ],
+            "note": ""
+          },
+          "basic": {
+            "k": 19,
+            "n": 20,
+            "rate": 0.95,
+            "wilson95": [
+              0.7639,
+              0.9911
+            ],
+            "note": ""
+          },
+          "intermediate": {
+            "k": 19,
+            "n": 23,
+            "rate": 0.8261,
+            "wilson95": [
+              0.6286,
+              0.9302
+            ],
+            "note": ""
+          }
+        }
+      },
+      "error_diagnosis": {
+        "status_counts": {
+          "incorrect": 23,
+          "verdict_only": 28,
+          "correct": 9
+        },
+        "verdict_accuracy": {
+          "k": 37,
+          "n": 60,
+          "rate": 0.6167,
+          "wilson95": [
+            0.4902,
+            0.7291
+          ]
+        },
+        "category_accuracy_on_error_items": {
+          "k": 2,
+          "n": 51,
+          "rate": 0.0392,
+          "wilson95": [
+            0.0108,
+            0.1322
+          ]
+        },
+        "invented_error_rate_on_correct_work": {
+          "k": 2,
+          "n": 9,
+          "rate": 0.2222,
+          "wilson95": [
+            0.0632,
+            0.5474
+          ]
+        },
+        "format_error_rate": {
+          "k": 0,
+          "n": 60,
+          "rate": 0.0,
+          "wilson95": [
+            0,
+            0.0602
+          ]
+        },
+        "description_review": "pending"
+      },
+      "hint_generation": {
+        "leak_counts": {
+          "no_leak": 42,
+          "leak": 15,
+          "possible_leak": 3
+        },
+        "certain_leak_rate": {
+          "k": 15,
+          "n": 60,
+          "rate": 0.25,
+          "wilson95": [
+            0.1578,
+            0.3723
+          ]
+        },
+        "no_leak_rate": {
+          "k": 42,
+          "n": 60,
+          "rate": 0.7,
+          "wilson95": [
+            0.5749,
+            0.801
+          ]
+        },
+        "possible_leak_needs_review": 3,
+        "pedagogical_quality": "pending: exige revisión humana con RUBRIC-PED-v0.1"
+      },
+      "pedagogical_review_pending": 120,
+      "inference_from_ollama": {
+        "note": "solo cifras informadas por Ollama o medidas por el reloj del cliente; no hay medición de memoria, GPU ni energía",
+        "tokens_per_second_median": 112.956,
+        "wall_ms_median": 535.37,
+        "ttft_client_ms_median": 89.41,
+        "eval_tokens_total": 12142
+      }
+    }
+  }
+}

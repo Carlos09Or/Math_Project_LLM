@@ -1,0 +1,477 @@
+{
+  "version": "0.3",
+  "date": "2026-11-14",
+  "classification_legend": {
+    "enabled": "Competencia con contenido verificado en el PDF oficial. Sus límites numéricos son una mezcla de límites OFICIALES (origin = documented) y límites METODOLÓGICOS propuestos por el equipo (origin = methodological). Se usa en el benchmark principal.",
+    "pilot_only": "Contenido verificado en el PDF oficial, pero la evaluación aún no está definida. Solo se usa en un piloto independiente, nunca en el benchmark principal.",
+    "pending_interpretation": "El alcance exacto no está claro en la fuente oficial. No se generan ítems."
+  },
+  "classification": {
+    "enabled": ["NAT-READ-WRITE", "NAT-SKIP-COUNT", "NAT-ORDER-COMPARE", "NAT-PLACE-VALUE", "ADD-4DIG", "ADD-PROPERTIES", "SUB-10K", "SUB-CHECK-REINTEGRATIVE", "MUL-TABLES-1-12", "MUL-POW10", "DIV-EXACT", "DIV-INEXACT", "DIV-POW10", "DIV-CHECK-REINTEGRATIVE", "COMBINED-OPS", "ORD-1-50", "FRAC-REPR-CLASSIFY", "FRAC-COMPARE-HOMOG", "FRAC-ADDSUB-HOMOG"],
+    "pilot_only": ["FRAC-EQUIV"],
+    "pending_interpretation": ["MUL-TENS"]
+  },
+  "source": {
+    "document": "Programa de Estudio de Tercer Grado, Matemáticas, Actualización 2026, Fase de Validación (MEDUCA)",
+    "file": "prog-tercer_grado-2026.pdf",
+    "sha256": "4ac0a6f91c6e757aa851ac62ca5d31f80aa8e1df4bead25ba0898fd5e30eea78",
+    "pdf_pages": 374,
+    "page_convention": "Páginas impresas del encabezado 'PÁGINA No. N'. La página N está en la página N+1 del archivo PDF.",
+    "math_section": "pp. 181-228 impresas (la bibliografía empieza en la 229)",
+    "verification_note": "Aritmética (pp. 187-202): texto extraído y revisión visual de las tablas. Álgebra, Medidas, Geometría y Estadística (pp. 203-228): solo texto extraído, para confirmar tema y página.",
+    "not_an_official_validation": "Esta matriz y las restricciones son trabajo de investigación. No cuentan con aval de MEDUCA ni revisión docente."
+  },
+  "how_to_read": {
+    "documented": "Enunciado literal o muy cercano del programa oficial, con página y ubicación (conceptual, procedimental, indicador, objetivo o actividad).",
+    "methodological": "Decisión propuesta por el equipo de investigación. No es un enunciado curricular y no debe presentarse como oficial.",
+    "effective": "Límites que el generador y el validador aplican de verdad. Cada valor indica su origen. Si el origen es 'methodological', el límite es más estricto que lo documentado o cubre un vacío."
+  },
+  "global_methodological_rules": [
+    {
+      "id": "M-GLOBAL-1",
+      "rule": "En las operaciones, todo operando, resultado intermedio y respuesta es un natural menor que 10 000 (<= 9 999).",
+      "rationale": "El objetivo de área (p. 188) dice 'menores de 10 000' y los contenidos (pp. 193-197) dicen 'hasta 10 000'. Se toma la intersección más estricta para evitar la frontera ambigua."
+    },
+    {
+      "id": "M-GLOBAL-2",
+      "rule": "No se usan los casos de actividades sugeridas que excedan el límite (50 000 en adición, 12 345 en división).",
+      "rationale": "Las actividades sugeridas no definen el nivel obligatorio. Confirmadas en el PDF oficial como actividades (pp. 193 y 197)."
+    },
+    {
+      "id": "M-ZERO-1",
+      "rule": "Los operandos de las operaciones son >= 1, salvo el elemento neutro de la adición (ADD-PROPERTIES). Los ceros dentro de las cifras de un número SÍ se permiten y se incluyen a propósito. La exclusión de operandos iguales a 0 es una comodidad temporal de diseño, no una restricción curricular.",
+      "rationale": "El programa no menciona el 0 como operando; sí menciona el elemento neutro de la adición (p. 194), números con cifras en cero de forma implícita (valor posicional, p. 192) y una semirrecta que inicia en el cero (p. 190). Evita casos triviales en el piloto, pero la evaluación posterior debe incluir casos con cero (ver docs/zero_policy.md)."
+    }
+  ],
+  "skills": [
+    {
+      "skill_id": "NAT-READ-WRITE",
+      "label": "Lectura, escritura y representación de naturales hasta 10 000",
+      "matrix_rows": ["AR-01"],
+      "official_pages": "188-190",
+      "enabled_v1": true,
+      "documented": [
+        {"statement": "Naturales hasta 10 000: lectura y escritura en símbolos y letras", "page": 188, "location": "conceptual/procedimental"},
+        {"statement": "Objetivo de grado 1: reconocer, leer, escribir, comparar y ordenar naturales hasta 10 000", "page": 187, "location": "objetivo de grado"}
+      ],
+      "methodological": [
+        {"id": "M-NRW-1", "rule": "Rango 1..10 000, sin 0.", "rationale": "El 0 no se menciona; ver M-GLOBAL-3."}
+      ],
+      "effective": {
+        "n_min": {"value": 1, "origin": "methodological"},
+        "n_max": {"value": 10000, "origin": "documented"}
+      }
+    },
+    {
+      "skill_id": "NAT-SKIP-COUNT",
+      "label": "Conteo progresivo y regresivo por intervalos mayores que 2",
+      "matrix_rows": ["AR-01"],
+      "official_pages": "190",
+      "enabled_v1": true,
+      "documented": [
+        {"statement": "Conteo progresivo y regresivo por intervalos mayores que 2 (1 000 en 1 000)", "page": 190, "location": "procedimental"}
+      ],
+      "methodological": [
+        {"id": "M-SKIP-1", "rule": "Intervalos permitidos: 3, 4, 5, 10, 100, 1 000. Secuencia completa dentro de 1..10 000.", "rationale": "El programa solo da el ejemplo de 1 000 en 1 000 y pide 'mayores que 2'."},
+        {"id": "M-SKIP-2", "rule": "Se muestran 3 o 4 términos y se pide el siguiente.", "rationale": "Formato de ítem propio."}
+      ],
+      "effective": {
+        "n_terms": {"value": [3, 4], "origin": "methodological"},
+        "step_values": {"value": [3, 4, 5, 10, 100, 1000], "origin": "methodological"},
+        "n_min": {"value": 1, "origin": "methodological"},
+        "n_max": {"value": 10000, "origin": "documented"}
+      }
+    },
+    {
+      "skill_id": "NAT-ORDER-COMPARE",
+      "label": "Comparación de naturales con >, < y =",
+      "matrix_rows": ["AR-02"],
+      "official_pages": "191",
+      "enabled_v1": true,
+      "documented": [
+        {"statement": "Relación de orden entre naturales hasta 10 000", "page": 191, "location": "conceptual"},
+        {"statement": "Comparación de dos o más números con >, < y =", "page": 191, "location": "procedimental"}
+      ],
+      "methodological": [],
+      "effective": {
+        "n_min": {"value": 1, "origin": "methodological"},
+        "n_max": {"value": 10000, "origin": "documented"},
+        "symbols": {"value": [">", "<", "="], "origin": "documented"},
+        "max_numbers_compared": {"value": 3, "origin": "methodological"}
+      }
+    },
+    {
+      "skill_id": "NAT-PLACE-VALUE",
+      "label": "Valor posicional, descomposición y recomposición",
+      "matrix_rows": ["AR-03"],
+      "official_pages": "192-193",
+      "enabled_v1": true,
+      "documented": [
+        {"statement": "Valor posicional de las cifras en naturales menores de 10 000", "page": 192, "location": "conceptual/procedimental/indicador"},
+        {"statement": "Reconoce el valor posicional mediante descomposición y recomposición", "page": 192, "location": "indicador"}
+      ],
+      "methodological": [],
+      "effective": {
+        "n_min": {"value": 1, "origin": "methodological"},
+        "n_max": {"value": 9999, "origin": "documented"},
+        "positions": {"value": ["unidades", "decenas", "centenas", "unidades de millar"], "origin": "documented"}
+      }
+    },
+    {
+      "skill_id": "ADD-4DIG",
+      "label": "Adición de naturales con y sin llevadas",
+      "matrix_rows": ["AR-04"],
+      "official_pages": "193-194",
+      "enabled_v1": true,
+      "documented": [
+        {"statement": "Solución de adiciones con y sin llevadas hasta 10 000", "page": 193, "location": "procedimental"},
+        {"statement": "Adiciona números de hasta cuatro cifras, con y sin llevadas", "page": 193, "location": "indicador"},
+        {"statement": "Operaciones con naturales menores de 10 000", "page": 188, "location": "objetivo de área"}
+      ],
+      "methodological": [
+        {"id": "M-ADD-1", "rule": "La suma es <= 9 999.", "rationale": "M-GLOBAL-1; el programa no aclara si el resultado puede superar 10 000."},
+        {"id": "M-ADD-2", "rule": "Entre 2 y 3 sumandos.", "rationale": "El programa no limita la cantidad de sumandos."}
+      ],
+      "effective": {
+        "addend_min": {"value": 1, "origin": "methodological"},
+        "addend_max": {"value": 9999, "origin": "documented"},
+        "sum_max": {"value": 9999, "origin": "methodological"},
+        "n_addends": {"value": [2, 3], "origin": "methodological"},
+        "carry": {"value": "allowed", "origin": "documented"}
+      }
+    },
+    {
+      "skill_id": "ADD-PROPERTIES",
+      "label": "Propiedades de la adición",
+      "matrix_rows": ["AR-04"],
+      "official_pages": "194",
+      "enabled_v1": true,
+      "documented": [
+        {"statement": "Propiedades: conmutativa, asociativa y elemento neutro", "page": 194, "location": "conceptual"},
+        {"statement": "Aplica propiedades de la adición en cálculos sencillos en contextos escolares", "page": 194, "location": "indicador"}
+      ],
+      "methodological": [
+        {"id": "M-ADDP-1", "rule": "Mismos límites numéricos que ADD-4DIG.", "rationale": "El programa no da límites propios para las propiedades."}
+      ],
+      "effective": {
+        "properties": {"value": ["conmutativa", "asociativa", "elemento neutro"], "origin": "documented"},
+        "same_limits_as": {"value": "ADD-4DIG", "origin": "methodological"}
+      }
+    },
+    {
+      "skill_id": "SUB-10K",
+      "label": "Sustracción de naturales",
+      "matrix_rows": ["AR-05"],
+      "official_pages": "194-195",
+      "enabled_v1": true,
+      "documented": [
+        {"statement": "Solución de sustracciones con minuendos hasta 10 000", "page": 194, "location": "procedimental"},
+        {"statement": "Operaciones con naturales menores de 10 000", "page": 188, "location": "objetivo de área"}
+      ],
+      "methodological": [
+        {"id": "M-SUB-1", "rule": "Minuendo <= 9 999.", "rationale": "M-GLOBAL-1."},
+        {"id": "M-SUB-2", "rule": "Sustraendo menor que el minuendo; el resultado es un natural >= 1.", "rationale": "El programa trabaja con naturales y no menciona resultados negativos ni cero."},
+        {"id": "M-SUB-3", "rule": "Se permite la reagrupación (llevadas).", "rationale": "El programa no la menciona ni la excluye (DISC-06)."}
+      ],
+      "effective": {
+        "minuend_max": {"value": 9999, "origin": "methodological"},
+        "subtrahend_min": {"value": 1, "origin": "methodological"},
+        "result_min": {"value": 1, "origin": "methodological"},
+        "borrow": {"value": "allowed", "origin": "methodological"}
+      }
+    },
+    {
+      "skill_id": "SUB-CHECK-REINTEGRATIVE",
+      "label": "Comprobación de la sustracción con la propiedad reintegrativa",
+      "matrix_rows": ["AR-05"],
+      "official_pages": "194-195",
+      "enabled_v1": true,
+      "documented": [
+        {"statement": "Comprobación mediante la propiedad reintegrativa de la sustracción", "page": 194, "location": "procedimental"},
+        {"statement": "Comprueba sustracciones con la propiedad reintegrativa en diferentes circunstancias", "page": 195, "location": "indicador"}
+      ],
+      "methodological": [
+        {"id": "M-SUBC-1", "rule": "Se interpreta como: a - b = c implica c + b = a.", "rationale": "El programa nombra la propiedad pero no la define en el texto leído."}
+      ],
+      "effective": {
+        "check_rule": {"value": "a - b = c  =>  c + b = a", "origin": "methodological"},
+        "same_limits_as": {"value": "SUB-10K", "origin": "methodological"}
+      }
+    },
+    {
+      "skill_id": "MUL-TABLES-1-12",
+      "label": "Tablas de multiplicar del 1 al 12",
+      "matrix_rows": ["AR-06"],
+      "official_pages": "195-196",
+      "enabled_v1": true,
+      "documented": [
+        {"statement": "Tablas de multiplicar del 1 al 12", "page": 195, "location": "conceptual/procedimental/indicador"}
+      ],
+      "methodological": [
+        {"id": "M-MUL-1", "rule": "Factores entre 2 y 12 (se omiten los triviales con 1).", "rationale": "El 1 es parte de las tablas pero aporta poco como ítem de evaluación."}
+      ],
+      "effective": {
+        "factor_min": {"value": 2, "origin": "methodological"},
+        "factor_max": {"value": 12, "origin": "documented"},
+        "product_max": {"value": 144, "origin": "documented"}
+      }
+    },
+    {
+      "skill_id": "MUL-POW10",
+      "label": "Multiplicación por 10, 100 y 1000",
+      "matrix_rows": ["AR-06"],
+      "official_pages": "196",
+      "enabled_v1": true,
+      "documented": [
+        {"statement": "Multiplicación por 10, por 100 y por 1000", "page": 196, "location": "conceptual/procedimental"},
+        {"statement": "Productos hasta 10 000", "page": 196, "location": "conceptual/procedimental/indicador"}
+      ],
+      "methodological": [
+        {"id": "M-POW-1", "rule": "Producto <= 9 999 (M-GLOBAL-1). Con x1000 el multiplicando es 2..9; con x100, 2..99; con x10, 2..999.", "rationale": "El programa no acota el multiplicando."}
+      ],
+      "effective": {
+        "multiplier": {"value": [10, 100, 1000], "origin": "documented"},
+        "multiplicand_min": {"value": 2, "origin": "methodological"},
+        "product_max": {"value": 9999, "origin": "methodological"}
+      }
+    },
+    {
+      "skill_id": "MUL-TENS",
+      "label": "Multiplicación por decenas completas",
+      "matrix_rows": ["AR-06"],
+      "official_pages": "196",
+      "enabled_v1": "pending_interpretation",
+      "documented": [
+        {"statement": "Multiplicación por decenas completas", "page": 196, "location": "conceptual/procedimental"},
+        {"statement": "Productos hasta 10 000", "page": 196, "location": "conceptual/procedimental"}
+      ],
+      "methodological": [
+        {"id": "M-TENS-1", "rule": "Propuesta sin aplicar: (10*k) x m con k en 1..9, m en 2..9, producto <= 9 999. No se generan ítems.", "rationale": "Se releyó el programa oficial (pp. 195-197): 'decenas completas' aparece solo como enunciado, sin ejemplo, sin indicador propio y sin aclarar el otro factor ni si implica multiplicación multidígito (DISC-07). Pendiente de interpretación."}
+      ],
+      "effective": {}
+    },
+    {
+      "skill_id": "DIV-EXACT",
+      "label": "División exacta con divisor de una cifra",
+      "matrix_rows": ["AR-07"],
+      "official_pages": "197",
+      "enabled_v1": true,
+      "documented": [
+        {"statement": "Ejecuta divisiones exactas e inexactas con divisores de una cifra", "page": 197, "location": "indicador"},
+        {"statement": "Operaciones con naturales menores de 10 000", "page": 188, "location": "objetivo de área"}
+      ],
+      "methodological": [
+        {"id": "M-DIV-1", "rule": "Dividendo <= 9 999 (M-GLOBAL-1).", "rationale": "El indicador no acota el dividendo; la actividad con 12 345 se excluye."},
+        {"id": "M-DIV-2", "rule": "Divisor entre 2 y 9; cociente >= 2.", "rationale": "Divisor 1 y cocientes triviales aportan poco; el programa solo dice 'una cifra'."}
+      ],
+      "effective": {
+        "dividend_max": {"value": 9999, "origin": "methodological"},
+        "divisor_min": {"value": 2, "origin": "methodological"},
+        "divisor_max": {"value": 9, "origin": "documented"},
+        "quotient_min": {"value": 2, "origin": "methodological"},
+        "remainder": {"value": 0, "origin": "documented"}
+      }
+    },
+    {
+      "skill_id": "DIV-INEXACT",
+      "label": "División inexacta con divisor de una cifra",
+      "matrix_rows": ["AR-07"],
+      "official_pages": "197",
+      "enabled_v1": true,
+      "documented": [
+        {"statement": "Ejecuta divisiones exactas e inexactas con divisores de una cifra", "page": 197, "location": "indicador"}
+      ],
+      "methodological": [
+        {"id": "M-DIVI-1", "rule": "Mismos límites que DIV-EXACT; el residuo está entre 1 y divisor-1.", "rationale": "Definición estándar de división inexacta; el programa no la formula."}
+      ],
+      "effective": {
+        "dividend_max": {"value": 9999, "origin": "methodological"},
+        "divisor_min": {"value": 2, "origin": "methodological"},
+        "divisor_max": {"value": 9, "origin": "documented"},
+        "quotient_min": {"value": 2, "origin": "methodological"},
+        "remainder": {"value": "1..divisor-1", "origin": "methodological"}
+      }
+    },
+    {
+      "skill_id": "DIV-POW10",
+      "label": "División entre 10, 100 y 1000",
+      "matrix_rows": ["AR-07"],
+      "official_pages": "197",
+      "enabled_v1": true,
+      "documented": [
+        {"statement": "Ejecución de divisiones exactas e inexactas entre 10, 100 y 1000", "page": 197, "location": "procedimental"},
+        {"statement": "División entre 10, 100 o 1000", "page": 197, "location": "conceptual"}
+      ],
+      "methodological": [
+        {"id": "M-DPOW-1", "rule": "Dividendo <= 9 999 y cociente >= 1.", "rationale": "M-GLOBAL-1; el programa no acota el dividendo."}
+      ],
+      "effective": {
+        "divisor": {"value": [10, 100, 1000], "origin": "documented"},
+        "dividend_max": {"value": 9999, "origin": "methodological"},
+        "quotient_min": {"value": 1, "origin": "methodological"},
+        "remainder": {"value": "exact_or_inexact", "origin": "documented"}
+      }
+    },
+    {
+      "skill_id": "DIV-CHECK-REINTEGRATIVE",
+      "label": "Comprobación de la división con la propiedad reintegrativa",
+      "matrix_rows": ["AR-07"],
+      "official_pages": "197",
+      "enabled_v1": true,
+      "documented": [
+        {"statement": "Propiedad reintegrativa de la división", "page": 197, "location": "conceptual"},
+        {"statement": "Aplicación de la propiedad reintegrativa en la sustracción y la división", "page": 197, "location": "procedimental"}
+      ],
+      "methodological": [
+        {"id": "M-DIVC-1", "rule": "Se interpreta como: dividendo = divisor x cociente + residuo.", "rationale": "El programa nombra la propiedad sin definirla en el texto leído."}
+      ],
+      "effective": {
+        "check_rule": {"value": "dividendo = divisor * cociente + residuo", "origin": "methodological"},
+        "same_limits_as": {"value": "DIV-EXACT/DIV-INEXACT", "origin": "methodological"}
+      }
+    },
+    {
+      "skill_id": "COMBINED-OPS",
+      "label": "Problemas cotidianos con operaciones combinadas",
+      "matrix_rows": ["AR-04", "AR-05", "AR-06", "AR-07"],
+      "official_pages": "197",
+      "enabled_v1": true,
+      "documented": [
+        {"statement": "Resuelve problemas de la vida cotidiana que requieren operaciones combinadas (adición, sustracción, multiplicación o división), explicando el procedimiento", "page": 197, "location": "indicador"}
+      ],
+      "methodological": [
+        {"id": "M-COMB-1", "rule": "Entre 2 y 3 pasos. Cada paso respeta los límites de su operación; los resultados intermedios son naturales < 10 000.", "rationale": "El programa no limita el número de pasos."},
+        {"id": "M-COMB-2", "rule": "Las multiplicaciones usan tablas 1..12 o x10/x100/x1000; las divisiones usan divisor de una cifra o 10/100/1000.", "rationale": "Se evita MUL-TENS y la multiplicación multidígito."}
+      ],
+      "effective": {
+        "steps": {"value": [2, 3], "origin": "methodological"},
+        "operations": {"value": ["add", "sub", "mul", "div"], "origin": "documented"},
+        "each_step_within": {"value": "limits of its own skill", "origin": "methodological"}
+      }
+    },
+    {
+      "skill_id": "ORD-1-50",
+      "label": "Números ordinales hasta 50°",
+      "matrix_rows": ["AR-08"],
+      "official_pages": "198-199",
+      "enabled_v1": true,
+      "documented": [
+        {"statement": "Los números ordinales hasta 50°", "page": 198, "location": "conceptual"},
+        {"statement": "Lee los ordinales hasta el quincuagésimo (50°)", "page": 198, "location": "indicador"},
+        {"statement": "Escritura de ordinales hasta el 50°", "page": 198, "location": "procedimental"}
+      ],
+      "methodological": [
+        {"id": "M-ORD-1", "rule": "Se acepta la escritura con '.º' y con 'º'; también 'primero' a 'quincuagésimo' en palabras.", "rationale": "El programa usa '1.º' y '50°' en distintos lugares."}
+      ],
+      "effective": {
+        "n_min": {"value": 1, "origin": "documented"},
+        "n_max": {"value": 50, "origin": "documented"}
+      }
+    },
+    {
+      "skill_id": "FRAC-REPR-CLASSIFY",
+      "label": "Representar y clasificar fracciones propias e impropias",
+      "matrix_rows": ["AR-09"],
+      "official_pages": "199",
+      "enabled_v1": true,
+      "documented": [
+        {"statement": "Clasificación de fracciones propias e impropias en situaciones reales", "page": 199, "location": "procedimental"},
+        {"statement": "Clasifica fracciones como propias o impropias según su composición numérica y representación gráfica", "page": 199, "location": "indicador"}
+      ],
+      "methodological": [
+        {"id": "M-FR1-1", "rule": "Denominador entre 2 y 10.", "rationale": "4.1 no da límite; se toma el de 4.2 (p. 200) y las actividades usan 2 a 8."},
+        {"id": "M-FR1-2", "rule": "Sin números mixtos; se excluye el numerador igual al denominador y el numerador >= 2*denominador.", "rationale": "El programa no menciona mixtos ni define si n/n es impropia."}
+      ],
+      "effective": {
+        "denominator_min": {"value": 2, "origin": "methodological"},
+        "denominator_max": {"value": 10, "origin": "methodological"},
+        "numerator_rule": {"value": "1 <= n < 2*d, n != d", "origin": "methodological"},
+        "mixed_numbers": {"value": "excluded", "origin": "methodological"}
+      }
+    },
+    {
+      "skill_id": "FRAC-COMPARE-HOMOG",
+      "label": "Comparar fracciones con igual denominador",
+      "matrix_rows": ["AR-10"],
+      "official_pages": "200",
+      "enabled_v1": true,
+      "documented": [
+        {"statement": "Relación de orden entre fracciones con denominadores naturales hasta 10", "page": 200, "location": "conceptual/procedimental"},
+        {"statement": "Compara fracciones con igual denominador usando símbolos de relación", "page": 200, "location": "indicador"},
+        {"statement": "Comparar fracciones homogéneas", "page": 187, "location": "objetivo de grado 3"}
+      ],
+      "methodological": [
+        {"id": "M-FR2-1", "rule": "Solo igual denominador; no se comparan denominadores distintos.", "rationale": "El contenido no exige igualdad pero el indicador y el objetivo sí (DISC-17); se toma lo más estricto."},
+        {"id": "M-FR2-2", "rule": "Numeradores entre 1 y 2*d-1.", "rationale": "Fracciones propias e impropias son los tipos del programa; sin mixtos."}
+      ],
+      "effective": {
+        "same_denominator": {"value": true, "origin": "documented"},
+        "denominator_min": {"value": 2, "origin": "methodological"},
+        "denominator_max": {"value": 10, "origin": "documented"},
+        "numerator_rule": {"value": "1 <= n < 2*d", "origin": "methodological"},
+        "symbols": {"value": ["<", ">", "="], "origin": "documented"}
+      }
+    },
+    {
+      "skill_id": "FRAC-ADDSUB-HOMOG",
+      "label": "Sumar y restar fracciones con igual denominador",
+      "matrix_rows": ["AR-11"],
+      "official_pages": "201",
+      "enabled_v1": true,
+      "documented": [
+        {"statement": "Sumas y restas de fracciones homogéneas", "page": 201, "location": "procedimental/indicador"},
+        {"statement": "Fracciones con igual denominador, con comprobación mediante dibujos, fracciones equivalentes y argumentos simples", "page": 187, "location": "objetivo de grado 4"}
+      ],
+      "methodological": [
+        {"id": "M-FR3-1", "rule": "Denominador entre 2 y 10. El programa NO fija un límite de denominador para 4.3; el límite 'hasta 10' que sí documenta es el de 4.2 (comparación, p. 200). Aquí se extiende por decisión del equipo, confirmada por el investigador el 2026-11-14.", "rationale": "Mantiene la coherencia con 4.2 y con las actividades de 4.1 (denominadores 2 a 8)."},
+        {"id": "M-FR3-2", "rule": "Los dos sumandos (o minuendo y sustraendo) son fracciones propias; el resultado es una fracción propia positiva (1/d <= resultado < 1). No hay resultados iguales o mayores que 1, ni números mixtos.", "rationale": "El programa no dice si el resultado puede ser impropio ni si se simplifica; se evita la ambigüedad."},
+        {"id": "M-FR3-3", "rule": "La respuesta esperada conserva el denominador común. Se acepta como correcta una forma equivalente (por ejemplo, 2/4 por 1/2) y se anota en el verificador.", "rationale": "El programa no exige simplificar; el objetivo de grado 4 menciona fracciones equivalentes como apoyo de comprobación."}
+      ],
+      "effective": {
+        "same_denominator": {"value": true, "origin": "documented"},
+        "denominator_min": {"value": 2, "origin": "methodological"},
+        "denominator_max": {"value": 10, "origin": "methodological"},
+        "operands_proper": {"value": true, "origin": "methodological"},
+        "result_rule": {"value": "1/d <= result < 1", "origin": "methodological"},
+        "mixed_numbers": {"value": "excluded", "origin": "methodological"}
+      }
+    },
+    {
+      "skill_id": "FRAC-EQUIV",
+      "label": "Equivalencia entre fracciones",
+      "matrix_rows": ["AR-12"],
+      "official_pages": "201-202",
+      "enabled_v1": "pilot_only",
+      "documented": [
+        {"statement": "Argumenta con ejemplos la equivalencia entre fracciones representadas de forma gráfica y simbólica", "page": 201, "location": "indicador"},
+        {"statement": "Comprobación de la razonabilidad de los resultados mediante dibujos, fracciones equivalentes y argumentos simples", "page": 187, "location": "objetivo de grado 4"}
+      ],
+      "methodological": [
+        {"id": "M-FR4-1", "rule": "Solo piloto independiente (split pilot_equiv), fuera del benchmark principal. Tareas: (a) comprobar si dos fracciones son equivalentes (sí/no) y (b) completar el numerador que falta en una equivalencia simbólica. No se incluye la representación gráfica ni el argumento libre del indicador.", "rationale": "El objetivo de grado solo ubica la equivalencia como medio de comprobación; el indicador pide 'argumentar', que no es puntuable de forma automática."},
+        {"id": "M-FR4-2", "rule": "Denominadores entre 2 y 10; la fracción equivalente se obtiene multiplicando numerador y denominador por 2, 3, 4 o 5, con denominador resultante <= 10 en la pareja completa; los distractores no equivalentes tienen el mismo denominador que una pareja equivalente. No hay límite documentado.", "rationale": "Todo límite numérico es del equipo."},
+        {"id": "M-FR4-3", "rule": "El argumento del indicador ('argumenta con ejemplos') queda para revisión humana con la rúbrica; no se puntúa automáticamente.", "rationale": "Pendiente de definir la evaluación completa antes de incorporarlo al benchmark principal."}
+      ],
+      "effective": {
+        "denominator_min": {"value": 2, "origin": "methodological"},
+        "denominator_max": {"value": 10, "origin": "methodological"},
+        "factors": {"value": [2, 3, 4, 5], "origin": "methodological"},
+        "tasks": {"value": ["equivalence_check", "missing_numerator"], "origin": "methodological"}
+      }
+    }
+  ],
+  "ambiguous_cases_not_incorporated": [
+    {"id": "AMB-01", "case": "Cálculo mental con 10 000 + 40 000 = 50 000", "page": 193, "type": "actividad sugerida", "action": "Excluido: supera 10 000 y las actividades no definen el nivel obligatorio."},
+    {"id": "AMB-02", "case": "Reparto de 12 345 juguetes entre 4 grupos", "page": 197, "type": "actividad sugerida", "action": "Excluido: dividendo superior a 10 000."},
+    {"id": "AMB-03", "case": "Dos números de cuatro cifras sumados con dados", "page": 194, "type": "actividad sugerida", "action": "No se usa como regla: la suma puede superar 10 000."},
+    {"id": "AMB-04", "case": "Multiplicación multidígito general (ejemplo 23 x 4)", "page": 196, "type": "no mencionada", "action": "Excluida: el programa no la menciona."},
+    {"id": "AMB-05", "case": "División con divisor de dos cifras distinto de 10, 100 y 1000", "page": 197, "type": "fuera del indicador", "action": "Excluida: el indicador limita a una cifra."},
+    {"id": "AMB-06", "case": "Fracciones con denominadores distintos en suma, resta o comparación", "page": 200, "type": "fuera de objetivo", "action": "Excluidas: los objetivos 3 y 4 hablan de fracciones homogéneas."},
+    {"id": "AMB-07", "case": "Dinero con decimales (B/. 3.25)", "page": 207, "type": "otra área", "action": "Fuera de v1: pertenece a Sistema de Medidas."}
+  ],
+  "inventory_only_areas": {
+    "Álgebra": "pp. 203-204",
+    "Sistema de Medidas": "pp. 205-214",
+    "Geometría": "pp. 214-223",
+    "Estadística y Probabilidad": "pp. 224-228"
+  }
+}

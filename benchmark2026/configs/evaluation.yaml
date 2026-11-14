@@ -1,0 +1,32 @@
+# Configuración de evaluación. Se congela junto con el dataset (configs/freeze_v1.json).
+# Los modelos y el host de Ollama están en configs/models.yaml (no congelado: se registra en cada corrida).
+# Los parámetros efectivos se registran de nuevo en cada corrida.
+experiment:
+  name: qwen3-0.6b-q4_K_M-v1
+  description: >-
+    Primera evaluación del benchmark v1 con Qwen3-0.6B Q4_K_M. Corrida única por ítem (repeats: 1).
+    No usar el dataset para entrenar ni ajustar modelos.
+
+dataset:
+  path: ../data/benchmark_v1.jsonl
+  freeze_manifest: ../configs/freeze_v1.json
+prompts: ../configs/prompts.yaml
+
+generation:
+  think: false          # Qwen3: desactiva el modo de razonamiento si la versión de Ollama lo admite
+  stream: true          # permite medir el tiempo hasta el primer token desde el cliente
+  keep_alive: 10m
+  warmup_requests: 1    # una petición no registrada para cargar el modelo; se anota su carga aparte
+  options:
+    temperature: 0
+    top_p: 1.0
+    top_k: 1
+    seed: 2026
+    num_ctx: 2048
+    num_predict: 768
+  # La semilla no garantiza determinismo completo entre motores, versiones o configuraciones.
+
+run:
+  repeats: 1
+  tasks: [problem_solving, error_diagnosis, hint_generation]
+  item_order: file      # mismo orden para todos los modelos

@@ -1,0 +1,232 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pan-math-g3-benchmark-item-0.1",
+  "title": "Ítem del benchmark curricular de Matemática de 3.er grado (Panamá, MEDUCA 2026)",
+  "description": "Una línea del JSONL = un ítem de evaluación. El problema base se identifica con evaluation.problem_family_id; varios ítems (resolución, diagnóstico, pista) pueden compartir familia.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "schema_version", "split", "curriculum", "evaluation", "input", "ground_truth", "pedagogy", "quality_control", "provenance"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^PAN-MATH-G3-(PIL|V1|EQV)-[ABC]-[0-9]{3}$"},
+    "schema_version": {"const": "0.1"},
+    "split": {"enum": ["pilot", "pilot_equiv", "v1"], "description": "pilot_equiv es un piloto independiente de equivalencias de fracciones; no forma parte del benchmark principal."},
+    "curriculum": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["country", "grade", "subject", "edition", "area", "section", "topic", "objective", "objective_area", "achievement_indicator", "source_pages", "source_status", "matrix_row", "limits_applied"],
+      "properties": {
+        "country": {"const": "Panama"},
+        "grade": {"const": 3},
+        "subject": {"const": "Matematica"},
+        "edition": {"const": "MEDUCA-2026"},
+        "area": {"const": "Aritmetica"},
+        "section": {"type": "string", "minLength": 1},
+        "topic": {"type": "string", "minLength": 1},
+        "objective": {"type": "string", "minLength": 1},
+        "objective_area": {"type": "string", "minLength": 1},
+        "achievement_indicator": {"type": "string", "minLength": 1},
+        "source_pages": {"type": "array", "items": {"type": "integer", "minimum": 187, "maximum": 202}, "minItems": 2, "maxItems": 2},
+        "source_status": {"enum": ["O", "T"], "description": "O = cotejado en el PDF oficial. T = solo transcripción (no debe aparecer en el benchmark principal)."},
+        "matrix_row": {"type": "string", "pattern": "^AR-[0-9]{2}$"},
+        "limits_applied": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["documented", "methodological_rule_ids"],
+          "properties": {
+            "documented": {"type": "array", "items": {"type": "string"}, "description": "Límites expresamente documentados en el programa, con página."},
+            "methodological_rule_ids": {"type": "array", "items": {"type": "string", "pattern": "^M-[A-Z0-9-]+$"}, "description": "Reglas propuestas por el equipo. No son oficiales."}
+          }
+        }
+      }
+    },
+    "evaluation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["task", "difficulty", "skill_id", "secondary_skill_ids", "problem_family_id", "language"],
+      "properties": {
+        "task": {"enum": ["problem_solving", "error_diagnosis", "hint_generation"]},
+        "difficulty": {"enum": ["basic", "intermediate", "advanced_in_grade"]},
+        "skill_id": {"type": "string", "pattern": "^[A-Z0-9-]+$"},
+        "secondary_skill_ids": {"type": "array", "items": {"type": "string", "pattern": "^[A-Z0-9-]+$"}},
+        "problem_family_id": {"type": "string", "pattern": "^FAM-(PIL|V1|EQV)-[0-9]{3,4}$"},
+        "language": {"const": "es-PA"}
+      }
+    },
+    "input": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["question", "student_work", "task_instruction"],
+      "properties": {
+        "question": {"type": "string", "minLength": 10},
+        "task_instruction": {"type": "string", "minLength": 10},
+        "student_work": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/studentWork"}]}
+      }
+    },
+    "ground_truth": {
+      "type": "object",
+      "required": ["problem_spec", "evaluation_method"]
+    },
+    "pedagogy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["learning_goal", "expected_behaviour", "rubric_id"],
+      "properties": {
+        "learning_goal": {"type": "string", "minLength": 5},
+        "expected_behaviour": {"type": ["string", "null"]},
+        "rubric_id": {"type": ["string", "null"], "pattern": "^RUBRIC-PED-v[0-9.]+$"}
+      }
+    },
+    "quality_control": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["automatically_verified", "human_reviewed", "curriculum_verified", "curriculum_verified_basis", "status"],
+      "properties": {
+        "automatically_verified": {"type": "boolean"},
+        "human_reviewed": {"type": "boolean"},
+        "curriculum_verified": {"type": "boolean"},
+        "curriculum_verified_basis": {"type": "string"},
+        "status": {"enum": ["draft", "auto_verified", "teacher_reviewed", "rejected"]}
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["generator_version", "seed", "template_id", "original_problem"],
+      "properties": {
+        "generator_version": {"type": "string"},
+        "seed": {"type": "integer"},
+        "template_id": {"type": "string"},
+        "original_problem": {"const": true}
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"evaluation": {"properties": {"task": {"const": "problem_solving"}}}}},
+      "then": {
+        "properties": {
+          "input": {"properties": {"student_work": {"type": "null"}}},
+          "ground_truth": {
+            "required": ["problem_spec", "answer", "solution_steps", "acceptable_alternatives", "expected_error", "evaluation_method"],
+            "properties": {
+              "answer": {"$ref": "#/$defs/typedAnswer"},
+              "solution_steps": {"type": "array", "items": {"type": "string"}, "minItems": 2},
+              "acceptable_alternatives": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+              "expected_error": {"type": "null"}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {"properties": {"evaluation": {"properties": {"task": {"const": "error_diagnosis"}}}}},
+      "then": {
+        "properties": {
+          "input": {"properties": {"student_work": {"$ref": "#/$defs/studentWork"}}},
+          "pedagogy": {"properties": {"expected_behaviour": {"type": "string"}, "rubric_id": {"type": "string"}}},
+          "ground_truth": {
+            "required": ["problem_spec", "correct_answer", "student_answer_is_correct", "error", "solution_steps", "evaluation_method"],
+            "properties": {
+              "correct_answer": {"$ref": "#/$defs/typedAnswer"},
+              "student_answer_is_correct": {"type": "boolean"},
+              "error": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/errorRecord"}]},
+              "solution_steps": {"type": "array", "items": {"type": "string"}, "minItems": 2}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {"properties": {"evaluation": {"properties": {"task": {"const": "hint_generation"}}}}},
+      "then": {
+        "properties": {
+          "input": {"properties": {"student_work": {"$ref": "#/$defs/studentWork"}}},
+          "pedagogy": {"properties": {"expected_behaviour": {"type": "string"}, "rubric_id": {"type": "string"}}},
+          "ground_truth": {
+            "required": ["problem_spec", "correct_answer", "error", "observable_difficulty", "forbidden_reveals", "hint_requirements", "reference_hint", "reference_hint_note", "evaluation_method"],
+            "properties": {
+              "correct_answer": {"$ref": "#/$defs/typedAnswer"},
+              "error": {"$ref": "#/$defs/errorRecord"},
+              "observable_difficulty": {"type": "string", "minLength": 10},
+              "forbidden_reveals": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["numbers", "patterns"],
+                "properties": {"numbers": {"type": "array", "items": {"type": "integer"}}, "patterns": {"type": "array", "items": {"type": "string"}}}
+              },
+              "hint_requirements": {"type": "array", "items": {"type": "string"}, "minItems": 2},
+              "reference_hint": {"type": "string", "minLength": 20},
+              "reference_hint_note": {"type": "string"}
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "typedAnswer": {
+      "oneOf": [
+        {"type": "object", "additionalProperties": false, "required": ["type", "value"],
+         "properties": {"type": {"const": "integer"}, "value": {"type": "integer"}}},
+        {"type": "object", "additionalProperties": false, "required": ["type", "quotient", "remainder"],
+         "properties": {"type": {"const": "quotient_remainder"}, "quotient": {"type": "integer"}, "remainder": {"type": "integer", "minimum": 1}}},
+        {"type": "object", "additionalProperties": false, "required": ["type", "value"],
+         "properties": {"type": {"const": "ordinal"}, "value": {"type": "integer", "minimum": 1, "maximum": 50}}},
+        {"type": "object", "additionalProperties": false, "required": ["type", "value"],
+         "properties": {"type": {"const": "decomposition"}, "value": {"type": "array", "items": {"type": "integer", "minimum": 1}, "minItems": 1}}},
+        {"type": "object", "additionalProperties": false, "required": ["type", "value"],
+         "properties": {"type": {"const": "symbol"}, "value": {"enum": ["<", ">", "="]}}},
+        {"type": "object", "additionalProperties": false, "required": ["type", "numerator", "denominator"],
+         "properties": {"type": {"const": "fraction"}, "numerator": {"type": "integer", "minimum": 1}, "denominator": {"type": "integer", "minimum": 2}}},
+        {"type": "object", "additionalProperties": false, "required": ["type", "value"],
+         "properties": {"type": {"const": "label"}, "value": {"enum": ["propia", "impropia"]}}},
+        {"type": "object", "additionalProperties": false, "required": ["type", "value"],
+         "properties": {"type": {"const": "yes_no"}, "value": {"enum": ["sí", "no"]}}}
+      ]
+    },
+    "studentWork": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["answer_text", "procedure", "final_answer"],
+      "properties": {
+        "answer_text": {"type": "string", "minLength": 3},
+        "procedure": {"type": ["array", "null"], "items": {"type": "string"}},
+        "final_answer": {"$ref": "#/$defs/studentFinal"}
+      }
+    },
+    "studentFinal": {
+      "oneOf": [
+        {"type": "object", "additionalProperties": false, "required": ["type", "value"],
+         "properties": {"type": {"const": "integer"}, "value": {"type": "integer"}}},
+        {"type": "object", "additionalProperties": false, "required": ["type", "quotient", "remainder"],
+         "properties": {"type": {"const": "quotient_remainder"}, "quotient": {"type": "integer"}, "remainder": {"type": "integer"}}},
+        {"type": "object", "additionalProperties": false, "required": ["type", "value"],
+         "properties": {"type": {"const": "decomposition"}, "value": {"type": "array", "items": {"type": "integer"}}}},
+        {"type": "object", "additionalProperties": false, "required": ["type", "value"],
+         "properties": {"type": {"const": "symbol"}, "value": {"enum": ["<", ">", "="]}}},
+        {"type": "object", "additionalProperties": false, "required": ["type", "value"],
+         "properties": {"type": {"const": "ordinal"}, "value": {"type": "integer", "minimum": 1}}},
+        {"type": "object", "additionalProperties": false, "required": ["type", "numerator", "denominator"],
+         "properties": {"type": {"const": "fraction"}, "numerator": {"type": "integer", "minimum": 0}, "denominator": {"type": "integer", "minimum": 1}}},
+        {"type": "object", "additionalProperties": false, "required": ["type", "value"],
+         "properties": {"type": {"const": "label"}, "value": {"enum": ["propia", "impropia"]}}},
+        {"type": "object", "additionalProperties": false, "required": ["type", "value"],
+         "properties": {"type": {"const": "yes_no"}, "value": {"enum": ["sí", "no"]}}}
+      ]
+    },
+    "errorRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["category", "subtype", "description", "location", "alternative_explanations", "explanation_ambiguity"],
+      "properties": {
+        "category": {"enum": ["calculation_error", "operation_confusion", "place_value_error", "procedural_error", "problem_misinterpretation", "concept_error"],
+                     "description": "Taxonomía propuesta por el benchmark. No es de MEDUCA."},
+        "subtype": {"type": "string"},
+        "description": {"type": "string", "minLength": 10},
+        "location": {"type": "string"},
+        "alternative_explanations": {"type": "array", "items": {"type": "string"}, "description": "Hipótesis alternativas, no hechos."},
+        "explanation_ambiguity": {"enum": ["low", "high"]}
+      }
+    }
+  }
+}

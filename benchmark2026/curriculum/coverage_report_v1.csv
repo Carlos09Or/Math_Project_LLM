@@ -1,0 +1,22 @@
+﻿skill_id,matrix_rows,official_pages,status,n_items,problem_solving,error_diagnosis,hint_generation,basic,intermediate,advanced_in_grade,families,diagnosis_controls,items_involving_zero
+NAT-READ-WRITE,AR-01,188-190,True,6,2,2,2,0,3,3,2,0,6
+NAT-SKIP-COUNT,AR-01,190,True,6,2,2,2,3,3,0,2,0,6
+NAT-ORDER-COMPARE,AR-02,191,True,9,3,3,3,3,3,3,3,0,9
+NAT-PLACE-VALUE,AR-03,192-193,True,12,4,4,4,3,6,3,4,0,12
+ADD-4DIG,AR-04,193-194,True,16,5,6,5,7,5,4,7,2,7
+ADD-PROPERTIES,AR-04,194,True,6,2,2,2,3,3,0,2,0,6
+SUB-10K,AR-05,194-195,True,16,5,6,5,7,5,4,7,2,7
+SUB-CHECK-REINTEGRATIVE,AR-05,194-195,True,2,2,0,0,0,1,1,2,0,0
+MUL-TABLES-1-12,AR-06,195-196,True,16,5,5,6,7,5,4,7,1,0
+MUL-POW10,AR-06,196,True,9,3,3,3,3,3,3,3,0,9
+MUL-TENS,AR-06,196,pending_interpretation,0,0,0,0,0,0,0,0,0,0
+DIV-EXACT,AR-07,197,True,9,3,3,3,3,3,3,3,0,9
+DIV-INEXACT,AR-07,197,True,14,4,5,5,6,4,4,6,1,6
+DIV-POW10,AR-07,197,True,10,4,3,3,4,3,3,4,0,10
+DIV-CHECK-REINTEGRATIVE,AR-07,197,True,1,1,0,0,0,0,1,1,0,0
+COMBINED-OPS,AR-04; AR-05; AR-06; AR-07,197,True,12,4,4,4,0,7,5,5,1,7
+ORD-1-50,AR-08,198-199,True,8,3,2,3,3,3,2,3,0,0
+FRAC-REPR-CLASSIFY,AR-09,199,True,8,2,3,3,5,3,0,3,0,0
+FRAC-COMPARE-HOMOG,AR-10,200,True,9,3,3,3,3,4,2,4,1,0
+FRAC-ADDSUB-HOMOG,AR-11,201,True,11,3,4,4,4,4,3,5,1,0
+FRAC-EQUIV,AR-12,201-202,pilot_only,0,0,0,0,0,0,0,0,0,0

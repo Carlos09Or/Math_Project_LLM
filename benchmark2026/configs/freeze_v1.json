@@ -1,0 +1,96 @@
+{
+  "freeze_version": 1,
+  "frozen_on": "2026-11-14",
+  "dataset": {
+    "name": "benchmark_v1",
+    "n_items": 180,
+    "generator_version": "0.2.0",
+    "seed": 2026,
+    "schema_version": "0.1",
+    "constraints_version": "0.3",
+    "prompts_version": "prompts-v1.0"
+  },
+  "files": {
+    "data/benchmark_v1.jsonl": {
+      "sha256": "51efbbfb3f97d69cfa713428036c6dcd28ca2d3e3394b551f843e3780d5fd39e",
+      "bytes": 470008
+    },
+    "data/pilot.jsonl": {
+      "sha256": "e1993e11ba0a530aa6fbb6de0ae072878333b40b3ed0659ac596cd7168968e3d",
+      "bytes": 39538
+    },
+    "data/pilot_fractions.jsonl": {
+      "sha256": "8a6872bb4a18992dc2e47dd29201be0c594d05bdabf1b28a141b7d128295c88d",
+      "bytes": 21765
+    },
+    "data/pilot_equiv.jsonl": {
+      "sha256": "1f965621cc7e28f23606b1093e2a0bffce6ebe8538f0ef7f5b67b40d55325215",
+      "bytes": 20978
+    },
+    "curriculum/curriculum_matrix.csv": {
+      "sha256": "ca62a2ba3aa7c710be28e91de1362cb468ab0f34a425649c5b3354f4961ac5f6",
+      "bytes": 26820
+    },
+    "curriculum/skill_constraints.json": {
+      "sha256": "6a2f3e5dc020ff62f82309f201f5817d1362c2fed1bae39c214ec5521aaf7f7d",
+      "bytes": 29461
+    },
+    "schemas/benchmark.schema.json": {
+      "sha256": "c8416e879d9af496ebe080e9df089b8293af763a403cf1b17e4bd32cdb17058e",
+      "bytes": 13164
+    },
+    "configs/evaluation.yaml": {
+      "sha256": "3ae171f8912d7a48e51044e034f5c0072849f4c5760cb00b220eaff8f236291f",
+      "bytes": 1280
+    },
+    "configs/prompts.yaml": {
+      "sha256": "43f9649ac8c9366d0e070401e87ebac34f387ffa404022221156e72bf6892208",
+      "bytes": 2118
+    },
+    "docs/pedagogical_rubric.md": {
+      "sha256": "4be495bbb20af796d9a3d0d9ef610585d77bc90b6f90f4833ee517b186ad8685",
+      "bytes": 10317
+    },
+    "src/generate_dataset.py": {
+      "sha256": "941d057eb13e2b5d14d196ddbbfc5945d6853a6c7538304304240d98900931d0",
+      "bytes": 17593
+    },
+    "src/pilot_v01.py": {
+      "sha256": "96aee0c43a25c644b55f108f0d508e549d9aaa05b1e1efacd7e5a60fd8ca26d8",
+      "bytes": 23961
+    },
+    "src/families.py": {
+      "sha256": "f522851f4e82a64c318a406442e41913fa1e1e9c325855330fc5b4cadb2bdac8",
+      "bytes": 41485
+    },
+    "src/error_rules.py": {
+      "sha256": "e5862ab4b878eab2dd4752fa93201ee0a39389cd1e1744685e745480caa3e5ec",
+      "bytes": 14595
+    },
+    "src/math_core.py": {
+      "sha256": "8b0fadde85a8fd8859b2492ce752ccaadde06f288ab5708e611dd420848d36cf",
+      "bytes": 12598
+    },
+    "src/constraints.py": {
+      "sha256": "e758b7261382c09d90b0187650f310f5e53810243bea41d610ce8f95629405ac",
+      "bytes": 12835
+    },
+    "src/score_math.py": {
+      "sha256": "ee1d0d8b684d65abc46adab02bb2d01f4360372fc514253aab3a574340b06a55",
+      "bytes": 16836
+    },
+    "src/independent_check.py": {
+      "sha256": "029291648bae7888360932a99ecb58a346fde1779ae76cbe07665d066287a81d",
+      "bytes": 14587
+    },
+    "src/validate_dataset.py": {
+      "sha256": "f73cfd79b5d65b6c6d2093f1e0a0e488f9d40335c923576a7f07089a5d3fc9d9",
+      "bytes": 18493
+    },
+    "src/prompts.py": {
+      "sha256": "7183d3606685d8991a01834391154ab36555d89d163d430c23d511bcc7281d3e",
+      "bytes": 1875
+    }
+  },
+  "note": "Congelado antes de ejecutar modelos. Cualquier cambio exige regenerar, revalidar y volver a congelar con una nueva versión."
+}

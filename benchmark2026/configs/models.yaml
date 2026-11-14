@@ -1,0 +1,30 @@
+# Modelos y servidor de Ollama. No se congela: cada corrida registra el modelo, su digest y la versión de Ollama.
+ollama:
+  # Ollama escucha por defecto en 11434. Si usas un segundo `ollama serve` con otra carpeta de modelos
+  # (por ejemplo, en el puerto 11435), cambia el host aquí. El motor solo se conecta a localhost.
+  host: http://127.0.0.1:11435
+  request_timeout_s: 600
+
+models:
+  - id: qwen3-0.6b-q4_K_M
+    ollama_name: qwen3:0.6b-q4_K_M      # ajusta al nombre exacto de `ollama list`
+    expected_quantization: Q4_K_M       # se compara con lo que informa Ollama; no se asume
+  - id: qwen3-0.6b-q8_0
+    ollama_name: qwen3:0.6b-q8_0
+    expected_quantization: Q8_0
+  - id: qwen3-0.6b-fp16
+    ollama_name: qwen3:0.6b-fp16
+    expected_quantization: F16          # Ollama informa FP16 como F16
+  # Fase F5 (extensión de modelos), principales. Etiquetas con cuantización explícita.
+  - id: qwen3-1.7b-q4_K_M
+    ollama_name: qwen3:1.7b-q4_K_M
+    expected_quantization: Q4_K_M
+  - id: gemma3-1b-q4_K_M
+    ollama_name: gemma3:1b-it-q4_K_M
+    expected_quantization: Q4_K_M
+  - id: smollm3-3b-q4_K_M
+    ollama_name: hf.co/ggml-org/SmolLM3-3B-GGUF:Q4_K_M
+    expected_quantization: Q4_K_M
+  - id: phi4-mini-3.8b-q4_K_M
+    ollama_name: phi4-mini:3.8b-q4_K_M
+    expected_quantization: Q4_K_M
