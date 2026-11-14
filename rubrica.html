@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Rúbrica · Tutoría matemática offline</title>
+<meta name="description" content="Rúbrica de revisión humana (borrador): criterios 0–2 con ejemplos ancla reales del modelo y el procedimiento de revisión ciega.">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/tests.css">
+</head>
+<body>
+<header class="site"><div class="wrap">
+  <a class="brand" href="index.html">Tutoría matemática offline</a>
+  <nav aria-label="Principal"><a href="index.html">Inicio</a><a href="pruebas.html">Pruebas</a><a href="dataset.html">Dataset</a><a href="rubrica.html">Rúbrica</a><a href="fuentes.html">Fuentes</a><a href="metodologia.html">Metodología</a><a href="hoja-de-ruta.html">Hoja de ruta</a></nav>
+</div></header>
+
+<main class="wrap">
+  <h1>Rúbrica de revisión humana</h1>
+  <p class="lead">El corrector automático solo puede comprobar si la respuesta es exacta, si el veredicto es correcto y si la pista contiene el resultado. <strong>Esta rúbrica es para lo que solo una persona puede juzgar:</strong> si un diagnóstico ubica bien el error, si una pista ayuda sin regalar la respuesta, si no valida algo falso y si un niño de 3.er grado lo entendería.</p>
+  <div class="banner"><strong>Borrador, sin validación docente.</strong> Se fija <em>antes</em> de revisar la muestra del piloto. 15 de sus 33 ejemplos son sintéticos (los escribió el autor, no son respuestas de un modelo) y las respuestas reales vienen de 3 problemas de la partición <code>dev</code>, <strong>nunca de <code>pilot</code></strong>.</div>
+
+  <div class="grid" id="rb-kpis"></div>
+
+  <h2>Cómo se usa</h2>
+  <ol>
+    <li><strong>Escala 0–2 por criterio.</strong> No se suma un total: cada criterio se reporta por separado.</li>
+    <li><strong>Los criterios son independientes.</strong> Una pista puede ser perfecta en «no revela el resultado» y pésima en «ayuda» y en «no valida lo falso»: no se compensan.</li>
+    <li><strong>Revisión ciega:</strong> no sabes qué precisión produjo cada respuesta. Sí ves el enunciado, la respuesta del estudiante, la correcta y el error observable.</li>
+    <li><strong>«NA» cuando no puedes juzgar.</strong> No se rellena con 1. Ante la duda entre dos niveles, el menor, y anota la duda.</li>
+    <li><strong>No hay LLM como juez.</strong> El código puntúa lo mecánico; tú, lo demás.</li>
+  </ol>
+
+  <h2>Qué se puntúa en cada tipo de respuesta</h2>
+  <div class="table-wrap"><table id="rb-tasks"><thead><tr><th>Respuesta</th><th>Criterios que puntúas</th><th>Nº</th></tr></thead></table></div>
+
+  <h2>Los criterios, con sus ejemplos ancla</h2>
+  <div class="filters"><label>Mostrar<select id="rb-filter"></select></label></div>
+  <div class="tests" id="rb-criteria"></div>
+
+  <h2>Procedimiento (resumen)</h2>
+  <ol>
+    <li><strong>Calibración antes del piloto:</strong> puntúas las 27 respuestas reales de <code>dev</code> sin mirar los anclas. Si coincides menos del 80 % por criterio, se discute y se ajusta (versión 0.2). Esas respuestas no entran en el análisis.</li>
+    <li><strong>Muestra (propuesta, pendiente del mentor):</strong> 9 problemas del piloto (por operación: 2 con error y 1 control) × 3 tareas × 3 precisiones = <strong>81 respuestas</strong>, unas 3,6 horas. Los mismos problemas en las tres precisiones, para comparar de forma emparejada.</li>
+    <li><strong>Hoja ciega:</strong> orden aleatorio, identificadores opacos, sin modelo ni precisión; la clave se guarda aparte.</li>
+    <li><strong>Doble anotación:</strong> un segundo evaluador, idealmente docente de primaria, puntúa al menos un tercio. Se reporta acuerdo exacto, acuerdo ±1 y kappa ponderado (con la advertencia de que con ~27 respuestas es inestable) y la tabla de desacuerdos.</li>
+    <li><strong>Congelación:</strong> la rúbrica no cambia mientras revisas la muestra; un cambio posterior es una versión nueva.</li>
+  </ol>
+  <p>El procedimiento completo, los casos difíciles y las limitaciones están en <a href="https://github.com/Carlos09Or/Math_Project_LLM/blob/main/docs/rubric_v0.1.md"><code>docs/rubric_v0.1.md</code></a>. La fuente de los criterios y ejemplos es <a href="https://github.com/Carlos09Or/Math_Project_LLM/blob/main/dataset/rubric/rubric_v0.1.json"><code>dataset/rubric/rubric_v0.1.json</code></a>.</p>
+
+  <h2>Limitaciones</h2>
+  <ul>
+    <li>Sin validación docente. Los ejemplos sintéticos no son respuestas de modelos.</li>
+    <li>Los ejemplos reales usan el prompt <code>prompt-v0.3</code>, no el congelado: ilustran calidad, no formato. No hay ejemplos reales de controles.</li>
+    <li>11 criterios es mucho y varios se solapan (por ejemplo, «da por correcta una respuesta errónea» aparece en M1, H3 y D1). Tras la calibración puede convenir fusionar alguno.</li>
+    <li>No mide si una pista funciona de verdad con un niño: eso exigiría un estudio con estudiantes, con consentimiento y evaluación ética.</li>
+  </ul>
+</main>
+
+<footer class="site"><div class="wrap">Borrador de trabajo · sin resultados científicos · <a href="https://github.com/Carlos09Or/Math_Project_LLM">repositorio en GitHub</a></div></footer>
+<script src="assets/data/project_rubric.js"></script>
+<script src="assets/app.js"></script>
+<script src="assets/rubric.js"></script>
+</body>
+</html>

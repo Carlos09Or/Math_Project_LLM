@@ -11,7 +11,7 @@ Investigación sobre cómo cambian la exactitud, el diagnóstico de errores y la
 | `index.html`, `pruebas.html`, `piloto.html`… `assets/` | Sitio web estático: catálogo de pruebas, piloto con herramienta de revisión humana, ajuste de formato, capacidad de la GPU, dataset, fuentes y hoja de ruta (sin dependencias ni compilación) |
 | `results/` | **Evidencia cruda de cada prueba** (rutas locales redactadas); ver `results/README.md` |
 | `docs/` | Documentos de trabajo: trazabilidad, auditoría, fuentes verificadas, diseño del dataset, protocolo v0.2, hoja de ruta, informe de la prueba de humo |
-| `dataset/` | Borrador del dataset: 90 ítems (30 problemas base × resolver, diagnosticar y dar una pista), generador, validador y pruebas |
+| `dataset/` | Borrador del dataset: 90 ítems (30 problemas base × resolver, diagnosticar y dar una pista), generador, validador, pruebas y la **rúbrica de revisión humana** (`dataset/rubric/`) |
 | `runner/` | Runner v0.3 contra Ollama local: ejecución en secuencia, calentamiento y repeticiones, corrector determinista, informe del piloto y pruebas |
 | `tools/` | `build_site_data.py` (datos del sitio desde `results/`), `publish_results.py` (publica resultados saneados), `gpu_capacity.py` (medición de la GPU), `decide_prompt_format.py` (regla de decisión del prompt) |
 

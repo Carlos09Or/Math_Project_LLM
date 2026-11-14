@@ -185,6 +185,7 @@ def main():
     items = build_items()
     runs = build_runs()
     js('PROJECT_TESTS', build_tests())
+    js('PROJECT_RUBRIC', load_json(ROOT / 'dataset' / 'rubric' / 'rubric_v0.1.json'))
     print(f'items: {len(items)} | corridas de humo: {len(runs)} | pruebas: gpu, formato (2 rondas), piloto -> {OUT}')
     return 0
 

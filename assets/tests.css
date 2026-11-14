@@ -69,3 +69,10 @@ details > summary { font-weight: 600; margin: 8px 0; }
 
 /* Las huellas SHA-256 (64 caracteres sin espacios) no deben ensanchar la página en móvil */
 code { overflow-wrap: anywhere; word-break: break-word; }
+
+/* Rúbrica: descriptores por nivel */
+.levels { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 10px 0; }
+.lv { border: 1px solid var(--line); border-top: 4px solid var(--line); border-radius: 8px; padding: 8px 12px; background: var(--surface); }
+.lv p { margin: 4px 0 0; font-size: .92rem; }
+.lv.lv2 { border-top-color: var(--ok); } .lv.lv1 { border-top-color: var(--warn); } .lv.lv0 { border-top-color: var(--bad); }
+@media (max-width: 720px) { .levels { grid-template-columns: 1fr; } }
