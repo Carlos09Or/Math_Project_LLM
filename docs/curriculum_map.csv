@@ -1,0 +1,14 @@
+competency_id,edition,doc_id,topic,summary_paraphrase,number_range,page_printed,page_pdf,status,notes
+A3-NUM-24,2024,M-2024,Numeracion y valor posicional,Lee escribe compone descompone compara y ordena naturales; semirrecta; orden,menor que 1 000 000,174-183,176-185,pending_validation,Objetivos de grado 1-2 (p.174) y contenidos 1-6 (pp.176-182)
+A3-ADD-24,2024,M-2024,Adicion,Terminos propiedades y solucion llevando y sin llevar; problemas,totales menores que 1 000 000; hasta 3 sumandos con al menos uno de 6 cifras,184-187,186-189,pending_validation,Seccion 8.1
+A3-SUB-24,2024,M-2024,Sustraccion,Terminos; calculo sin pedir y pidiendo prestado; propiedad reintegrativa; problemas,minuendos menores que 1 000 000,186-189,188-191,pending_validation,Seccion 8.2; candidata del piloto
+A3-MUL-24,2024,M-2024,Multiplicacion,Terminos; tablas 10-12; por 10 100 1000; por decenas completas; 4 cifras por 2 o 3 digitos; problemas,productos menores que 1 000 000,188-193,190-195,pending_validation,Seccion 8.3; candidata del piloto
+A3-DIV-24,2024,M-2024,Division,Concepto terminos exacta e inexacta; entre 10 100 1000; dividendos hasta 3 cifras y divisores de 1 o 2 cifras; propiedad reintegrativa,dividendo hasta 3 cifras; divisor de 1 o 2 cifras,192-197,194-199,pending_validation,Seccion 8.4; candidata del piloto
+A3-FRAC-24,2024,M-2024,Fracciones,Tipos de fracciones; numeros mixtos; conversion; semirrecta,denominadores menores o iguales a 10,198-203,200-205,pending_validation,Fuera del piloto; alcance de operaciones no leido completo
+A3-NUM-14,2014,M-2014,Numeracion y valor posicional,Valor posicional composicion descomposicion orden,hasta 100 000 (objetivo de grado); 10 000 en objetivo de aprendizaje,148-152,153-157,pending_validation,Inconsistencia interna del documento en el rango
+A3-ADD-14,2014,M-2014,Adicion,Propiedades; adiciones llevando y sin llevar,sumandos de 5 cifras,153,158,pending_validation,
+A3-SUB-14,2014,M-2014,Sustraccion,Terminos; sin pedir y pidiendo; propiedad reintegrativa,minuendo de 5 y 6 cifras,154-155,159-160,pending_validation,
+A3-MUL-14,2014,M-2014,Multiplicacion,Tablas del 6 al 9; por 10 y 100; 4 cifras por 2 o 3 digitos,productos menores o iguales a 100 000,155-156,160-161,pending_validation,
+A3-DIV-14,2014,M-2014,Division,Terminos; exacta e inexacta; dividendo de 3 cifras con cero en las decenas entre 1 cifra; propiedad reintegrativa,dividendo de 3 cifras; divisor de 1 cifra,157-158,162-163,pending_validation,
+A3-ADDSUB-17,2017,M-2017,Adicion y sustraccion,Aprendizaje fundamental con evidencias; problemas de 1 y 2 pasos,hasta 5 cifras (99 999),26,26,pending_validation,Version para validacion; el numero de pagina impresa coincide con el PDF
+A3-MULDIV-17,2017,M-2017,Multiplicacion y division,Suma repetida y resta reiterada; problemas de un paso,naturales de hasta tres cifras,27,27,pending_validation,Version para validacion

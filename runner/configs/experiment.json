@@ -1,0 +1,13 @@
+{
+  "protocol_version": "pilot-v0.2",
+  "prompt_version": "prompt-v0.2",
+  "grade": 3,
+  "language": "es-PA",
+  "temperature": 0,
+  "seed": 42,
+  "num_ctx": 2048,
+  "num_predict": 256,
+  "disable_thinking_for_qwen3": true,
+  "offline": true,
+  "notes": "Smoke test v0.2: una pasada sin calentamiento; no es evidencia estadistica. 'offline' es declarativo: el modo sin red se comprueba aparte. Las repeticiones y el calentamiento se anaden en F3."
+}

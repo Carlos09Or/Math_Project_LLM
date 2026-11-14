@@ -1,0 +1,12 @@
+family,model,ollama_tag,distribution,source,license_note
+Qwen3,0.6B,qwen3:0.6b-q4_K_M,official,https://ollama.com/library/qwen3/tags,Apache-2.0
+Qwen3,0.6B,qwen3:0.6b-q8_0,official,https://ollama.com/library/qwen3/tags,Apache-2.0
+Qwen3,0.6B,qwen3:0.6b-fp16,official,https://ollama.com/library/qwen3/tags,Apache-2.0
+Qwen3,1.7B,qwen3:1.7b-q4_K_M,official,https://ollama.com/library/qwen3/tags,Apache-2.0
+Gemma3,1B,gemma3:1b,official,https://ollama.com/library/gemma3,Google-Gemma-terms
+Llama3.2,1B,llama3.2:1b,official,https://ollama.com/library/llama3.2,Meta-Llama-community-license
+SmolLM3,3B,hf.co/ggml-org/SmolLM3-3B-GGUF:Q4_K_M,HuggingFace-GGUF,https://huggingface.co/ggml-org/SmolLM3-3B-GGUF,Apache-2.0
+Phi4-mini,3.8B,phi4-mini,official,https://ollama.com/library/phi4-mini,MIT
+DeepSeek-R1-distill,1.5B,deepseek-r1:1.5b,official,https://ollama.com/library/deepseek-r1,Check-base-model-conditions
+Qwen3,4B,qwen3:4b,official,https://ollama.com/library/qwen3,Apache-2.0
+Gemma3,270M,gemma3:270m,official,https://ollama.com/library/gemma3,Google-Gemma-terms

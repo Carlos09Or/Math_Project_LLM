@@ -1,0 +1,24 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "1) Pruebas del codigo (sin Ollama)",
+      "type": "shell",
+      "command": "python -I -m unittest discover -s tests -v",
+      "problemMatcher": [],
+      "group": "test"
+    },
+    {
+      "label": "2) Ver estado de red (no corre nada)",
+      "type": "shell",
+      "command": "powershell -ExecutionPolicy Bypass -File scripts/smoke_offline.ps1 -CheckOnly",
+      "problemMatcher": []
+    },
+    {
+      "label": "3) Smoke test SIN RED (9 items)",
+      "type": "shell",
+      "command": "powershell -ExecutionPolicy Bypass -File scripts/smoke_offline.ps1",
+      "problemMatcher": []
+    }
+  ]
+}

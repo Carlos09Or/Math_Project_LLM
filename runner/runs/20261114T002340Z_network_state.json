@@ -1,0 +1,63 @@
+{
+    "purpose":  "criterio 5 del Hito 1: ejecucion sin red",
+    "model":  "qwen3:0.6b-q4_K_M",
+    "host":  "http://127.0.0.1:11435",
+    "allow_online":  false,
+    "offline_before":  true,
+    "offline_after":  true,
+    "runner_exit_code":  0,
+    "before":  {
+                   "taken_utc":  "2026-11-14T00:23:33.0253729Z",
+                   "adapters":  [
+                                    {
+                                        "status":  "Disconnected",
+                                        "description":  "Intel(R) Wi-Fi 6 AX201 160MHz",
+                                        "name":  "Wi-Fi"
+                                    },
+                                    {
+                                        "status":  "Up",
+                                        "description":  "VirtualBox Host-Only Ethernet Adapter",
+                                        "name":  "Ethernet 3"
+                                    },
+                                    {
+                                        "status":  "Disconnected",
+                                        "description":  "Realtek PCIe GbE Family Controller",
+                                        "name":  "Ethernet"
+                                    },
+                                    {
+                                        "status":  "Disconnected",
+                                        "description":  "Bluetooth Device (Personal Area Network)",
+                                        "name":  "Conexión de red Bluetooth"
+                                    }
+                                ],
+                   "probe_1_1_1_1_443":  false,
+                   "probe_8_8_8_8_53":  false
+               },
+    "after":  {
+                  "taken_utc":  "2026-11-14T00:23:40.3193045Z",
+                  "adapters":  [
+                                   {
+                                       "status":  "Disconnected",
+                                       "description":  "Intel(R) Wi-Fi 6 AX201 160MHz",
+                                       "name":  "Wi-Fi"
+                                   },
+                                   {
+                                       "status":  "Up",
+                                       "description":  "VirtualBox Host-Only Ethernet Adapter",
+                                       "name":  "Ethernet 3"
+                                   },
+                                   {
+                                       "status":  "Disconnected",
+                                       "description":  "Realtek PCIe GbE Family Controller",
+                                       "name":  "Ethernet"
+                                   },
+                                   {
+                                       "status":  "Disconnected",
+                                       "description":  "Bluetooth Device (Personal Area Network)",
+                                       "name":  "Conexión de red Bluetooth"
+                                   }
+                               ],
+                  "probe_1_1_1_1_443":  false,
+                  "probe_8_8_8_8_53":  false
+              }
+}
