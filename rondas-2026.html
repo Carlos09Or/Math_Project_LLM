@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Rondas y ablación · Tutoría matemática offline</title>
+<meta name="description" content="Variabilidad entre rondas y ablación del diagnóstico: por qué los modelos pequeños dan por bueno el trabajo equivocado de un estudiante.">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/tests.css">
+<link rel="stylesheet" href="assets/bench2026.css">
+</head>
+<body>
+<header class="site"><div class="wrap">
+  <a class="brand" href="index.html">Tutoría matemática offline</a>
+  <nav aria-label="Principal"><a href="index.html">Inicio</a><a href="pruebas.html">Pruebas</a><a href="benchmark.html">Benchmark 2026</a><a href="resultados-2026.html">Resultados 2026</a><a href="rondas-2026.html" aria-current="page">Rondas y ablación</a><a href="dataset.html">Dataset 2024</a><a href="rubrica.html">Rúbrica</a><a href="fuentes.html">Fuentes</a><a href="metodologia.html">Metodología</a><a href="hoja-de-ruta.html">Hoja de ruta</a></nav>
+</div></header>
+
+<main class="wrap">
+  <h1>Rondas repetidas y ablación del diagnóstico</h1>
+  <p class="lead">Dos preguntas sobre los resultados de <a href="resultados-2026.html">Resultados 2026</a>: ¿cuánto varía un resultado de una ronda a otra? y ¿por qué los modelos pequeños dan por bueno un trabajo equivocado?</p>
+  <div class="banner"><strong>Resultados exploratorios, no evidencia científica.</strong> Una sola máquina, sin revisión humana de las explicaciones ni revisión docente. El plan, con las hipótesis y las reglas para comparar, se escribió <strong>antes</strong> de ver estos datos: <a href="https://github.com/Carlos09Or/Math_Project_LLM/blob/main/benchmark2026/docs/rounds_and_ablation_plan.md"><code>rounds_and_ablation_plan.md</code></a>. Las variantes de prompt son exploratorias y no sustituyen al benchmark congelado. Las comparaciones entre familias de modelos no son causales.</div>
+
+  <h2>1. Cuánto varía entre rondas</h2>
+  <p>Cada configuración se corrió tres veces con la configuración congelada (temperatura 0) y tres con muestreo (temperatura 0.7). Las siete configuraciones se intercalaron en cada ronda, en orden aleatorio, vaciando la GPU antes de cada modelo.</p>
+  <div id="r-rounds"></div>
+  <ul>
+    <li><strong>Con temperatura 0 casi no hay variación.</strong> Repetir con la configuración congelada aporta poco.</li>
+    <li><strong>Con muestreo, la resolución varía en los modelos pequeños.</strong> Una diferencia de 3 o 4 aciertos entre dos configuraciones cae dentro del ruido.</li>
+    <li>Los modelos más grandes son más consistentes: en Qwen3-1.7B, 47 de los 60 problemas se aciertan siempre con muestreo; en Qwen3-0.6B Q4_K_M, solo 23.</li>
+  </ul>
+  <h3>Estabilidad</h3>
+  <div id="r-stability"></div>
+  <p class="small">El veredicto del diagnóstico es casi idéntico incluso con muestreo: la tendencia a decir «correcto» no es ruido.</p>
+
+  <h2>2. Qué diferencias aguantan</h2>
+  <p>Las diferencias se calculan sobre las 73 familias de problemas (remuestreo por familia). Una ✔ marca una diferencia «clara» según la regla fijada en el plan: supera dos desviaciones entre rondas y su intervalo no incluye 0. Los números son ítems de 60. Pasa el cursor sobre una celda para ver el intervalo.</p>
+  <div id="r-compare"></div>
+  <ul>
+    <li><strong>Tamaño dentro de Qwen3:</strong> el 1.7B supera claramente al 0.6B en resolución y en diagnóstico.</li>
+    <li><strong>Cuantización del 0.6B:</strong> no cambia la resolución, pero <strong>Q4_K_M detecta menos errores que Q8_0 y FP16</strong> (3 de 51 frente a 9 de 51, consistente en las seis rondas). Q8_0 y FP16 son idénticos. La diferencia absoluta es pequeña.</li>
+    <li><strong>Diagnóstico entre familias:</strong> Phi-4-mini y SmolLM3 diagnostican claramente mejor que Qwen3-1.7B, aunque este último resuelve igual o mejor.</li>
+  </ul>
+
+  <h2>3. Por qué dan por bueno el trabajo equivocado</h2>
+  <p>Se probaron dos variantes del prompt de diagnóstico, además del prompt congelado. «Resolver primero» le pide al modelo que resuelva el problema antes de opinar. «Con la respuesta dada» le entrega la respuesta correcta y le pide compararla con la del estudiante. La tabla muestra los <strong>errores detectados de 51</strong>.</p>
+  <div id="r-ablation"></div>
+  <p class="small">Gemma 3 1B tuvo errores de formato con la respuesta dada (18 de 60), por lo que su fila no es interpretable.</p>
+  <h3>Contra lo que se predijo</h3>
+  <ul>
+    <li><strong>H1, «saben la respuesta y no la usan»:</strong> la predicción era que con la respuesta dada el acierto subiría a 80 % o más en la mayoría. <strong>Solo se cumple en 3 de 7</strong> (Qwen3-1.7B, SmolLM3 y Phi-4-mini). Para ellos fallar es un problema de verificar, no de saber. Los modelos de 0.6B y Gemma no comparan ni con la respuesta a la vista.</li>
+    <li><strong>H2, brecha de verificación:</strong> los modelos pequeños aceptan el error aunque resolvieron bien ese problema (ver la tabla de abajo). No se cumple en SmolLM3 ni en Phi-4-mini.</li>
+    <li><strong>H3, la igualdad falsa a la vista no ayuda:</strong> se cumple. Detectan casi igual con una igualdad falsa escrita que sin ella.</li>
+    <li><strong>Resolver primero</strong> ayuda mucho a Qwen3-1.7B y a SmolLM3, no cambia a Phi-4-mini y <strong>empeora a los modelos de 0.6B</strong>.</li>
+    <li>Aun con la respuesta dada, acertar a la vez el veredicto y la categoría del error sigue siendo difícil (12 de 51 como máximo).</li>
+  </ul>
+  <h3>Brecha de verificación (primera pasada)</h3>
+  <div id="r-gap"></div>
+  <h3>Qué errores casi nadie ve</h3>
+  <p class="small">Detectados de todos los intentos, sumando las siete configuraciones. Cada barra es el porcentaje de veces que se marcó el trabajo como incorrecto.</p>
+  <div id="r-subtypes"></div>
+
+  <h2>Qué sugiere (interpretación, no un sistema probado)</h2>
+  <ul>
+    <li>Para un tutor sin conexión, un componente determinista que calcule la respuesta correcta y se la pase al modelo recuperaría casi toda la capacidad de detección en los modelos de 1.7B o más.</li>
+    <li>Los modelos de 0.6B y Gemma 3 1B no deberían decidir si el niño acertó.</li>
+    <li>La cuantización a 4 bits pasó desapercibida al resolver, pero no al detectar errores.</li>
+  </ul>
+
+  <h2>Límites</h2>
+  <ul>
+    <li>Una sola máquina y tres rondas por conjunto: la estimación de la variabilidad es débil.</li>
+    <li>Sin revisión humana de las explicaciones. Las categorías de error son una propuesta del benchmark.</li>
+    <li>Las variantes de prompt fueron probadas solo en la tarea de diagnóstico y no cambian el benchmark congelado.</li>
+    <li>El análisis completo está en <a href="https://github.com/Carlos09Or/Math_Project_LLM/blob/main/benchmark2026/docs/rounds_and_ablation_results.md"><code>rounds_and_ablation_results.md</code></a>.</li>
+  </ul>
+</main>
+
+<footer class="site"><div class="wrap">Borrador de trabajo · sin resultados científicos · <a href="https://github.com/Carlos09Or/Math_Project_LLM">repositorio en GitHub</a></div></footer>
+<script src="assets/data/benchmark2026.js"></script>
+<script src="assets/rondas2026.js"></script>
+</body>
+</html>
