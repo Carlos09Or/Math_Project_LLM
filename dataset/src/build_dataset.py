@@ -33,9 +33,9 @@ FIELDS = ['item_id', 'problem_base_id', 'grade', 'locale', 'topic', 'competency_
           'operation', 'operands', 'gold_answer_struct', 'student_answer_struct']
 
 
-def build_items():
+def build_items(bases=BASES):
     items = []
-    for base_id, comp, op, a, b, text, kind, split in BASES:
+    for base_id, comp, op, a, b, text, kind, split in bases:
         topic, page = CURRICULUM[comp]
         truth = g.solve(op, a, b)
         if kind == 'correct':

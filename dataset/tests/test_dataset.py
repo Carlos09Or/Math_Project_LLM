@@ -121,6 +121,43 @@ class DatasetCompleto(unittest.TestCase):
         self.assertIn('¿Cuántos', todo)
 
 
+class SondasDeFormato(unittest.TestCase):
+    def test_sondas_validas_y_disjuntas(self):
+        import format_probes as fp
+        items = bd.build_items(fp.PROBE_BASES)
+        self.assertEqual(len(items), 36)
+        self.assertEqual(vd.validate(items), [])
+        probe_ops = {(b[2], b[3], b[4]) for b in fp.PROBE_BASES}
+        real_ops = {(b[2], b[3], b[4]) for b in BASES}
+        self.assertEqual(probe_ops & real_ops, set())                       # ningún operando coincide con el dataset real
+        self.assertEqual({b[0] for b in fp.PROBE_BASES} & {b[0] for b in BASES}, set())
+        self.assertEqual({i['split'] for i in items}, {'dev'})
+        texts = {b[5] for b in BASES}
+        self.assertEqual({b[5] for b in fp.PROBE_BASES} & texts, set())
+
+
+    def test_sondas_ronda_2_nuevas_y_disjuntas(self):
+        import format_probes as fp
+        items = bd.build_items(fp.PROBE_BASES_R2)
+        self.assertEqual(len(items), 36)
+        self.assertEqual(vd.validate(items), [])
+        ops = lambda bs: {(b[2], b[3], b[4]) for b in bs}
+        self.assertEqual(ops(fp.PROBE_BASES_R2) & ops(BASES), set())
+        self.assertEqual(ops(fp.PROBE_BASES_R2) & ops(fp.PROBE_BASES), set())            # distintas de la ronda 1
+        self.assertEqual({b[0] for b in fp.PROBE_BASES_R2} & ({b[0] for b in BASES} | {b[0] for b in fp.PROBE_BASES}), set())
+        used = {b[5] for b in BASES} | {b[5] for b in fp.PROBE_BASES}
+        self.assertEqual({b[5] for b in fp.PROBE_BASES_R2} & used, set())
+        # los números de la RESPUESTA de los ejemplos de prompt-v0.5a (15; cociente 7, residuo 6) no deben coincidir con
+        # ninguna respuesta del dataset real ni de las sondas: un ejemplo igual a una respuesta podría «regalarla»
+        import generators as g
+        # La comparación es POR ROL: valor con valores, cociente con cocientes, residuo con residuos.
+        todas = list(BASES) + list(fp.PROBE_BASES) + list(fp.PROBE_BASES_R2)
+        sols = [g.solve(b[2], b[3], b[4]) for b in todas]
+        self.assertNotIn(15, {s['value'] for s in sols if 'value' in s})
+        self.assertNotIn(7, {s['quotient'] for s in sols if 'quotient' in s})
+        self.assertNotIn(6, {s['remainder'] for s in sols if 'remainder' in s})
+
+
 class Construccion(unittest.TestCase):
     def test_no_sobrescribe(self):
         with tempfile.TemporaryDirectory() as d:
