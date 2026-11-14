@@ -1,0 +1,105 @@
+{
+  "matrix_id": "20261114T005416Z_a7370f",
+  "started_utc": "2026-11-14T00:54:16.092171+00:00",
+  "finished_utc": "2026-11-14T00:55:23.835488+00:00",
+  "status": "completed",
+  "models": [
+    "qwen3:0.6b-q4_K_M",
+    "qwen3:0.6b-q8_0",
+    "qwen3:0.6b-fp16"
+  ],
+  "host": "http://127.0.0.1:11435",
+  "split": "dev",
+  "prompt_version": "prompt-v0.3",
+  "warmup": 1,
+  "repeats": 3,
+  "interleave": true,
+  "sequential": true,
+  "data": "items.jsonl",
+  "data_sha256": "49e0b23196045a6a99b856c591be272213655a1b01a906430ebbdc6f5c519f82",
+  "gpu_used_mib_at_start": 277,
+  "passes": [
+    {
+      "model": "qwen3:0.6b-q4_K_M",
+      "warmup": 1,
+      "repeats": 1,
+      "rep_start": 1,
+      "output": "20261114T005416Z_a7370f_qwen3_0_6b_q4_K_M_rep1.jsonl",
+      "exit_code": 0,
+      "message": null
+    },
+    {
+      "model": "qwen3:0.6b-q8_0",
+      "warmup": 1,
+      "repeats": 1,
+      "rep_start": 1,
+      "output": "20261114T005416Z_a7370f_qwen3_0_6b_q8_0_rep1.jsonl",
+      "exit_code": 0,
+      "message": null
+    },
+    {
+      "model": "qwen3:0.6b-fp16",
+      "warmup": 1,
+      "repeats": 1,
+      "rep_start": 1,
+      "output": "20261114T005416Z_a7370f_qwen3_0_6b_fp16_rep1.jsonl",
+      "exit_code": 0,
+      "message": null
+    },
+    {
+      "model": "qwen3:0.6b-q8_0",
+      "warmup": 0,
+      "repeats": 1,
+      "rep_start": 2,
+      "output": "20261114T005416Z_a7370f_qwen3_0_6b_q8_0_rep2.jsonl",
+      "exit_code": 0,
+      "message": null
+    },
+    {
+      "model": "qwen3:0.6b-fp16",
+      "warmup": 0,
+      "repeats": 1,
+      "rep_start": 2,
+      "output": "20261114T005416Z_a7370f_qwen3_0_6b_fp16_rep2.jsonl",
+      "exit_code": 0,
+      "message": null
+    },
+    {
+      "model": "qwen3:0.6b-q4_K_M",
+      "warmup": 0,
+      "repeats": 1,
+      "rep_start": 2,
+      "output": "20261114T005416Z_a7370f_qwen3_0_6b_q4_K_M_rep2.jsonl",
+      "exit_code": 0,
+      "message": null
+    },
+    {
+      "model": "qwen3:0.6b-fp16",
+      "warmup": 0,
+      "repeats": 1,
+      "rep_start": 3,
+      "output": "20261114T005416Z_a7370f_qwen3_0_6b_fp16_rep3.jsonl",
+      "exit_code": 0,
+      "message": null
+    },
+    {
+      "model": "qwen3:0.6b-q4_K_M",
+      "warmup": 0,
+      "repeats": 1,
+      "rep_start": 3,
+      "output": "20261114T005416Z_a7370f_qwen3_0_6b_q4_K_M_rep3.jsonl",
+      "exit_code": 0,
+      "message": null
+    },
+    {
+      "model": "qwen3:0.6b-q8_0",
+      "warmup": 0,
+      "repeats": 1,
+      "rep_start": 3,
+      "output": "20261114T005416Z_a7370f_qwen3_0_6b_q8_0_rep3.jsonl",
+      "exit_code": 0,
+      "message": null
+    }
+  ],
+  "redaction_note": "Rutas locales redactadas antes de publicar. El resto del contenido es el original; el SHA-256 de este archivo difiere del original, que se conserva en el equipo del investigador."
+}

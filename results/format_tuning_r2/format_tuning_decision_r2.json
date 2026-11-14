@@ -1,0 +1,67 @@
+{
+  "rule": {
+    "global_min": 0.9,
+    "division_min": 0.8,
+    "tie_pp": 3.0
+  },
+  "variants": {
+    "prompt-v0.4a": {
+      "records": 72,
+      "division_records": 24,
+      "format_rate": 0.8333333333333334,
+      "format_rate_division": 0.8333333333333334,
+      "format_rate_by_model": {
+        "qwen3:0.6b-fp16": 0.8333333333333334,
+        "qwen3:0.6b-q4_K_M": 0.75,
+        "qwen3:0.6b-q8_0": 0.9166666666666666
+      },
+      "unscored": 4,
+      "instruction_chars": 226,
+      "accuracy_informative": 0.6805555555555556
+    },
+    "prompt-v0.5a": {
+      "records": 72,
+      "division_records": 24,
+      "format_rate": 0.8055555555555556,
+      "format_rate_division": 0.4166666666666667,
+      "format_rate_by_model": {
+        "qwen3:0.6b-fp16": 0.8333333333333334,
+        "qwen3:0.6b-q4_K_M": 0.8333333333333334,
+        "qwen3:0.6b-q8_0": 0.75
+      },
+      "unscored": 2,
+      "instruction_chars": 365,
+      "accuracy_informative": 0.7638888888888888
+    },
+    "prompt-v0.5b": {
+      "records": 72,
+      "division_records": 24,
+      "format_rate": 0.9722222222222222,
+      "format_rate_division": 0.9166666666666666,
+      "format_rate_by_model": {
+        "qwen3:0.6b-fp16": 1.0,
+        "qwen3:0.6b-q4_K_M": 0.9166666666666666,
+        "qwen3:0.6b-q8_0": 1.0
+      },
+      "unscored": 0,
+      "instruction_chars": 193,
+      "accuracy_informative": 0.6666666666666666
+    },
+    "prompt-v0.5c": {
+      "records": 72,
+      "division_records": 24,
+      "format_rate": 0.8472222222222222,
+      "format_rate_division": 0.8333333333333334,
+      "format_rate_by_model": {
+        "qwen3:0.6b-fp16": 0.8333333333333334,
+        "qwen3:0.6b-q4_K_M": 0.8333333333333334,
+        "qwen3:0.6b-q8_0": 0.875
+      },
+      "unscored": 4,
+      "instruction_chars": 253,
+      "accuracy_informative": 0.7083333333333334
+    }
+  },
+  "chosen": "prompt-v0.5b",
+  "reason": "mayor tasa de formato entre las que cumplen los umbrales"
+}

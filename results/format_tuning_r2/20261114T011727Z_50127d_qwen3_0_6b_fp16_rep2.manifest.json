@@ -1,0 +1,170 @@
+{
+  "manifest_version": "manifest-v0.3",
+  "run_id": "b744a777",
+  "matrix_id": "20261114T011727Z_50127d",
+  "status": "completed",
+  "started_utc": "2026-11-14T01:18:30.952926+00:00",
+  "finished_utc": "2026-11-14T01:18:41.027538+00:00",
+  "args": {
+    "model": "qwen3:0.6b-fp16",
+    "host": "http://127.0.0.1:11435",
+    "limit": null,
+    "output": "runs_dev_r2\\20261114T011727Z_50127d_qwen3_0_6b_fp16_rep2.jsonl",
+    "split": "dev",
+    "tasks": [
+      "solve"
+    ]
+  },
+  "environment": {
+    "python": "3.12.6",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "machine": "AMD64",
+    "processor": "Intel64 Family 6 Model 154 Stepping 3, GenuineIntel",
+    "cpu_count": 20,
+    "runner_version": "runner-v0.3"
+  },
+  "gpu_before": {
+    "source": "measured_external(nvidia-smi)",
+    "taken_utc": "2026-11-14T01:18:31.100761+00:00",
+    "gpus": [
+      {
+        "name": "NVIDIA GeForce RTX 3060 Laptop GPU",
+        "memory_total_mib": "6144",
+        "memory_used_mib": "3633",
+        "driver_version": "581.42",
+        "temperature_c": "64"
+      }
+    ]
+  },
+  "ollama": {
+    "version": "0.40.16",
+    "model_tag": "qwen3:0.6b-fp16",
+    "model_digest": "626c9556a80fcb9c30ebd28292edf465ccda990282c5fb1e680d106d23bacc1c",
+    "show": {
+      "details": {
+        "parent_model": "sha256-bc2421370aa09f86eedd8e57e5b5ff3d1200f4638623c749c2ec820c3b5bff97",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": [
+          "qwen3"
+        ],
+        "parameter_size": "751.63M",
+        "quantization_level": "F16"
+      },
+      "parameters": "top_k                          20\ntop_p                          0.95\nrepeat_penalty                 1\nstop                           \"<|im_start|>\"\nstop                           \"<|im_end|>\"\ntemperature                    0.6",
+      "capabilities": [
+        "completion",
+        "tools",
+        "thinking"
+      ],
+      "architecture_context_length": 40960,
+      "template_sha256": "ae370d884f108d16e7cc8fd5259ebc5773a0afa6e078b11f4ed7e39a27e0dfc4"
+    }
+  },
+  "dataset": {
+    "path": "..\\dataset\\data\\format_probes_r2.jsonl",
+    "sha256": "5dfa4bebaa03ff4a77670db8cfdf019b46d5261eceac5df785e6945abe81fde6",
+    "n_items_in_file": 36,
+    "n_items_run": 12,
+    "split_filter": "dev"
+  },
+  "config": {
+    "path": "experiment.json",
+    "sha256": "c389bfd5eb67b99b687a6a4abdde4bd9dd7173fac8a9e1c2b8ab1e85b89cc467",
+    "content": {
+      "protocol_version": "pilot-v0.2",
+      "prompt_version": "prompt-v0.2",
+      "grade": 3,
+      "language": "es-PA",
+      "temperature": 0,
+      "seed": 42,
+      "num_ctx": 2048,
+      "num_predict": 256,
+      "disable_thinking_for_qwen3": true,
+      "offline": true,
+      "notes": "Smoke test v0.2: una pasada sin calentamiento; no es evidencia estadistica. 'offline' es declarativo: el modo sin red se comprueba aparte. Las repeticiones y el calentamiento se anaden en F3."
+    },
+    "effective_options": {
+      "temperature": 0,
+      "seed": 42,
+      "num_ctx": 2048,
+      "num_predict": 256
+    },
+    "think": false
+  },
+  "prompt": {
+    "version": "prompt-v0.5a",
+    "system": "Responde en español claro y apropiado para un estudiante de tercer grado de primaria. No inventes datos. Lee con cuidado el enunciado.",
+    "system_sha256": "bacc29df6fc97243a435a00ee61dbd0bf25829e2d0de4095656b51775faa9983"
+  },
+  "passes": {
+    "warmup": 0,
+    "repeats": 1,
+    "rep_start": 2
+  },
+  "offload_first": {
+    "source": "reported_by_ollama(/api/ps)",
+    "size_bytes": 1456482549,
+    "size_vram_bytes": 1456482549,
+    "mode": "gpu_only",
+    "gpu_only_threshold": 0.99,
+    "context_length": 2048,
+    "runner": "llamacpp",
+    "digest": "626c9556a80fcb9c30ebd28292edf465ccda990282c5fb1e680d106d23bacc1c"
+  },
+  "offload_last": {
+    "source": "reported_by_ollama(/api/ps)",
+    "size_bytes": 1456482549,
+    "size_vram_bytes": 1456482549,
+    "mode": "gpu_only",
+    "gpu_only_threshold": 0.99,
+    "context_length": 2048,
+    "runner": "llamacpp",
+    "digest": "626c9556a80fcb9c30ebd28292edf465ccda990282c5fb1e680d106d23bacc1c"
+  },
+  "gpu_after": {
+    "source": "measured_external(nvidia-smi)",
+    "taken_utc": "2026-11-14T01:18:41.027538+00:00",
+    "gpus": [
+      {
+        "name": "NVIDIA GeForce RTX 3060 Laptop GPU",
+        "memory_total_mib": "6144",
+        "memory_used_mib": "3633",
+        "driver_version": "581.42",
+        "temperature_c": "69"
+      }
+    ]
+  },
+  "counts": {
+    "items": 12,
+    "errors": 0,
+    "truncated": 0
+  },
+  "measured": {
+    "items": 12,
+    "errors": 0,
+    "truncated": 0
+  },
+  "provenance": {
+    "reported_by_ollama": [
+      "total_duration",
+      "load_duration",
+      "prompt_eval_count",
+      "prompt_eval_duration",
+      "eval_count",
+      "eval_duration",
+      "done_reason",
+      "offload (/api/ps)"
+    ],
+    "measured_external": [
+      "gpu_before/gpu_after (nvidia-smi)",
+      "wall_seconds (reloj del script)"
+    ]
+  },
+  "network_check": "no realizado por el runner (el modo sin red se comprueba aparte)",
+  "limitations": [
+    "Las duraciones son estadísticas de Ollama, no mediciones de RAM, VRAM ni energía.",
+    "counts incluye los pases de calentamiento; measured solo los pases medidos."
+  ],
+  "redaction_note": "Rutas locales redactadas antes de publicar. El resto del contenido es el original; el SHA-256 de este archivo difiere del original, que se conserva en el equipo del investigador."
+}

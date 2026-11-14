@@ -1,0 +1,83 @@
+{
+  "matrix_id": "20261114T010518Z_1e938a",
+  "started_utc": "2026-11-14T01:05:18.252224+00:00",
+  "finished_utc": "2026-11-14T01:06:18.690364+00:00",
+  "status": "completed",
+  "models": [
+    "qwen3:0.6b-q4_K_M",
+    "qwen3:0.6b-q8_0",
+    "qwen3:0.6b-fp16"
+  ],
+  "host": "http://127.0.0.1:11435",
+  "split": "dev",
+  "prompt_version": "prompt-v0.4b",
+  "warmup": 1,
+  "repeats": 2,
+  "interleave": true,
+  "sequential": true,
+  "data": "../dataset/data/format_probes.jsonl",
+  "data_sha256": "05be3bdd27d501b52b9071b9c5b7d74fcc26eea05aad53be7a14f8510546981e",
+  "gpu_used_mib_at_start": 263,
+  "passes": [
+    {
+      "model": "qwen3:0.6b-q4_K_M",
+      "warmup": 1,
+      "repeats": 1,
+      "rep_start": 1,
+      "output": "runs_dev\\20261114T010518Z_1e938a_qwen3_0_6b_q4_K_M_rep1.jsonl",
+      "output_name": "20261114T010518Z_1e938a_qwen3_0_6b_q4_K_M_rep1.jsonl",
+      "exit_code": 0,
+      "message": null
+    },
+    {
+      "model": "qwen3:0.6b-q8_0",
+      "warmup": 1,
+      "repeats": 1,
+      "rep_start": 1,
+      "output": "runs_dev\\20261114T010518Z_1e938a_qwen3_0_6b_q8_0_rep1.jsonl",
+      "output_name": "20261114T010518Z_1e938a_qwen3_0_6b_q8_0_rep1.jsonl",
+      "exit_code": 0,
+      "message": null
+    },
+    {
+      "model": "qwen3:0.6b-fp16",
+      "warmup": 1,
+      "repeats": 1,
+      "rep_start": 1,
+      "output": "runs_dev\\20261114T010518Z_1e938a_qwen3_0_6b_fp16_rep1.jsonl",
+      "output_name": "20261114T010518Z_1e938a_qwen3_0_6b_fp16_rep1.jsonl",
+      "exit_code": 0,
+      "message": null
+    },
+    {
+      "model": "qwen3:0.6b-q8_0",
+      "warmup": 0,
+      "repeats": 1,
+      "rep_start": 2,
+      "output": "runs_dev\\20261114T010518Z_1e938a_qwen3_0_6b_q8_0_rep2.jsonl",
+      "output_name": "20261114T010518Z_1e938a_qwen3_0_6b_q8_0_rep2.jsonl",
+      "exit_code": 0,
+      "message": null
+    },
+    {
+      "model": "qwen3:0.6b-fp16",
+      "warmup": 0,
+      "repeats": 1,
+      "rep_start": 2,
+      "output": "runs_dev\\20261114T010518Z_1e938a_qwen3_0_6b_fp16_rep2.jsonl",
+      "output_name": "20261114T010518Z_1e938a_qwen3_0_6b_fp16_rep2.jsonl",
+      "exit_code": 0,
+      "message": null
+    },
+    {
+      "model": "qwen3:0.6b-q4_K_M",
+      "warmup": 0,
+      "repeats": 1,
+      "rep_start": 2,
+      "output": "runs_dev\\20261114T010518Z_1e938a_qwen3_0_6b_q4_K_M_rep2.jsonl",
+      "output_name": "20261114T010518Z_1e938a_qwen3_0_6b_q4_K_M_rep2.jsonl",
+      "exit_code": 0,
+      "message": null
+    }
+  ]
+}

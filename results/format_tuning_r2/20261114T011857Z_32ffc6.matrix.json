@@ -1,0 +1,83 @@
+{
+  "matrix_id": "20261114T011857Z_32ffc6",
+  "started_utc": "2026-11-14T01:18:57.803856+00:00",
+  "finished_utc": "2026-11-14T01:19:30.960895+00:00",
+  "status": "completed",
+  "models": [
+    "qwen3:0.6b-q4_K_M",
+    "qwen3:0.6b-q8_0",
+    "qwen3:0.6b-fp16"
+  ],
+  "host": "http://127.0.0.1:11435",
+  "split": "dev",
+  "prompt_version": "prompt-v0.5b",
+  "warmup": 1,
+  "repeats": 2,
+  "interleave": true,
+  "sequential": true,
+  "data": "../dataset/data/format_probes_r2.jsonl",
+  "data_sha256": "5dfa4bebaa03ff4a77670db8cfdf019b46d5261eceac5df785e6945abe81fde6",
+  "gpu_used_mib_at_start": 257,
+  "passes": [
+    {
+      "model": "qwen3:0.6b-q4_K_M",
+      "warmup": 1,
+      "repeats": 1,
+      "rep_start": 1,
+      "output": "runs_dev_r2\\20261114T011857Z_32ffc6_qwen3_0_6b_q4_K_M_rep1.jsonl",
+      "output_name": "20261114T011857Z_32ffc6_qwen3_0_6b_q4_K_M_rep1.jsonl",
+      "exit_code": 0,
+      "message": null
+    },
+    {
+      "model": "qwen3:0.6b-q8_0",
+      "warmup": 1,
+      "repeats": 1,
+      "rep_start": 1,
+      "output": "runs_dev_r2\\20261114T011857Z_32ffc6_qwen3_0_6b_q8_0_rep1.jsonl",
+      "output_name": "20261114T011857Z_32ffc6_qwen3_0_6b_q8_0_rep1.jsonl",
+      "exit_code": 0,
+      "message": null
+    },
+    {
+      "model": "qwen3:0.6b-fp16",
+      "warmup": 1,
+      "repeats": 1,
+      "rep_start": 1,
+      "output": "runs_dev_r2\\20261114T011857Z_32ffc6_qwen3_0_6b_fp16_rep1.jsonl",
+      "output_name": "20261114T011857Z_32ffc6_qwen3_0_6b_fp16_rep1.jsonl",
+      "exit_code": 0,
+      "message": null
+    },
+    {
+      "model": "qwen3:0.6b-q8_0",
+      "warmup": 0,
+      "repeats": 1,
+      "rep_start": 2,
+      "output": "runs_dev_r2\\20261114T011857Z_32ffc6_qwen3_0_6b_q8_0_rep2.jsonl",
+      "output_name": "20261114T011857Z_32ffc6_qwen3_0_6b_q8_0_rep2.jsonl",
+      "exit_code": 0,
+      "message": null
+    },
+    {
+      "model": "qwen3:0.6b-fp16",
+      "warmup": 0,
+      "repeats": 1,
+      "rep_start": 2,
+      "output": "runs_dev_r2\\20261114T011857Z_32ffc6_qwen3_0_6b_fp16_rep2.jsonl",
+      "output_name": "20261114T011857Z_32ffc6_qwen3_0_6b_fp16_rep2.jsonl",
+      "exit_code": 0,
+      "message": null
+    },
+    {
+      "model": "qwen3:0.6b-q4_K_M",
+      "warmup": 0,
+      "repeats": 1,
+      "rep_start": 2,
+      "output": "runs_dev_r2\\20261114T011857Z_32ffc6_qwen3_0_6b_q4_K_M_rep2.jsonl",
+      "output_name": "20261114T011857Z_32ffc6_qwen3_0_6b_q4_K_M_rep2.jsonl",
+      "exit_code": 0,
+      "message": null
+    }
+  ]
+}

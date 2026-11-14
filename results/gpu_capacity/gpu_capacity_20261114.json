@@ -1,0 +1,315 @@
+{
+  "meta": {
+    "started_utc": "2026-11-14T01:36:55.894111+00:00",
+    "ollama_version": "0.40.16",
+    "gpu": {
+      "name": "NVIDIA GeForce RTX 3060 Laptop GPU",
+      "used_mib": 222,
+      "total_mib": 6144,
+      "temp_c": 49,
+      "driver": "581.42"
+    },
+    "host": "local (127.0.0.1)",
+    "server_default_note": "Ollama sin cambios de OLLAMA_MAX_LOADED_MODELS",
+    "digests": {
+      "qwen3:0.6b-q4_K_M": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435",
+      "qwen3:0.6b-q8_0": "f6358994266d548dc070c564d49588fa3a6fac0cccd196bef38128aaa6ed22f3",
+      "qwen3:0.6b-fp16": "626c9556a80fcb9c30ebd28292edf465ccda990282c5fb1e680d106d23bacc1c",
+      "qwen3:1.7b-q4_K_M": "8f68893c685c3ddff2aa3fffce2aa60a30bb2da65ca488b61fff134a4d1730e7",
+      "qwen3:1.7b-q8_0": "29b6a7a420a42b7d58a17334049721746c35aec6084209ceed327e78a124d15f",
+      "qwen3:1.7b-fp16": "e9354f6174db6aa7af338e75b9087e3f4364c255ff96eb20c1805a2f786ed763",
+      "qwen3:4b-q4_K_M": "2bfd38a7daaf4b1037efe517ccb73d1a3bbd4822cf89f1a82be1569050a114e0",
+      "gemma3:270m-it-q8_0": "e7d36fb2c3b3293cfe56d55889867a064b3a2b22e98335f2e6e8a387e081d6be",
+      "gemma3:1b-it-q4_K_M": "97558784bdc9175075a72655bf360b15da17df6b3b9e5182af9f8c0c8e58ba7c",
+      "llama3.2:1b-instruct-q4_K_M": "22bc6b92eb0160c4629782fca05a9032c59d306ab2058b7dacc8a4644fbafa02",
+      "deepseek-r1:1.5b-qwen-distill-q4_K_M": "e0979632db5a88d1a53884cb2a941772d10ff5d055aabaa6801c4e36f3a6c2d7",
+      "phi4-mini:3.8b-q4_K_M": "78fad5d182a7c33065e153a5f8ba210754207ba9d91973f57dffa7f487363753",
+      "hf.co/ggml-org/SmolLM3-3B-GGUF:Q4_K_M": "19f83d5d424a3aeb3e29f8c694cbe42485ccbc4feb3ffbb7484558d86b97de80"
+    },
+    "provenance": {
+      "ollama": [
+        "size, size_vram (/api/ps)",
+        "eval_count, eval_duration (/api/generate)"
+      ],
+      "nvidia-smi": [
+        "memory.used",
+        "temperature.gpu"
+      ]
+    },
+    "limitations": [
+      "Exploratorio: pocas repeticiones, un solo equipo (portátil).",
+      "La concurrencia se midió con 3 solicitudes simultáneas del mismo prompt."
+    ],
+    "finished_utc": "2026-11-14T01:39:41.799502+00:00",
+    "gpu_end": {
+      "name": "NVIDIA GeForce RTX 3060 Laptop GPU",
+      "used_mib": 331,
+      "total_mib": 6144,
+      "temp_c": 55,
+      "driver": "581.42"
+    }
+  },
+  "footprint": [
+    {
+      "model": "qwen3:0.6b-q4_K_M",
+      "ok": true,
+      "size_mib": 661,
+      "size_vram_mib": 661,
+      "context_length": 2048,
+      "gpu_used_mib": 1017,
+      "gpu_delta_mib": 795,
+      "load_s": 3.5,
+      "wall_s": 3.9,
+      "temp_c": 49
+    },
+    {
+      "model": "qwen3:0.6b-q8_0",
+      "ok": true,
+      "size_mib": 882,
+      "size_vram_mib": 882,
+      "context_length": 2048,
+      "gpu_used_mib": 1239,
+      "gpu_delta_mib": 1017,
+      "load_s": 4.2,
+      "wall_s": 4.4,
+      "temp_c": 49
+    },
+    {
+      "model": "qwen3:0.6b-fp16",
+      "ok": true,
+      "size_mib": 1389,
+      "size_vram_mib": 1389,
+      "context_length": 2048,
+      "gpu_used_mib": 1739,
+      "gpu_delta_mib": 1517,
+      "load_s": 4.16,
+      "wall_s": 4.5,
+      "temp_c": 49
+    },
+    {
+      "model": "qwen3:1.7b-q4_K_M",
+      "ok": true,
+      "size_mib": 1402,
+      "size_vram_mib": 1402,
+      "context_length": 2048,
+      "gpu_used_mib": 1757,
+      "gpu_delta_mib": 1535,
+      "load_s": 5.09,
+      "wall_s": 5.5,
+      "temp_c": 49
+    },
+    {
+      "model": "qwen3:1.7b-q8_0",
+      "ok": true,
+      "size_mib": 2074,
+      "size_vram_mib": 2074,
+      "context_length": 2048,
+      "gpu_used_mib": 2431,
+      "gpu_delta_mib": 2209,
+      "load_s": 6.61,
+      "wall_s": 6.9,
+      "temp_c": 49
+    },
+    {
+      "model": "qwen3:1.7b-fp16",
+      "ok": true,
+      "size_mib": 3560,
+      "size_vram_mib": 3560,
+      "context_length": 2048,
+      "gpu_used_mib": 3909,
+      "gpu_delta_mib": 3687,
+      "load_s": 11.45,
+      "wall_s": 11.7,
+      "temp_c": 49
+    },
+    {
+      "model": "qwen3:4b-q4_K_M",
+      "ok": true,
+      "size_mib": 2861,
+      "size_vram_mib": 2861,
+      "context_length": 2048,
+      "gpu_used_mib": 3215,
+      "gpu_delta_mib": 2993,
+      "load_s": 6.82,
+      "wall_s": 7.5,
+      "temp_c": 49
+    },
+    {
+      "model": "gemma3:270m-it-q8_0",
+      "ok": true,
+      "size_mib": 307,
+      "size_vram_mib": 307,
+      "context_length": 2048,
+      "gpu_used_mib": 665,
+      "gpu_delta_mib": 443,
+      "load_s": 4.07,
+      "wall_s": 4.3,
+      "temp_c": 49
+    },
+    {
+      "model": "gemma3:1b-it-q4_K_M",
+      "ok": true,
+      "size_mib": 837,
+      "size_vram_mib": 837,
+      "context_length": 2048,
+      "gpu_used_mib": 1201,
+      "gpu_delta_mib": 979,
+      "load_s": 3.78,
+      "wall_s": 4.0,
+      "temp_c": 49
+    },
+    {
+      "model": "llama3.2:1b-instruct-q4_K_M",
+      "ok": true,
+      "size_mib": 893,
+      "size_vram_mib": 893,
+      "context_length": 2048,
+      "gpu_used_mib": 1245,
+      "gpu_delta_mib": 1023,
+      "load_s": 4.38,
+      "wall_s": 4.6,
+      "temp_c": 49
+    },
+    {
+      "model": "deepseek-r1:1.5b-qwen-distill-q4_K_M",
+      "ok": true,
+      "size_mib": 1057,
+      "size_vram_mib": 1057,
+      "context_length": 2048,
+      "gpu_used_mib": 1413,
+      "gpu_delta_mib": 1191,
+      "load_s": 4.68,
+      "wall_s": 4.9,
+      "temp_c": 49
+    },
+    {
+      "model": "phi4-mini:3.8b-q4_K_M",
+      "ok": true,
+      "size_mib": 2699,
+      "size_vram_mib": 2699,
+      "context_length": 2048,
+      "gpu_used_mib": 3051,
+      "gpu_delta_mib": 2829,
+      "load_s": 7.62,
+      "wall_s": 7.9,
+      "temp_c": 50
+    },
+    {
+      "model": "hf.co/ggml-org/SmolLM3-3B-GGUF:Q4_K_M",
+      "ok": true,
+      "size_mib": 2046,
+      "size_vram_mib": 2046,
+      "context_length": 2048,
+      "gpu_used_mib": 2405,
+      "gpu_delta_mib": 2183,
+      "load_s": 5.81,
+      "wall_s": 6.6,
+      "temp_c": 49
+    }
+  ],
+  "co_load": [
+    {
+      "loading": "gemma3:270m-it-q8_0",
+      "loaded_now": 1,
+      "loaded_names": [
+        "gemma3:270m-it-q8_0"
+      ],
+      "modes": [
+        "gpu"
+      ],
+      "gpu_used_mib": 665
+    },
+    {
+      "loading": "qwen3:0.6b-q4_K_M",
+      "loaded_now": 2,
+      "loaded_names": [
+        "qwen3:0.6b-q4_K_M",
+        "gemma3:270m-it-q8_0"
+      ],
+      "modes": [
+        "gpu",
+        "gpu"
+      ],
+      "gpu_used_mib": 1476
+    },
+    {
+      "loading": "gemma3:1b-it-q4_K_M",
+      "loaded_now": 3,
+      "loaded_names": [
+        "gemma3:1b-it-q4_K_M",
+        "qwen3:0.6b-q4_K_M",
+        "gemma3:270m-it-q8_0"
+      ],
+      "modes": [
+        "gpu",
+        "gpu",
+        "gpu"
+      ],
+      "gpu_used_mib": 2454
+    },
+    {
+      "loading": "llama3.2:1b-instruct-q4_K_M",
+      "loaded_now": 3,
+      "loaded_names": [
+        "llama3.2:1b-instruct-q4_K_M",
+        "qwen3:0.6b-q4_K_M",
+        "gemma3:270m-it-q8_0"
+      ],
+      "modes": [
+        "gpu",
+        "gpu",
+        "gpu"
+      ],
+      "gpu_used_mib": 2498
+    }
+  ],
+  "concurrency": {
+    "prompt": "Explica paso a paso y con mucho detalle cómo se resuelve la resta 725 − 348 para un niño de tercer grado.",
+    "num_predict": 200,
+    "solo_tokens_per_s": {
+      "qwen3:0.6b-q4_K_M": [
+        279.5,
+        282.1,
+        263.7
+      ],
+      "qwen3:0.6b-q8_0": [
+        208.2,
+        182.3,
+        184.3
+      ],
+      "qwen3:0.6b-fp16": [
+        118.6,
+        114.9,
+        113.8
+      ]
+    },
+    "concurrent_tokens_per_s": {
+      "qwen3:0.6b-q4_K_M": [
+        82.9,
+        83.2,
+        83.0
+      ],
+      "qwen3:0.6b-q8_0": [
+        76.9,
+        76.9,
+        77.2
+      ],
+      "qwen3:0.6b-fp16": [
+        64.2,
+        62.1,
+        62.7
+      ]
+    },
+    "median_solo": {
+      "qwen3:0.6b-q4_K_M": 279.5,
+      "qwen3:0.6b-q8_0": 184.3,
+      "qwen3:0.6b-fp16": 114.9
+    },
+    "median_concurrent": {
+      "qwen3:0.6b-q4_K_M": 83.0,
+      "qwen3:0.6b-q8_0": 76.9,
+      "qwen3:0.6b-fp16": 62.7
+    },
+    "models_loaded_during_concurrency": 3
+  }
+}

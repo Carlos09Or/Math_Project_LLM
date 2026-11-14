@@ -1,0 +1,41 @@
+Registros medidos: 729 (calentamiento excluido: 243) · bootstrap por problema base: 10000 remuestreos, semilla 12345
+
+TASAS POR PRECISIÓN (por ítem; IC95 por problema base). «estricta» cuenta lo no legible como fallo.
+tarea     grupo      métrica       modelo   ítems estricta              IC95  legible sin leer
+solve     todos      exactitud     fp16        27    70.4%   [ 51.9%, 85.2%]    70.4%        0
+solve     todos      exactitud     q4_K_M      27    59.3%   [ 40.7%, 77.8%]    59.3%        0
+solve     todos      exactitud     q8_0        27    70.4%   [ 51.9%, 85.2%]    70.4%        0
+diagnose  con_error  sensibilidad  fp16        21    42.9%   [ 23.8%, 61.9%]    42.9%        0
+diagnose  con_error  sensibilidad  q4_K_M      21    57.1%   [ 38.1%, 76.2%]    57.1%        0
+diagnose  con_error  sensibilidad  q8_0        21    57.1%   [ 38.1%, 76.2%]    57.1%        0
+diagnose  control    especificidad fp16         6    83.3%   [ 50.0%,100.0%]    83.3%        0
+diagnose  control    especificidad q4_K_M       6    50.0%   [ 16.7%, 83.3%]    50.0%        0
+diagnose  control    especificidad q8_0         6    50.0%   [ 16.7%, 83.3%]    50.0%        0
+hint      todos      sin fuga      fp16        27    59.3%   [ 40.7%, 77.8%]    59.3%        0
+hint      todos      sin fuga      q4_K_M      27    25.9%   [ 11.1%, 44.4%]    25.9%        0
+hint      todos      sin fuga      q8_0        27    51.9%   [ 33.3%, 70.4%]    51.9%        0
+
+DIFERENCIAS EMPAREJADAS (A − B, en puntos de la tasa; IC95 por problema base). Descriptivo, no inferencia.
+tarea     grupo      A        B        ítems  diferencia                IC95  A mejor  B mejor  empates
+solve     todos      q4_K_M   q8_0        27      -11.1       [-25.9, +0.0]        0        3       24
+solve     todos      q4_K_M   fp16        27      -11.1       [-25.9, +0.0]        0        3       24
+solve     todos      q8_0     fp16        27       +0.0        [+0.0, +0.0]        0        0       27
+diagnose  con_error  q4_K_M   q8_0        21       +0.0      [-19.0, +19.0]        2        2       17
+diagnose  con_error  q4_K_M   fp16        21      +14.3       [+0.0, +28.6]        3        0       18
+diagnose  con_error  q8_0     fp16        21      +14.3       [+0.0, +28.6]        3        0       18
+diagnose  control    q4_K_M   q8_0         6       +0.0        [+0.0, +0.0]        0        0        6
+diagnose  control    q4_K_M   fp16         6      -33.3       [-66.7, +0.0]        0        2        4
+diagnose  control    q8_0     fp16         6      -33.3       [-66.7, +0.0]        0        2        4
+hint      todos      q4_K_M   q8_0        27      -25.9       [-44.4, -7.4]        1        8       18
+hint      todos      q4_K_M   fp16        27      -33.3      [-55.6, -11.1]        2       11       14
+hint      todos      q8_0     fp16        27       -7.4       [-22.2, +7.4]        1        3       23
+
+REPETIBILIDAD (3 repeticiones por ítem)
+  fp16     81/81 ítems con respuesta idéntica en todas las repeticiones; 0 ítems cambian de puntuación
+  q4_K_M   76/81 ítems con respuesta idéntica en todas las repeticiones; 0 ítems cambian de puntuación
+  q8_0     78/81 ítems con respuesta idéntica en todas las repeticiones; 0 ítems cambian de puntuación
+
+COSTO (reportado por Ollama, pases medidos)
+  fp16     mediana 131 tokens/s · mediana 0.44 s por respuesta · p90 0.68 s
+  q4_K_M   mediana 218 tokens/s · mediana 0.37 s por respuesta · p90 0.69 s
+  q8_0     mediana 211 tokens/s · mediana 0.27 s por respuesta · p90 0.45 s

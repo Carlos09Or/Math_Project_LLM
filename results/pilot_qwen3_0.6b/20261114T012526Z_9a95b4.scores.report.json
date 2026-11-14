@@ -1,0 +1,723 @@
+{
+  "models": [
+    "fp16",
+    "q4_K_M",
+    "q8_0"
+  ],
+  "measured_records": 729,
+  "warmup_records": 243,
+  "n_boot": 10000,
+  "seed": 12345,
+  "groups": [
+    {
+      "task": "solve",
+      "subgroup": "todos",
+      "metric": "exactitud",
+      "model": "fp16",
+      "items": 27,
+      "problem_bases": 27,
+      "records": 81,
+      "rate_strict": 0.7037037037037037,
+      "ci95_low": 0.5185185185185185,
+      "ci95_high": 0.8518518518518519,
+      "rate_readable": 0.7037037037037037,
+      "readable_ci95_low": 0.5185185185185185,
+      "readable_ci95_high": 0.8518518518518519,
+      "items_readable": 27,
+      "unscored_records": 0
+    },
+    {
+      "task": "solve",
+      "subgroup": "todos",
+      "metric": "exactitud",
+      "model": "q4_K_M",
+      "items": 27,
+      "problem_bases": 27,
+      "records": 81,
+      "rate_strict": 0.5925925925925926,
+      "ci95_low": 0.4074074074074074,
+      "ci95_high": 0.7777777777777778,
+      "rate_readable": 0.5925925925925926,
+      "readable_ci95_low": 0.4074074074074074,
+      "readable_ci95_high": 0.7777777777777778,
+      "items_readable": 27,
+      "unscored_records": 0
+    },
+    {
+      "task": "solve",
+      "subgroup": "todos",
+      "metric": "exactitud",
+      "model": "q8_0",
+      "items": 27,
+      "problem_bases": 27,
+      "records": 81,
+      "rate_strict": 0.7037037037037037,
+      "ci95_low": 0.5185185185185185,
+      "ci95_high": 0.8518518518518519,
+      "rate_readable": 0.7037037037037037,
+      "readable_ci95_low": 0.5185185185185185,
+      "readable_ci95_high": 0.8518518518518519,
+      "items_readable": 27,
+      "unscored_records": 0
+    },
+    {
+      "task": "diagnose",
+      "subgroup": "con_error",
+      "metric": "sensibilidad",
+      "model": "fp16",
+      "items": 21,
+      "problem_bases": 21,
+      "records": 63,
+      "rate_strict": 0.42857142857142855,
+      "ci95_low": 0.23809523809523808,
+      "ci95_high": 0.6190476190476191,
+      "rate_readable": 0.42857142857142855,
+      "readable_ci95_low": 0.23809523809523808,
+      "readable_ci95_high": 0.6190476190476191,
+      "items_readable": 21,
+      "unscored_records": 0
+    },
+    {
+      "task": "diagnose",
+      "subgroup": "con_error",
+      "metric": "sensibilidad",
+      "model": "q4_K_M",
+      "items": 21,
+      "problem_bases": 21,
+      "records": 63,
+      "rate_strict": 0.5714285714285714,
+      "ci95_low": 0.38095238095238093,
+      "ci95_high": 0.7619047619047619,
+      "rate_readable": 0.5714285714285714,
+      "readable_ci95_low": 0.38095238095238093,
+      "readable_ci95_high": 0.7619047619047619,
+      "items_readable": 21,
+      "unscored_records": 0
+    },
+    {
+      "task": "diagnose",
+      "subgroup": "con_error",
+      "metric": "sensibilidad",
+      "model": "q8_0",
+      "items": 21,
+      "problem_bases": 21,
+      "records": 63,
+      "rate_strict": 0.5714285714285714,
+      "ci95_low": 0.38095238095238093,
+      "ci95_high": 0.7619047619047619,
+      "rate_readable": 0.5714285714285714,
+      "readable_ci95_low": 0.38095238095238093,
+      "readable_ci95_high": 0.7619047619047619,
+      "items_readable": 21,
+      "unscored_records": 0
+    },
+    {
+      "task": "diagnose",
+      "subgroup": "control",
+      "metric": "especificidad",
+      "model": "fp16",
+      "items": 6,
+      "problem_bases": 6,
+      "records": 18,
+      "rate_strict": 0.8333333333333334,
+      "ci95_low": 0.5,
+      "ci95_high": 1.0,
+      "rate_readable": 0.8333333333333334,
+      "readable_ci95_low": 0.5,
+      "readable_ci95_high": 1.0,
+      "items_readable": 6,
+      "unscored_records": 0
+    },
+    {
+      "task": "diagnose",
+      "subgroup": "control",
+      "metric": "especificidad",
+      "model": "q4_K_M",
+      "items": 6,
+      "problem_bases": 6,
+      "records": 18,
+      "rate_strict": 0.5,
+      "ci95_low": 0.16666666666666666,
+      "ci95_high": 0.8333333333333334,
+      "rate_readable": 0.5,
+      "readable_ci95_low": 0.16666666666666666,
+      "readable_ci95_high": 0.8333333333333334,
+      "items_readable": 6,
+      "unscored_records": 0
+    },
+    {
+      "task": "diagnose",
+      "subgroup": "control",
+      "metric": "especificidad",
+      "model": "q8_0",
+      "items": 6,
+      "problem_bases": 6,
+      "records": 18,
+      "rate_strict": 0.5,
+      "ci95_low": 0.16666666666666666,
+      "ci95_high": 0.8333333333333334,
+      "rate_readable": 0.5,
+      "readable_ci95_low": 0.16666666666666666,
+      "readable_ci95_high": 0.8333333333333334,
+      "items_readable": 6,
+      "unscored_records": 0
+    },
+    {
+      "task": "hint",
+      "subgroup": "todos",
+      "metric": "sin fuga",
+      "model": "fp16",
+      "items": 27,
+      "problem_bases": 27,
+      "records": 81,
+      "rate_strict": 0.5925925925925926,
+      "ci95_low": 0.4074074074074074,
+      "ci95_high": 0.7777777777777778,
+      "rate_readable": 0.5925925925925926,
+      "readable_ci95_low": 0.4074074074074074,
+      "readable_ci95_high": 0.7777777777777778,
+      "items_readable": 27,
+      "unscored_records": 0
+    },
+    {
+      "task": "hint",
+      "subgroup": "todos",
+      "metric": "sin fuga",
+      "model": "q4_K_M",
+      "items": 27,
+      "problem_bases": 27,
+      "records": 81,
+      "rate_strict": 0.25925925925925924,
+      "ci95_low": 0.1111111111111111,
+      "ci95_high": 0.4444444444444444,
+      "rate_readable": 0.25925925925925924,
+      "readable_ci95_low": 0.1111111111111111,
+      "readable_ci95_high": 0.4444444444444444,
+      "items_readable": 27,
+      "unscored_records": 0
+    },
+    {
+      "task": "hint",
+      "subgroup": "todos",
+      "metric": "sin fuga",
+      "model": "q8_0",
+      "items": 27,
+      "problem_bases": 27,
+      "records": 81,
+      "rate_strict": 0.5185185185185185,
+      "ci95_low": 0.3333333333333333,
+      "ci95_high": 0.7037037037037037,
+      "rate_readable": 0.5185185185185185,
+      "readable_ci95_low": 0.3333333333333333,
+      "readable_ci95_high": 0.7037037037037037,
+      "items_readable": 27,
+      "unscored_records": 0
+    }
+  ],
+  "paired": [
+    {
+      "task": "solve",
+      "subgroup": "todos",
+      "metric": "exactitud",
+      "a": "q4_K_M",
+      "b": "q8_0",
+      "items": 27,
+      "diff": -0.1111111111111111,
+      "ci95_low": -0.25925925925925924,
+      "ci95_high": 0.0,
+      "a_better": 0,
+      "b_better": 3,
+      "ties": 24
+    },
+    {
+      "task": "solve",
+      "subgroup": "todos",
+      "metric": "exactitud",
+      "a": "q4_K_M",
+      "b": "fp16",
+      "items": 27,
+      "diff": -0.1111111111111111,
+      "ci95_low": -0.25925925925925924,
+      "ci95_high": 0.0,
+      "a_better": 0,
+      "b_better": 3,
+      "ties": 24
+    },
+    {
+      "task": "solve",
+      "subgroup": "todos",
+      "metric": "exactitud",
+      "a": "q8_0",
+      "b": "fp16",
+      "items": 27,
+      "diff": 0.0,
+      "ci95_low": 0.0,
+      "ci95_high": 0.0,
+      "a_better": 0,
+      "b_better": 0,
+      "ties": 27
+    },
+    {
+      "task": "diagnose",
+      "subgroup": "con_error",
+      "metric": "sensibilidad",
+      "a": "q4_K_M",
+      "b": "q8_0",
+      "items": 21,
+      "diff": 0.0,
+      "ci95_low": -0.19047619047619047,
+      "ci95_high": 0.19047619047619047,
+      "a_better": 2,
+      "b_better": 2,
+      "ties": 17
+    },
+    {
+      "task": "diagnose",
+      "subgroup": "con_error",
+      "metric": "sensibilidad",
+      "a": "q4_K_M",
+      "b": "fp16",
+      "items": 21,
+      "diff": 0.14285714285714285,
+      "ci95_low": 0.0,
+      "ci95_high": 0.2857142857142857,
+      "a_better": 3,
+      "b_better": 0,
+      "ties": 18
+    },
+    {
+      "task": "diagnose",
+      "subgroup": "con_error",
+      "metric": "sensibilidad",
+      "a": "q8_0",
+      "b": "fp16",
+      "items": 21,
+      "diff": 0.14285714285714285,
+      "ci95_low": 0.0,
+      "ci95_high": 0.2857142857142857,
+      "a_better": 3,
+      "b_better": 0,
+      "ties": 18
+    },
+    {
+      "task": "diagnose",
+      "subgroup": "control",
+      "metric": "especificidad",
+      "a": "q4_K_M",
+      "b": "q8_0",
+      "items": 6,
+      "diff": 0.0,
+      "ci95_low": 0.0,
+      "ci95_high": 0.0,
+      "a_better": 0,
+      "b_better": 0,
+      "ties": 6
+    },
+    {
+      "task": "diagnose",
+      "subgroup": "control",
+      "metric": "especificidad",
+      "a": "q4_K_M",
+      "b": "fp16",
+      "items": 6,
+      "diff": -0.3333333333333333,
+      "ci95_low": -0.6666666666666666,
+      "ci95_high": 0.0,
+      "a_better": 0,
+      "b_better": 2,
+      "ties": 4
+    },
+    {
+      "task": "diagnose",
+      "subgroup": "control",
+      "metric": "especificidad",
+      "a": "q8_0",
+      "b": "fp16",
+      "items": 6,
+      "diff": -0.3333333333333333,
+      "ci95_low": -0.6666666666666666,
+      "ci95_high": 0.0,
+      "a_better": 0,
+      "b_better": 2,
+      "ties": 4
+    },
+    {
+      "task": "hint",
+      "subgroup": "todos",
+      "metric": "sin fuga",
+      "a": "q4_K_M",
+      "b": "q8_0",
+      "items": 27,
+      "diff": -0.25925925925925924,
+      "ci95_low": -0.4444444444444444,
+      "ci95_high": -0.07407407407407407,
+      "a_better": 1,
+      "b_better": 8,
+      "ties": 18
+    },
+    {
+      "task": "hint",
+      "subgroup": "todos",
+      "metric": "sin fuga",
+      "a": "q4_K_M",
+      "b": "fp16",
+      "items": 27,
+      "diff": -0.3333333333333333,
+      "ci95_low": -0.5555555555555556,
+      "ci95_high": -0.1111111111111111,
+      "a_better": 2,
+      "b_better": 11,
+      "ties": 14
+    },
+    {
+      "task": "hint",
+      "subgroup": "todos",
+      "metric": "sin fuga",
+      "a": "q8_0",
+      "b": "fp16",
+      "items": 27,
+      "diff": -0.07407407407407407,
+      "ci95_low": -0.2222222222222222,
+      "ci95_high": 0.07407407407407407,
+      "a_better": 1,
+      "b_better": 3,
+      "ties": 23
+    }
+  ],
+  "by_operation": [
+    {
+      "task": "solve",
+      "subgroup": "todos",
+      "model": "fp16",
+      "operation": "DIV",
+      "items": 9,
+      "rate_strict": 0.4444444444444444
+    },
+    {
+      "task": "solve",
+      "subgroup": "todos",
+      "model": "fp16",
+      "operation": "MUL",
+      "items": 9,
+      "rate_strict": 0.7777777777777778
+    },
+    {
+      "task": "solve",
+      "subgroup": "todos",
+      "model": "fp16",
+      "operation": "SUB",
+      "items": 9,
+      "rate_strict": 0.8888888888888888
+    },
+    {
+      "task": "solve",
+      "subgroup": "todos",
+      "model": "q4_K_M",
+      "operation": "DIV",
+      "items": 9,
+      "rate_strict": 0.2222222222222222
+    },
+    {
+      "task": "solve",
+      "subgroup": "todos",
+      "model": "q4_K_M",
+      "operation": "MUL",
+      "items": 9,
+      "rate_strict": 0.7777777777777778
+    },
+    {
+      "task": "solve",
+      "subgroup": "todos",
+      "model": "q4_K_M",
+      "operation": "SUB",
+      "items": 9,
+      "rate_strict": 0.7777777777777778
+    },
+    {
+      "task": "solve",
+      "subgroup": "todos",
+      "model": "q8_0",
+      "operation": "DIV",
+      "items": 9,
+      "rate_strict": 0.4444444444444444
+    },
+    {
+      "task": "solve",
+      "subgroup": "todos",
+      "model": "q8_0",
+      "operation": "MUL",
+      "items": 9,
+      "rate_strict": 0.7777777777777778
+    },
+    {
+      "task": "solve",
+      "subgroup": "todos",
+      "model": "q8_0",
+      "operation": "SUB",
+      "items": 9,
+      "rate_strict": 0.8888888888888888
+    },
+    {
+      "task": "diagnose",
+      "subgroup": "con_error",
+      "model": "fp16",
+      "operation": "DIV",
+      "items": 7,
+      "rate_strict": 0.42857142857142855
+    },
+    {
+      "task": "diagnose",
+      "subgroup": "con_error",
+      "model": "fp16",
+      "operation": "MUL",
+      "items": 7,
+      "rate_strict": 0.5714285714285714
+    },
+    {
+      "task": "diagnose",
+      "subgroup": "con_error",
+      "model": "fp16",
+      "operation": "SUB",
+      "items": 7,
+      "rate_strict": 0.2857142857142857
+    },
+    {
+      "task": "diagnose",
+      "subgroup": "con_error",
+      "model": "q4_K_M",
+      "operation": "DIV",
+      "items": 7,
+      "rate_strict": 0.7142857142857143
+    },
+    {
+      "task": "diagnose",
+      "subgroup": "con_error",
+      "model": "q4_K_M",
+      "operation": "MUL",
+      "items": 7,
+      "rate_strict": 0.5714285714285714
+    },
+    {
+      "task": "diagnose",
+      "subgroup": "con_error",
+      "model": "q4_K_M",
+      "operation": "SUB",
+      "items": 7,
+      "rate_strict": 0.42857142857142855
+    },
+    {
+      "task": "diagnose",
+      "subgroup": "con_error",
+      "model": "q8_0",
+      "operation": "DIV",
+      "items": 7,
+      "rate_strict": 0.42857142857142855
+    },
+    {
+      "task": "diagnose",
+      "subgroup": "con_error",
+      "model": "q8_0",
+      "operation": "MUL",
+      "items": 7,
+      "rate_strict": 0.5714285714285714
+    },
+    {
+      "task": "diagnose",
+      "subgroup": "con_error",
+      "model": "q8_0",
+      "operation": "SUB",
+      "items": 7,
+      "rate_strict": 0.7142857142857143
+    },
+    {
+      "task": "diagnose",
+      "subgroup": "control",
+      "model": "fp16",
+      "operation": "DIV",
+      "items": 2,
+      "rate_strict": 1.0
+    },
+    {
+      "task": "diagnose",
+      "subgroup": "control",
+      "model": "fp16",
+      "operation": "MUL",
+      "items": 2,
+      "rate_strict": 0.5
+    },
+    {
+      "task": "diagnose",
+      "subgroup": "control",
+      "model": "fp16",
+      "operation": "SUB",
+      "items": 2,
+      "rate_strict": 1.0
+    },
+    {
+      "task": "diagnose",
+      "subgroup": "control",
+      "model": "q4_K_M",
+      "operation": "DIV",
+      "items": 2,
+      "rate_strict": 1.0
+    },
+    {
+      "task": "diagnose",
+      "subgroup": "control",
+      "model": "q4_K_M",
+      "operation": "MUL",
+      "items": 2,
+      "rate_strict": 0.5
+    },
+    {
+      "task": "diagnose",
+      "subgroup": "control",
+      "model": "q4_K_M",
+      "operation": "SUB",
+      "items": 2,
+      "rate_strict": 0.0
+    },
+    {
+      "task": "diagnose",
+      "subgroup": "control",
+      "model": "q8_0",
+      "operation": "DIV",
+      "items": 2,
+      "rate_strict": 1.0
+    },
+    {
+      "task": "diagnose",
+      "subgroup": "control",
+      "model": "q8_0",
+      "operation": "MUL",
+      "items": 2,
+      "rate_strict": 0.5
+    },
+    {
+      "task": "diagnose",
+      "subgroup": "control",
+      "model": "q8_0",
+      "operation": "SUB",
+      "items": 2,
+      "rate_strict": 0.0
+    },
+    {
+      "task": "hint",
+      "subgroup": "todos",
+      "model": "fp16",
+      "operation": "DIV",
+      "items": 9,
+      "rate_strict": 0.6666666666666666
+    },
+    {
+      "task": "hint",
+      "subgroup": "todos",
+      "model": "fp16",
+      "operation": "MUL",
+      "items": 9,
+      "rate_strict": 0.5555555555555556
+    },
+    {
+      "task": "hint",
+      "subgroup": "todos",
+      "model": "fp16",
+      "operation": "SUB",
+      "items": 9,
+      "rate_strict": 0.5555555555555556
+    },
+    {
+      "task": "hint",
+      "subgroup": "todos",
+      "model": "q4_K_M",
+      "operation": "DIV",
+      "items": 9,
+      "rate_strict": 0.2222222222222222
+    },
+    {
+      "task": "hint",
+      "subgroup": "todos",
+      "model": "q4_K_M",
+      "operation": "MUL",
+      "items": 9,
+      "rate_strict": 0.3333333333333333
+    },
+    {
+      "task": "hint",
+      "subgroup": "todos",
+      "model": "q4_K_M",
+      "operation": "SUB",
+      "items": 9,
+      "rate_strict": 0.2222222222222222
+    },
+    {
+      "task": "hint",
+      "subgroup": "todos",
+      "model": "q8_0",
+      "operation": "DIV",
+      "items": 9,
+      "rate_strict": 0.5555555555555556
+    },
+    {
+      "task": "hint",
+      "subgroup": "todos",
+      "model": "q8_0",
+      "operation": "MUL",
+      "items": 9,
+      "rate_strict": 0.5555555555555556
+    },
+    {
+      "task": "hint",
+      "subgroup": "todos",
+      "model": "q8_0",
+      "operation": "SUB",
+      "items": 9,
+      "rate_strict": 0.4444444444444444
+    }
+  ],
+  "repeatability": [
+    {
+      "model": "fp16",
+      "items_multi_rep": 81,
+      "identical_response": 81,
+      "score_changes": 0
+    },
+    {
+      "model": "q4_K_M",
+      "items_multi_rep": 81,
+      "identical_response": 76,
+      "score_changes": 0
+    },
+    {
+      "model": "q8_0",
+      "items_multi_rep": 81,
+      "identical_response": 78,
+      "score_changes": 0
+    }
+  ],
+  "timing": [
+    {
+      "model": "fp16",
+      "records": 243,
+      "median_tokens_per_s": 131.11057210098136,
+      "median_wall_s": 0.4376,
+      "p90_wall_s": 0.6845,
+      "source": "reportado por Ollama (eval_count / eval_duration) y reloj del script; no es medición independiente"
+    },
+    {
+      "model": "q4_K_M",
+      "records": 243,
+      "median_tokens_per_s": 217.78233059357783,
+      "median_wall_s": 0.3663,
+      "p90_wall_s": 0.6894,
+      "source": "reportado por Ollama (eval_count / eval_duration) y reloj del script; no es medición independiente"
+    },
+    {
+      "model": "q8_0",
+      "records": 243,
+      "median_tokens_per_s": 211.21351766513055,
+      "median_wall_s": 0.2739,
+      "p90_wall_s": 0.4494,
+      "source": "reportado por Ollama (eval_count / eval_duration) y reloj del script; no es medición independiente"
+    }
+  ]
+}
