@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Resultados 2026 · Tutoría matemática offline</title>
+<meta name="description" content="Resultados exploratorios de siete configuraciones de modelos pequeños sobre el benchmark de Matemática de 3.er grado (MEDUCA 2026): resolución, diagnóstico de errores y pistas.">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/tests.css">
+<link rel="stylesheet" href="assets/bench2026.css">
+</head>
+<body>
+<header class="site"><div class="wrap">
+  <a class="brand" href="index.html">Tutoría matemática offline</a>
+  <nav aria-label="Principal"><a href="index.html">Inicio</a><a href="pruebas.html">Pruebas</a><a href="benchmark.html">Benchmark 2026</a><a href="resultados-2026.html" aria-current="page">Resultados 2026</a><a href="dataset.html">Dataset 2024</a><a href="rubrica.html">Rúbrica</a><a href="fuentes.html">Fuentes</a><a href="metodologia.html">Metodología</a><a href="hoja-de-ruta.html">Hoja de ruta</a></nav>
+</div></header>
+
+<main class="wrap">
+  <h1>Resultados del benchmark 2026</h1>
+  <p class="lead">Siete configuraciones de modelos pequeños sobre los mismos 180 ítems de Aritmética de 3.er grado (programa MEDUCA 2026), con el mismo prompt, los mismos parámetros y el benchmark congelado. 14 de noviembre de 2026.</p>
+  <div class="banner"><strong>Resultados exploratorios, no evidencia científica.</strong> Es una corrida por configuración, con temperatura 0, corridas seguidas (no intercaladas). Las puntuaciones son automáticas: la calidad pedagógica del diagnóstico y de las pistas <strong>no se ha revisado</strong> y ningún ítem fue revisado por docentes ni por MEDUCA. Las comparaciones entre familias de modelos no son causales. <a href="benchmark.html">Qué es este benchmark</a>.</div>
+
+  <div class="grid" id="b-kpis"></div>
+
+  <h2>Resumen</h2>
+  <p>La mejor cifra de cada columna aparece en negrita. «Veredicto» cuenta los aciertos al decir si el trabajo del estudiante es correcto o incorrecto (51 trabajos con error y 9 correctos). «Pistas con fuga» cuenta las pistas que revelan la respuesta: <strong>menos es mejor</strong>.</p>
+  <div id="b-summary"></div>
+  <p class="small">«Parám.» es el tamaño que informa Ollama. IC 95 % es el intervalo de Wilson sobre los 60 problemas. Los ítems de una misma familia no son independientes y hay pocos por competencia, así que los intervalos son orientativos.</p>
+
+  <h2>Qué se ve</h2>
+  <ul>
+    <li><strong>Más parámetros ayudan a resolver, dentro de la misma familia.</strong> Qwen3-1.7B resuelve 55 de 60 problemas frente a 39 del Qwen3-0.6B Q4_K_M, y sus intervalos no se solapan.</li>
+    <li><strong>Entre familias no hay una diferencia clara en resolución.</strong> Qwen3-1.7B, SmolLM3 y Phi-4-mini tienen intervalos que se solapan.</li>
+    <li><strong>La cuantización del 0.6B cambió poco la resolución</strong> (39, 36 y 37 de 60): las diferencias están dentro del ruido con este tamaño de muestra.</li>
+    <li><strong>Reconocer el error es lo más difícil.</strong> Los modelos dan por bueno el trabajo equivocado con mucha frecuencia (ver la tabla de veredictos). Phi-4-mini es el que más se acerca; aun así acierta veredicto y categoría en pocos casos.</li>
+    <li><strong>Las pistas revelan la respuesta con frecuencia,</strong> entre 12 y 19 de 60 en casi todos. Gemma 3 1B casi no la revela, pero sus pistas son vagas: que no haya fuga no las hace buenas.</li>
+  </ul>
+
+  <h2>Resolución</h2>
+  <p>60 problemas. «Incorrecta»: respuesta distinta de la correcta. «Error de formato»: no se pudo extraer una respuesta.</p>
+  <div id="b-stack-A"></div>
+  <h3>Por dificultad propuesta</h3>
+  <p class="small">Las etiquetas de dificultad son de diseño, no medidas. Sin revisión docente.</p>
+  <div id="b-diff"></div>
+  <h3>Por competencia (aciertos / ítems)</h3>
+  <p class="small">Hay entre 1 y 5 problemas por competencia: léelo como orientación, no como medición.</p>
+  <div id="b-heat-A"></div>
+
+  <h2>Diagnóstico de errores</h2>
+  <p>60 casos: 51 con un error simulado y 9 con el trabajo correcto. El veredicto y la categoría se puntúan solos. La explicación queda para revisión humana, que no se hizo.</p>
+  <div id="b-stack-B"></div>
+  <h3>Qué veredicto dio</h3>
+  <div id="b-verdict"></div>
+  <p class="small">Las categorías de error son una propuesta del benchmark, no de MEDUCA, y el prompt las ofrece como lista cerrada.</p>
+  <h3>Por competencia (veredictos acertados / ítems)</h3>
+  <div id="b-heat-B"></div>
+
+  <h2>Pistas</h2>
+  <p>60 pistas para corregir un trabajo equivocado. Solo se detecta si la pista contiene la respuesta final. <strong>No se evalúa si la pista es buena.</strong></p>
+  <div id="b-stack-C"></div>
+  <h3>Por competencia (pistas con fuga / ítems)</h3>
+  <p class="small">Aquí un número alto es peor: rojo significa que casi todas las pistas de esa competencia revelaron la respuesta.</p>
+  <div id="b-heat-C"></div>
+
+  <h2>Costo en el equipo de laboratorio</h2>
+  <div class="callout warn">Una RTX 3060 Laptop de 6 GB, Ollama 0.40.16. Todos los modelos cupieron completos en la GPU. Las cifras son las que informó Ollama o midió el reloj del cliente. <strong>No hay medición de pico de memoria ni de energía</strong>, y la velocidad es orientativa porque las corridas fueron seguidas y no se repitieron.</div>
+  <div id="b-cost"></div>
+
+  <h2>Límites</h2>
+  <ul>
+    <li>Una corrida por configuración. No se sabe cuánto varía el resultado entre corridas.</li>
+    <li>Los ítems los generó código con plantillas y no están validados por docentes. Las etiquetas de dificultad y la taxonomía de errores son propuestas del benchmark.</li>
+    <li>El prompt está congelado y fue el mismo para todos. Un modelo puede puntuar menos por no seguir el formato (por ejemplo, SmolLM3 incluyó la línea de respuesta final en 47 de 60 problemas).</li>
+    <li>Los resultados no describen aprendizaje de niños ni el desempeño en un dispositivo móvil.</li>
+    <li>Las licencias de Gemma y de Llama 3.2 siguen sin leerse; antes de usar Gemma en resultados formales hay que hacerlo.</li>
+  </ul>
+  <p>Los ítems y las respuestas completas <strong>no se publican</strong> aquí para no contaminar futuros conjuntos de entrenamiento y mientras no esté decidida la licencia. Ver <a href="https://github.com/Carlos09Or/Math_Project_LLM/blob/main/benchmark2026/README.md"><code>benchmark2026/README.md</code></a>. Los resúmenes y los manifiestos de cada corrida sí están en <a href="https://github.com/Carlos09Or/Math_Project_LLM/tree/main/benchmark2026/results"><code>benchmark2026/results/</code></a>.</p>
+</main>
+
+<footer class="site"><div class="wrap">Borrador de trabajo · sin resultados científicos · <a href="https://github.com/Carlos09Or/Math_Project_LLM">repositorio en GitHub</a></div></footer>
+<script src="assets/data/benchmark2026.js"></script>
+<script src="assets/bench2026.js"></script>
+</body>
+</html>

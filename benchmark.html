@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Benchmark 2026 · Tutoría matemática offline</title>
+<meta name="description" content="Benchmark curricular de Aritmética de 3.er grado alineado con el programa MEDUCA 2026: tres tareas, trazabilidad por página y separación entre límites oficiales y metodológicos.">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/tests.css">
+<link rel="stylesheet" href="assets/bench2026.css">
+</head>
+<body>
+<header class="site"><div class="wrap">
+  <a class="brand" href="index.html">Tutoría matemática offline</a>
+  <nav aria-label="Principal"><a href="index.html">Inicio</a><a href="pruebas.html">Pruebas</a><a href="benchmark.html" aria-current="page">Benchmark 2026</a><a href="resultados-2026.html">Resultados 2026</a><a href="dataset.html">Dataset 2024</a><a href="rubrica.html">Rúbrica</a><a href="fuentes.html">Fuentes</a><a href="metodologia.html">Metodología</a><a href="hoja-de-ruta.html">Hoja de ruta</a></nav>
+</div></header>
+
+<main class="wrap">
+  <h1>Benchmark curricular de Matemática, 3.er grado (MEDUCA 2026)</h1>
+  <p class="lead">Un instrumento para medir, con los mismos ítems y condiciones, cómo cambian la exactitud matemática, la capacidad de reconocer errores de un estudiante y la calidad de las pistas cuando modelos de lenguaje pequeños se ejecutan con restricciones de cómputo. <strong>No entrena modelos.</strong></p>
+  <div class="banner"><strong>Borrador sin validación docente ni de MEDUCA.</strong> Se alinea con el Programa de Estudio de Tercer Grado, Actualización 2026 (fase de validación), páginas impresas 181 a 228, cotejado directamente contra el PDF oficial. No tiene aval de MEDUCA. Es independiente del dataset anterior, que usa el programa 2024 (<a href="dataset.html">ver Dataset 2024</a>). <a href="resultados-2026.html">Ver los resultados</a>.</div>
+
+  <div class="grid" id="b-kpis"></div>
+  <p class="count" id="b-validation"></p>
+
+  <h2>Las tres tareas</h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Tarea</th><th>Qué mide</th><th>Cómo se evalúa</th></tr></thead>
+    <tbody>
+      <tr><td><strong>A. Resolución</strong></td><td>Si el modelo resuelve un problema de tercer grado</td><td>Automática, con verificadores deterministas (sin un LLM como juez)</td></tr>
+      <tr><td><strong>B. Diagnóstico</strong></td><td>Si reconoce el error de un estudiante simulado, o que no hay error</td><td>Veredicto y categoría automáticos; la explicación, por revisión humana</td></tr>
+      <tr><td><strong>C. Pistas</strong></td><td>Si orienta sin revelar la respuesta</td><td>Detector automático de fugas; la calidad, por <a href="rubrica.html">rúbrica</a> humana</td></tr>
+    </tbody>
+  </table></div>
+  <p>La exactitud matemática y la calidad pedagógica se reportan por separado. 60 ítems por tarea.</p>
+
+  <h2>Qué es oficial y qué es decisión del equipo</h2>
+  <p>Cada límite numérico del benchmark lleva su origen. Los <strong>oficiales</strong> salen del programa, con página. Los <strong>metodológicos</strong> son decisiones nuestras y no se presentan como exigencias de MEDUCA.</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Ejemplo</th><th>Origen</th></tr></thead>
+    <tbody>
+      <tr><td>Divisor de una cifra en la división</td><td><span class="badge b-ok">oficial</span> p. 197</td></tr>
+      <tr><td>Fracciones con denominadores hasta 10 al comparar</td><td><span class="badge b-ok">oficial</span> p. 200</td></tr>
+      <tr><td>Todo resultado de operación menor que 10 000</td><td><span class="badge b-pend">metodológico</span> (el programa dice «menores de 10 000» y «hasta 10 000»)</td></tr>
+      <tr><td>Denominadores de 2 a 10 al sumar y restar fracciones</td><td><span class="badge b-pend">metodológico</span> (el «hasta 10» oficial es de la comparación)</td></tr>
+      <tr><td>Excluir el cero como operando</td><td><span class="badge b-pend">metodológico y temporal</span>, no es una restricción curricular</td></tr>
+    </tbody>
+  </table></div>
+  <h3>Estado de las competencias especiales</h3>
+  <ul>
+    <li><strong>Equivalencia de fracciones:</strong> verificada en el programa, pero la evaluación del indicador «argumenta» no está definida. Solo existe un piloto independiente de 8 ítems, fuera del benchmark principal.</li>
+    <li><strong>Multiplicación por decenas completas:</strong> el alcance no está claro en el programa. No genera ítems.</li>
+  </ul>
+
+  <h2>Cobertura</h2>
+  <p>19 competencias de Aritmética, distribuidas según el peso de cada una en el programa, sin forzar una distribución idéntica. Las dos competencias de «comprobar» solo aparecen en la tarea A porque no tienen un error de estudiante natural que simular.</p>
+  <div id="b-coverage"></div>
+
+  <h2>Cómo se verifican los ítems</h2>
+  <ul>
+    <li>Cada ítem nace de una especificación legible por máquina y su respuesta se recalcula con <strong>tres implementaciones</strong> (Python exacto, SymPy y un módulo independiente).</li>
+    <li>El trabajo incorrecto de un estudiante lo produce una regla determinista y se comprueba con <strong>fórmulas independientes</strong> del código que lo genera, con 33 vectores calculados a mano.</li>
+    <li>Cada ítem cita la fila curricular, las páginas oficiales y un fragmento del indicador; se verifica que ese fragmento exista en la matriz.</li>
+    <li>Se rechazan duplicados, familias repartidas entre conjuntos y pistas de referencia que revelen la respuesta.</li>
+    <li>El benchmark está <strong>congelado</strong>: el SHA-256 de los datos, las reglas y las configuraciones queda registrado, y el motor se niega a evaluar si algo cambió.</li>
+  </ul>
+  <div class="callout warn">Las tres implementaciones las escribió la misma persona (Claude), así que su independencia es de código, no de criterio. Falta que una persona repase los vectores y una muestra de ítems.</div>
+
+  <h2>Lo que no publicamos, y por qué</h2>
+  <p>Los 180 ítems, el generador y las respuestas completas de los modelos <strong>no están en este repositorio</strong>. El generador con su semilla reproduce los ítems, así que publicarlo equivale a publicar el conjunto. Se mantiene reservado por dos razones: evitar que los ítems de evaluación entren en corpus de entrenamiento, y porque aún no se ha decidido su licencia. Sí se publican la metodología, la rúbrica, la matriz curricular, las restricciones, la cobertura, los prompts, la configuración y un manifiesto de cada corrida.</p>
+
+  <h2>Documentos</h2>
+  <div class="grid">
+    <div class="card"><h3>Dataset card</h3><p>Finalidad, fuentes, límites, riesgos y usos no recomendados. <a href="https://github.com/Carlos09Or/Math_Project_LLM/blob/main/benchmark2026/docs/dataset_card.md">Leer</a></p></div>
+    <div class="card"><h3>Auditoría curricular</h3><p>Cotejo con el PDF oficial y discrepancias del compendio. <a href="https://github.com/Carlos09Or/Math_Project_LLM/blob/main/benchmark2026/docs/curricular_audit.md">Leer</a></p></div>
+    <div class="card"><h3>Metodología</h3><p>Tres clases de restricción, verificación y congelación. <a href="https://github.com/Carlos09Or/Math_Project_LLM/blob/main/benchmark2026/docs/methodology.md">Leer</a></p></div>
+    <div class="card"><h3>Rúbrica pedagógica</h3><p>Cinco dimensiones de 0 a 2, casos difíciles y revisión ciega. <a href="https://github.com/Carlos09Or/Math_Project_LLM/blob/main/benchmark2026/docs/pedagogical_rubric.md">Leer</a></p></div>
+    <div class="card"><h3>Verificación independiente</h3><p>Cómo se comprueban los errores de los estudiantes. <a href="https://github.com/Carlos09Or/Math_Project_LLM/blob/main/benchmark2026/docs/manual_verification.md">Leer</a></p></div>
+    <div class="card"><h3>Política del cero</h3><p>Qué dice el programa y qué casos con cero incluye el benchmark. <a href="https://github.com/Carlos09Or/Math_Project_LLM/blob/main/benchmark2026/docs/zero_policy.md">Leer</a></p></div>
+  </div>
+
+  <h2>Pendiente</h2>
+  <ul>
+    <li>Revisión docente de los ítems, la dificultad y la rúbrica.</li>
+    <li>Revisión humana de diagnóstico y pistas.</li>
+    <li>Repeticiones intercaladas por configuración (fase F3 de la <a href="hoja-de-ruta.html">hoja de ruta</a>).</li>
+    <li>Estrato de cero y definición de la evaluación de equivalencias.</li>
+  </ul>
+</main>
+
+<footer class="site"><div class="wrap">Borrador de trabajo · sin resultados científicos · <a href="https://github.com/Carlos09Or/Math_Project_LLM">repositorio en GitHub</a></div></footer>
+<script src="assets/data/benchmark2026.js"></script>
+<script src="assets/bench2026.js"></script>
+</body>
+</html>
