@@ -1,0 +1,135 @@
+{
+  "run_id": "qwen3-0.6b-q4_K_M-v1__gemma3-1b-q4_K_M__20261114T165504Z__round2",
+  "engine_version": "0.1.0",
+  "started_utc": "2026-11-14T16:55:04+00:00",
+  "benchmark_frozen": true,
+  "freeze_mismatches": [],
+  "dataset": {
+    "path": "benchmark_v1.jsonl",
+    "sha256": "51efbbfb3f97d69cfa713428036c6dcd28ca2d3e3394b551f843e3780d5fd39e",
+    "n_items": 180,
+    "tasks": [
+      "problem_solving",
+      "error_diagnosis",
+      "hint_generation"
+    ]
+  },
+  "prompts": {
+    "version": "prompts-v1.0",
+    "sha256": "43f9649ac8c9366d0e070401e87ebac34f387ffa404022221156e72bf6892208"
+  },
+  "config": {
+    "evaluation_sha256": "3ae171f8912d7a48e51044e034f5c0072849f4c5760cb00b220eaff8f236291f",
+    "generation": {
+      "think": false,
+      "stream": true,
+      "keep_alive": "10m",
+      "warmup_requests": 1,
+      "options": {
+        "temperature": 0,
+        "top_p": 1.0,
+        "top_k": 1,
+        "seed": 2026,
+        "num_ctx": 2048,
+        "num_predict": 768
+      }
+    },
+    "run": {
+      "repeats": 1,
+      "tasks": [
+        "problem_solving",
+        "error_diagnosis",
+        "hint_generation"
+      ],
+      "item_order": "file"
+    }
+  },
+  "engine_files": {
+    "src/run_benchmark.py": "8b9a8203d711719dc444ff776bc869833bee7e4f8c9d65d03f4f0f76fa424dd7",
+    "src/ollama_client.py": "b8b96841cc537edb48ee8281d0e61ea35b5d18f78c482cb43dd852ac72dedf78",
+    "src/prompts.py": "7183d3606685d8991a01834391154ab36555d89d163d430c23d511bcc7281d3e",
+    "src/score_math.py": "ee1d0d8b684d65abc46adab02bb2d01f4360372fc514253aab3a574340b06a55"
+  },
+  "ollama": {
+    "host": "http://127.0.0.1:11435",
+    "version": "0.40.16"
+  },
+  "machine": {
+    "platform": "Windows-11-10.0.26300-SP0",
+    "python": "3.12.6",
+    "gpu_energy_memory_measurements": "no medidos por el motor; solo se guarda lo que informa Ollama (ps_after_run)"
+  },
+  "tag": "round2",
+  "overrides": {},
+  "ablation": null,
+  "determinism_note": "La semilla no garantiza determinismo completo entre motores, versiones o configuraciones.",
+  "model": {
+    "id": "gemma3-1b-q4_K_M",
+    "ollama_name": "gemma3:1b-it-q4_K_M",
+    "expected_quantization": "Q4_K_M",
+    "digest": "97558784bdc9175075a72655bf360b15da17df6b3b9e5182af9f8c0c8e58ba7c",
+    "size_bytes": 806067407,
+    "modified_at": "2026-11-13T18:31:44.1586777-05:00",
+    "details": {
+      "parent_model": "dhiltgen/gemma3:1b-it-q4_K_M-llamacpp",
+      "format": "gguf",
+      "family": "gemma3",
+      "families": [
+        "gemma3"
+      ],
+      "parameter_size": "999.89M",
+      "quantization_level": "Q4_K_M",
+      "runner": "llamacpp"
+    },
+    "reported_quantization": "Q4_K_M",
+    "parameters": "temperature                    1\ntop_k                          64\ntop_p                          0.95\nstop                           \"<end_of_turn>\"",
+    "template_sha256": "e0a42594d802e5d31cdc786deb4823edb8adff66094d49de8fffe976d753e348",
+    "capabilities": [
+      "completion"
+    ],
+    "quantization_matches_expected": true,
+    "warmup": {
+      "load_duration_ns": 3664865900,
+      "wall_ms": 3985.755
+    },
+    "ps_after_run": [
+      {
+        "name": "gemma3:1b-it-q4_K_M",
+        "model": "gemma3:1b-it-q4_K_M",
+        "size": 877721026,
+        "digest": "97558784bdc9175075a72655bf360b15da17df6b3b9e5182af9f8c0c8e58ba7c",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "gemma3",
+          "families": [
+            "gemma3"
+          ],
+          "parameter_size": "999.89M",
+          "quantization_level": "Q4_K_M"
+        },
+        "expires_at": "2026-11-14T12:06:25.5133517-05:00",
+        "size_vram": 877721026,
+        "context_length": 2048,
+        "runner": "llamacpp"
+      }
+    ],
+    "think_accepted_by_ollama": true
+  },
+  "status": "completed",
+  "finished_utc": "2026-11-14T16:56:25+00:00",
+  "inference_summary": {
+    "n_records": 180,
+    "n_ok": 180,
+    "n_error": 0,
+    "wall_ms": {
+      "mean": 429.71,
+      "median": 344.817,
+      "p95": 941.939
+    },
+    "ttft_client_ms_median": 74.436,
+    "tokens_per_second_median": 185.305,
+    "eval_tokens_total": 11775,
+    "prompt_tokens_total": 30637
+  }
+}

@@ -1,0 +1,413 @@
+{
+  "by_model": {
+    "qwen3-0.6b-q4_K_M": {
+      "p_says_correct_overall": {
+        "k": 57,
+        "n": 60,
+        "rate": 0.95
+      },
+      "errors_caught": {
+        "k": 3,
+        "n": 51,
+        "rate": 0.059
+      },
+      "controls_accepted": {
+        "k": 9,
+        "n": 9,
+        "rate": 1.0
+      },
+      "caught_when_false_equation_written": {
+        "k": 1,
+        "n": 25,
+        "rate": 0.04
+      },
+      "caught_when_no_false_equation": {
+        "k": 2,
+        "n": 26,
+        "rate": 0.077
+      },
+      "caught_with_visible_procedure": {
+        "k": 0,
+        "n": 15,
+        "rate": 0.0
+      },
+      "caught_answer_only": {
+        "k": 3,
+        "n": 36,
+        "rate": 0.083
+      },
+      "error_items_with_family_solved_in_A": {
+        "k": 31,
+        "n": 32,
+        "rate": 0.969
+      },
+      "accepted_wrong_work_despite_solving": "31 de 32"
+    },
+    "qwen3-0.6b-q8_0": {
+      "p_says_correct_overall": {
+        "k": 51,
+        "n": 60,
+        "rate": 0.85
+      },
+      "errors_caught": {
+        "k": 9,
+        "n": 51,
+        "rate": 0.176
+      },
+      "controls_accepted": {
+        "k": 9,
+        "n": 9,
+        "rate": 1.0
+      },
+      "caught_when_false_equation_written": {
+        "k": 3,
+        "n": 25,
+        "rate": 0.12
+      },
+      "caught_when_no_false_equation": {
+        "k": 6,
+        "n": 26,
+        "rate": 0.231
+      },
+      "caught_with_visible_procedure": {
+        "k": 0,
+        "n": 15,
+        "rate": 0.0
+      },
+      "caught_answer_only": {
+        "k": 9,
+        "n": 36,
+        "rate": 0.25
+      },
+      "error_items_with_family_solved_in_A": {
+        "k": 27,
+        "n": 32,
+        "rate": 0.844
+      },
+      "accepted_wrong_work_despite_solving": "27 de 32"
+    },
+    "qwen3-0.6b-fp16": {
+      "p_says_correct_overall": {
+        "k": 51,
+        "n": 60,
+        "rate": 0.85
+      },
+      "errors_caught": {
+        "k": 9,
+        "n": 51,
+        "rate": 0.176
+      },
+      "controls_accepted": {
+        "k": 9,
+        "n": 9,
+        "rate": 1.0
+      },
+      "caught_when_false_equation_written": {
+        "k": 3,
+        "n": 25,
+        "rate": 0.12
+      },
+      "caught_when_no_false_equation": {
+        "k": 6,
+        "n": 26,
+        "rate": 0.231
+      },
+      "caught_with_visible_procedure": {
+        "k": 0,
+        "n": 15,
+        "rate": 0.0
+      },
+      "caught_answer_only": {
+        "k": 9,
+        "n": 36,
+        "rate": 0.25
+      },
+      "error_items_with_family_solved_in_A": {
+        "k": 26,
+        "n": 32,
+        "rate": 0.812
+      },
+      "accepted_wrong_work_despite_solving": "26 de 32"
+    },
+    "qwen3-1.7b-q4_K_M": {
+      "p_says_correct_overall": {
+        "k": 41,
+        "n": 60,
+        "rate": 0.683
+      },
+      "errors_caught": {
+        "k": 19,
+        "n": 51,
+        "rate": 0.373
+      },
+      "controls_accepted": {
+        "k": 9,
+        "n": 9,
+        "rate": 1.0
+      },
+      "caught_when_false_equation_written": {
+        "k": 7,
+        "n": 25,
+        "rate": 0.28
+      },
+      "caught_when_no_false_equation": {
+        "k": 12,
+        "n": 26,
+        "rate": 0.462
+      },
+      "caught_with_visible_procedure": {
+        "k": 1,
+        "n": 15,
+        "rate": 0.067
+      },
+      "caught_answer_only": {
+        "k": 18,
+        "n": 36,
+        "rate": 0.5
+      },
+      "error_items_with_family_solved_in_A": {
+        "k": 30,
+        "n": 47,
+        "rate": 0.638
+      },
+      "accepted_wrong_work_despite_solving": "30 de 47"
+    },
+    "gemma3-1b-q4_K_M": {
+      "p_says_correct_overall": {
+        "k": 56,
+        "n": 60,
+        "rate": 0.933
+      },
+      "errors_caught": {
+        "k": 3,
+        "n": 51,
+        "rate": 0.059
+      },
+      "controls_accepted": {
+        "k": 9,
+        "n": 9,
+        "rate": 1.0
+      },
+      "caught_when_false_equation_written": {
+        "k": 0,
+        "n": 25,
+        "rate": 0.0
+      },
+      "caught_when_no_false_equation": {
+        "k": 3,
+        "n": 26,
+        "rate": 0.115
+      },
+      "caught_with_visible_procedure": {
+        "k": 0,
+        "n": 15,
+        "rate": 0.0
+      },
+      "caught_answer_only": {
+        "k": 3,
+        "n": 36,
+        "rate": 0.083
+      },
+      "error_items_with_family_solved_in_A": {
+        "k": 20,
+        "n": 21,
+        "rate": 0.952
+      },
+      "accepted_wrong_work_despite_solving": "20 de 21"
+    },
+    "smollm3-3b-q4_K_M": {
+      "p_says_correct_overall": {
+        "k": 28,
+        "n": 60,
+        "rate": 0.467
+      },
+      "errors_caught": {
+        "k": 30,
+        "n": 51,
+        "rate": 0.588
+      },
+      "controls_accepted": {
+        "k": 7,
+        "n": 9,
+        "rate": 0.778
+      },
+      "caught_when_false_equation_written": {
+        "k": 15,
+        "n": 25,
+        "rate": 0.6
+      },
+      "caught_when_no_false_equation": {
+        "k": 15,
+        "n": 26,
+        "rate": 0.577
+      },
+      "caught_with_visible_procedure": {
+        "k": 8,
+        "n": 15,
+        "rate": 0.533
+      },
+      "caught_answer_only": {
+        "k": 22,
+        "n": 36,
+        "rate": 0.611
+      },
+      "error_items_with_family_solved_in_A": {
+        "k": 16,
+        "n": 44,
+        "rate": 0.364
+      },
+      "accepted_wrong_work_despite_solving": "16 de 44"
+    },
+    "phi4-mini-3.8b-q4_K_M": {
+      "p_says_correct_overall": {
+        "k": 26,
+        "n": 60,
+        "rate": 0.433
+      },
+      "errors_caught": {
+        "k": 34,
+        "n": 51,
+        "rate": 0.667
+      },
+      "controls_accepted": {
+        "k": 9,
+        "n": 9,
+        "rate": 1.0
+      },
+      "caught_when_false_equation_written": {
+        "k": 14,
+        "n": 25,
+        "rate": 0.56
+      },
+      "caught_when_no_false_equation": {
+        "k": 20,
+        "n": 26,
+        "rate": 0.769
+      },
+      "caught_with_visible_procedure": {
+        "k": 9,
+        "n": 15,
+        "rate": 0.6
+      },
+      "caught_answer_only": {
+        "k": 25,
+        "n": 36,
+        "rate": 0.694
+      },
+      "error_items_with_family_solved_in_A": {
+        "k": 13,
+        "n": 45,
+        "rate": 0.289
+      },
+      "accepted_wrong_work_despite_solving": "13 de 45"
+    }
+  },
+  "by_subtype": {
+    "tens_written_in_hundreds": {
+      "k": 0,
+      "n": 14,
+      "rate": 0.0
+    },
+    "wrong_number_of_zeros_removed": {
+      "k": 1,
+      "n": 21,
+      "rate": 0.048
+    },
+    "hundreds_written_as_tens": {
+      "k": 1,
+      "n": 14,
+      "rate": 0.071
+    },
+    "digit_given_instead_of_value": {
+      "k": 1,
+      "n": 14,
+      "rate": 0.071
+    },
+    "carry_not_added": {
+      "k": 4,
+      "n": 28,
+      "rate": 0.143
+    },
+    "neutral_element_given_as_one": {
+      "k": 1,
+      "n": 7,
+      "rate": 0.143
+    },
+    "table_recall_one_group_off": {
+      "k": 2,
+      "n": 14,
+      "rate": 0.143
+    },
+    "remainder_not_smaller_than_divisor": {
+      "k": 4,
+      "n": 28,
+      "rate": 0.143
+    },
+    "last_step_omitted": {
+      "k": 4,
+      "n": 21,
+      "rate": 0.19
+    },
+    "smaller_minus_larger_digit": {
+      "k": 6,
+      "n": 28,
+      "rate": 0.214
+    },
+    "denominators_added": {
+      "k": 3,
+      "n": 14,
+      "rate": 0.214
+    },
+    "wrong_number_of_zeros": {
+      "k": 6,
+      "n": 21,
+      "rate": 0.286
+    },
+    "added_instead_of_multiplied": {
+      "k": 5,
+      "n": 14,
+      "rate": 0.357
+    },
+    "fraction_type_swapped": {
+      "k": 8,
+      "n": 21,
+      "rate": 0.381
+    },
+    "blank_filled_with_total": {
+      "k": 3,
+      "n": 7,
+      "rate": 0.429
+    },
+    "tens_units_swapped": {
+      "k": 6,
+      "n": 14,
+      "rate": 0.429
+    },
+    "step_size_changed": {
+      "k": 7,
+      "n": 14,
+      "rate": 0.5
+    },
+    "comparison_symbol_reversed": {
+      "k": 9,
+      "n": 14,
+      "rate": 0.643
+    },
+    "multiplied_instead_of_divided": {
+      "k": 14,
+      "n": 21,
+      "rate": 0.667
+    },
+    "added_instead_of_subtracted": {
+      "k": 5,
+      "n": 7,
+      "rate": 0.714
+    },
+    "symbol_reversed_naturals": {
+      "k": 17,
+      "n": 21,
+      "rate": 0.81
+    }
+  },
+  "n_error_items": 51
+}

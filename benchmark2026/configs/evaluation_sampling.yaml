@@ -1,0 +1,32 @@
+# Configuración de MUESTREO para medir la variabilidad entre rondas. No es la configuración congelada del benchmark (evaluation.yaml, temperatura 0).
+# Los modelos y el host de Ollama están en configs/models.yaml (no congelado: se registra en cada corrida).
+# Los parámetros efectivos se registran de nuevo en cada corrida.
+experiment:
+  name: sampling-v1
+  description: >-
+    Rondas con muestreo (temperatura 0.7, top_p 0.8, top_k 20) sobre el benchmark v1 congelado. La semilla se cambia en cada ronda con --seed.
+    No usar el dataset para entrenar ni ajustar modelos.
+
+dataset:
+  path: ../data/benchmark_v1.jsonl
+  freeze_manifest: ../configs/freeze_v1.json
+prompts: ../configs/prompts.yaml
+
+generation:
+  think: false          # Qwen3: desactiva el modo de razonamiento si la versión de Ollama lo admite
+  stream: true          # permite medir el tiempo hasta el primer token desde el cliente
+  keep_alive: 10m
+  warmup_requests: 1    # una petición no registrada para cargar el modelo; se anota su carga aparte
+  options:
+    temperature: 0.7
+    top_p: 0.8
+    top_k: 20
+    seed: 2026
+    num_ctx: 2048
+    num_predict: 768
+  # La semilla no garantiza determinismo completo entre motores, versiones o configuraciones.
+
+run:
+  repeats: 1
+  tasks: [problem_solving, error_diagnosis, hint_generation]
+  item_order: file      # mismo orden para todos los modelos

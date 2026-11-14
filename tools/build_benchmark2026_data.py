@@ -124,6 +124,13 @@ def main() -> int:
         "models": models, "tasks": tasks, "skills": [{"id": s, **skills[s]} for s, _ in SKILLS], "difficulty": {m: dict(d) for m, d in diff.items()},
         "verdict": verdict, "categories_said": cats, "categories_expected": dict(cat_expected), "labeled_final": labeled, "coverage": coverage,
     }
+    ar = json.loads((src / "results" / "analysis_rounds.json").read_text(encoding="utf-8"))
+    ad = json.loads((src / "results" / "analysis_diagnosis_round1.json").read_text(encoding="utf-8"))
+    data["rounds"] = ar["rounds"]
+    data["stability"] = ar["stability"]
+    data["comparisons"] = {k: v for k, v in ar["comparisons"].items() if "|C|" not in k}
+    data["ablation"] = ar["ablation"]
+    data["diag"] = {"by_model": ad["by_model"], "by_subtype": ad["by_subtype"], "n_error_items": ad["n_error_items"]}
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text("window.BENCH2026 = " + json.dumps(data, ensure_ascii=False, separators=(",", ":")) + ";\n", encoding="utf-8")
     print(f"escrito {args.out} ({args.out.stat().st_size} bytes)")

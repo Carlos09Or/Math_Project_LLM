@@ -10,7 +10,7 @@ Material público del benchmark. Estado: **borrador sin revisión docente ni val
 | `curriculum/` | Matriz curricular (28 filas, con páginas oficiales), restricciones por competencia (separando lo documentado de lo metodológico) y cobertura |
 | `configs/` | Prompts, configuración de evaluación, modelos y el manifiesto de congelación (SHA-256) |
 | `schemas/` | Esquema JSON de un ítem |
-| `results/` | Resumen de las siete configuraciones, informe de validación y un manifiesto por corrida (modelo, digest, cuantización, parámetros, métricas que informó Ollama) |
+| `results/` | Resumen de las siete configuraciones, informe de validación, un manifiesto por corrida (modelo, digest, cuantización, parámetros, métricas que informó Ollama), los análisis de rondas y ablación (`analysis_*.json`) y los manifiestos de las rondas adicionales (`manifests_rounds/`) |
 
 ## Qué NO se publica, y por qué
 

@@ -1,0 +1,35 @@
+# Variantes de prompt SOLO para la tarea B (diagnóstico). Exploratorias; no son el benchmark congelado.
+# Se escribieron antes de ver sus resultados (ver docs/rounds_and_ablation_plan.md).
+version: ablation-B-v1
+description: >-
+  Separar tres explicaciones de por qué los modelos dan por bueno un trabajo equivocado:
+  no saber resolver, no comparar, o inclinarse a decir "correcto".
+variants:
+  solve_first:
+    template: |
+      Problema: {question}
+
+      Trabajo del estudiante:
+      {student_work}
+
+      {task_instruction}
+      Antes de opinar, resuelve tú mismo el problema paso a paso, sin fiarte del trabajo del estudiante. Después compara tu resultado con el del estudiante.
+      Termina con estas tres líneas:
+      VEREDICTO: correcto o incorrecto
+      CATEGORIA: una de estas opciones: {categories}
+      EXPLICACION: una o dos frases cortas
+  given_answer:
+    template: |
+      Problema: {question}
+
+      La respuesta correcta de este problema es: {correct_answer}
+
+      Trabajo del estudiante:
+      {student_work}
+
+      {task_instruction}
+      Compara la respuesta final del estudiante con la respuesta correcta que te doy.
+      Responde con estas tres líneas:
+      VEREDICTO: correcto o incorrecto
+      CATEGORIA: una de estas opciones: {categories}
+      EXPLICACION: una o dos frases cortas
