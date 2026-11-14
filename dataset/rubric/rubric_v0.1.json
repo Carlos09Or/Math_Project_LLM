@@ -1,0 +1,668 @@
+{
+ "version": "rubric_v0.1",
+ "status": "borrador sin validación docente",
+ "date": "2026-11-14",
+ "scale": "0-2 (más es mejor); NA = no se puede juzgar",
+ "criteria": [
+  {
+   "id": "S1",
+   "task": "solve",
+   "applies_to": "todos",
+   "name": "Procedimiento correcto y mostrado",
+   "automated": "La exactitud de la respuesta final la puntúa el código (no esta rúbrica).",
+   "question": "¿La explicación plantea la operación correcta y muestra cómo se calcula?",
+   "levels": {
+    "0": "El procedimiento es incorrecto, no tiene relación con el problema o contradice la respuesta final.",
+    "1": "Plantea la operación correcta pero no muestra cómo se calcula, o muestra el cálculo con un error menor que no cambia la respuesta final.",
+    "2": "Plantea la operación correcta y muestra un cálculo (pasos o resultado intermedio) correcto y coherente con la respuesta final."
+   },
+   "notes": "Si la respuesta final es incorrecta, S1 no puede ser 2."
+  },
+  {
+   "id": "X1",
+   "task": "todas",
+   "applies_to": "todos",
+   "name": "Coherencia interna",
+   "automated": null,
+   "question": "¿La respuesta se contradice a sí misma?",
+   "levels": {
+    "0": "Se contradice en lo esencial (p. ej., el veredicto dice «correcta» pero el texto dice que es incorrecta; el procedimiento da un resultado y la respuesta final otro).",
+    "1": "Tiene una inconsistencia menor o una frase confusa, pero lo esencial no se contradice.",
+    "2": "Todo lo que dice es compatible entre sí."
+   },
+   "notes": "Se juzga la coherencia, no la verdad: una respuesta puede ser coherente y falsa."
+  },
+  {
+   "id": "M1",
+   "task": "todas",
+   "applies_to": "todos",
+   "name": "Verdad matemática de lo que afirma",
+   "automated": "Parte (resultado final, veredicto) la detecta el código; aquí se juzga todo lo demás que afirma.",
+   "question": "¿Lo que afirma sobre cuentas, resultados y sobre la respuesta del estudiante es matemáticamente verdadero?",
+   "levels": {
+    "0": "Afirma como cierto algo matemáticamente falso y relevante (un cálculo falso, «es divisible» cuando no lo es, un resultado decimal inventado, dar por correcta una respuesta incorrecta).",
+    "1": "Afirma algo falso pero secundario o impreciso, sin afectar lo central.",
+    "2": "Todo lo que afirma es matemáticamente verdadero."
+   },
+   "notes": "Se juzga lo afirmado, no el estilo."
+  },
+  {
+   "id": "E1",
+   "task": "todas",
+   "applies_to": "todos",
+   "name": "Claridad apropiada a 3.er grado",
+   "automated": "El código solo registra si usa LaTeX o si está truncada.",
+   "question": "¿Un niño de 3.er grado podría leerlo y seguirlo?",
+   "levels": {
+    "0": "Notación o vocabulario inadecuados para 3.er grado (LaTeX o «$$», símbolos o términos fuera del programa) o un texto confuso o largo que un niño no seguiría.",
+    "1": "Comprensible con esfuerzo: algo de notación técnica aislada (p. ej. «$ … $»), frases largas o un término poco apropiado.",
+    "2": "Frases cortas y vocabulario y notación del programa de 3.er grado."
+   },
+   "notes": "Los términos del programa (minuendo, sustraendo, cociente, residuo…) son apropiados. Restos como «/no_think» se anotan como artefacto y no bajan la puntuación salvo que impidan entender."
+  },
+  {
+   "id": "D1",
+   "task": "diagnose",
+   "applies_to": "con_error",
+   "name": "Localización del error",
+   "automated": "El código puntúa solo el veredicto «correcta/incorrecta».",
+   "question": "Cuando el estudiante se equivocó, ¿detecta el error y lo ubica?",
+   "levels": {
+    "0": "No detecta el error (dice que está bien), o señala un error que no existe, o culpa a una operación equivocada.",
+    "1": "Detecta que hay un error pero no lo ubica, o lo describe de forma imprecisa o con un detalle incorrecto.",
+    "2": "Detecta el error y lo ubica con precisión: coincide en lo esencial con el error observable del ítem."
+   },
+   "notes": "Se compara con el «error observable» del ítem. Un veredicto «correcta» ante una respuesta errónea es siempre 0."
+  },
+  {
+   "id": "D2",
+   "task": "diagnose",
+   "applies_to": "control",
+   "name": "Reconoce lo correcto sin inventar errores",
+   "automated": "El código puntúa solo el veredicto.",
+   "question": "Cuando el estudiante acertó, ¿lo reconoce sin inventar errores?",
+   "levels": {
+    "0": "Afirma que hay un error, o inventa uno, aunque el estudiante acertó.",
+    "1": "Reconoce que es correcta pero añade dudas, correcciones o «errores» infundados.",
+    "2": "Reconoce que es correcta sin inventar errores ni reservas infundadas."
+   },
+   "notes": "Solo se aplica a los controles (respuesta del estudiante correcta)."
+  },
+  {
+   "id": "D3",
+   "task": "diagnose",
+   "applies_to": "todos",
+   "name": "No inventa la intención ni el razonamiento del estudiante",
+   "automated": null,
+   "question": "¿Se limita a lo observable en la respuesta del estudiante?",
+   "levels": {
+    "0": "Atribuye con certeza al estudiante un razonamiento o proceso que no se puede observar y que además es falso o contradictorio.",
+    "1": "Atribuye al estudiante un proceso no observable (con o sin cautela), aunque sea plausible.",
+    "2": "Describe solo lo observable (qué cifra o paso difiere) sin atribuir intención."
+   },
+   "notes": "Principio de la propuesta: no inventar la intención del niño."
+  },
+  {
+   "id": "H1",
+   "task": "hint",
+   "applies_to": "todos",
+   "name": "No revela el resultado",
+   "automated": "El código detecta si aparece el resultado correcto (el cociente en las divisiones); aquí se confirman revelaciones implícitas.",
+   "question": "¿La pista deja al estudiante el trabajo de llegar al resultado?",
+   "levels": {
+    "0": "Incluye el resultado correcto, o resuelve el problema paso a paso hasta darlo.",
+    "1": "No lo escribe, pero lo hace casi inmediato (da el resultado de un paso que equivale a la respuesta, o una cifra de ella).",
+    "2": "No revela el resultado ni lo hace trivial."
+   },
+   "notes": "En un control, repetir la respuesta correcta del estudiante cuenta como revelar."
+  },
+  {
+   "id": "H2",
+   "task": "hint",
+   "applies_to": "todos",
+   "name": "Utilidad: orienta al lugar del error",
+   "automated": null,
+   "question": "¿La pista ayuda a que el estudiante encuentre su error?",
+   "levels": {
+    "0": "No ayuda: es incorrecta, irrelevante, o repite una respuesta errónea.",
+    "1": "Es relevante pero genérica («revisa tu operación»): no ubica dónde mirar.",
+    "2": "Orienta al paso o concepto donde está el error (o, si el estudiante acertó, invita a verificar de forma significativa) sin hacer el trabajo."
+   },
+   "notes": null
+  },
+  {
+   "id": "H3",
+   "task": "hint",
+   "applies_to": "todos",
+   "name": "No valida lo falso ni descalifica lo correcto",
+   "automated": "El código NO detecta esto: es un fallo observado en los datos.",
+   "question": "¿La pista es honesta sobre la respuesta del estudiante?",
+   "levels": {
+    "0": "Da por correcta una respuesta errónea (o por errónea una correcta).",
+    "1": "Es ambigua sobre la respuesta del estudiante: puede leerse como una validación.",
+    "2": "No valida lo falso ni descalifica lo correcto."
+   },
+   "notes": null
+  },
+  {
+   "id": "H4",
+   "task": "hint",
+   "applies_to": "todos",
+   "name": "Una pista breve y graduada",
+   "automated": "El código solo registra la longitud.",
+   "question": "¿Es una pista, y no una lección?",
+   "levels": {
+    "0": "No es una pista: resuelve el problema completo o da una lista larga de pasos.",
+    "1": "Varias indicaciones a la vez, o más larga de lo necesario para una pista.",
+    "2": "Una pista breve (idealmente una o dos frases) que deja trabajo al estudiante."
+   },
+   "notes": null
+  }
+ ],
+ "anchors": [
+  {
+   "id": "A-S1-0",
+   "criterion": "S1",
+   "level": 0,
+   "provenance": "real",
+   "source": {
+    "run": "scorer_validation_dev",
+    "item_id": "PB-MUL-01-S",
+    "model": "qwen3:0.6b-fp16",
+    "prompt_version": "prompt-v0.3",
+    "split": "dev"
+   },
+   "problem": "Una caja de crayones tiene 13 crayones. ¿Cuántos crayones hay en 6 cajas?",
+   "student_answer": null,
+   "gold_error_observable": null,
+   "response": "Procedimiento:  \nPrimero, dividimos el número de crayones en una caja por 6. Luego, multiplicamos el resultado por 6.  \n\nRespuesta final: 72 /no_think",
+   "rationale": "El procedimiento es incorrecto (dividir y luego multiplicar) y da 72."
+  },
+  {
+   "id": "A-S1-1",
+   "criterion": "S1",
+   "level": 1,
+   "provenance": "real",
+   "source": {
+    "run": "scorer_validation_dev",
+    "item_id": "PB-MUL-01-S",
+    "model": "qwen3:0.6b-q8_0",
+    "prompt_version": "prompt-v0.3",
+    "split": "dev"
+   },
+   "problem": "Una caja de crayones tiene 13 crayones. ¿Cuántos crayones hay en 6 cajas?",
+   "student_answer": null,
+   "gold_error_observable": null,
+   "response": "Una caja tiene 13 crayones. Para encontrar cuántos crayones hay en 6 cajas, multiplicamos 13 por 6. El procedimiento es multiplicar el número de crayones por el número de cajas. Respuesta final: 78 /no_think",
+   "rationale": "Plantea la operación correcta (13 por 6) pero no muestra cómo se calcula."
+  },
+  {
+   "id": "A-S1-2",
+   "criterion": "S1",
+   "level": 2,
+   "provenance": "real",
+   "source": {
+    "run": "scorer_validation_dev",
+    "item_id": "PB-DIV-01-S",
+    "model": "qwen3:0.6b-q4_K_M",
+    "prompt_version": "prompt-v0.3",
+    "split": "dev"
+   },
+   "problem": "Se reparten 87 pegatinas por igual entre 4 estudiantes. ¿Cuántas pegatinas recibe cada estudiante y cuántas sobran?",
+   "student_answer": null,
+   "gold_error_observable": null,
+   "response": "Se reparten 87 pegatinas entre 4 estudiantes igualmente. Para resolver, dividimos 87 entre 4. El resultado es 21 pegatinas por estudiante. Al restar, 87 - 4*21 = 87 - 84 = 3. Por lo tanto, cada estudiante recibe 21 pegatinas y 3 sobran.\n\nRespuesta final: cociente <21>, residuo <3> /no_think.",
+   "rationale": "Muestra la división, el producto 4 × 21 = 84 y el residuo 87 − 84 = 3: cálculo correcto y coherente."
+  },
+  {
+   "id": "A-X1-0",
+   "criterion": "X1",
+   "level": 0,
+   "provenance": "real",
+   "source": {
+    "run": "scorer_validation_dev",
+    "item_id": "PB-SUB-01-D",
+    "model": "qwen3:0.6b-q4_K_M",
+    "prompt_version": "prompt-v0.3",
+    "split": "dev"
+   },
+   "problem": "Don Julio tenía 725 naranjas en su puesto del mercado. Vendió 348 naranjas. ¿Cuántas naranjas le quedan?",
+   "student_answer": "423",
+   "gold_error_observable": "423 ≠ 377. Donde la cifra de arriba era menor que la de abajo se restó la cifra menor de la mayor, sin pedir prestado (unidades: |5−8| = 3; decenas: |2−4| = 2).",
+   "response": "Veredicto: correcta.  \nDon Julio tenía 725 naranjas en su puesto del mercado. Vendió 348 naranjas.  \nEl número de naranjas que le quedan es 725 - 348 = 377.  \nEl estudiante calculó 423, lo que es incorrecto. El error es que no se realizó la resta correctamente.",
+   "rationale": "El veredicto dice «correcta» y el texto dice que 423 «es incorrecto»: se contradice en lo esencial."
+  },
+  {
+   "id": "A-X1-1",
+   "criterion": "X1",
+   "level": 1,
+   "provenance": "sintetico",
+   "source": null,
+   "problem": "Una caja de crayones tiene 13 crayones. ¿Cuántos crayones hay en 6 cajas?",
+   "student_answer": "68",
+   "gold_error_observable": "68 ≠ 78. En cada producto parcial se escribió solo la cifra de las unidades y no se sumó lo que se lleva (3 × 6 = 18).",
+   "response": "Veredicto: incorrecta. El resultado de 13 × 6 es 78 y tú escribiste 68, que es casi igual y casi correcto.",
+   "rationale": "Lo esencial (es incorrecta) no se contradice, pero «casi correcto» es una frase confusa."
+  },
+  {
+   "id": "A-X1-2",
+   "criterion": "X1",
+   "level": 2,
+   "provenance": "real",
+   "source": {
+    "run": "scorer_validation_dev",
+    "item_id": "PB-MUL-01-D",
+    "model": "qwen3:0.6b-q8_0",
+    "prompt_version": "prompt-v0.3",
+    "split": "dev"
+   },
+   "problem": "Una caja de crayones tiene 13 crayones. ¿Cuántos crayones hay en 6 cajas?",
+   "student_answer": "68",
+   "gold_error_observable": "68 ≠ 78. En cada producto parcial se escribió solo la cifra de las unidades y no se sumó lo que se lleva (3 × 6 = 18).",
+   "response": "Veredicto: incorrecta. El error es que no se multiplicó 13 por 6, sino que se multiplicó 13 por 68.",
+   "rationale": "Veredicto y texto coinciden. Es coherente aunque su detalle sea falso (eso lo juzga M1 y D1, no X1)."
+  },
+  {
+   "id": "A-M1-0",
+   "criterion": "M1",
+   "level": 0,
+   "provenance": "real",
+   "source": {
+    "run": "scorer_validation_dev",
+    "item_id": "PB-DIV-01-S",
+    "model": "qwen3:0.6b-q8_0",
+    "prompt_version": "prompt-v0.3",
+    "split": "dev"
+   },
+   "problem": "Se reparten 87 pegatinas por igual entre 4 estudiantes. ¿Cuántas pegatinas recibe cada estudiante y cuántas sobran?",
+   "student_answer": null,
+   "gold_error_observable": null,
+   "response": "Se reparten 87 pegatinas por igual entre 4 estudiantes. Para encontrar cuántas pegatinas recibe cada estudiante, dividimos 87 entre 4. El resultado es 21.5. No hay resto, ya que 87 es divisible por 4. \n\nRespuesta final: 21 <87>, 0 /no_think",
+   "rationale": "Afirma «21.5» y «87 es divisible por 4», ambas falsas y centrales."
+  },
+  {
+   "id": "A-M1-1",
+   "criterion": "M1",
+   "level": 1,
+   "provenance": "sintetico",
+   "source": null,
+   "problem": "Una caja de crayones tiene 13 crayones. ¿Cuántos crayones hay en 6 cajas?",
+   "student_answer": null,
+   "gold_error_observable": null,
+   "response": "Multiplicamos 13 por 6. Como 13 es un número par, el resultado también es par. Respuesta final: 78",
+   "rationale": "El resultado es verdadero pero afirma algo falso secundario: 13 no es par."
+  },
+  {
+   "id": "A-M1-2",
+   "criterion": "M1",
+   "level": 2,
+   "provenance": "real",
+   "source": {
+    "run": "scorer_validation_dev",
+    "item_id": "PB-DIV-01-S",
+    "model": "qwen3:0.6b-q4_K_M",
+    "prompt_version": "prompt-v0.3",
+    "split": "dev"
+   },
+   "problem": "Se reparten 87 pegatinas por igual entre 4 estudiantes. ¿Cuántas pegatinas recibe cada estudiante y cuántas sobran?",
+   "student_answer": null,
+   "gold_error_observable": null,
+   "response": "Se reparten 87 pegatinas entre 4 estudiantes igualmente. Para resolver, dividimos 87 entre 4. El resultado es 21 pegatinas por estudiante. Al restar, 87 - 4*21 = 87 - 84 = 3. Por lo tanto, cada estudiante recibe 21 pegatinas y 3 sobran.\n\nRespuesta final: cociente <21>, residuo <3> /no_think.",
+   "rationale": "Todas las cuentas que muestra son verdaderas."
+  },
+  {
+   "id": "A-E1-0",
+   "criterion": "E1",
+   "level": 0,
+   "provenance": "real",
+   "source": {
+    "run": "scorer_validation_dev",
+    "item_id": "PB-DIV-01-H",
+    "model": "qwen3:0.6b-q4_K_M",
+    "prompt_version": "prompt-v0.3",
+    "split": "dev"
+   },
+   "problem": "Se reparten 87 pegatinas por igual entre 4 estudiantes. ¿Cuántas pegatinas recibe cada estudiante y cuántas sobran?",
+   "student_answer": "cociente 20, residuo 7",
+   "gold_error_observable": "cociente 20, residuo 7 ≠ cociente 21, residuo 3. El residuo (7) es mayor o igual que el divisor (4): el reparto no ha terminado.",
+   "response": "Para resolver este problema, debes seguir estos pasos:\n\n1. **Divide 87 pegatinas entre 4 estudiantes**.  \n   $$\n   87 \\div 4 = 20 \\text{ (cociente)}\n   $$\n\n2. **Resta el cociente al total de pegatinas**.  \n   $$\n   87 - 20 \\times 4 = 87 - 80 = 7\n   $$\n\n3. **El cociente representa cómo se reparten las pegatinas**, y el residuo representa cómo se sobran.  \n   $$\n   \\text{Cociente: } 20, \\quad \\text{Residuo: } 7\n   $$\n\n**Respuesta final:**  \nCada estudiante recibe $20$ pegatinas y $7$ sobran.",
+   "rationale": "Usa LaTeX («$$», «\\div», «\\text») y una lista de pasos que un niño de 3.er grado no seguiría."
+  },
+  {
+   "id": "A-E1-1",
+   "criterion": "E1",
+   "level": 1,
+   "provenance": "real",
+   "source": {
+    "run": "scorer_validation_dev",
+    "item_id": "PB-SUB-01-S",
+    "model": "qwen3:0.6b-q8_0",
+    "prompt_version": "prompt-v0.3",
+    "split": "dev"
+   },
+   "problem": "Don Julio tenía 725 naranjas en su puesto del mercado. Vendió 348 naranjas. ¿Cuántas naranjas le quedan?",
+   "student_answer": null,
+   "gold_error_observable": null,
+   "response": "Don Julio tenía 725 naranjas en su puesto del mercado. Vendió 348 naranjas. Le quedan $ 725 - 348 = 377 $ naranjas.\n\nRespuesta final: <377>",
+   "rationale": "Comprensible, pero con notación técnica aislada («$ 725 - 348 = 377 $»)."
+  },
+  {
+   "id": "A-E1-2",
+   "criterion": "E1",
+   "level": 2,
+   "provenance": "real",
+   "source": {
+    "run": "scorer_validation_dev",
+    "item_id": "PB-SUB-01-S",
+    "model": "qwen3:0.6b-q4_K_M",
+    "prompt_version": "prompt-v0.3",
+    "split": "dev"
+   },
+   "problem": "Don Julio tenía 725 naranjas en su puesto del mercado. Vendió 348 naranjas. ¿Cuántas naranjas le quedan?",
+   "student_answer": null,
+   "gold_error_observable": null,
+   "response": "Don Julio tenía 725 naranjas en su puesto del mercado. Vendió 348 naranjas. Para encontrar cuántas le quedaron, restamos las naranjas vendidas de las naranjas iniciales:  \n725 - 348 = 377.  \n\nRespuesta final: <377>",
+   "rationale": "Frases cortas y la operación escrita en forma simple."
+  },
+  {
+   "id": "A-D1-0",
+   "criterion": "D1",
+   "level": 0,
+   "provenance": "real",
+   "source": {
+    "run": "scorer_validation_dev",
+    "item_id": "PB-SUB-01-D",
+    "model": "qwen3:0.6b-q8_0",
+    "prompt_version": "prompt-v0.3",
+    "split": "dev"
+   },
+   "problem": "Don Julio tenía 725 naranjas en su puesto del mercado. Vendió 348 naranjas. ¿Cuántas naranjas le quedan?",
+   "student_answer": "423",
+   "gold_error_observable": "423 ≠ 377. Donde la cifra de arriba era menor que la de abajo se restó la cifra menor de la mayor, sin pedir prestado (unidades: |5−8| = 3; decenas: |2−4| = 2).",
+   "response": "Veredicto: correcta.  \nDon Julio le quedó 423 naranjas.",
+   "rationale": "Dice «correcta» ante una respuesta errónea: no detecta el error."
+  },
+  {
+   "id": "A-D1-1",
+   "criterion": "D1",
+   "level": 1,
+   "provenance": "real",
+   "source": {
+    "run": "scorer_validation_dev",
+    "item_id": "PB-MUL-01-D",
+    "model": "qwen3:0.6b-q4_K_M",
+    "prompt_version": "prompt-v0.3",
+    "split": "dev"
+   },
+   "problem": "Una caja de crayones tiene 13 crayones. ¿Cuántos crayones hay en 6 cajas?",
+   "student_answer": "68",
+   "gold_error_observable": "68 ≠ 78. En cada producto parcial se escribió solo la cifra de las unidades y no se sumó lo que se lleva (3 × 6 = 18).",
+   "response": "Veredicto: incorrecta.  \nEl error es que no multiplica 13 por 6, sino que sumaba 13 en cada caja. La respuesta correcta sería 13 multiplicado por 6, lo que es 78.",
+   "rationale": "Detecta que hay un error, pero lo describe mal («sumaba 13 en cada caja»): no coincide con el error observable (se omitió la llevada)."
+  },
+  {
+   "id": "A-D1-2",
+   "criterion": "D1",
+   "level": 2,
+   "provenance": "sintetico",
+   "source": null,
+   "problem": "Una caja de crayones tiene 13 crayones. ¿Cuántos crayones hay en 6 cajas?",
+   "student_answer": "68",
+   "gold_error_observable": "68 ≠ 78. En cada producto parcial se escribió solo la cifra de las unidades y no se sumó lo que se lleva (3 × 6 = 18).",
+   "response": "Veredicto: incorrecta. En 13 × 6, 3 × 6 = 18: se escribió el 8 pero no se sumó el 1 que se lleva a las decenas.",
+   "rationale": "Detecta el error y lo ubica exactamente donde está."
+  },
+  {
+   "id": "A-D2-0",
+   "criterion": "D2",
+   "level": 0,
+   "provenance": "sintetico",
+   "source": null,
+   "problem": "Una caja de crayones tiene 13 crayones. ¿Cuántos crayones hay en 6 cajas?",
+   "student_answer": "78",
+   "gold_error_observable": null,
+   "response": "Veredicto: incorrecta. El error es que no se sumó el 1 que se lleva.",
+   "rationale": "Inventa un error aunque la respuesta (78) es correcta."
+  },
+  {
+   "id": "A-D2-1",
+   "criterion": "D2",
+   "level": 1,
+   "provenance": "sintetico",
+   "source": null,
+   "problem": "Una caja de crayones tiene 13 crayones. ¿Cuántos crayones hay en 6 cajas?",
+   "student_answer": "78",
+   "gold_error_observable": null,
+   "response": "Veredicto: correcta. Aunque quizás deberías revisar las decenas por si acaso, porque a veces hay errores ahí.",
+   "rationale": "Reconoce que es correcta pero añade una duda infundada."
+  },
+  {
+   "id": "A-D2-2",
+   "criterion": "D2",
+   "level": 2,
+   "provenance": "sintetico",
+   "source": null,
+   "problem": "Una caja de crayones tiene 13 crayones. ¿Cuántos crayones hay en 6 cajas?",
+   "student_answer": "78",
+   "gold_error_observable": null,
+   "response": "Veredicto: correcta. 13 × 6 = 78.",
+   "rationale": "Reconoce lo correcto sin inventar errores."
+  },
+  {
+   "id": "A-D3-0",
+   "criterion": "D3",
+   "level": 0,
+   "provenance": "real",
+   "source": {
+    "run": "scorer_validation_dev",
+    "item_id": "PB-MUL-01-D",
+    "model": "qwen3:0.6b-q4_K_M",
+    "prompt_version": "prompt-v0.3",
+    "split": "dev"
+   },
+   "problem": "Una caja de crayones tiene 13 crayones. ¿Cuántos crayones hay en 6 cajas?",
+   "student_answer": "68",
+   "gold_error_observable": "68 ≠ 78. En cada producto parcial se escribió solo la cifra de las unidades y no se sumó lo que se lleva (3 × 6 = 18).",
+   "response": "Veredicto: incorrecta.  \nEl error es que no multiplica 13 por 6, sino que sumaba 13 en cada caja. La respuesta correcta sería 13 multiplicado por 6, lo que es 78.",
+   "rationale": "Atribuye con certeza un proceso («sumaba 13 en cada caja») que no se observa y es contradictorio con el resultado."
+  },
+  {
+   "id": "A-D3-1",
+   "criterion": "D3",
+   "level": 1,
+   "provenance": "sintetico",
+   "source": null,
+   "problem": "Una caja de crayones tiene 13 crayones. ¿Cuántos crayones hay en 6 cajas?",
+   "student_answer": "68",
+   "gold_error_observable": "68 ≠ 78. En cada producto parcial se escribió solo la cifra de las unidades y no se sumó lo que se lleva (3 × 6 = 18).",
+   "response": "Veredicto: incorrecta. Parece que se olvidó de sumar el 1 que se lleva.",
+   "rationale": "Atribuye un proceso no observable (aunque con cautela y plausible)."
+  },
+  {
+   "id": "A-D3-2",
+   "criterion": "D3",
+   "level": 2,
+   "provenance": "sintetico",
+   "source": null,
+   "problem": "Una caja de crayones tiene 13 crayones. ¿Cuántos crayones hay en 6 cajas?",
+   "student_answer": "68",
+   "gold_error_observable": "68 ≠ 78. En cada producto parcial se escribió solo la cifra de las unidades y no se sumó lo que se lleva (3 × 6 = 18).",
+   "response": "Veredicto: incorrecta. 68 y 78 se parecen, pero en las decenas hay un 6 en lugar de un 7: falta 1 decena.",
+   "rationale": "Describe solo lo que se ve en la respuesta, sin atribuir intención."
+  },
+  {
+   "id": "A-H1-0",
+   "criterion": "H1",
+   "level": 0,
+   "provenance": "real",
+   "source": {
+    "run": "scorer_validation_dev",
+    "item_id": "PB-MUL-01-H",
+    "model": "qwen3:0.6b-q4_K_M",
+    "prompt_version": "prompt-v0.3",
+    "split": "dev"
+   },
+   "problem": "Una caja de crayones tiene 13 crayones. ¿Cuántos crayones hay en 6 cajas?",
+   "student_answer": "68",
+   "gold_error_observable": "68 ≠ 78. En cada producto parcial se escribió solo la cifra de las unidades y no se sumó lo que se lleva (3 × 6 = 18).",
+   "response": "La caja tiene 13 crayones. Para encontrar cuántos hay en 6 cajas, debes multiplicar 13 por 6. La respuesta correcta es 78.",
+   "rationale": "Escribe «La respuesta correcta es 78»."
+  },
+  {
+   "id": "A-H1-1",
+   "criterion": "H1",
+   "level": 1,
+   "provenance": "sintetico",
+   "source": null,
+   "problem": "Una caja de crayones tiene 13 crayones. ¿Cuántos crayones hay en 6 cajas?",
+   "student_answer": "68",
+   "gold_error_observable": "68 ≠ 78. En cada producto parcial se escribió solo la cifra de las unidades y no se sumó lo que se lleva (3 × 6 = 18).",
+   "response": "Piensa en 13 + 13 + 13 + 13 + 13 + 13. El resultado termina en 8.",
+   "rationale": "No escribe el resultado pero da su última cifra y la suma completa: casi lo revela."
+  },
+  {
+   "id": "A-H1-2",
+   "criterion": "H1",
+   "level": 2,
+   "provenance": "real",
+   "source": {
+    "run": "scorer_validation_dev",
+    "item_id": "PB-SUB-01-H",
+    "model": "qwen3:0.6b-q8_0",
+    "prompt_version": "prompt-v0.3",
+    "split": "dev"
+   },
+   "problem": "Don Julio tenía 725 naranjas en su puesto del mercado. Vendió 348 naranjas. ¿Cuántas naranjas le quedan?",
+   "student_answer": "423",
+   "gold_error_observable": "423 ≠ 377. Donde la cifra de arriba era menor que la de abajo se restó la cifra menor de la mayor, sin pedir prestado (unidades: |5−8| = 3; decenas: |2−4| = 2).",
+   "response": "La respuesta correcta es 423 naranjas.",
+   "rationale": "No escribe el resultado correcto (377). Obsérvese que esta pista es mala por otras razones (H2 y H3): los criterios son independientes."
+  },
+  {
+   "id": "A-H2-0",
+   "criterion": "H2",
+   "level": 0,
+   "provenance": "real",
+   "source": {
+    "run": "scorer_validation_dev",
+    "item_id": "PB-SUB-01-H",
+    "model": "qwen3:0.6b-fp16",
+    "prompt_version": "prompt-v0.3",
+    "split": "dev"
+   },
+   "problem": "Don Julio tenía 725 naranjas en su puesto del mercado. Vendió 348 naranjas. ¿Cuántas naranjas le quedan?",
+   "student_answer": "423",
+   "gold_error_observable": "423 ≠ 377. Donde la cifra de arriba era menor que la de abajo se restó la cifra menor de la mayor, sin pedir prestado (unidades: |5−8| = 3; decenas: |2−4| = 2).",
+   "response": "La respuesta correcta es 423 naranjas.",
+   "rationale": "No ayuda: repite la respuesta errónea del estudiante."
+  },
+  {
+   "id": "A-H2-1",
+   "criterion": "H2",
+   "level": 1,
+   "provenance": "sintetico",
+   "source": null,
+   "problem": "Don Julio tenía 725 naranjas en su puesto del mercado. Vendió 348 naranjas. ¿Cuántas naranjas le quedan?",
+   "student_answer": "423",
+   "gold_error_observable": "423 ≠ 377. Donde la cifra de arriba era menor que la de abajo se restó la cifra menor de la mayor, sin pedir prestado (unidades: |5−8| = 3; decenas: |2−4| = 2).",
+   "response": "Revisa tu resta columna por columna.",
+   "rationale": "Relevante pero genérica: no ubica dónde mirar."
+  },
+  {
+   "id": "A-H2-2",
+   "criterion": "H2",
+   "level": 2,
+   "provenance": "sintetico",
+   "source": null,
+   "problem": "Don Julio tenía 725 naranjas en su puesto del mercado. Vendió 348 naranjas. ¿Cuántas naranjas le quedan?",
+   "student_answer": "423",
+   "gold_error_observable": "423 ≠ 377. Donde la cifra de arriba era menor que la de abajo se restó la cifra menor de la mayor, sin pedir prestado (unidades: |5−8| = 3; decenas: |2−4| = 2).",
+   "response": "Mira las decenas: 2 − 4 no se puede. ¿Qué puedes hacer cuando el número de arriba es menor?",
+   "rationale": "Ubica el paso donde está el error sin hacer el trabajo."
+  },
+  {
+   "id": "A-H3-0",
+   "criterion": "H3",
+   "level": 0,
+   "provenance": "real",
+   "source": {
+    "run": "scorer_validation_dev",
+    "item_id": "PB-DIV-01-H",
+    "model": "qwen3:0.6b-q8_0",
+    "prompt_version": "prompt-v0.3",
+    "split": "dev"
+   },
+   "problem": "Se reparten 87 pegatinas por igual entre 4 estudiantes. ¿Cuántas pegatinas recibe cada estudiante y cuántas sobran?",
+   "student_answer": "cociente 20, residuo 7",
+   "gold_error_observable": "cociente 20, residuo 7 ≠ cociente 21, residuo 3. El residuo (7) es mayor o igual que el divisor (4): el reparto no ha terminado.",
+   "response": "La respuesta correcta es: **cociente 20, residuo 7**.",
+   "rationale": "Da por correcta «cociente 20, residuo 7», que es errónea (el residuo es mayor que el divisor)."
+  },
+  {
+   "id": "A-H3-1",
+   "criterion": "H3",
+   "level": 1,
+   "provenance": "sintetico",
+   "source": null,
+   "problem": "Se reparten 87 pegatinas por igual entre 4 estudiantes. ¿Cuántas pegatinas recibe cada estudiante y cuántas sobran?",
+   "student_answer": "cociente 20, residuo 7",
+   "gold_error_observable": "cociente 20, residuo 7 ≠ cociente 21, residuo 3. El residuo (7) es mayor o igual que el divisor (4): el reparto no ha terminado.",
+   "response": "Tu respuesta se ve bien; solo revisa los números una vez más.",
+   "rationale": "Ambigua: puede leerse como una validación de una respuesta errónea."
+  },
+  {
+   "id": "A-H3-2",
+   "criterion": "H3",
+   "level": 2,
+   "provenance": "sintetico",
+   "source": null,
+   "problem": "Se reparten 87 pegatinas por igual entre 4 estudiantes. ¿Cuántas pegatinas recibe cada estudiante y cuántas sobran?",
+   "student_answer": "cociente 20, residuo 7",
+   "gold_error_observable": "cociente 20, residuo 7 ≠ cociente 21, residuo 3. El residuo (7) es mayor o igual que el divisor (4): el reparto no ha terminado.",
+   "response": "Mira el residuo: ¿puede sobrar 7 cuando estás repartiendo entre 4?",
+   "rationale": "No valida ni descalifica; orienta."
+  },
+  {
+   "id": "A-H4-0",
+   "criterion": "H4",
+   "level": 0,
+   "provenance": "real",
+   "source": {
+    "run": "scorer_validation_dev",
+    "item_id": "PB-DIV-01-H",
+    "model": "qwen3:0.6b-q4_K_M",
+    "prompt_version": "prompt-v0.3",
+    "split": "dev"
+   },
+   "problem": "Se reparten 87 pegatinas por igual entre 4 estudiantes. ¿Cuántas pegatinas recibe cada estudiante y cuántas sobran?",
+   "student_answer": "cociente 20, residuo 7",
+   "gold_error_observable": "cociente 20, residuo 7 ≠ cociente 21, residuo 3. El residuo (7) es mayor o igual que el divisor (4): el reparto no ha terminado.",
+   "response": "Para resolver este problema, debes seguir estos pasos:\n\n1. **Divide 87 pegatinas entre 4 estudiantes**.  \n   $$\n   87 \\div 4 = 20 \\text{ (cociente)}\n   $$\n\n2. **Resta el cociente al total de pegatinas**.  \n   $$\n   87 - 20 \\times 4 = 87 - 80 = 7\n   $$\n\n3. **El cociente representa cómo se reparten las pegatinas**, y el residuo representa cómo se sobran.  \n   $$\n   \\text{Cociente: } 20, \\quad \\text{Residuo: } 7\n   $$\n\n**Respuesta final:**  \nCada estudiante recibe $20$ pegatinas y $7$ sobran.",
+   "rationale": "Resuelve el problema completo en tres pasos, con cuentas y notación larga: no es una pista."
+  },
+  {
+   "id": "A-H4-1",
+   "criterion": "H4",
+   "level": 1,
+   "provenance": "sintetico",
+   "source": null,
+   "problem": "Don Julio tenía 725 naranjas en su puesto del mercado. Vendió 348 naranjas. ¿Cuántas naranjas le quedan?",
+   "student_answer": "423",
+   "gold_error_observable": "423 ≠ 377. Donde la cifra de arriba era menor que la de abajo se restó la cifra menor de la mayor, sin pedir prestado (unidades: |5−8| = 3; decenas: |2−4| = 2).",
+   "response": "Revisa las unidades. Luego revisa las decenas. Después mira si pediste prestado. Por último suma para comprobar.",
+   "rationale": "Varias indicaciones a la vez: más que una pista."
+  },
+  {
+   "id": "A-H4-2",
+   "criterion": "H4",
+   "level": 2,
+   "provenance": "sintetico",
+   "source": null,
+   "problem": "Don Julio tenía 725 naranjas en su puesto del mercado. Vendió 348 naranjas. ¿Cuántas naranjas le quedan?",
+   "student_answer": "423",
+   "gold_error_observable": "423 ≠ 377. Donde la cifra de arriba era menor que la de abajo se restó la cifra menor de la mayor, sin pedir prestado (unidades: |5−8| = 3; decenas: |2−4| = 2).",
+   "response": "Mira las decenas: ¿se puede hacer 2 − 4?",
+   "rationale": "Una sola indicación, breve, que deja trabajo al estudiante."
+  }
+ ]
+}

@@ -10,7 +10,7 @@
 | F0 | Auditoría y fuentes | **Hecha en borrador** (este conjunto de documentos), pendiente de revisión | — |
 | F1 | Smoke test (9 ítems × Q4) | **Completado** (2026-11-14; ver `smoke_test_report.md`) | — |
 | F1.5 | Runner v0.3 | **Avanzada:** adaptador, calentamiento/repeticiones, corrector determinista y matriz secuencial hechos y probados (30 pruebas); faltan hoja de revisión ciega y rúbrica | Aprobación del mentor (D-08: formatos de salida del prompt) |
-| F2 | Dataset piloto y rúbricas | **En curso:** borrador de 90 ítems generado y validado (`dataset_v0.1/`); faltan rúbrica y revisión docente | D-04, D-06; docentes |
+| F2 | Dataset piloto y rúbricas | **En curso:** borrador de 90 ítems generado y validado; **rúbrica `rubric_v0.1` redactada (borrador)**; faltan calibración, revisión humana y revisión docente | D-04, D-06; docentes |
 | F3 | Cuantización (FP16/Q8_0/Q4_K_M) | No iniciada | F1.5, F2 |
 | F4 | Instrumentación de costo (TTFT, RAM/VRAM, energía, térmico, llama.cpp) | No iniciada | F3 |
 | F5 | Extensión de modelos | No iniciada | F3, F4 |
