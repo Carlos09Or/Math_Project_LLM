@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Metodología · Tutoría matemática offline</title>
+<meta name="description" content="Alcance, hipótesis, control experimental y alcance de la propuesta original conservado por fases.">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="site"><div class="wrap">
+  <a class="brand" href="index.html">Tutoría matemática offline</a>
+  <nav aria-label="Principal"><a href="index.html">Inicio</a><a href="metodologia.html">Metodología</a><a href="fuentes.html">Fuentes</a><a href="dataset.html">Dataset</a><a href="resultados.html">Resultados</a><a href="hoja-de-ruta.html">Hoja de ruta</a></nav>
+</div></header>
+
+<main class="wrap">
+  <h1>Metodología</h1>
+  <p class="lead">Protocolo experimental v0.2: propuesto, sin aprobación del mentor, sin confirmación del currículo aplicable y sin revisión pedagógica.</p>
+
+  <h2>Hipótesis exploratorias</h2>
+  <p>Son hipótesis por comprobar, no hallazgos.</p>
+  <ul>
+    <li><strong>H1.</strong> La cuantización reduce memoria y almacenamiento, pero puede degradar las tareas pedagógicas de forma distinta a la exactitud de cálculo.</li>
+    <li><strong>H2.</strong> El diagnóstico de errores y las pistas pueden degradarse antes, o de forma distinta, que la resolución directa.</li>
+    <li><strong>H3.</strong> No existe una única configuración óptima: se estudia la frontera calidad–costo (Pareto).</li>
+    <li><strong>H4 (etapa posterior).</strong> El umbral de calidad depende de la tarea y se degrada con la dificultad y con la longitud del diálogo.</li>
+  </ul>
+
+  <h2>Tres tareas</h2>
+  <div class="grid">
+    <div class="card"><h3>resolver</h3><p>Solución correcta con procedimiento legible. La exactitud se verifica por cálculo.</p></div>
+    <div class="card"><h3>diagnosticar</h3><p>Localizar un error <em>observable</em> de la respuesta de un estudiante, sin inventar su intención. Incluye ítems cuya respuesta es correcta, para medir falsos positivos.</p></div>
+    <div class="card"><h3>dar una pista</h3><p>Una sugerencia útil y progresiva que no revele el resultado final.</p></div>
+  </div>
+
+  <h2>Alcance de la propuesta original y cuándo se aborda</h2>
+  <p>El alcance científico de la propuesta se conserva completo. «Etapa posterior» significa que se hará en otra fase, no que se descarte.</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Elemento de la propuesta</th><th>Cómo se medirá</th><th>Fase</th><th>Límite conocido</th></tr></thead>
+    <tbody>
+      <tr><td>Consistencia multi-turno</td><td>Diálogos de 2–5 turnos del mismo problema; coherencia con rúbrica</td><td>F6</td><td>Requiere esquema de diálogo y revisión humana adicional</td></tr>
+      <tr><td>Paso correctivo siguiente</td><td>Tarea <code>correct_step</code> con rúbrica y verificación del paso</td><td>F6</td><td>Definición operativa pendiente</td></tr>
+      <tr><td>Tiempo hasta el primer token (TTFT)</td><td>Respuesta en <em>streaming</em> y <code>llama-bench</code></td><td>F4</td><td>Ollama no lo entrega sin <em>streaming</em></td></tr>
+      <tr><td>RAM pico y VRAM</td><td><code>nvidia-smi</code>, <code>/api/ps</code> y muestreo del proceso</td><td>F3/F4</td><td>La carga híbrida CPU/GPU se reporta aparte</td></tr>
+      <tr><td>Energía</td><td>Potencia de GPU con <code>nvidia-smi</code> (solo GPU)</td><td>F4</td><td>El consumo total del equipo exige un instrumento externo</td></tr>
+      <tr><td>Comportamiento térmico</td><td>Temperatura y razones de reducción de frecuencia</td><td>F4</td><td>Un portátil tiene <em>throttling</em>; no es extrapolable a un teléfono</td></tr>
+      <tr><td>Frontera de Pareto calidad–costo</td><td>Tablas y gráficos</td><td>F3</td><td>Con tres puntos del mismo modelo es solo descriptiva</td></tr>
+      <tr><td>Varias familias de modelos</td><td>Registro con cuantización explícita</td><td>F5</td><td>Comparación declarada <strong>no causal</strong></td></tr>
+      <tr><td>LoRA/QLoRA, comparación de tres vías</td><td>Condicional a pérdida pedagógica en la línea base</td><td>F8</td><td>No se entrena en esta fase</td></tr>
+      <tr><td>Android o hardware con restricciones</td><td>Perfiles de dispositivo reales o emulados</td><td>F7</td><td>El laboratorio en PC no valida móvil</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2>Control experimental</h2>
+  <ul>
+    <li>Mismo dataset, prompt, plantilla, política de <em>thinking</em>, temperatura, semilla, contexto, hardware y backend en toda comparación de cuantización.</li>
+    <li>Antes de medir: GPU libre (<code>ollama ps</code> vacío), equipo conectado a corriente y plan de energía fijo.</li>
+    <li>Configuraciones <strong>intercaladas</strong> entre repeticiones, para no confundir precisión con deriva térmica.</li>
+    <li>Las corridas GPU-only, CPU y híbridas <strong>no se mezclan</strong> en una comparación de rendimiento; el modo se registra por corrida.</li>
+    <li>Para tiempos: calentamiento descartado y al menos tres repeticiones medidas, con mediana, dispersión y <em>n</em> explícito.</li>
+    <li>Cada corrida deja un manifiesto: versiones, hardware, digest del modelo, huella del dataset y de la configuración, modo de ejecución GPU/CPU.</li>
+  </ul>
+
+  <h2>Reportado frente a medido</h2>
+  <p>Cada métrica se rotula según su origen. No se fabrican ni se imputan datos.</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Origen</th><th>Ejemplos</th></tr></thead>
+    <tbody>
+      <tr><td><span class="badge b-info">Reportado por Ollama</span></td><td>Duraciones de carga, evaluación del prompt y generación; conteos de tokens; <code>done_reason</code>; modo de ejecución (<code>/api/ps</code>)</td></tr>
+      <tr><td><span class="badge b-ok">Medido externamente</span></td><td>GPU y temperatura (<code>nvidia-smi</code>); tiempo del reloj del script</td></tr>
+      <tr><td><span class="badge b-pend">Derivado</span></td><td>Tokens por segundo, a partir de los conteos y duraciones de Ollama</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2>Análisis previsto</h2>
+  <ul>
+    <li>Comparación emparejada por ítem entre precisiones.</li>
+    <li>Los tres ítems de un problema base <strong>no son independientes</strong>: el análisis se agrupa por <code>problem_base_id</code> (<em>bootstrap</em> por conglomerados para los intervalos).</li>
+    <li>Con unos 30 problemas base los intervalos serán anchos: no se harán afirmaciones causales ni de «no hay diferencia» sin potencia justificada. El método final se decide con el mentor.</li>
+  </ul>
+
+  <h2>Limitaciones declaradas</h2>
+  <p>Piloto sintético y pequeño; un solo modelo; laboratorio en PC (portátil); costos parcialmente reportados por Ollama; sin revisión docente; currículo vigente sin confirmar; energía y térmico solo parciales en PC; multi-turno y paso correctivo diferidos.</p>
+  <p>Documento completo: <a href="https://github.com/Carlos09Or/Math_Project_LLM/blob/main/docs/experimental_protocol_v0.2.md"><code>docs/experimental_protocol_v0.2.md</code></a>.</p>
+</main>
+
+<footer class="site"><div class="wrap">Borrador de trabajo · sin resultados científicos · <a href="https://github.com/Carlos09Or/Math_Project_LLM">repositorio en GitHub</a></div></footer>
+<script src="assets/app.js"></script>
+</body>
+</html>

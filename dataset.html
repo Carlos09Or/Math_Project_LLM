@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Dataset · Tutoría matemática offline</title>
+<meta name="description" content="Estructura, trazabilidad curricular y explorador del borrador de dataset de aritmética de 3.er grado.">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="site"><div class="wrap">
+  <a class="brand" href="index.html">Tutoría matemática offline</a>
+  <nav aria-label="Principal"><a href="index.html">Inicio</a><a href="metodologia.html">Metodología</a><a href="fuentes.html">Fuentes</a><a href="dataset.html">Dataset</a><a href="resultados.html">Resultados</a><a href="hoja-de-ruta.html">Hoja de ruta</a></nav>
+</div></header>
+
+<main class="wrap">
+  <h1>Dataset de aritmética de 3.er grado</h1>
+  <p class="lead">Un dataset propio, basado en el currículo panameño, con problemas originales. No se usa MathTutorBench como datos.</p>
+  <div class="banner"><strong>Borrador sintético, sin revisión docente.</strong> Los problemas, los rangos numéricos y la taxonomía de errores deben validarlos docentes antes de atribuir validez pedagógica o alineación curricular.</div>
+
+  <h2>Estructura</h2>
+<pre class="resp">Competencia (3)          sustracción · multiplicación · división con residuo
+  └─ Problema base (30)  10 por competencia
+       └─ Ítems (3)      resolver · diagnosticar · dar una pista   →  90 ítems</pre>
+  <ul>
+    <li>Los tres ítems de un problema base comparten <code>problem_base_id</code> y <strong>no son independientes</strong>: las particiones y la estadística se hacen por problema, no por ítem.</li>
+    <li><code>gold_answer</code> se <strong>calcula</strong> con código a partir de la operación; no se escribe a mano.</li>
+    <li>El error del estudiante se <strong>genera con una regla determinista</strong> (<code>error_generator</code>). Por eso la descripción del error es verdadera por construcción y no se adivina qué pensó el niño.</li>
+    <li>Un validador independiente recalcula respuestas, errores, dificultad, esquema y particiones sin confiar en el archivo.</li>
+    <li>Seis problemas (dos por competencia) llevan una respuesta del estudiante <strong>correcta</strong>, para medir si el modelo marca como error algo que está bien.</li>
+    <li>Cada ítem lleva su trazabilidad: documento, edición y página del programa de MEDUCA de 2024.</li>
+  </ul>
+
+  <h2>Límites</h2>
+  <ul>
+    <li>No hay rúbrica todavía: sin ella no se pueden puntuar el diagnóstico ni las pistas.</li>
+    <li>La dificultad se define con reglas objetivas (préstamos, cifras, tamaño del divisor) y quedó sesgada hacia lo difícil; hay que reequilibrarla con el mentor y los docentes.</li>
+    <li>Las etiquetas de tipo de error son una <strong>hipótesis</strong> pendiente de validación docente.</li>
+    <li>Los problemas son originales, pero números y situaciones simples pueden coincidir con datos públicos: no se afirma ausencia de contaminación.</li>
+    <li>Edición curricular de referencia (2024) y controles con respuesta correcta: decisiones pendientes del mentor.</li>
+  </ul>
+
+  <h2>Explorador</h2>
+  <div class="filters">
+    <label>Competencia<select id="f-comp"></select></label>
+    <label>Tarea<select id="f-task"></select></label>
+    <label>Partición<select id="f-split"></select></label>
+    <label>Respuesta del estudiante<select id="f-kind"><option value="">Todas</option><option value="err">Con error</option><option value="ok">Control: correcta</option></select></label>
+    <label>Buscar<input type="search" id="f-q" placeholder="texto o ID"></label>
+  </div>
+  <p class="count" id="f-count"></p>
+  <div id="explorer"></div>
+  <p>Archivos: <a href="https://github.com/Carlos09Or/Math_Project_LLM/blob/main/dataset/data/items.jsonl"><code>dataset/data/items.jsonl</code></a> y <a href="https://github.com/Carlos09Or/Math_Project_LLM/blob/main/docs/dataset_design.md"><code>docs/dataset_design.md</code></a>.</p>
+</main>
+
+<footer class="site"><div class="wrap">Borrador de trabajo · sin resultados científicos · <a href="https://github.com/Carlos09Or/Math_Project_LLM">repositorio en GitHub</a></div></footer>
+<script src="assets/data/project_items.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Resultados · Tutoría matemática offline</title>
+<meta name="description" content="Piloto técnico: prueba de humo con Qwen3-0.6B Q4_K_M, criterios, corridas registradas y sus límites.">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="site"><div class="wrap">
+  <a class="brand" href="index.html">Tutoría matemática offline</a>
+  <nav aria-label="Principal"><a href="index.html">Inicio</a><a href="metodologia.html">Metodología</a><a href="fuentes.html">Fuentes</a><a href="dataset.html">Dataset</a><a href="resultados.html">Resultados</a><a href="hoja-de-ruta.html">Hoja de ruta</a></nav>
+</div></header>
+
+<main class="wrap">
+  <h1>Piloto técnico: prueba de humo</h1>
+  <p class="lead">Qwen3-0.6B Q4_K_M, 9 ítems sintéticos del starter, 14 de noviembre de 2026 (UTC).</p>
+  <div class="banner"><strong>Esto no es evidencia científica.</strong> Es una comprobación de que el <em>pipeline</em> funciona: una sola pasada por corrida, sin calentamiento, ítems sin validación docente, sin rúbrica y sin revisión humana de las respuestas. No dice nada sobre calidad pedagógica, latencia ni efecto de la cuantización.</div>
+
+  <h2>Condiciones</h2>
+  <div class="table-wrap"><table><tbody>
+    <tr><th>Código</th><td>Runner v0.2 (copia corregida del starter original), prompt v0.2</td></tr>
+    <tr><th>Modelo</th><td><code>qwen3:0.6b-q4_K_M</code>, digest <code>7df6b6e09427…</code> (coincide con el registro de Ollama)</td></tr>
+    <tr><th>Parámetros</th><td>temperatura 0, semilla 42, contexto 2048, <code>num_predict</code> 256, <code>think:false</code></td></tr>
+    <tr><th>Equipo</th><td>RTX 3060 Laptop (6144 MiB), i7-12700H, Windows 11, Ollama 0.40.16; conectado a corriente; ningún otro modelo cargado al iniciar</td></tr>
+  </tbody></table></div>
+
+  <h2>Criterios de aceptación del Hito 1</h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th>#</th><th>Criterio</th><th>Estado</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>El digest local coincide con el del registro</td><td><span class="badge b-ok">cumplido</span></td></tr>
+      <tr><td>2</td><td>9 registros válidos, 0 errores, sin truncamiento</td><td><span class="badge b-ok">cumplido</span></td></tr>
+      <tr><td>3</td><td><code>think:false</code> respetado (sin razonamiento en las respuestas)</td><td><span class="badge b-ok">cumplido</span></td></tr>
+      <tr><td>4</td><td>Manifiesto con hardware, versiones y modo de ejecución GPU/CPU</td><td><span class="badge b-ok">cumplido</span></td></tr>
+      <tr><td>5</td><td>Ejecución sin red demostrada</td><td><span class="badge b-ok">cumplido</span></td></tr>
+      <tr><td>6</td><td>Registro crudo conservado, sin sobrescribir</td><td><span class="badge b-ok">cumplido</span></td></tr>
+    </tbody>
+  </table></div>
+  <p>Límite de la prueba sin red: son sondas TCP a dos direcciones, no una captura de tráfico; un adaptador virtual de VirtualBox (solo anfitrión) seguía activo.</p>
+
+  <h2>Corridas registradas</h2>
+  <p class="count">Esta tabla se calcula al cargar la página desde <code>runner/runs/</code>.</p>
+  <div class="table-wrap" id="runs-table"></div>
+  <h3>Evidencia de red</h3>
+  <ul id="net-evidence"></ul>
+
+  <h2>Observaciones</h2>
+  <div class="callout warn">Son 9 ítems en 3 corridas, sin revisión humana. Sirven para saber qué hay que medir bien después, no como conclusiones.</div>
+  <ul>
+    <li><strong>Arranque en frío.</strong> El primer ítem de la primera corrida tardó unos 45 s (carga del modelo y primera evaluación). Con el modelo ya cargado, los ítems tardan menos de un segundo. Hace falta una pasada de calentamiento antes de medir tiempos.</li>
+    <li><strong>Repetibilidad.</strong> Con temperatura 0 y semilla fija las respuestas no siempre son idénticas entre corridas. La rejilla de abajo compara cada corrida con la corrida sin red: difieren solo los dos primeros ítems de la corrida que empezó con el modelo ya cargado. Hipótesis no probada (3 corridas): el estado de carga o de caché afecta los primeros ítems. La diferencia no se puede atribuir a la red.</li>
+    <li><strong>Resolver.</strong> Las 3 respuestas numéricas fueron correctas (24, 6 y 87). Varias usan formato LaTeX, poco apropiado para 3.er grado.</li>
+    <li><strong>Pistas.</strong> En los 3 ítems de pista, la respuesta contiene el resultado correcto (detección automática sobre los dígitos): el modelo reveló la respuesta con este prompt.</li>
+    <li><strong>Diagnóstico.</strong> Respuestas incoherentes en 2 de 3 ítems, por ejemplo afirmar que «la respuesta correcta es 5» y luego calcular 6. Observación informal, sin rúbrica.</li>
+  </ul>
+
+  <h3>Coincidencia con la corrida sin red</h3>
+  <div class="heat" id="heat" aria-label="Coincidencia de respuestas con la corrida de referencia"></div>
+
+  <h3>Respuestas del modelo</h3>
+  <div class="filters"><label>Corrida<select id="run-select"></select></label></div>
+  <div id="responses"></div>
+
+  <p>Informe completo: <a href="https://github.com/Carlos09Or/Math_Project_LLM/blob/main/docs/smoke_test_report.md"><code>docs/smoke_test_report.md</code></a>.</p>
+</main>
+
+<footer class="site"><div class="wrap">Borrador de trabajo · sin resultados científicos · <a href="https://github.com/Carlos09Or/Math_Project_LLM">repositorio en GitHub</a></div></footer>
+<script src="assets/data/project_runs.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

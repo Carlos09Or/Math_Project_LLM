@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Hoja de ruta · Tutoría matemática offline</title>
+<meta name="description" content="Fases del proyecto, criterios para avanzar entre ellas y decisiones pendientes del mentor.">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="site"><div class="wrap">
+  <a class="brand" href="index.html">Tutoría matemática offline</a>
+  <nav aria-label="Principal"><a href="index.html">Inicio</a><a href="metodologia.html">Metodología</a><a href="fuentes.html">Fuentes</a><a href="dataset.html">Dataset</a><a href="resultados.html">Resultados</a><a href="hoja-de-ruta.html">Hoja de ruta</a></nav>
+</div></header>
+
+<main class="wrap">
+  <h1>Hoja de ruta</h1>
+  <p class="lead">Propuesta: el orden y las puertas de decisión requieren el visto bueno del mentor. No se asignan fechas, porque dependen de la revisión docente y de decisiones pendientes.</p>
+  <div class="callout"><strong>Regla de avance:</strong> no se pasa de fase sin cumplir los criterios de salida de la anterior. Un criterio no verificado cuenta como no cumplido.</div>
+
+  <h2>Fases</h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Fase</th><th>Contenido</th><th>Estado</th><th>Criterios de salida</th></tr></thead>
+    <tbody>
+      <tr><td><strong>F0</strong> Auditoría y fuentes</td><td>Matriz de trazabilidad, auditoría, fuentes, protocolo v0.2</td><td><span class="badge b-warn">borrador</span></td><td>El investigador revisó los hallazgos; edición curricular decidida o declarada provisional; el mentor respondió las decisiones D-01 a D-07</td></tr>
+      <tr><td><strong>F1</strong> Prueba de humo</td><td>9 ítems × Qwen3-0.6B Q4, local y sin red</td><td><span class="badge b-ok">completada</span></td><td>Seis criterios, todos cumplidos</td></tr>
+      <tr><td><strong>F1.5</strong> Runner v0.2</td><td>Corrección del starter: repeticiones, hoja ciega, corrección automática, esquema completo</td><td><span class="badge b-warn">parcial</span></td><td>Pruebas que pasan; dataset migrado al esquema con validador; corrida de humo repetida con el código final</td></tr>
+      <tr><td><strong>F2</strong> Dataset y rúbricas</td><td>30 problemas base × 3 tareas, con trazabilidad curricular</td><td><span class="badge b-warn">en curso</span></td><td>Rúbrica fijada <em>antes</em> de mirar resultados; 100 % de ítems válidos; muestra definida para revisión docente; plan de contaminación</td></tr>
+      <tr><td><strong>F3</strong> Cuantización</td><td>FP16, Q8_0 y Q4_K_M del mismo Qwen3-0.6B</td><td><span class="badge b-pend">no iniciada</span></td><td>≥3 repeticiones tras calentamiento, intercaladas; análisis emparejado con intervalos por problema base; GPU-only separado de CPU/híbrido</td></tr>
+      <tr><td><strong>F4</strong> Instrumentación de costo</td><td>TTFT, RAM/VRAM, energía y térmico, llama.cpp</td><td><span class="badge b-pend">no iniciada</span></td><td>Cada métrica rotulada como reportada, medida o derivada; método documentado</td></tr>
+      <tr><td><strong>F5</strong> Más modelos</td><td>Qwen3-1.7B, Gemma 3, SmolLM3, Phi-4-mini y secundarios</td><td><span class="badge b-pend">no iniciada</span></td><td>Licencia leída, etiqueta con cuantización explícita y digest, comprobación de que cabe en 6 GB; comparación declarada no causal</td></tr>
+      <tr><td><strong>F6</strong> Multi-turno y paso correctivo</td><td>Diálogos de 2–5 turnos; tarea <code>correct_step</code></td><td><span class="badge b-pend">no iniciada</span></td><td>Esquema y rúbrica revisados por docentes; resultados por turno</td></tr>
+      <tr><td><strong>F7</strong> Android y diseño modular</td><td>Perfiles de dispositivo; reglas deterministas + modelo para pistas</td><td><span class="badge b-pend">no iniciada</span></td><td>F4 completa y contribución principal decidida. Es la única fase que puede sostener afirmaciones sobre móviles</td></tr>
+      <tr><td><strong>F8</strong> Adaptación</td><td>LoRA/QLoRA, comparación de tres vías</td><td><span class="badge b-pend">condicional</span></td><td>Solo si la línea base cuantizada pierde calidad pedagógica; conjunto independiente del de evaluación</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2>Decisiones para el mentor</h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th>ID</th><th>Decisión</th><th>Recomendación provisional</th></tr></thead>
+    <tbody>
+      <tr><td>D-01</td><td>Decodificación voraz (T=0) o muestreo recomendado por el fabricante</td><td>Primaria T=0 con semilla; corrida de sensibilidad con los parámetros recomendados</td></tr>
+      <tr><td>D-02</td><td>Política de <em>thinking</em></td><td>Sin razonamiento; estrato separado con razonamiento más adelante</td></tr>
+      <tr><td>D-03</td><td>Tamaño de muestra y método de incertidumbre</td><td><em>Bootstrap</em> por conglomerados (problema base) e intervalos; potencia por justificar</td></tr>
+      <tr><td>D-04</td><td>Edición curricular de referencia (2024 o 2014)</td><td>2024 como referencia, 2014 como histórica; todo pendiente de validación docente</td></tr>
+      <tr><td>D-05</td><td>Contribución principal: efecto de la cuantización sobre la pedagogía, o diseño modular con verificación determinista</td><td>No cambiar el alcance sin su decisión</td></tr>
+      <tr><td>D-06</td><td>Controles con respuesta correcta y número de ítems (90 u 84)</td><td>6 controles; filtrables si se prefiere no usar su pista</td></tr>
+      <tr><td>D-07</td><td>Orden de las etapas de la propuesta (multi-turno, paso correctivo, TTFT, energía, térmico, Android, LoRA)</td><td>Confirmar el orden de F4 a F8</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2>Preguntas prioritarias</h2>
+  <ol>
+    <li>¿Cuál es la contribución principal: el efecto de la cuantización sobre la pedagogía, o el diseño modular con verificación determinista?</li>
+    <li>¿Qué tamaño mínimo de muestra y qué método de incertidumbre son adecuados?</li>
+    <li>¿Qué edición curricular se toma como referencia y con qué perfiles de docentes se validan las rúbricas?</li>
+    <li>¿Decodificación voraz o muestreo recomendado, y qué política de <em>thinking</em>?</li>
+    <li>¿Qué pruebas en Android son necesarias para sostener afirmaciones de utilidad en dispositivos limitados?</li>
+  </ol>
+
+  <h2>Riesgos</h2>
+  <ul>
+    <li><strong>Currículo cambiante:</strong> declarar siempre qué edición se usó.</li>
+    <li><strong>Laboratorio en portátil:</strong> <em>throttling</em> y GPU compartida; se mitiga con control del estado y orden intercalado.</li>
+    <li><strong>Muestra pequeña:</strong> intervalos amplios; evitar conclusiones causales.</li>
+    <li><strong>Licencias:</strong> MathTutorBench sin licencia resuelta; modelos con términos propios (Gemma, Llama).</li>
+  </ul>
+  <p>Documento completo: <a href="https://github.com/Carlos09Or/Math_Project_LLM/blob/main/docs/roadmap.md"><code>docs/roadmap.md</code></a>.</p>
+</main>
+
+<footer class="site"><div class="wrap">Borrador de trabajo · sin resultados científicos · <a href="https://github.com/Carlos09Or/Math_Project_LLM">repositorio en GitHub</a></div></footer>
+<script src="assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Fuentes · Tutoría matemática offline</title>
+<meta name="description" content="Fuentes oficiales verificadas: currículo de MEDUCA, MathTutorBench, modelos, digests y licencias, con su estado de verificación.">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="site"><div class="wrap">
+  <a class="brand" href="index.html">Tutoría matemática offline</a>
+  <nav aria-label="Principal"><a href="index.html">Inicio</a><a href="metodologia.html">Metodología</a><a href="fuentes.html">Fuentes</a><a href="dataset.html">Dataset</a><a href="resultados.html">Resultados</a><a href="hoja-de-ruta.html">Hoja de ruta</a></nav>
+</div></header>
+
+<main class="wrap">
+  <h1>Fuentes verificadas</h1>
+  <p class="lead">Verificación del 13 de noviembre de 2026. Cada dato lleva su estado.</p>
+  <p>
+    <span class="badge b-ok">VERIFICADO</span> leído directamente en el documento o registro oficial ·
+    <span class="badge b-info">PARCIAL</span> reportado por un agente de lectura web y no releído ·
+    <span class="badge b-warn">INFERIDO</span> deducido de evidencia indirecta ·
+    <span class="badge b-pend">PENDIENTE</span> sin verificar
+  </p>
+
+  <h2>Currículo de MEDUCA: tres ediciones, rangos distintos</h2>
+  <div class="callout warn"><strong>No se afirma cuál es el currículo vigente en 2026.</strong> El programa de 2024 es la edición más reciente encontrada para 3.er grado, pero el Plan Estratégico 2025–2029 prevé una segunda versión actualizada. Falta confirmarlo con MEDUCA o con docentes.</div>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Documento</th><th>Edición</th><th>Páginas</th><th>Estado</th></tr></thead>
+    <tbody>
+      <tr><td>Programa de Tercer Grado, Educación Básica General</td><td>Actualización 2014</td><td>287 págs. PDF; Matemática desde la impresa 143</td><td><span class="badge b-ok">VERIFICADO</span></td></tr>
+      <tr><td>Aprendizajes fundamentales en Matemática</td><td>«Versión para validación», 31 de mayo de 2017</td><td>62 págs.; 3.er grado, págs. 24–30</td><td><span class="badge b-ok">VERIFICADO</span></td></tr>
+      <tr><td>Programa de tercer grado, Educación Básica General</td><td>2024</td><td>272 págs. PDF; Matemática, págs. impresas 167–232</td><td><span class="badge b-ok">VERIFICADO</span></td></tr>
+      <tr><td>Decreto Ejecutivo n.º 53 del 23 de mayo de 2024</td><td>Aprueba la actualización de los programas de primaria, incluida Matemática 1.º–6.º</td><td>5 págs. (escaneo); leídas las págs. 1–2</td><td><span class="badge b-info">PARCIAL</span></td></tr>
+      <tr><td>Que el PDF de 2024 sea el programa al que se refiere el decreto</td><td>El decreto no nombra el archivo</td><td>—</td><td><span class="badge b-warn">INFERIDO</span></td></tr>
+      <tr><td>Plan Estratégico 2025–2029 (MEDUCA)</td><td>Abril de 2026</td><td>68 págs.; relevantes: 14, 19, 20, 21</td><td><span class="badge b-ok">VERIFICADO</span></td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Qué cambia de una edición a otra (3.er grado, aritmética)</h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Aspecto</th><th>2014</th><th>2017 (validación)</th><th>2024</th></tr></thead>
+    <tbody>
+      <tr><td>Números naturales</td><td>Hasta 100 000 (el propio texto dice también 10 000 en otro punto)</td><td>Hasta 99 999</td><td>Menores de 1 000 000</td></tr>
+      <tr><td>Sustracción</td><td>Minuendo de 5 y 6 cifras</td><td>Hasta 5 cifras</td><td>Minuendos menores de 1 000 000, con y sin préstamo</td></tr>
+      <tr><td>Multiplicación</td><td>Tablas del 6 al 9; 4 cifras × 2–3 dígitos</td><td>Números de hasta 3 cifras</td><td>Tablas del 10 al 12; 4 cifras × 2–3 dígitos</td></tr>
+      <tr><td>División</td><td>Dividendo de 3 cifras ÷ 1 cifra</td><td>Números de hasta 3 cifras</td><td>Dividendo de hasta 3 cifras ÷ 1 o 2 cifras; exacta e inexacta</td></tr>
+    </tbody>
+  </table></div>
+  <p>Pendiente: confirmar la edición aplicada en 2026, leer las págs. 3–5 del decreto y abrir la guía <em>Panamática Tercer Grado Docente</em> (2025).</p>
+
+  <h2>MathTutorBench</h2>
+  <p>Benchmark de Macina et al. (EMNLP 2025). Lo usamos como <strong>referencia de método</strong> (qué habilidades de tutoría medir), no como datos: sus datos fuente están en inglés y son de nivel de primaria superior o secundaria.</p>
+  <ul>
+    <li><strong>Licencia sin resolver:</strong> el repositorio no tiene archivo <code>LICENSE</code> y la API de GitHub no devuelve licencia; el README y el sitio mencionan CC BY-SA 4.0 y CC BY 4.0. No se copian datos ni código hasta aclararlo. <span class="badge b-ok">VERIFICADO</span></li>
+    <li>El modelo de recompensa de pedagogía se entrenó y validó en inglés; no hay evidencia de que funcione en español de 3.er grado. <span class="badge b-info">PARCIAL</span></li>
+    <li>Referencias de la propuesta aún sin verificar: Lu 2025, Zhou 2025, Zhang 2026 y MRBench (Maurya 2025). <span class="badge b-pend">PENDIENTE</span></li>
+  </ul>
+
+  <h2>Modelos descargados</h2>
+  <p>Todos corren en local, sin APIs de pago. Los ID son los que muestra <code>ollama list</code> en el equipo de laboratorio. Solo <strong>Qwen3-0.6B</strong> se usa en el primer experimento; el resto son candidatos de extensión y <strong>no se han evaluado</strong>.</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Etiqueta en Ollama</th><th>ID</th><th>Tamaño</th><th>Licencia</th><th>Estado de la licencia</th></tr></thead>
+    <tbody>
+      <tr><td><code>qwen3:0.6b-q4_K_M</code> (primario)</td><td class="mono">7df6b6e09427</td><td>522 MB</td><td>Apache-2.0</td><td><span class="badge b-ok">VERIFICADO</span></td></tr>
+      <tr><td><code>qwen3:0.6b-q8_0</code> (primario)</td><td class="mono">f6358994266d</td><td>832 MB</td><td>Apache-2.0</td><td><span class="badge b-ok">VERIFICADO</span></td></tr>
+      <tr><td><code>qwen3:0.6b-fp16</code> (primario)</td><td class="mono">626c9556a80f</td><td>1,5 GB</td><td>Apache-2.0</td><td><span class="badge b-ok">VERIFICADO</span></td></tr>
+      <tr><td><code>qwen3:1.7b-q4_K_M</code></td><td class="mono">8f68893c685c</td><td>1,4 GB</td><td>Apache-2.0</td><td><span class="badge b-info">PARCIAL</span></td></tr>
+      <tr><td><code>qwen3:1.7b-q8_0</code></td><td class="mono">29b6a7a420a4</td><td>2,2 GB</td><td>Apache-2.0</td><td><span class="badge b-info">PARCIAL</span></td></tr>
+      <tr><td><code>qwen3:1.7b-fp16</code></td><td class="mono">e9354f6174db</td><td>4,1 GB</td><td>Apache-2.0</td><td><span class="badge b-info">PARCIAL</span></td></tr>
+      <tr><td><code>qwen3:4b-q4_K_M</code></td><td class="mono">2bfd38a7daaf</td><td>2,6 GB</td><td>Apache-2.0</td><td><span class="badge b-info">PARCIAL</span></td></tr>
+      <tr><td><code>gemma3:1b-it-q4_K_M</code></td><td class="mono">97558784bdc9</td><td>806 MB</td><td>Términos de uso de Gemma (Google)</td><td><span class="badge b-pend">PENDIENTE: sin leer</span></td></tr>
+      <tr><td><code>gemma3:270m-it-q8_0</code></td><td class="mono">e7d36fb2c3b3</td><td>291 MB</td><td>Términos de uso de Gemma (Google)</td><td><span class="badge b-pend">PENDIENTE: sin leer</span></td></tr>
+      <tr><td><code>phi4-mini:3.8b-q4_K_M</code></td><td class="mono">78fad5d182a7</td><td>2,5 GB</td><td>MIT</td><td><span class="badge b-info">PARCIAL</span></td></tr>
+      <tr><td><code>llama3.2:1b-instruct-q4_K_M</code></td><td class="mono">22bc6b92eb01</td><td>807 MB</td><td>Licencia comunitaria de Meta</td><td><span class="badge b-pend">PENDIENTE: sin leer</span></td></tr>
+      <tr><td><code>deepseek-r1:1.5b-qwen-distill-q4_K_M</code></td><td class="mono">e0979632db5a</td><td>1,1 GB</td><td>Pesos MIT; base Qwen-2.5 (Apache-2.0)</td><td><span class="badge b-info">PARCIAL</span></td></tr>
+      <tr><td><code>hf.co/ggml-org/SmolLM3-3B-GGUF:Q4_K_M</code></td><td class="mono">19f83d5d424a</td><td>1,9 GB</td><td>Apache-2.0</td><td><span class="badge b-info">PARCIAL</span></td></tr>
+    </tbody>
+  </table></div>
+  <ul>
+    <li>Para Qwen3-0.6B, los digests completos del registro de Ollama coinciden con los locales. Plantilla y parámetros por defecto son idénticos en las tres precisiones (<code>temperature 0.6</code>, <code>top_k 20</code>, <code>top_p 0.95</code>, <code>repeat_penalty 1</code>). <span class="badge b-ok">VERIFICADO</span></li>
+    <li>Se evitan las etiquetas por defecto de otros modelos: su cuantización difiere entre sí, y el <code>qwen3:4b</code> por defecto es la variante 2507 de razonamiento, no el Qwen3-4B original.</li>
+    <li>Descargar y ejecutar estos modelos en local no tiene costo por uso. Las condiciones de licencia importan al redistribuir o publicar.</li>
+  </ul>
+
+  <h2>Equipo de laboratorio</h2>
+  <div class="table-wrap"><table>
+    <tbody>
+      <tr><th>GPU</th><td>NVIDIA GeForce RTX 3060 <strong>Laptop</strong> GPU, 6144 MiB, driver 581.42</td></tr>
+      <tr><th>CPU y memoria</th><td>Intel Core i7-12700H (14 núcleos, 20 hilos), 15,7 GB de RAM</td></tr>
+      <tr><th>Software</th><td>Windows 11, Python 3.12.6, Ollama 0.40.16 (<span class="badge b-ok">VERIFICADO</span> con comandos)</td></tr>
+    </tbody>
+  </table></div>
+  <p>Documento completo: <a href="https://github.com/Carlos09Or/Math_Project_LLM/blob/main/docs/sources_verification.md"><code>docs/sources_verification.md</code></a>.</p>
+</main>
+
+<footer class="site"><div class="wrap">Borrador de trabajo · sin resultados científicos · <a href="https://github.com/Carlos09Or/Math_Project_LLM">repositorio en GitHub</a></div></footer>
+<script src="assets/app.js"></script>
+</body>
+</html>

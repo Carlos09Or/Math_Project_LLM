@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Tutoría matemática offline</title>
+<meta name="description" content="Investigación sobre tutoría matemática offline con modelos de lenguaje pequeños para 3.er grado en Panamá: calidad pedagógica, compresión y costo computacional.">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="site"><div class="wrap">
+  <a class="brand" href="index.html">Tutoría matemática offline</a>
+  <nav aria-label="Principal"><a href="index.html">Inicio</a><a href="metodologia.html">Metodología</a><a href="fuentes.html">Fuentes</a><a href="dataset.html">Dataset</a><a href="resultados.html">Resultados</a><a href="hoja-de-ruta.html">Hoja de ruta</a></nav>
+</div></header>
+
+<main class="wrap">
+  <h1>Tutoría matemática offline con modelos de lenguaje pequeños</h1>
+  <p class="lead">Estudiamos cómo cambian la exactitud, el diagnóstico de errores y la calidad de las pistas cuando se comprime un modelo pequeño, y qué recursos exige ejecutarlo localmente, para matemáticas de 3.er grado en Panamá.</p>
+
+  <div class="banner"><strong>Estado: borrador de trabajo, sin resultados científicos.</strong>
+    Se comprobó que el <em>pipeline</em> funciona con un piloto técnico (9 ítems sintéticos, un modelo, una sola pasada). Nada está validado por docentes ni aprobado por el mentor, y no se afirma alineación con el currículo vigente.</div>
+
+  <h2>La pregunta</h2>
+  <p><strong>Pregunta de largo plazo (propuesta AAAI-27 UC #52):</strong> ¿cuál es la configuración mínima de modelo, hardware y sistema capaz de ofrecer tutoría matemática offline pedagógicamente útil para primaria en dispositivos móviles con recursos limitados?</p>
+  <p><strong>Pregunta de la fase de laboratorio:</strong> ¿cómo cambian la exactitud matemática, el diagnóstico de errores y la utilidad de las pistas al cuantizar el mismo Qwen3-0.6B desde FP16 a Q8_0 y Q4_K_M, y qué recursos se ahorran en un entorno local controlado? El laboratorio en PC <strong>no valida</strong> dispositivos móviles.</p>
+  <p>El primer resultado no será una aplicación educativa, sino un procedimiento reproducible para medir esa relación entre calidad pedagógica y costo computacional.</p>
+
+  <h2>Dónde estamos</h2>
+  <div class="grid" id="home-stats"></div>
+  <p class="count">Las cifras se calculan al cargar la página desde <code>dataset/data/items.jsonl</code> y <code>runner/runs/</code>; ninguna está escrita a mano.</p>
+
+  <ol class="timeline">
+    <li class="done"><strong>F0 · Auditoría y fuentes</strong> <span class="badge b-warn">borrador, pendiente de revisión</span><br>Matriz de trazabilidad, auditoría del starter, verificación de fuentes oficiales, protocolo v0.2.</li>
+    <li class="done"><strong>F1 · Prueba de humo</strong> <span class="badge b-ok">completada, 6 de 6 criterios</span><br>9 ítems sintéticos con Qwen3-0.6B Q4_K_M, en GPU pura y sin internet. <a href="resultados.html">Ver resultados y límites</a>.</li>
+    <li class="doing"><strong>F1.5 · Runner v0.2</strong> <span class="badge b-warn">parcial</span><br>Corregidos los cinco defectos acordados. Faltan repeticiones con calentamiento, hoja de revisión ciega y corrección automática.</li>
+    <li class="doing"><strong>F2 · Dataset piloto</strong> <span class="badge b-warn">en curso</span><br>Borrador de 90 ítems generado y validado. Faltan la rúbrica y la revisión docente. <a href="dataset.html">Explorar el dataset</a>.</li>
+    <li><strong>F3 · Cuantización controlada</strong> <span class="badge b-pend">no iniciada</span> FP16, Q8_0 y Q4_K_M del mismo modelo, con repeticiones.</li>
+    <li><strong>F4–F8</strong> <span class="badge b-pend">no iniciadas</span> Instrumentación de costo (TTFT, RAM/VRAM, energía, térmico), más modelos, multi-turno y paso correctivo, Android, y adaptación (condicional).</li>
+  </ol>
+  <p><a href="hoja-de-ruta.html">Hoja de ruta completa, con criterios para avanzar entre fases →</a></p>
+
+  <h2>Lo que no afirmamos</h2>
+  <ul>
+    <li>Que los programas de MEDUCA usados sean el currículo vigente en 2026: no está confirmado con MEDUCA ni con docentes.</li>
+    <li>Validez pedagógica del dataset o de las rúbricas: no hay revisión docente.</li>
+    <li>Conclusiones sobre cuantización, calidad o latencia: el piloto técnico no es evidencia estadística.</li>
+    <li>Equivalencia con dispositivos móviles: el laboratorio es un portátil con GPU NVIDIA.</li>
+  </ul>
+
+  <h2>Documentos del proyecto</h2>
+  <div class="grid">
+    <div class="card"><h3>Metodología</h3><p>Alcance, hipótesis, control experimental y qué se conserva de la propuesta original. <a href="metodologia.html">Leer</a></p></div>
+    <div class="card"><h3>Fuentes</h3><p>Ediciones del currículo de MEDUCA, MathTutorBench, modelos y licencias, con su estado de verificación. <a href="fuentes.html">Leer</a></p></div>
+    <div class="card"><h3>Dataset</h3><p>Estructura, trazabilidad curricular y explorador de los 90 ítems. <a href="dataset.html">Explorar</a></p></div>
+    <div class="card"><h3>Resultados</h3><p>Piloto técnico: criterios, corridas, observaciones y sus límites. <a href="resultados.html">Ver</a></p></div>
+  </div>
+  <p>Los documentos fuente completos (auditoría, matriz de trazabilidad, protocolo v0.2, informe de la prueba de humo) están en la carpeta <a href="https://github.com/Carlos09Or/Math_Project_LLM/tree/main/docs"><code>docs/</code></a> del repositorio.</p>
+</main>
+
+<footer class="site"><div class="wrap">Borrador de trabajo · sin resultados científicos · <a href="https://github.com/Carlos09Or/Math_Project_LLM">repositorio en GitHub</a></div></footer>
+<script src="assets/data/project_items.js"></script>
+<script src="assets/data/project_runs.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
