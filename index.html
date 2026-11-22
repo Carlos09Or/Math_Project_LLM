@@ -7,66 +7,186 @@
 <title>Tutoría matemática offline</title>
 <meta name="description" content="Investigación sobre tutoría matemática offline con modelos de lenguaje pequeños para 3.er grado en Panamá: calidad pedagógica, compresión y costo computacional.">
 <link rel="stylesheet" href="assets/style.css">
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 </head>
 <body>
-<header class="site"><div class="wrap">
-  <a class="brand" href="index.html">Tutoría matemática offline</a>
-  <nav aria-label="Principal"><a href="index.html">Inicio</a><a href="pruebas.html">Pruebas</a><a href="benchmark.html">Benchmark 2026</a><a href="resultados-2026.html">Resultados 2026</a><a href="rondas-2026.html">Rondas y ablación</a><a href="dataset.html">Dataset 2024</a><a href="rubrica.html">Rúbrica</a><a href="fuentes.html">Fuentes</a><a href="metodologia.html">Metodología</a><a href="hoja-de-ruta.html">Hoja de ruta</a></nav>
-</div></header>
+<header class="site">
+  <a class="skip" href="#contenido">Saltar al contenido</a>
+  <div class="wrap topbar">
+    <a class="brand" href="index.html"><span class="mark" aria-hidden="true">∑</span><span>Tutoría matemática offline<small>Investigación AAAI-27 UC · matemática de 3.er grado, Panamá</small></span></a>
+    <button class="theme-toggle" type="button" aria-label="Cambiar entre tema claro y oscuro">☾ Oscuro</button>
+  </div>
+  <nav class="sections" aria-label="Secciones"><div class="wrap"><a href="index.html" aria-current="true">Inicio</a><a href="benchmark.html">Benchmark 2026</a><a href="pruebas.html">Laboratorio 2024</a><a href="metodologia.html">Método y referencias</a></div></nav>
+</header>
 
-<main class="wrap">
-  <h1>Tutoría matemática offline con modelos de lenguaje pequeños</h1>
-  <p class="lead">Estudiamos cómo cambian la exactitud, el diagnóstico de errores y la calidad de las pistas cuando se comprime un modelo pequeño, y qué recursos exige ejecutarlo localmente, para matemáticas de 3.er grado en Panamá.</p>
+<main class="wrap" id="contenido">
+  <section class="hero">
+    <span class="pill">Borrador de trabajo · resultados exploratorios</span>
+    <h1>Tutoría matemática offline con modelos pequeños</h1>
+    <p class="lead">¿Qué se pierde, en exactitud, en diagnóstico de errores y en calidad de las pistas, cuando se comprime un modelo de lenguaje pequeño para que corra sin internet en un equipo modesto? Lo estudiamos con matemática de 3.er grado de Panamá.</p>
+    <div class="cta">
+      <a class="btn primary" href="#hallazgos">Ver qué encontramos</a>
+      <a class="btn" href="benchmark.html">Entender el benchmark</a>
+      <a class="btn" href="pruebas.html">Revisar todas las pruebas</a>
+    </div>
+  </section>
 
-  <div class="banner"><strong>Estado: borrador de trabajo, sin resultados científicos.</strong>
-    Hay dos líneas de trabajo. La <strong>más reciente</strong> es el <a href="benchmark.html">benchmark alineado con el programa MEDUCA 2026</a> (180 ítems, cotejado contra el PDF oficial), evaluado de forma exploratoria en <a href="resultados-2026.html">siete configuraciones de modelos pequeños</a>. La anterior es el dataset de 90 ítems basado en el programa 2024, con la prueba de humo y el piloto de Qwen3-0.6B (<a href="pruebas.html">todas las pruebas</a>). Nada está validado por docentes ni aprobado por el mentor, y no hay revisión humana de la calidad pedagógica todavía.</div>
+  <h2 id="como-leer">Cómo leer este sitio</h2>
+  <p>Todo lo que se hizo lleva una etiqueta que dice <strong>cuánto se puede confiar en ello</strong>. Si una afirmación no tiene etiqueta de «verificado», no es una conclusión.</p>
+  <div class="legend-evi" aria-label="Significado de las etiquetas">
+    <span><span class="badge b-ok">verificado</span> comprobado por código o criterio cumplido</span>
+    <span><span class="badge b-info">exploratorio</span> se midió, pero no permite concluir</span>
+    <span><span class="badge b-warn">borrador</span> sin revisión humana ni docente</span>
+    <span><span class="badge b-pend">pendiente</span> aún no se hace</span>
+  </div>
+  <p class="small">¿Un término te suena técnico (cuantización, Q4_K_M, ablación, IC 95 %)? Está explicado en el <a href="glosario.html">glosario</a>.</p>
 
-  <h2>La pregunta</h2>
-  <p><strong>Pregunta de largo plazo (propuesta AAAI-27 UC #52):</strong> ¿cuál es la configuración mínima de modelo, hardware y sistema capaz de ofrecer tutoría matemática offline pedagógicamente útil para primaria en dispositivos móviles con recursos limitados?</p>
-  <p><strong>Pregunta de la fase de laboratorio:</strong> ¿cómo cambian la exactitud matemática, el diagnóstico de errores y la utilidad de las pistas al cuantizar el mismo Qwen3-0.6B desde FP16 a Q8_0 y Q4_K_M, y qué recursos se ahorran en un entorno local controlado? El laboratorio en PC <strong>no valida</strong> dispositivos móviles.</p>
-  <p>El primer resultado no será una aplicación educativa, sino un procedimiento reproducible para medir esa relación entre calidad pedagógica y costo computacional.</p>
+  <h2 id="pregunta">La pregunta</h2>
+  <div class="grid">
+    <div class="card"><div class="eyebrow">Largo plazo</div><p>¿Cuál es la configuración mínima de modelo, hardware y sistema capaz de ofrecer <strong>tutoría matemática offline pedagógicamente útil</strong> para primaria en dispositivos móviles con recursos limitados? <span class="small">(propuesta AAAI-27 UC #52)</span></p></div>
+    <div class="card"><div class="eyebrow">Fase de laboratorio</div><p>¿Cómo cambian la <strong>exactitud, el diagnóstico de errores y la utilidad de las pistas</strong> al cuantizar un mismo modelo (FP16, Q8_0, Q4_K_M), y qué recursos se ahorran en un equipo local controlado?</p></div>
+    <div class="card"><div class="eyebrow">Lo que NO es</div><p>No es una aplicación educativa, no entrena modelos y <strong>no valida dispositivos móviles</strong>: el laboratorio es un portátil con GPU NVIDIA de 6 GB.</p></div>
+  </div>
 
-  <h2>Dónde estamos</h2>
+  <h2 id="como-esta-armado">Cómo está armado el experimento</h2>
+  <ol class="steps">
+    <li><strong>Currículo MEDUCA</strong>Competencias de Aritmética de 3.er grado, con página del programa oficial. <span class="badge b-warn">sin aval de MEDUCA</span></li>
+    <li><strong>Ítems verificados</strong>Tres tareas: resolver, diagnosticar un error y dar una pista. Cada respuesta se recalcula con varias implementaciones. <span class="badge b-ok">verificado por código</span></li>
+    <li><strong>Modelos pequeños, en local</strong>Ollama en un portátil, sin internet, con el mismo prompt, semilla y parámetros. <span class="badge b-info">exploratorio</span></li>
+    <li><strong>Corrector determinista</strong>Exactitud, veredicto y fuga de la respuesta se puntúan por código, sin un LLM como juez. <span class="badge b-ok">verificado</span></li>
+    <li><strong>Revisión humana</strong>Una rúbrica 0–2 para lo que solo una persona puede juzgar, y revisión docente. <span class="badge b-pend">pendiente</span></li>
+  </ol>
+
+  <h2 id="en-numeros">Lo hecho, en números</h2>
+  <p class="small">Estas cifras se calculan al cargar la página desde los datos publicados; ninguna está escrita a mano.</p>
+  <div class="eyebrow" style="margin-top:14px">Benchmark 2026 · programa MEDUCA 2026</div>
+  <div class="grid" id="b-kpis"></div>
+  <div class="eyebrow" style="margin-top:14px">Laboratorio 2024 · dataset, piloto y prueba de humo</div>
   <div class="grid" id="home-stats"></div>
-  <p class="count">Las cifras se calculan al cargar la página desde <code>dataset/data/items.jsonl</code> y <code>runner/runs/</code>; ninguna está escrita a mano.</p>
 
+  <h2 id="hallazgos">Qué encontramos hasta ahora</h2>
+  <div class="callout warn"><strong>Léelo como pistas, no como conclusiones.</strong> Son resultados exploratorios: pocas corridas, una sola máquina, puntuación automática y ninguna revisión docente. Cada tarjeta enlaza a la evidencia.</div>
+
+  <div class="findings">
+    <article class="finding">
+      <div class="big">55 <span class="small">vs</span> 39</div>
+      <h3>Más parámetros ayudan a resolver</h3>
+      <p>Qwen3-1.7B resuelve 55 de 60 problemas; Qwen3-0.6B Q4_K_M, 39. Los intervalos de confianza no se solapan.</p>
+      <div class="foot"><span class="badge b-info">exploratorio</span><a href="resultados-2026.html">Ver resultados →</a></div>
+    </article>
+    <article class="finding warn">
+      <div class="big">3 <span class="small">de 51</span></div>
+      <h3>La cuantización a 4 bits no se nota al resolver, pero sí al detectar errores</h3>
+      <p>El 0.6B resuelve casi igual en Q4_K_M, Q8_0 y FP16 (39, 36 y 37 de 60). Pero Q4_K_M detecta 3 de 51 errores frente a 9 de 51 de Q8_0 y FP16, en las seis rondas.</p>
+      <div class="foot"><span class="badge b-info">exploratorio</span><a href="rondas-2026.html">Ver rondas →</a></div>
+    </article>
+    <article class="finding bad">
+      <div class="big">12–19 <span class="small">de 60</span></div>
+      <h3>Las pistas revelan la respuesta con frecuencia</h3>
+      <p>En casi todos los modelos, entre 12 y 19 de 60 pistas contienen el resultado. Gemma 3 1B casi no lo revela, pero sus pistas son vagas: que no haya fuga no las hace buenas.</p>
+      <div class="foot"><span class="badge b-info">exploratorio</span><a href="resultados-2026.html">Ver resultados →</a></div>
+    </article>
+    <article class="finding warn">
+      <div class="big">3 <span class="small">de 7</span></div>
+      <h3>Reconocer el error es lo más difícil</h3>
+      <p>Los modelos dan por bueno el trabajo equivocado. Aun con la respuesta correcta a la vista, solo 3 de 7 configuraciones (Qwen3-1.7B, SmolLM3 y Phi-4-mini) detectan el error como se esperaba.</p>
+      <div class="foot"><span class="badge b-info">exploratorio</span><a href="rondas-2026.html">Ver ablación →</a></div>
+    </article>
+    <article class="finding">
+      <div class="big">70 % <span class="small">vs</span> 59 %</div>
+      <h3>Piloto 2024: q8_0 y fp16 resuelven mejor que q4_K_M</h3>
+      <p>Con 27 problemas, q8_0 y fp16 aciertan 70,4 % al resolver y q4_K_M 59,3 %. El diagnóstico queda cerca del azar. Los intervalos se tocan: no es una prueba.</p>
+      <div class="foot"><span class="badge b-info">exploratorio</span><a href="piloto.html">Ver el piloto →</a></div>
+    </article>
+    <article class="finding ok">
+      <div class="big">6 <span class="small">de 6</span></div>
+      <h3>El sistema corre en local, en GPU y sin internet</h3>
+      <p>La prueba de humo cumplió sus seis criterios y deja un registro crudo auditable. Aparte, una prueba exploratoria de capacidad mostró que los 13 modelos descargados caben en la GPU de 6 GB y que correrlos a la vez baja la velocidad, así que se miden siempre en secuencia.</p>
+      <div class="foot"><span class="badge b-ok">verificado</span><a href="pruebas.html">Ver las pruebas →</a></div>
+    </article>
+  </div>
+
+  <h3>Las siete configuraciones, de un vistazo</h3>
+  <p class="small">Mismos 180 ítems, mismo prompt, temperatura 0, una corrida cada una. Primera pasada del benchmark 2026.</p>
+  <div id="home-bars"></div>
+
+  <h2 id="mapa-evidencia">Mapa de evidencia: qué está hecho y qué falta</h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Componente</th><th>Estado</th><th>Evidencia</th><th>Qué falta</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Auditoría y fuentes</strong> (F0)</td><td><span class="badge b-warn">borrador</span></td><td>Matriz de trazabilidad, auditoría del starter, fuentes verificadas, protocolo v0.2</td><td>Revisión del investigador y edición curricular de referencia</td></tr>
+      <tr><td><strong>Benchmark 2026</strong> (180 ítems)</td><td><span class="badge b-ok">verificado por código</span> <span class="badge b-warn">sin revisión docente</span></td><td>Validación con 0 errores, huellas SHA-256, tres implementaciones independientes de código, benchmark congelado</td><td>Revisión docente y aval de MEDUCA</td></tr>
+      <tr><td><strong>Prueba de humo</strong> (T1)</td><td><span class="badge b-ok">cumplida · 6 de 6</span></td><td>Registros crudos y corrida sin red</td><td>—</td></tr>
+      <tr><td><strong>Capacidad de la GPU</strong> (T2)</td><td><span class="badge b-info">exploratorio</span></td><td>Datos crudos de 13 modelos y de la carga en paralelo</td><td>Otros contextos; más repeticiones</td></tr>
+      <tr><td><strong>Prompt congelado</strong> (T3, T4)</td><td><span class="badge b-ok">cumplida (ronda 2)</span></td><td>Umbrales fijados antes de correr; la ronda 1 no cumplió y no se relajó</td><td>Decisión D-08 con el mentor (el formato de división delata la operación)</td></tr>
+      <tr><td><strong>Piloto 2024</strong> (T5)</td><td><span class="badge b-info">exploratorio</span></td><td>972 registros, 0 errores, plan fijado antes, intervalos por problema base</td><td>Aplicar la rúbrica y revisión humana</td></tr>
+      <tr><td><strong>Resultados 2026</strong> (7 configuraciones)</td><td><span class="badge b-info">exploratorio</span></td><td>Resumen y manifiesto de cada corrida</td><td>Más repeticiones y revisión humana de diagnósticos y pistas</td></tr>
+      <tr><td><strong>Rondas y ablación</strong></td><td><span class="badge b-info">exploratorio</span></td><td>Plan escrito antes de ver los datos; 6 rondas y 2 variantes de prompt</td><td>Más rondas; otras máquinas</td></tr>
+      <tr><td><strong>Rúbrica v0.1</strong></td><td><span class="badge b-warn">borrador</span></td><td>11 criterios 0–2 con ejemplos ancla</td><td>Validación docente y calibración</td></tr>
+      <tr><td><strong>Costo (RAM/VRAM/energía/térmico), multi-turno, Android, LoRA</strong></td><td><span class="badge b-pend">pendiente</span></td><td>—</td><td>Fases F4, F6, F7 y F8 de la <a href="hoja-de-ruta.html">hoja de ruta</a></td></tr>
+    </tbody>
+  </table></div>
+
+  <h2 id="fases">Línea de tiempo por fases</h2>
   <ol class="timeline">
-    <li class="done"><strong>F0 · Auditoría y fuentes</strong> <span class="badge b-warn">borrador, pendiente de revisión</span><br>Matriz de trazabilidad, auditoría del starter, verificación de fuentes oficiales, protocolo v0.2.</li>
-    <li class="done"><strong>Benchmark 2026 · construcción y congelación</strong> <span class="badge b-warn">borrador, sin revisión docente</span><br>180 ítems de Aritmética (60 de resolución, 60 de diagnóstico y 60 de pistas) alineados con el programa 2026, con verificación independiente y congelados antes de evaluar. <a href="benchmark.html">Ver el benchmark</a>.</li>
-    <li class="done"><strong>F1 · Prueba de humo</strong> <span class="badge b-ok">completada, 6 de 6 criterios</span><br>9 ítems sintéticos con Qwen3-0.6B Q4_K_M, en GPU pura y sin internet. <a href="resultados.html">Ver la prueba de humo</a>.</li>
-    <li class="doing"><strong>F1.5 · Runner v0.2</strong> <span class="badge b-warn">parcial</span><br>Corregidos los defectos acordados y añadidos: adaptador al dataset real, calentamiento con repeticiones, corrector automático determinista y ejecución en secuencia. Falta la hoja de revisión ciega.</li>
-    <li class="doing"><strong>F2 · Dataset piloto</strong> <span class="badge b-warn">en curso</span><br>Borrador de 90 ítems generado y validado. Faltan la rúbrica y la revisión docente. <a href="dataset.html">Explorar el dataset</a>.</li>
-    <li class="doing"><strong>F3 · Cuantización controlada</strong> <span class="badge b-warn">primera pasada exploratoria</span><br>FP16, Q8_0 y Q4_K_M del mismo modelo sobre el dataset real, con prompt congelado y 3 repeticiones. Sin rúbrica ni revisión humana todavía. <a href="piloto.html">Ver el piloto y revisar las respuestas</a>.</li>
-    <li class="doing"><strong>Rondas repetidas y ablación del diagnóstico</strong> <span class="badge b-warn">exploratorio</span><br>Seis rondas adicionales (tres con temperatura 0 y tres con muestreo) de las siete configuraciones, y dos variantes de prompt para entender por qué los modelos pequeños dan por bueno el trabajo equivocado. <a href="rondas-2026.html">Ver rondas y ablación</a>.</li>
-    <li class="doing"><strong>F5 · Más modelos</strong> <span class="badge b-warn">primera pasada exploratoria</span><br>Qwen3-1.7B, Gemma 3 1B, SmolLM3 3B y Phi-4-mini 3.8B sobre el benchmark 2026, una corrida cada uno y sin repeticiones. Las licencias de Gemma y Llama 3.2 siguen sin leerse. <a href="resultados-2026.html">Ver resultados</a>.</li>
+    <li class="done"><strong>F0 · Auditoría y fuentes</strong> <span class="badge b-warn">borrador</span><br>Matriz de trazabilidad, auditoría del starter, verificación de fuentes oficiales, protocolo v0.2.</li>
+    <li class="done"><strong>Benchmark 2026 · construcción y congelación</strong> <span class="badge b-ok">verificado por código</span> <span class="badge b-warn">sin revisión docente</span><br>180 ítems de Aritmética (60 de resolución, 60 de diagnóstico y 60 de pistas) alineados con el programa 2026 y congelados antes de evaluar. <a href="benchmark.html">Ver el benchmark</a>.</li>
+    <li class="done"><strong>F1 · Prueba de humo</strong> <span class="badge b-ok">completada, 6 de 6</span><br>9 ítems sintéticos con Qwen3-0.6B Q4_K_M, en GPU pura y sin internet. <a href="resultados.html">Ver la prueba de humo</a>.</li>
+    <li class="doing"><strong>F1.5 · Runner v0.3</strong> <span class="badge b-warn">avanzada</span><br>Adaptador al dataset real, calentamiento con repeticiones, corrector determinista y ejecución en secuencia. Falta la hoja de revisión ciega.</li>
+    <li class="doing"><strong>F2 · Dataset piloto y rúbrica</strong> <span class="badge b-warn">en curso</span><br>Borrador de 90 ítems validado y rúbrica v0.1 redactada. Faltan la validación docente y la calibración. <a href="dataset.html">Explorar el dataset</a>.</li>
+    <li class="doing"><strong>F3 · Cuantización controlada</strong> <span class="badge b-info">primera pasada exploratoria</span><br>FP16, Q8_0 y Q4_K_M del mismo modelo, con prompt congelado y 3 repeticiones. Sin revisión humana todavía. <a href="piloto.html">Ver el piloto y revisar las respuestas</a>.</li>
+    <li class="doing"><strong>Rondas repetidas y ablación del diagnóstico</strong> <span class="badge b-info">exploratorio</span><br>Seis rondas adicionales y dos variantes de prompt para entender por qué los modelos pequeños dan por bueno el trabajo equivocado. <a href="rondas-2026.html">Ver rondas y ablación</a>.</li>
+    <li class="doing"><strong>F5 · Más modelos</strong> <span class="badge b-info">primera pasada exploratoria</span><br>Qwen3-1.7B, Gemma 3 1B, SmolLM3 3B y Phi-4-mini 3.8B sobre el benchmark 2026. Las licencias de Gemma y Llama 3.2 siguen sin leerse. <a href="resultados-2026.html">Ver resultados</a>.</li>
     <li><strong>F4, F6–F8</strong> <span class="badge b-pend">no iniciadas</span> Instrumentación de costo (TTFT, RAM/VRAM, energía, térmico), multi-turno y paso correctivo, Android, y adaptación (condicional).</li>
   </ol>
   <p><a href="hoja-de-ruta.html">Hoja de ruta completa, con criterios para avanzar entre fases →</a></p>
 
-  <h2>Lo que no afirmamos</h2>
+  <h2 id="no-afirmamos">Lo que no afirmamos</h2>
   <ul>
-    <li>Que el benchmark 2026 tenga el aval de MEDUCA o de docentes: se cotejó contra el programa oficial 2026, pero no está validado por ellos. El dataset anterior usa el programa 2024.</li>
-    <li>Validez pedagógica del dataset o de las rúbricas: no hay revisión docente.</li>
-    <li>Conclusiones sobre cuantización, calidad pedagógica o latencia: los resultados son exploratorios, de una corrida por configuración y sin revisión humana.</li>
-    <li>Equivalencia con dispositivos móviles: el laboratorio es un portátil con GPU NVIDIA.</li>
+    <li><strong>Aval de MEDUCA o de docentes.</strong> El benchmark 2026 se cotejó con el programa oficial 2026, pero no está validado por ellos. El dataset anterior usa el programa 2024.</li>
+    <li><strong>Validez pedagógica</strong> del dataset o de las rúbricas: no hay revisión docente.</li>
+    <li><strong>Conclusiones</strong> sobre cuantización, calidad pedagógica o latencia: los resultados son exploratorios y sin revisión humana.</li>
+    <li><strong>Equivalencia con dispositivos móviles:</strong> el laboratorio es un portátil con GPU NVIDIA.</li>
   </ul>
 
-  <h2>Documentos del proyecto</h2>
-  <div class="grid">
-    <div class="card"><h3>Metodología</h3><p>Alcance, hipótesis, control experimental y qué se conserva de la propuesta original. <a href="metodologia.html">Leer</a></p></div>
-    <div class="card"><h3>Fuentes</h3><p>Ediciones del currículo de MEDUCA, MathTutorBench, modelos y licencias, con su estado de verificación. <a href="fuentes.html">Leer</a></p></div>
-    <div class="card"><h3>Benchmark 2026</h3><p>Tres tareas, 19 competencias, límites oficiales frente a metodológicos y cobertura. <a href="benchmark.html">Leer</a></p></div>
-    <div class="card"><h3>Resultados 2026</h3><p>Siete configuraciones de modelos pequeños: resolución, diagnóstico, pistas y costo. <a href="resultados-2026.html">Ver</a></p></div>
-    <div class="card"><h3>Rondas y ablación</h3><p>Cuánto varía un resultado entre rondas y por qué los modelos pequeños no detectan el error del estudiante. <a href="rondas-2026.html">Ver</a></p></div>
-    <div class="card"><h3>Dataset 2024</h3><p>El dataset anterior (programa 2024): estructura y explorador de los 90 ítems. <a href="dataset.html">Explorar</a></p></div>
-    <div class="card"><h3>Pruebas</h3><p>Cada prueba hecha: qué pregunta responde, qué resultó y qué no prueba. Incluye el piloto con revisión humana. <a href="pruebas.html">Ver</a></p></div>
+  <h2 id="por-donde-empezar">Por dónde empezar</h2>
+  <div class="readmap">
+    <div class="card"><div class="t">Tengo 2 minutos</div><ol><li>Esta página: <a href="#hallazgos">qué encontramos</a> y <a href="#no-afirmamos">lo que no afirmamos</a>.</li><li><a href="resultados-2026.html">Resultados 2026</a>: la tabla resumen.</li></ol></div>
+    <div class="card"><div class="t">Tengo 10 minutos</div><ol><li><a href="benchmark.html">Qué es el benchmark</a> y cómo se verifica.</li><li><a href="rondas-2026.html">Rondas y ablación</a>: qué diferencias aguantan.</li><li><a href="hoja-de-ruta.html">Hoja de ruta</a>: qué sigue.</li></ol></div>
+    <div class="card"><div class="t">Quiero auditar o reproducir</div><ol><li><a href="metodologia.html">Metodología</a> y <a href="fuentes.html">fuentes</a>.</li><li><a href="pruebas.html">Cada prueba</a>, con lo que no prueba.</li><li><a href="https://github.com/Carlos09Or/Math_Project_LLM">Código y datos crudos</a> en GitHub.</li></ol></div>
+    <div class="card"><div class="t">Soy docente</div><ol><li><a href="rubrica.html">Rúbrica de revisión humana</a>: ¿te parecen los criterios?</li><li><a href="dataset.html">Explorador del dataset</a>.</li><li><a href="piloto.html#revision-humana-tu-eres-el-corrector-final">Revisar respuestas</a> del piloto.</li></ol></div>
   </div>
-  <p>Los documentos fuente completos (auditoría, matriz de trazabilidad, protocolo v0.2, informe de la prueba de humo) están en la carpeta <a href="https://github.com/Carlos09Or/Math_Project_LLM/tree/main/docs"><code>docs/</code></a> del repositorio.</p>
+
+  <h2 id="documentos">Todos los documentos</h2>
+  <div class="grid">
+    <a class="card" href="benchmark.html"><h3>Benchmark 2026</h3><p>Tres tareas, 19 competencias, límites oficiales frente a metodológicos y cobertura.</p></a>
+    <a class="card" href="resultados-2026.html"><h3>Resultados 2026</h3><p>Siete configuraciones: resolución, diagnóstico, pistas y costo.</p></a>
+    <a class="card" href="rondas-2026.html"><h3>Rondas y ablación</h3><p>Cuánto varía un resultado y por qué los modelos pequeños no ven el error.</p></a>
+    <a class="card" href="pruebas.html"><h3>Pruebas T1–T5</h3><p>Qué pregunta responde cada una, qué resultó y qué no prueba.</p></a>
+    <a class="card" href="dataset.html"><h3>Dataset 2024</h3><p>Estructura y explorador de los 90 ítems del programa 2024.</p></a>
+    <a class="card" href="rubrica.html"><h3>Rúbrica</h3><p>Criterios 0–2 para la revisión humana, con ejemplos ancla.</p></a>
+    <a class="card" href="metodologia.html"><h3>Metodología</h3><p>Hipótesis, control experimental y alcance de la propuesta.</p></a>
+    <a class="card" href="fuentes.html"><h3>Fuentes</h3><p>Currículo, MathTutorBench, modelos y licencias, con su estado de verificación.</p></a>
+    <a class="card" href="hoja-de-ruta.html"><h3>Hoja de ruta</h3><p>Fases F0–F8, criterios de salida y decisiones del mentor.</p></a>
+    <a class="card" href="glosario.html"><h3>Glosario</h3><p>Cuantización, Q4_K_M, ablación, IC 95 % y otros términos en lenguaje llano.</p></a>
+  </div>
+  <p class="small">Los documentos fuente completos (auditoría, matriz de trazabilidad, protocolo v0.2, informe de la prueba de humo) están en la carpeta <a href="https://github.com/Carlos09Or/Math_Project_LLM/tree/main/docs"><code>docs/</code></a> del repositorio.</p>
 </main>
 
-<footer class="site"><div class="wrap">Borrador de trabajo · sin resultados científicos · <a href="https://github.com/Carlos09Or/Math_Project_LLM">repositorio en GitHub</a></div></footer>
+<footer class="site"><div class="wrap">
+  <div class="cols">
+    <div><div class="h">El proyecto</div><a href="index.html">Inicio</a><a href="metodologia.html">Metodología</a><a href="hoja-de-ruta.html">Hoja de ruta</a><a href="glosario.html">Glosario</a></div>
+    <div><div class="h">Resultados</div><a href="benchmark.html">Benchmark 2026</a><a href="resultados-2026.html">Resultados 2026</a><a href="rondas-2026.html">Rondas y ablación</a><a href="pruebas.html">Pruebas T1–T5</a></div>
+    <div><div class="h">Referencia</div><a href="dataset.html">Dataset 2024</a><a href="rubrica.html">Rúbrica</a><a href="fuentes.html">Fuentes</a><a href="https://github.com/Carlos09Or/Math_Project_LLM">Repositorio en GitHub</a></div>
+  </div>
+  <p class="legal">Borrador de trabajo · resultados exploratorios, sin validación docente ni aval de MEDUCA · los datos publicados son agregados; los ítems del benchmark 2026 no se publican.</p>
+</div></footer>
 <script src="assets/data/project_items.js"></script>
 <script src="assets/data/project_runs.js"></script>
+<script src="assets/data/benchmark2026.js"></script>
 <script src="assets/app.js"></script>
+<script src="assets/bench2026.js"></script>
+<script src="assets/home.js"></script>
+<script src="assets/shell.js"></script>
 </body>
 </html>

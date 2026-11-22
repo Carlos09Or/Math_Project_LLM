@@ -8,16 +8,23 @@
 <meta name="description" content="Rúbrica de revisión humana (borrador): criterios 0–2 con ejemplos ancla reales del modelo y el procedimiento de revisión ciega.">
 <link rel="stylesheet" href="assets/style.css">
 <link rel="stylesheet" href="assets/tests.css">
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 </head>
 <body>
-<header class="site"><div class="wrap">
-  <a class="brand" href="index.html">Tutoría matemática offline</a>
-  <nav aria-label="Principal"><a href="index.html">Inicio</a><a href="pruebas.html">Pruebas</a><a href="benchmark.html">Benchmark 2026</a><a href="resultados-2026.html">Resultados 2026</a><a href="rondas-2026.html">Rondas y ablación</a><a href="dataset.html">Dataset 2024</a><a href="rubrica.html">Rúbrica</a><a href="fuentes.html">Fuentes</a><a href="metodologia.html">Metodología</a><a href="hoja-de-ruta.html">Hoja de ruta</a></nav>
-</div></header>
+<header class="site">
+  <a class="skip" href="#contenido">Saltar al contenido</a>
+  <div class="wrap topbar">
+    <a class="brand" href="index.html"><span class="mark" aria-hidden="true">∑</span><span>Tutoría matemática offline<small>Investigación AAAI-27 UC · matemática de 3.er grado, Panamá</small></span></a>
+    <button class="theme-toggle" type="button" aria-label="Cambiar entre tema claro y oscuro">☾ Oscuro</button>
+  </div>
+  <nav class="sections" aria-label="Secciones"><div class="wrap"><a href="index.html">Inicio</a><a href="benchmark.html">Benchmark 2026</a><a href="pruebas.html">Laboratorio 2024</a><a href="metodologia.html" aria-current="true">Método y referencias</a></div></nav>
+  <nav class="subsections" aria-label="Páginas de la sección"><div class="wrap"><a href="metodologia.html">Metodología</a><a href="rubrica.html" aria-current="page">Rúbrica</a><a href="fuentes.html">Fuentes</a><a href="hoja-de-ruta.html">Hoja de ruta</a><a href="glosario.html">Glosario</a></div></nav>
+</header>
 
-<main class="wrap">
+<main class="wrap" id="contenido">
   <h1>Rúbrica de revisión humana</h1>
   <p class="lead">El corrector automático solo puede comprobar si la respuesta es exacta, si el veredicto es correcto y si la pista contiene el resultado. <strong>Esta rúbrica es para lo que solo una persona puede juzgar:</strong> si un diagnóstico ubica bien el error, si una pista ayuda sin regalar la respuesta, si no valida algo falso y si un niño de 3.er grado lo entendería.</p>
+  <div class="tldr" aria-label="En breve"><div><div class="h">Qué es</div><p>Criterios de 0 a 2 para lo que solo una persona puede juzgar: ubicar el error, ayudar sin regalar la respuesta y ser claro para 3.er grado.</p></div><div><div class="h">Qué encontramos</div><p>Cada criterio tiene descriptores por nivel y ejemplos ancla; incluye una muestra propuesta para la revisión ciega.</p></div><div><div class="h">Cuánto confiar</div><p>Borrador v0.1: falta la validación docente y la calibración.</p></div></div>
   <div class="banner"><strong>Borrador, sin validación docente.</strong> Se fija <em>antes</em> de revisar la muestra del piloto. 15 de sus 33 ejemplos son sintéticos (los escribió el autor, no son respuestas de un modelo) y las respuestas reales vienen de 3 problemas de la partición <code>dev</code>, <strong>nunca de <code>pilot</code></strong>.</div>
 
   <div class="grid" id="rb-kpis"></div>
@@ -57,9 +64,17 @@
   </ul>
 </main>
 
-<footer class="site"><div class="wrap">Borrador de trabajo · sin resultados científicos · <a href="https://github.com/Carlos09Or/Math_Project_LLM">repositorio en GitHub</a></div></footer>
+<footer class="site"><div class="wrap">
+  <div class="cols">
+    <div><div class="h">El proyecto</div><a href="index.html">Inicio</a><a href="metodologia.html">Metodología</a><a href="hoja-de-ruta.html">Hoja de ruta</a><a href="glosario.html">Glosario</a></div>
+    <div><div class="h">Resultados</div><a href="benchmark.html">Benchmark 2026</a><a href="resultados-2026.html">Resultados 2026</a><a href="rondas-2026.html">Rondas y ablación</a><a href="pruebas.html">Pruebas T1–T5</a></div>
+    <div><div class="h">Referencia</div><a href="dataset.html">Dataset 2024</a><a href="rubrica.html">Rúbrica</a><a href="fuentes.html">Fuentes</a><a href="https://github.com/Carlos09Or/Math_Project_LLM">Repositorio en GitHub</a></div>
+  </div>
+  <p class="legal">Borrador de trabajo · resultados exploratorios, sin validación docente ni aval de MEDUCA · los datos publicados son agregados; los ítems del benchmark 2026 no se publican.</p>
+</div></footer>
 <script src="assets/data/project_rubric.js"></script>
 <script src="assets/app.js"></script>
 <script src="assets/rubric.js"></script>
+<script src="assets/shell.js"></script>
 </body>
 </html>

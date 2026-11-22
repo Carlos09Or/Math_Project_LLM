@@ -6,6 +6,7 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) { --m-q4: #f0954f; --m-q8: #6db3e8; --m-fp16: #6fd09b; }
 }
+:root[data-theme="dark"] { --m-q4: #f0954f; --m-q8: #6db3e8; --m-fp16: #6fd09b; }
 .crumb { font-size: .9rem; margin: 0 0 6px; }
 .subnav { display: flex; gap: 8px; flex-wrap: wrap; margin: 10px 0 22px; }
 .subnav a { text-decoration: none; padding: 5px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); color: var(--muted); font-size: .9rem; }
@@ -14,7 +15,7 @@
 
 /* Tarjetas de pruebas */
 .tests { display: grid; gap: 16px; margin: 18px 0; }
-.test { background: var(--surface); border: 1px solid var(--line); border-left: 6px solid var(--st-done); border-radius: var(--radius); padding: 16px 18px; }
+.test { background: var(--surface); border: 1px solid var(--line); border-left: 6px solid var(--st-done); border-radius: var(--radius); padding: 18px 20px; box-shadow: var(--shadow); }
 .test.warn { border-left-color: var(--st-warn); } .test.fail { border-left-color: var(--st-fail); } .test.info { border-left-color: var(--accent); }
 .test h3 { margin: 4px 0 2px; font-size: 1.15rem; }
 .t-head { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; color: var(--muted); font-size: .85rem; }
@@ -24,8 +25,6 @@
 .test .result { background: var(--accent-soft); border-radius: 8px; padding: 8px 12px; margin: 8px 0; }
 .test ul.check { margin: 6px 0 0; padding-left: 20px; } .test ul.check li { margin: 2px 0; }
 .test .links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
-.btn { display: inline-block; text-decoration: none; padding: 6px 14px; border-radius: 8px; border: 1px solid var(--accent); color: var(--accent); background: var(--surface); font-size: .92rem; }
-.btn:hover { background: var(--accent-soft); } .btn.primary { background: var(--accent); color: var(--surface); }
 .legend { display: flex; gap: 14px; flex-wrap: wrap; font-size: .88rem; color: var(--muted); margin: 8px 0; }
 .legend .sw { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 5px; vertical-align: -1px; }
 

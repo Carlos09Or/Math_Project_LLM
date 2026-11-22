@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Glosario · Tutoría matemática offline</title>
+<meta name="description" content="Términos técnicos del proyecto explicados en lenguaje llano: cuantización, Q4_K_M, ablación, intervalos de confianza, fuga de la respuesta y más.">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  .gloss { margin: 10px 0 0; }
+  .gloss .term { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 16px; margin: 10px 0; max-width: 82ch; }
+  .gloss dt { font-weight: 700; margin: 0 0 2px; }
+  .gloss dd { margin: 0; }
+  .gloss dd .see { display: block; margin-top: 4px; font-size: .88rem; color: var(--muted); }
+  .gsearch { margin: 14px 0 4px; }
+  .gsearch input { width: min(100%, 420px); }
+</style>
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+</head>
+<body>
+<header class="site">
+  <a class="skip" href="#contenido">Saltar al contenido</a>
+  <div class="wrap topbar">
+    <a class="brand" href="index.html"><span class="mark" aria-hidden="true">∑</span><span>Tutoría matemática offline<small>Investigación AAAI-27 UC · matemática de 3.er grado, Panamá</small></span></a>
+    <button class="theme-toggle" type="button" aria-label="Cambiar entre tema claro y oscuro">☾ Oscuro</button>
+  </div>
+  <nav class="sections" aria-label="Secciones"><div class="wrap"><a href="index.html">Inicio</a><a href="benchmark.html">Benchmark 2026</a><a href="pruebas.html">Laboratorio 2024</a><a href="metodologia.html" aria-current="true">Método y referencias</a></div></nav>
+  <nav class="subsections" aria-label="Páginas de la sección"><div class="wrap"><a href="metodologia.html">Metodología</a><a href="rubrica.html">Rúbrica</a><a href="fuentes.html">Fuentes</a><a href="hoja-de-ruta.html">Hoja de ruta</a><a href="glosario.html" aria-current="page">Glosario</a></div></nav>
+</header>
+
+<main class="wrap" id="contenido">
+  <h1>Glosario</h1>
+  <p class="lead">Los términos técnicos del proyecto, en lenguaje llano. Si encuentras uno que no está aquí, es un hueco del glosario, no tuyo.</p>
+  <div class="gsearch"><label class="small" for="gq">Buscar un término</label><br><input type="search" id="gq" placeholder="por ejemplo: cuantización"></div>
+  <p class="count" id="gcount"></p>
+
+  <h2>Modelos y compresión</h2>
+  <dl class="gloss">
+    <div class="term"><dt>Modelo de lenguaje pequeño (SLM)</dt><dd>Un modelo de lenguaje con pocos miles de millones de parámetros o menos (aquí, de 0,6 a 3,8 mil millones), lo bastante ligero para correr en un portátil o, a futuro, en un teléfono.</dd></div>
+    <div class="term"><dt>Parámetros</dt><dd>Los números que el modelo aprendió y que guardan su «conocimiento». Más parámetros suele significar más capacidad, pero también más memoria y más lentitud.</dd></div>
+    <div class="term"><dt>Cuantización</dt><dd>Guardar esos números con menos precisión para que el modelo ocupe menos memoria y corra más rápido, a costa de perder algo de calidad. Es como comprimir una foto: pesa menos, pero puede perder detalle.</dd></div>
+    <div class="term"><dt>FP16, Q8_0, Q4_K_M</dt><dd>Tres niveles de precisión del mismo modelo. <strong>FP16</strong> es el original (16 bits por número), <strong>Q8_0</strong> usa unos 8 bits y <strong>Q4_K_M</strong> unos 4. Cuanto menor el número, más pequeño el archivo. Por eso comparamos las tres versiones de un mismo modelo: es lo único que cambia.</dd></div>
+    <div class="term"><dt>Ollama</dt><dd>El programa que ejecuta los modelos en el equipo, sin internet, y reporta tiempos y cantidad de tokens.</dd></div>
+    <div class="term"><dt>Digest</dt><dd>Una huella única del archivo exacto de un modelo. Garantiza que dos corridas usaron literalmente el mismo modelo.</dd></div>
+    <div class="term"><dt>Modo «thinking»</dt><dd>Algunos modelos «razonan en voz alta» antes de responder. Se fija igual en todas las corridas para que no sea una variable oculta.</dd></div>
+  </dl>
+
+  <h2>Equipo y costo</h2>
+  <dl class="gloss">
+    <div class="term"><dt>GPU y VRAM</dt><dd>La tarjeta gráfica y su memoria. El laboratorio tiene una RTX 3060 Laptop de 6 GB de VRAM. Si un modelo no cabe completo en la VRAM, parte se ejecuta en el procesador y todo se vuelve más lento.</dd></div>
+    <div class="term"><dt>Offload (GPU pura o híbrida)</dt><dd>Indica si el modelo corre entero en la GPU («GPU pura») o repartido con la CPU («híbrido»). No se mezclan ambos modos en una misma comparación de velocidad.</dd></div>
+    <div class="term"><dt>Token y tok/s</dt><dd>Un token es un trozo de texto (más o menos una sílaba o palabra corta). «Tokens por segundo» mide qué tan rápido escribe el modelo.</dd></div>
+    <div class="term"><dt>TTFT</dt><dd>Tiempo hasta el primer token: cuánto tarda el modelo en empezar a responder. La medición con instrumentación propia es una fase posterior (F4).</dd></div>
+    <div class="term"><dt>Reportado, medido y derivado</dt><dd>Un dato <em>reportado</em> lo informa Ollama; uno <em>medido</em> lo mide una herramienta externa (por ejemplo <code>nvidia-smi</code>); uno <em>derivado</em> se calcula a partir de los anteriores. El sitio los rotula por separado y no inventa los que faltan.</dd></div>
+  </dl>
+
+  <h2>Evaluación y estadística</h2>
+  <dl class="gloss">
+    <div class="term"><dt>Benchmark</dt><dd>Un conjunto fijo de problemas con respuestas conocidas, que sirve para comparar modelos en igualdad de condiciones.</dd></div>
+    <div class="term"><dt>Ítem, problema base y familia</dt><dd>Un <em>ítem</em> es una pregunta concreta. Varios ítems pueden salir del mismo <em>problema base</em> (o <em>familia</em>), por ejemplo resolverlo, diagnosticar un error y dar una pista. Como no son independientes entre sí, la estadística los agrupa.</dd></div>
+    <div class="term"><dt>Las tres tareas</dt><dd><strong>Resolver:</strong> dar la respuesta correcta. <strong>Diagnosticar:</strong> reconocer el error de un estudiante, o que no hay error. <strong>Pista:</strong> orientar sin revelar la respuesta.</dd></div>
+    <div class="term"><dt>Control</dt><dd>Un caso donde el trabajo del estudiante es correcto. Sirve para saber si el modelo inventa errores donde no los hay.</dd></div>
+    <div class="term"><dt>Corrector determinista</dt><dd>Un programa que puntúa con reglas fijas (¿la respuesta es exacta?, ¿el veredicto es correcto?, ¿la pista contiene el resultado?). Da siempre el mismo resultado y no depende de la opinión de otro modelo.</dd></div>
+    <div class="term"><dt>Veredicto y categoría</dt><dd>En el diagnóstico, el <em>veredicto</em> es decir si el trabajo está bien o mal; la <em>categoría</em> es el tipo de error que el modelo dice haber encontrado.</dd></div>
+    <div class="term"><dt>Fuga (de la pista)</dt><dd>Una pista que contiene la respuesta final. Una pista con fuga no cumple su función. Ojo: que no haya fuga <strong>no</strong> significa que la pista sea buena.</dd></div>
+    <div class="term"><dt>Intervalo de confianza (IC 95 %)</dt><dd>El rango en el que probablemente está el valor «real» si repitiéramos la prueba con otros problemas parecidos. Si los intervalos de dos modelos <strong>se solapan</strong>, no se puede afirmar que uno sea mejor que el otro.</dd></div>
+    <div class="term"><dt>Bootstrap por problema base</dt><dd>Una manera de calcular intervalos volviendo a muestrear familias de problemas, no ítems sueltos, para no exagerar la certeza.</dd></div>
+    <div class="term"><dt>Ablación</dt><dd>Cambiar una sola cosa a propósito para ver qué la explica. Aquí: darle al modelo la respuesta correcta, o pedirle que resuelva primero, para entender por qué no detecta el error.</dd></div>
+    <div class="term"><dt>Ronda y temperatura</dt><dd>Una <em>ronda</em> es una pasada completa por todos los ítems. La <em>temperatura</em> controla cuánto azar usa el modelo al escribir: con 0 casi siempre responde igual; con valores más altos varía.</dd></div>
+    <div class="term"><dt>Exploratorio y confirmatorio</dt><dd>Un resultado <em>exploratorio</em> sugiere una pista y genera preguntas; uno <em>confirmatorio</em> se diseñó de antemano para comprobar una hipótesis con muestra suficiente. Todo lo publicado hasta ahora es exploratorio.</dd></div>
+    <div class="term"><dt>Frontera de Pareto</dt><dd>El conjunto de configuraciones que no se pueden mejorar en calidad sin empeorar el costo (o al revés). Sirve para elegir según lo que importe más.</dd></div>
+  </dl>
+
+  <h2>Datos y reproducibilidad</h2>
+  <dl class="gloss">
+    <div class="term"><dt>Prompt congelado</dt><dd>La instrucción que se le da al modelo, fijada de antemano y protegida con una huella (SHA-256) para que no cambie entre comparaciones.</dd></div>
+    <div class="term"><dt>SHA-256</dt><dd>Una huella digital de un archivo. Si cambia una sola letra, la huella cambia. Permite comprobar que los datos no se alteraron.</dd></div>
+    <div class="term"><dt>Benchmark congelado</dt><dd>Ítems, reglas y configuración quedan registrados con su huella antes de evaluar; el motor se niega a correr si algo cambió.</dd></div>
+    <div class="term"><dt>Manifiesto</dt><dd>El «acta» de una corrida: fecha, versiones, hardware, modelo y digest, huella de los datos y configuración usada.</dd></div>
+    <div class="term"><dt>Particiones dev y pilot</dt><dd><code>dev</code> se usa para ajustar el prompt; <code>pilot</code> se reserva para evaluar. Separarlas evita «hacer trampa» ajustando sobre lo que luego se mide.</dd></div>
+    <div class="term"><dt>Contaminación</dt><dd>Que los ítems de evaluación terminen en los datos con los que se entrenan los modelos, lo que inflaría los resultados. Por eso los 180 ítems no se publican.</dd></div>
+  </dl>
+
+  <h2>Currículo y revisión humana</h2>
+  <dl class="gloss">
+    <div class="term"><dt>MEDUCA y competencia</dt><dd>El Ministerio de Educación de Panamá. Una <em>competencia</em> es una capacidad concreta que el programa espera que el estudiante logre (por ejemplo, restar con reagrupación). Cada ítem cita la suya y su página.</dd></div>
+    <div class="term"><dt>Programa 2024 y programa 2026</dt><dd>Dos ediciones del programa de tercer grado. El dataset de 2024 usa la primera y el benchmark 2026, la segunda (en fase de validación). Ninguna tiene todavía aval docente en este proyecto.</dd></div>
+    <div class="term"><dt>Oficial y metodológico</dt><dd>Un límite <em>oficial</em> sale del programa, con página. Uno <em>metodológico</em> es una decisión del equipo (por ejemplo, excluir el cero) y no se presenta como exigencia de MEDUCA.</dd></div>
+    <div class="term"><dt>Rúbrica y ejemplos ancla</dt><dd>Una escala de 0 a 2 con descripciones de cada nivel. Los <em>ejemplos ancla</em> son respuestas reales que ilustran cada puntaje para que distintas personas califiquen igual.</dd></div>
+    <div class="term"><dt>Revisión ciega y doble anotación</dt><dd>Calificar sin saber qué modelo respondió, y que dos personas califiquen una muestra por separado para medir cuánto coinciden.</dd></div>
+    <div class="term"><dt>MathTutorBench</dt><dd>Un benchmark público de tutoría matemática. Se estudia su metodología para adaptarla; sus datos no se copian.</dd></div>
+    <div class="term"><dt>LoRA / QLoRA</dt><dd>Técnicas para ajustar un modelo con poco costo. En este proyecto no se usan todavía: son una fase condicional posterior.</dd></div>
+  </dl>
+</main>
+
+<footer class="site"><div class="wrap">
+  <div class="cols">
+    <div><div class="h">El proyecto</div><a href="index.html">Inicio</a><a href="metodologia.html">Metodología</a><a href="hoja-de-ruta.html">Hoja de ruta</a><a href="glosario.html">Glosario</a></div>
+    <div><div class="h">Resultados</div><a href="benchmark.html">Benchmark 2026</a><a href="resultados-2026.html">Resultados 2026</a><a href="rondas-2026.html">Rondas y ablación</a><a href="pruebas.html">Pruebas T1–T5</a></div>
+    <div><div class="h">Referencia</div><a href="dataset.html">Dataset 2024</a><a href="rubrica.html">Rúbrica</a><a href="fuentes.html">Fuentes</a><a href="https://github.com/Carlos09Or/Math_Project_LLM">Repositorio en GitHub</a></div>
+  </div>
+  <p class="legal">Borrador de trabajo · resultados exploratorios, sin validación docente ni aval de MEDUCA · los datos publicados son agregados; los ítems del benchmark 2026 no se publican.</p>
+</div></footer>
+<script>
+(function () {
+  var q = document.getElementById('gq'), terms = Array.prototype.slice.call(document.querySelectorAll('.gloss .term')), c = document.getElementById('gcount');
+  function norm(s) { return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, ''); }
+  function run() {
+    var v = norm(q.value.trim()), n = 0;
+    terms.forEach(function (t) { var ok = !v || norm(t.textContent).indexOf(v) >= 0; t.hidden = !ok; if (ok) n++; });
+    c.textContent = v ? n + ' de ' + terms.length + ' términos' : terms.length + ' términos';
+    document.querySelectorAll('main h2').forEach(function (h) {
+      var dl = h.nextElementSibling; if (dl && dl.classList.contains('gloss')) { var any = dl.querySelector('.term:not([hidden])'); h.hidden = !any; dl.hidden = !any; }
+    });
+  }
+  q.addEventListener('input', run); run();
+})();
+</script>
+<script src="assets/shell.js"></script>
+</body>
+</html>

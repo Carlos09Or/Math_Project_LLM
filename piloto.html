@@ -8,20 +8,27 @@
 <meta name="description" content="Primera evaluación de Qwen3-0.6B en tres precisiones sobre el dataset: resultados con intervalos, comparaciones y herramienta de revisión humana.">
 <link rel="stylesheet" href="assets/style.css">
 <link rel="stylesheet" href="assets/tests.css">
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 </head>
 <body>
-<header class="site"><div class="wrap">
-  <a class="brand" href="index.html">Tutoría matemática offline</a>
-  <nav aria-label="Principal"><a href="index.html">Inicio</a><a href="pruebas.html">Pruebas</a><a href="benchmark.html">Benchmark 2026</a><a href="resultados-2026.html">Resultados 2026</a><a href="rondas-2026.html">Rondas y ablación</a><a href="dataset.html">Dataset 2024</a><a href="rubrica.html">Rúbrica</a><a href="fuentes.html">Fuentes</a><a href="metodologia.html">Metodología</a><a href="hoja-de-ruta.html">Hoja de ruta</a></nav>
-</div></header>
+<header class="site">
+  <a class="skip" href="#contenido">Saltar al contenido</a>
+  <div class="wrap topbar">
+    <a class="brand" href="index.html"><span class="mark" aria-hidden="true">∑</span><span>Tutoría matemática offline<small>Investigación AAAI-27 UC · matemática de 3.er grado, Panamá</small></span></a>
+    <button class="theme-toggle" type="button" aria-label="Cambiar entre tema claro y oscuro">☾ Oscuro</button>
+  </div>
+  <nav class="sections" aria-label="Secciones"><div class="wrap"><a href="index.html">Inicio</a><a href="benchmark.html">Benchmark 2026</a><a href="pruebas.html" aria-current="true">Laboratorio 2024</a><a href="metodologia.html">Método y referencias</a></div></nav>
+  <nav class="subsections" aria-label="Páginas de la sección"><div class="wrap"><a href="pruebas.html" aria-current="page">Pruebas T1–T5</a><a href="dataset.html">Dataset</a></div></nav>
+</header>
 
-<main class="wrap">
+<main class="wrap" id="contenido">
   <p class="crumb"><a href="pruebas.html">← Todas las pruebas</a></p>
   <div class="subnav" aria-label="Pruebas">
     <a href="resultados.html">T1 Humo</a><a href="capacidad-gpu.html">T2 GPU</a><a href="ajuste-formato.html#ronda-1">T3 Formato 1</a><a href="ajuste-formato.html#ronda-2">T4 Formato 2</a><a href="piloto.html" aria-current="page">T5 Piloto</a>
   </div>
   <h1>T5 · Piloto: Qwen3-0.6B en tres precisiones</h1>
   <p class="lead">Las mismas preguntas del dataset real, contestadas por la versión q4_K_M, q8_0 y fp16 del mismo modelo, con el prompt ya congelado.</p>
+  <div class="tldr" aria-label="En breve"><div><div class="h">Qué es</div><p>Qwen3-0.6B en q4_K_M, q8_0 y fp16 sobre 27 problemas (81 ítems), con el prompt congelado.</p></div><div><div class="h">Qué encontramos</div><p>Al resolver, q8_0 y fp16 aciertan los mismos ítems y q4_K_M falla más. El diagnóstico queda cerca del azar y las pistas de q4_K_M revelan más la respuesta.</p></div><div><div class="h">Cuánto confiar</div><p>Exploratorio: 27 problemas, intervalos anchos y sin rúbrica aplicada todavía.</p></div></div>
   <div class="banner"><strong>Exploratorio.</strong> 27 problemas sintéticos sin revisión docente, métricas solo deterministas (exactitud, veredicto y fuga del resultado). No mide calidad pedagógica, y los intervalos son anchos: varias diferencias que se ven en el gráfico podrían no existir fuera de este conjunto.</div>
 
   <div class="grid" id="pilot-kpis"></div>
@@ -79,10 +86,18 @@
   <p>Dataset sintético sin validación docente; un solo modelo en tres precisiones; solo 6 controles; el prompt se ajustó por legibilidad con otros problemas; el formato de división delata la operación (decisión D-08 pendiente del mentor); tiempos de un portátil reportados por Ollama.</p>
 </main>
 
-<footer class="site"><div class="wrap">Borrador de trabajo · sin resultados científicos · <a href="https://github.com/Carlos09Or/Math_Project_LLM">repositorio en GitHub</a></div></footer>
+<footer class="site"><div class="wrap">
+  <div class="cols">
+    <div><div class="h">El proyecto</div><a href="index.html">Inicio</a><a href="metodologia.html">Metodología</a><a href="hoja-de-ruta.html">Hoja de ruta</a><a href="glosario.html">Glosario</a></div>
+    <div><div class="h">Resultados</div><a href="benchmark.html">Benchmark 2026</a><a href="resultados-2026.html">Resultados 2026</a><a href="rondas-2026.html">Rondas y ablación</a><a href="pruebas.html">Pruebas T1–T5</a></div>
+    <div><div class="h">Referencia</div><a href="dataset.html">Dataset 2024</a><a href="rubrica.html">Rúbrica</a><a href="fuentes.html">Fuentes</a><a href="https://github.com/Carlos09Or/Math_Project_LLM">Repositorio en GitHub</a></div>
+  </div>
+  <p class="legal">Borrador de trabajo · resultados exploratorios, sin validación docente ni aval de MEDUCA · los datos publicados son agregados; los ítems del benchmark 2026 no se publican.</p>
+</div></footer>
 <script src="assets/data/project_items.js"></script>
 <script src="assets/data/project_tests.js"></script>
 <script src="assets/app.js"></script>
 <script src="assets/tests.js"></script>
+<script src="assets/shell.js"></script>
 </body>
 </html>

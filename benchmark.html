@@ -9,16 +9,23 @@
 <link rel="stylesheet" href="assets/style.css">
 <link rel="stylesheet" href="assets/tests.css">
 <link rel="stylesheet" href="assets/bench2026.css">
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 </head>
 <body>
-<header class="site"><div class="wrap">
-  <a class="brand" href="index.html">Tutoría matemática offline</a>
-  <nav aria-label="Principal"><a href="index.html">Inicio</a><a href="pruebas.html">Pruebas</a><a href="benchmark.html" aria-current="page">Benchmark 2026</a><a href="resultados-2026.html">Resultados 2026</a><a href="rondas-2026.html">Rondas y ablación</a><a href="dataset.html">Dataset 2024</a><a href="rubrica.html">Rúbrica</a><a href="fuentes.html">Fuentes</a><a href="metodologia.html">Metodología</a><a href="hoja-de-ruta.html">Hoja de ruta</a></nav>
-</div></header>
+<header class="site">
+  <a class="skip" href="#contenido">Saltar al contenido</a>
+  <div class="wrap topbar">
+    <a class="brand" href="index.html"><span class="mark" aria-hidden="true">∑</span><span>Tutoría matemática offline<small>Investigación AAAI-27 UC · matemática de 3.er grado, Panamá</small></span></a>
+    <button class="theme-toggle" type="button" aria-label="Cambiar entre tema claro y oscuro">☾ Oscuro</button>
+  </div>
+  <nav class="sections" aria-label="Secciones"><div class="wrap"><a href="index.html">Inicio</a><a href="benchmark.html" aria-current="true">Benchmark 2026</a><a href="pruebas.html">Laboratorio 2024</a><a href="metodologia.html">Método y referencias</a></div></nav>
+  <nav class="subsections" aria-label="Páginas de la sección"><div class="wrap"><a href="benchmark.html" aria-current="page">Qué es</a><a href="resultados-2026.html">Resultados</a><a href="rondas-2026.html">Rondas y ablación</a></div></nav>
+</header>
 
-<main class="wrap">
+<main class="wrap" id="contenido">
   <h1>Benchmark curricular de Matemática, 3.er grado (MEDUCA 2026)</h1>
   <p class="lead">Un instrumento para medir, con los mismos ítems y condiciones, cómo cambian la exactitud matemática, la capacidad de reconocer errores de un estudiante y la calidad de las pistas cuando modelos de lenguaje pequeños se ejecutan con restricciones de cómputo. <strong>No entrena modelos.</strong></p>
+  <div class="tldr" aria-label="En breve"><div><div class="h">Qué es</div><p>Un conjunto de 180 ítems de Aritmética de 3.er grado (60 de resolver, 60 de diagnosticar y 60 de pistas), alineado con el programa MEDUCA 2026.</p></div><div><div class="h">Qué encontramos</div><p>Es un instrumento, no un resultado. Aquí se explica cómo se construyó, qué límites son oficiales y cuáles son decisiones del equipo, y cómo se verifica cada ítem.</p></div><div><div class="h">Cuánto confiar</div><p>Verificado por código y congelado, pero sin revisión docente ni aval de MEDUCA.</p></div></div>
   <div class="banner"><strong>Borrador sin validación docente ni de MEDUCA.</strong> Se alinea con el Programa de Estudio de Tercer Grado, Actualización 2026 (fase de validación), páginas impresas 181 a 228, cotejado directamente contra el PDF oficial. No tiene aval de MEDUCA. Es independiente del dataset anterior, que usa el programa 2024 (<a href="dataset.html">ver Dataset 2024</a>). <a href="resultados-2026.html">Ver los resultados</a>.</div>
 
   <div class="grid" id="b-kpis"></div>
@@ -89,8 +96,16 @@
   </ul>
 </main>
 
-<footer class="site"><div class="wrap">Borrador de trabajo · sin resultados científicos · <a href="https://github.com/Carlos09Or/Math_Project_LLM">repositorio en GitHub</a></div></footer>
+<footer class="site"><div class="wrap">
+  <div class="cols">
+    <div><div class="h">El proyecto</div><a href="index.html">Inicio</a><a href="metodologia.html">Metodología</a><a href="hoja-de-ruta.html">Hoja de ruta</a><a href="glosario.html">Glosario</a></div>
+    <div><div class="h">Resultados</div><a href="benchmark.html">Benchmark 2026</a><a href="resultados-2026.html">Resultados 2026</a><a href="rondas-2026.html">Rondas y ablación</a><a href="pruebas.html">Pruebas T1–T5</a></div>
+    <div><div class="h">Referencia</div><a href="dataset.html">Dataset 2024</a><a href="rubrica.html">Rúbrica</a><a href="fuentes.html">Fuentes</a><a href="https://github.com/Carlos09Or/Math_Project_LLM">Repositorio en GitHub</a></div>
+  </div>
+  <p class="legal">Borrador de trabajo · resultados exploratorios, sin validación docente ni aval de MEDUCA · los datos publicados son agregados; los ítems del benchmark 2026 no se publican.</p>
+</div></footer>
 <script src="assets/data/benchmark2026.js"></script>
 <script src="assets/bench2026.js"></script>
+<script src="assets/shell.js"></script>
 </body>
 </html>

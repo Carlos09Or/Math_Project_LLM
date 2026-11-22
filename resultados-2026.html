@@ -9,16 +9,23 @@
 <link rel="stylesheet" href="assets/style.css">
 <link rel="stylesheet" href="assets/tests.css">
 <link rel="stylesheet" href="assets/bench2026.css">
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 </head>
 <body>
-<header class="site"><div class="wrap">
-  <a class="brand" href="index.html">Tutoría matemática offline</a>
-  <nav aria-label="Principal"><a href="index.html">Inicio</a><a href="pruebas.html">Pruebas</a><a href="benchmark.html">Benchmark 2026</a><a href="resultados-2026.html" aria-current="page">Resultados 2026</a><a href="rondas-2026.html">Rondas y ablación</a><a href="dataset.html">Dataset 2024</a><a href="rubrica.html">Rúbrica</a><a href="fuentes.html">Fuentes</a><a href="metodologia.html">Metodología</a><a href="hoja-de-ruta.html">Hoja de ruta</a></nav>
-</div></header>
+<header class="site">
+  <a class="skip" href="#contenido">Saltar al contenido</a>
+  <div class="wrap topbar">
+    <a class="brand" href="index.html"><span class="mark" aria-hidden="true">∑</span><span>Tutoría matemática offline<small>Investigación AAAI-27 UC · matemática de 3.er grado, Panamá</small></span></a>
+    <button class="theme-toggle" type="button" aria-label="Cambiar entre tema claro y oscuro">☾ Oscuro</button>
+  </div>
+  <nav class="sections" aria-label="Secciones"><div class="wrap"><a href="index.html">Inicio</a><a href="benchmark.html" aria-current="true">Benchmark 2026</a><a href="pruebas.html">Laboratorio 2024</a><a href="metodologia.html">Método y referencias</a></div></nav>
+  <nav class="subsections" aria-label="Páginas de la sección"><div class="wrap"><a href="benchmark.html">Qué es</a><a href="resultados-2026.html" aria-current="page">Resultados</a><a href="rondas-2026.html">Rondas y ablación</a></div></nav>
+</header>
 
-<main class="wrap">
+<main class="wrap" id="contenido">
   <h1>Resultados del benchmark 2026</h1>
   <p class="lead">Siete configuraciones de modelos pequeños sobre los mismos 180 ítems de Aritmética de 3.er grado (programa MEDUCA 2026), con el mismo prompt, los mismos parámetros y el benchmark congelado. 14 de noviembre de 2026.</p>
+  <div class="tldr" aria-label="En breve"><div><div class="h">Qué es</div><p>Siete configuraciones de modelos pequeños evaluadas con los mismos 180 ítems, el mismo prompt y temperatura 0.</p></div><div><div class="h">Qué encontramos</div><p>Más parámetros ayudan a resolver (Qwen3-1.7B: 55 de 60; Qwen3-0.6B Q4_K_M: 39). Reconocer el error es lo más difícil y las pistas revelan la respuesta con frecuencia.</p></div><div><div class="h">Cuánto confiar</div><p>Exploratorio: una corrida por configuración, puntuación automática, sin revisión humana ni docente.</p></div></div>
   <div class="banner"><strong>Resultados exploratorios, no evidencia científica.</strong> Es una corrida por configuración, con temperatura 0, corridas seguidas (no intercaladas). Las puntuaciones son automáticas: la calidad pedagógica del diagnóstico y de las pistas <strong>no se ha revisado</strong> y ningún ítem fue revisado por docentes ni por MEDUCA. Las comparaciones entre familias de modelos no son causales. <a href="benchmark.html">Qué es este benchmark</a>.</div>
 
   <div class="callout">Estas cifras son de la primera pasada. La variabilidad entre rondas y la ablación del diagnóstico están en <a href="rondas-2026.html">Rondas y ablación</a>: allí se ve que, con muestreo, una diferencia de 3 o 4 aciertos entre configuraciones es ruido.</div>
@@ -80,8 +87,16 @@
   <p>Los ítems y las respuestas completas <strong>no se publican</strong> aquí para no contaminar futuros conjuntos de entrenamiento y mientras no esté decidida la licencia. Ver <a href="https://github.com/Carlos09Or/Math_Project_LLM/blob/main/benchmark2026/README.md"><code>benchmark2026/README.md</code></a>. Los resúmenes y los manifiestos de cada corrida sí están en <a href="https://github.com/Carlos09Or/Math_Project_LLM/tree/main/benchmark2026/results"><code>benchmark2026/results/</code></a>.</p>
 </main>
 
-<footer class="site"><div class="wrap">Borrador de trabajo · sin resultados científicos · <a href="https://github.com/Carlos09Or/Math_Project_LLM">repositorio en GitHub</a></div></footer>
+<footer class="site"><div class="wrap">
+  <div class="cols">
+    <div><div class="h">El proyecto</div><a href="index.html">Inicio</a><a href="metodologia.html">Metodología</a><a href="hoja-de-ruta.html">Hoja de ruta</a><a href="glosario.html">Glosario</a></div>
+    <div><div class="h">Resultados</div><a href="benchmark.html">Benchmark 2026</a><a href="resultados-2026.html">Resultados 2026</a><a href="rondas-2026.html">Rondas y ablación</a><a href="pruebas.html">Pruebas T1–T5</a></div>
+    <div><div class="h">Referencia</div><a href="dataset.html">Dataset 2024</a><a href="rubrica.html">Rúbrica</a><a href="fuentes.html">Fuentes</a><a href="https://github.com/Carlos09Or/Math_Project_LLM">Repositorio en GitHub</a></div>
+  </div>
+  <p class="legal">Borrador de trabajo · resultados exploratorios, sin validación docente ni aval de MEDUCA · los datos publicados son agregados; los ítems del benchmark 2026 no se publican.</p>
+</div></footer>
 <script src="assets/data/benchmark2026.js"></script>
 <script src="assets/bench2026.js"></script>
+<script src="assets/shell.js"></script>
 </body>
 </html>

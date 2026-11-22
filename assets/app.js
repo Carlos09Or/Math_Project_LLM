@@ -19,13 +19,7 @@
   var TASK = { solve: 'resolver', diagnose: 'diagnosticar', hint: 'pista' };
   var COMP = { 'A3-SUB-24': 'Sustracción', 'A3-MUL-24': 'Multiplicación', 'A3-DIV-24': 'División con residuo' };
 
-  // Navegación: marca la página actual
-  var here = (location.pathname.split('/').pop() || 'index.html');
-  var SECTION = { 'piloto.html': 'pruebas.html', 'ajuste-formato.html': 'pruebas.html', 'capacidad-gpu.html': 'pruebas.html', 'resultados.html': 'pruebas.html' };
-  var target = SECTION[here] || here;
-  document.querySelectorAll('nav a').forEach(function (a) {
-    if (a.getAttribute('href') === target) a.setAttribute('aria-current', 'page');
-  });
+  // La navegación (sección y página actual) ya viene marcada en el HTML de cada página.
 
   // ---------- Portada: cifras calculadas desde los datos
   if ($('home-stats') && window.PROJECT_ITEMS && window.PROJECT_RUNS) {

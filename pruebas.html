@@ -8,16 +8,23 @@
 <meta name="description" content="Catálogo de todas las pruebas realizadas: qué pregunta responde cada una, cómo se hizo, qué resultó, qué no prueba y qué falta revisar.">
 <link rel="stylesheet" href="assets/style.css">
 <link rel="stylesheet" href="assets/tests.css">
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 </head>
 <body>
-<header class="site"><div class="wrap">
-  <a class="brand" href="index.html">Tutoría matemática offline</a>
-  <nav aria-label="Principal"><a href="index.html">Inicio</a><a href="pruebas.html">Pruebas</a><a href="benchmark.html">Benchmark 2026</a><a href="resultados-2026.html">Resultados 2026</a><a href="rondas-2026.html">Rondas y ablación</a><a href="dataset.html">Dataset 2024</a><a href="rubrica.html">Rúbrica</a><a href="fuentes.html">Fuentes</a><a href="metodologia.html">Metodología</a><a href="hoja-de-ruta.html">Hoja de ruta</a></nav>
-</div></header>
+<header class="site">
+  <a class="skip" href="#contenido">Saltar al contenido</a>
+  <div class="wrap topbar">
+    <a class="brand" href="index.html"><span class="mark" aria-hidden="true">∑</span><span>Tutoría matemática offline<small>Investigación AAAI-27 UC · matemática de 3.er grado, Panamá</small></span></a>
+    <button class="theme-toggle" type="button" aria-label="Cambiar entre tema claro y oscuro">☾ Oscuro</button>
+  </div>
+  <nav class="sections" aria-label="Secciones"><div class="wrap"><a href="index.html">Inicio</a><a href="benchmark.html">Benchmark 2026</a><a href="pruebas.html" aria-current="true">Laboratorio 2024</a><a href="metodologia.html">Método y referencias</a></div></nav>
+  <nav class="subsections" aria-label="Páginas de la sección"><div class="wrap"><a href="pruebas.html" aria-current="page">Pruebas T1–T5</a><a href="dataset.html">Dataset</a></div></nav>
+</header>
 
-<main class="wrap">
+<main class="wrap" id="contenido">
   <h1>Todas las pruebas, una por una</h1>
   <p class="lead">Cada tarjeta dice <strong>qué pregunta responde</strong>, cómo se hizo, qué resultó, <strong>qué no prueba</strong> y qué te toca revisar. Están en el orden en que se hicieron.</p>
+  <div class="tldr" aria-label="En breve"><div><div class="h">Qué es</div><p>Las cinco pruebas del laboratorio 2024 con Qwen3-0.6B: prueba de humo, capacidad de la GPU, dos rondas de ajuste del formato y el piloto en tres precisiones.</p></div><div><div class="h">Qué encontramos</div><p>T1 cumplió sus 6 criterios. T3 no alcanzó su umbral y T4 sí, por lo que el prompt quedó congelado. T2 y T5 son exploratorias.</p></div><div><div class="h">Cuánto confiar</div><p>Pruebas técnicas sobre un dataset sintético: falta la revisión humana y docente.</p></div></div>
 
   <div class="banner"><strong>Nada de esto es todavía evidencia científica.</strong> Son pruebas técnicas y exploratorias sobre un dataset sintético sin revisión docente y sin rúbrica. Falta la revisión humana: <strong>ese es tu papel</strong>, y en la prueba T5 hay una herramienta para hacerla.</div>
 
@@ -116,11 +123,19 @@
   </ul>
 </main>
 
-<footer class="site"><div class="wrap">Borrador de trabajo · sin resultados científicos · <a href="https://github.com/Carlos09Or/Math_Project_LLM">repositorio en GitHub</a></div></footer>
+<footer class="site"><div class="wrap">
+  <div class="cols">
+    <div><div class="h">El proyecto</div><a href="index.html">Inicio</a><a href="metodologia.html">Metodología</a><a href="hoja-de-ruta.html">Hoja de ruta</a><a href="glosario.html">Glosario</a></div>
+    <div><div class="h">Resultados</div><a href="benchmark.html">Benchmark 2026</a><a href="resultados-2026.html">Resultados 2026</a><a href="rondas-2026.html">Rondas y ablación</a><a href="pruebas.html">Pruebas T1–T5</a></div>
+    <div><div class="h">Referencia</div><a href="dataset.html">Dataset 2024</a><a href="rubrica.html">Rúbrica</a><a href="fuentes.html">Fuentes</a><a href="https://github.com/Carlos09Or/Math_Project_LLM">Repositorio en GitHub</a></div>
+  </div>
+  <p class="legal">Borrador de trabajo · resultados exploratorios, sin validación docente ni aval de MEDUCA · los datos publicados son agregados; los ítems del benchmark 2026 no se publican.</p>
+</div></footer>
 <script src="assets/data/project_items.js"></script>
 <script src="assets/data/project_runs.js"></script>
 <script src="assets/data/project_tests.js"></script>
 <script src="assets/app.js"></script>
 <script src="assets/tests.js"></script>
+<script src="assets/shell.js"></script>
 </body>
 </html>
